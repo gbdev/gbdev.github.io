@@ -12,7 +12,9 @@
     "build-prod": "webpack -p --mode production",
     "dev": "webpack-dev-server"
   },
-  "dependencies": {},
+  "dependencies": {
+    "typeface-cabin": "0.0.54"
+  },
   "devDependencies": {
     "bulma": "^0.7.2",
     "css-loader": "^1.0.1",
