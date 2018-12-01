@@ -56,8 +56,9 @@
         <div class="columns is-mobile">
             <div class="column">
                 <span class="subtitle"> Game Boy Development Community </span>
-            </div></div>
-            <div class="columns">
+            </div>
+        </div>
+        <div class="columns">
             <div class="column is-half is-offset-one-quarter">
                 <span class="introtext">
 
@@ -68,8 +69,6 @@
     </span>
             </div>
         </div>
-
-
         <!--<div class="columns is-mobile">
             <div class="column">
                 <div id="ytplayer">
@@ -77,18 +76,18 @@
         </div></div>-->
         <div class="columns">
             <div class="column is-half is-offset-one-quarter">
-                
                 <div class="projects">
                     Here's a quick showcase of what we are up to:<br><br>
                     <p class="projectTitle"><a href="https://github.com/gbdev/awesome-gbdev">Awesome list</a><!-- Place this tag where you want the button to render. -->
                         <a class="github-button" href="https://github.com/gbdev/awesome-gbdev" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/awesome-gbdev on GitHub">Star</a></p>
-                    A <b>curated list</b> of Game Boy development resources such as tools, docs, emulators, related projects and open-source ROMs. Everything you'll ever need to know and see about this console is here.
+                    A <b>curated list</b> of Game Boy development resources such as tools, guides, technical documentation, tutorials, emulators, related projects and open-source ROMs. Everything you'll ever need to know and see about this console is here. <br>If you want to code an emulator, create your own game or simply dive into the software and hardware architecture of the Game Boy, this is the place!
                     <br><br>
                     <p class="projectTitle"><a href="https://discord.gg/gpBxq85">Discord server</a>&nbsp;<img src="https://img.shields.io/badge/dynamic/json.svg?label=chat&colorB=green&prefix=&suffix=%20online&query=count&uri=https%3A%2F%2Fgbhh.avivace.com%2Fapi%2Fdiscord"></p>
-                        This is where we <b>chat</b>, discuss and help each other. There's an IRC channel, too.
+                        Where our community thrives. Here we <b>chat</b>, discuss, help each other and show what we are working on. There's an IRC channel, too.
                         <br><br>
-                        <p class="projectTitle"><a href="https://gbhh.avivace.com">Homebrew Hub</a></p>
-                        An <b>online archive</b> of homebrews, patches, hackroms for Game Boy. Everything is playable online! Provides community submission, tagging and rating features.
+                        <p class="projectTitle"><a href="https://gbhh.avivace.com">Homebrew Hub</a>&nbsp;<img src="https://img.shields.io/badge/games-178%20entries-blue.svg"></p> 
+                        Play Game Boy games online from an archive of hundreds of entries! <br>
+                        A community-lead attempt to collect, archive and save every unofficial game, homebrew, demo, patch, hackrom for Game Boy produced by the community through decades of passionate work.
                         <br><br>
                         <p class="projectTitle"><a href="https://github.com/gb-archive">The Game Boy Archive</a></p>
                         A <b>library</b> of Game Boy related software, hardware and literature. Aimed to mirror and preserve old and fragmented contributions in the scene from the last three decades.
@@ -97,7 +96,8 @@
                 <br><br>
                 <footer>
                     <div class="content has-text-centered">
-                        &copy; 2015-2018 Antonio Vivace and contributors. <br><br> This website is open source. Come <a href="">contribute</a>!<br><br><img style="height: 40px" src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PoweredByDO/DO_Powered_by_Badge_black.svg">
+                        Game Boy is a trademark of Nintendo. This project is not endorsed by Nintendo.<br>
+                        &copy; 2015-2018 Antonio Vivace and contributors. <br>This website is open source. Come <a href="">contribute</a>!<br><br><a href="https://digitalocean.com" target="_blank"> <img style="height: 40px" src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PoweredByDO/DO_Powered_by_Badge_black.svg"></a>
             </div>
                 </footer>
             </div>
@@ -107,18 +107,20 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script>
+    // Pick a random Game Boy color
     colors = ['#5f98c6', // Teal (1998, 1999 NA) 
-              '#FCCF37', // Dandelion - yellow (1998, 1999 NA)
-              '#EB1667', // Berry - fuchsia (1998, 1999 NA)
-              '#A8F602', // Kiwi - neon green (1998, 1999 NA)
-              '#5B3099', // Grape - purple (1998)
-              'rgba(255, 255, 255, 0.5)', // Atomic Purple - clear purple (1998)
-              'rgba(91, 48, 153, 0.5)' // Neotones Ice (LIJI32 special request <3)
-              ]
-    gameBoyColor = colors[Math.floor(Math.random()*colors.length)];
+        '#FCCF37', // Dandelion - yellow (1998, 1999 NA)
+        '#EB1667', // Berry - fuchsia (1998, 1999 NA)
+        '#A8F602', // Kiwi - neon green (1998, 1999 NA)
+        // '#5B3099', // Grape - purple (1998) TODO: Darken the black elements
+        // Translucent colors - TODO: Fix speakers
+        'rgba(255, 255, 255, 0.5)', // Atomic Purple - clear purple (1998)
+        'rgba(91, 48, 153, 0.5)' // Neotones Ice (LIJI32 special request <3)
+    ]
+    color = colors[Math.floor(Math.random() * colors.length)];
     var box = document.querySelector('#box');
-    box.style.setProperty('background-color', gameBoyColor);
-    console.log(gameBoyColor)
+    box.style.setProperty('background-color', color);
+    console.log(color)
 
     // Load the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
@@ -132,7 +134,6 @@
 
     function onYouTubePlayerAPIReady() {
         player = new YT.Player('ytplayer', {
-
             videoId: 'RZUDEaLa5Nw'
         });
 
