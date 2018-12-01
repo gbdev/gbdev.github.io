@@ -10,22 +10,74 @@
 <body>
     <br><br>
     <center>
-        <h1 class="title"><b>gb</b>dev</h1>
         <div class="columns is-mobile">
-            <div class="column is-half is-offset-one-quarter">
+            <div class="column" style="text-align: right">
+                <div id='container'>
+                    <div id='back'></div>
+                    <div id='border'></div>
+                    <div id='card3'></div>
+                    <div id='card2'></div>
+                    <div id='chip2'></div>
+                    <div id='screenBack'></div>
+                    <div id='card1'></div>
+                    <div id='speaker'></div>
+                    <div id='chip'></div>
+                    <div id='chipPinL'></div>
+                    <div id='chipPinR'></div>
+                    <div id='ec1'></div>
+                    <div id='volumeWheelBack'></div>
+                    <div id='volumeWheel'></div>
+                    <div id='joystickBack'></div>
+                    <div id='buttonsABBack'></div>
+                    <div id='buttonsSSBack'></div>
+                    <div id='jackBack'></div>
+                    <div id='jack'></div>
+                    <div id='ec2'></div>
+                    <div id='powerBack'></div>
+                    <div id='power'></div>
+                    <div id='box'></div>
+                    <div id='screen'></div>
+                    <div id='screen2'></div>
+                    <div id='joystickCross1'></div>
+                    <div id='joystickCross2'></div>
+                    <div id='buttonsSS'></div>
+                    <div id='buttonsSSText'></div>
+                    <div id='buttonsAB'></div>
+                    <div id='buttonsABText'></div>
+                    <div id='gameboyText'>GAME BOY &nbsp;</div>
+                    <div id='powerLed'></div>
+                    <div id='speakerFilter'></div>
+                </div>
+            </div>
+            <div class="column" id='title'>
+                <h1 class="title"><b>gb</b>dev</h1>
+            </div>
+        </div>
+        <div class="columns is-mobile">
+            <div class="column">
                 <span class="subtitle"> Game Boy Development Community </span>
+            </div></div>
+            <div class="columns">
+            <div class="column is-half is-offset-one-quarter">
                 <span class="introtext">
-      <br><br>
-    <br>
+
+
 
     We are a group of passionate developers working on homebrews, emulators and documentation for the <i>Nintendo Game Boy</i> handheld console, the original gray brick from 1989!
-    <br>
-    </span></div>
+    
+    </span>
+            </div>
         </div>
-        <div id="ytplayer"></div>
-        <div class="columns is-mobile">
+
+
+        <!--<div class="columns is-mobile">
+            <div class="column">
+                <div id="ytplayer">
+            </div>
+        </div></div>-->
+        <div class="columns">
             <div class="column is-half is-offset-one-quarter">
-                <br>
+                
                 <div class="projects">
                     Here's a quick showcase of what we are up to:<br><br>
                     <p class="projectTitle"><a href="https://github.com/gbdev/awesome-gbdev">Awesome list</a><!-- Place this tag where you want the button to render. -->
@@ -52,10 +104,22 @@
         </div>
     </center>
     <script src="bundle.js"></script>
-   
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script>
+    colors = ['#5f98c6', // Teal (1998, 1999 NA) 
+              '#FCCF37', // Dandelion - yellow (1998, 1999 NA)
+              '#EB1667', // Berry - fuchsia (1998, 1999 NA)
+              '#A8F602', // Kiwi - neon green (1998, 1999 NA)
+              '#5B3099', // Grape - purple (1998)
+              'rgba(255, 255, 255, 0.5)', // Atomic Purple - clear purple (1998)
+              'rgba(91, 48, 153, 0.5)' // Neotones Ice (LIJI32 special request <3)
+              ]
+    gameBoyColor = colors[Math.floor(Math.random()*colors.length)];
+    var box = document.querySelector('#box');
+    box.style.setProperty('background-color', gameBoyColor);
+    console.log(gameBoyColor)
+
     // Load the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/player_api";
@@ -68,8 +132,7 @@
 
     function onYouTubePlayerAPIReady() {
         player = new YT.Player('ytplayer', {
-            height: '360',
-            width: '80%',
+
             videoId: 'RZUDEaLa5Nw'
         });
 
