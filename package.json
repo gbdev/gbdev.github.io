@@ -38,6 +38,7 @@
     "style-loader": "^0.23.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "typeface-cairo": "0.0.61",
     "typeface-chakra-petch": "0.0.61",
     "url-loader": "^1.1.2",
     "webpack": "^4.26.0",
