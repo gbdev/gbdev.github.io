@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
   entry: './src/index.js',
@@ -7,6 +8,14 @@ const config = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
+  ],
   module: {
     rules: [
               {
@@ -35,6 +44,7 @@ const config = {
           'stylus-loader'
         ]
       },
+      /*
       {
         test: /\.css$/,
         use: [
@@ -43,6 +53,7 @@ const config = {
         ],
         exclude: /\.module\.css$/
       },
+      
       {
         test: /\.css$/,
         use: [
@@ -50,6 +61,21 @@ const config = {
           'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
         ],
         include: /\.module\.css$/
+      },
+      */
+            {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // you can specify a publicPath here
+              // by default it use publicPath in webpackOptions.output
+              publicPath: '../'
+            }
+          },
+          "css-loader"
+        ]
       },
       {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
