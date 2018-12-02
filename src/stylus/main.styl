@@ -1,10 +1,25 @@
-body
-  padding: 30px
+html
+  height: 100%
   
+body
+  height: 100vh
+  display: flex
+  flex-direction: column
+  
+/* Sticky footer: https://codepen.io/chriscoyier/pen/RRbKrL */
+
 .footer
   font: 14px Fantasque Sans Mono;
   line-height: 12px;
   padding: 1rem 1rem 1rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  flex-shrink: 0;
+  
+.things
+  padding: 15px
+  flex: 1 0 auto;
 
 @media only screen and (min-width: 768px) and (max-height: 665px)
   .column1
@@ -40,10 +55,14 @@ body
     text-align: left;
   .introtext
     text-align: left;
+  .subtitle
+    text-align: center;
 
 @media only screen and (max-width: 768px)
   .introtext
     text-align: left;
+  .subtitle
+    text-align: center;
   .title
     text-align: center;
   #container
@@ -52,7 +71,8 @@ body
     padding: 25px;
 
 .subtitle
-  font: 26px/1 Chakra Petch, arial, sans-serif;
+  font: 32px/1 Chakra Petch, arial, sans-serif;
+  text-align: center;
 
 .projectTitle
   font: 26px/1 Fantasque Sans Mono, arial, sans-serif;
