@@ -1,26 +1,45 @@
 body
-  padding: 10px
-
+  padding: 30px
+  
 footer
   font: 14px Fantasque Sans Mono;
   line-height: 12px;
-  
+
+@media only screen and (min-width: 768px)
+  .column1
+    padding: 110px 10 0 0;
+
 .title
   font: 100px/0.7 Chakra Petch, arial, sans-serif;
   letter-spacing: -7px;
-  text-align: left;
+  text-align: right;
   vertical-align: middle;
   margin: 55px 0 0 -40px;
 
-@media only screen and (max-width: 480px)
+.introtext
+  font: 20px/1.1 Fantasque Sans Mono, arial, sans-serif;
+
+.introtextcol
+  text-align: right;
+
+@media only screen and (max-width: 420px)
   .title
     font: 65px/0.7 Chakra Petch, arial, sans-serif;
+  body
+    padding: 10px
+
+@media only screen and (max-width: 768px)
+  .introtextcol
+    text-align: left;
+  .title
+    text-align: center;
+  #container
+    float: left;
+  body
+    padding: 25px
 
 .subtitle
   font: 26px/1 Chakra Petch, arial, sans-serif;
-
-.introtext
-  font: 20px/1.1 Fantasque Sans Mono, arial, sans-serif;
 
 .projectTitle
   font: 26px/1 Fantasque Sans Mono, arial, sans-serif;
