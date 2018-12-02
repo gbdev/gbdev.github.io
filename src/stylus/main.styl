@@ -12,11 +12,7 @@ body
   font: 14px Cairo;
   line-height: 16px;
   padding: 1rem 1rem 1rem;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  flex-shrink: 0;
-  
+
 .things
   padding: 15px
   flex: 1 0 auto;
@@ -27,13 +23,6 @@ body
 @media only screen and (max-height: 725px)
   .column1b
     width: 0px !important;
-
-/* If there's enough vertical space, the right column becomes sticky */
-@media only screen and (min-width: 769px) and (min-height: 726px)
-  .column1
-    position: fixed;
-  .column1b
-    padding: 10% 40px 0 0;
 
 .title
   font: 100px/0.7 Chakra Petch, arial, sans-serif;
