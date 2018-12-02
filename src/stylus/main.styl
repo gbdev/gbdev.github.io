@@ -21,15 +21,16 @@ body
   padding: 15px
   flex: 1 0 auto;
 
-@media only screen and (min-width: 768px) and (max-height: 665px)
-  .column1
+.column1
     padding: 10% 40px 0 0;
+    
+@media only screen and (max-height: 725px)
   .column1b
     width: 0px !important;
 
-@media only screen and (min-width: 768px) and (min-height: 666px)
+/* If there's enough vertical space, the right column becomes sticky */
+@media only screen and (min-width: 769px) and (min-height: 726px)
   .column1
-    padding: 10% 40px 0 0;
     position: fixed;
   .column1b
     padding: 10% 40px 0 0;
@@ -59,7 +60,7 @@ body
   .subtitle
     text-align: center;
 
-@media only screen and (max-width: 770px)
+@media only screen and (max-width: 768px)
   .introtext
     text-align: left;
   .subtitle
