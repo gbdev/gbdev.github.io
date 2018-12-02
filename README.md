@@ -1,6 +1,6 @@
-# front
+# Gbdev Landing Page
 
-Source repository of the gbdev landing website. GitHub pages hosts the contents of the folder `docs/` (where we put the webpack build) on `gbdev.github.io/front`. `gbdev.github.io` redirects to `gbdev.github.io/front`.
+Source repository of the gbdev landing website. GitHub pages hosts the contents of the `master` branch which is then hoster on `gbdev.github.io`. Development is done on the `dev` branch due to Github's resctrition on branches for user pages.
 
 Tools:
 
@@ -18,13 +18,25 @@ npm install
 npm run dev
 ```
 
-To build:
+To build production:
 
 ```bash
 # Run the webpack production build
 npm run build-prod
-# Move the result into the docs folder, so GitHub pages will see it
-mv dist/ docs/
 ```
+
+To serve a production copy:
+
+```bash
+# Run the webpack production build, then serve on a local http-server with gzip on http://localhost:8080
+npm run serve-prod
+```
+
+To deploy onto the master branch:
+```bash
+# Run the webpack production build, then place dist/ folder on the master branch
+npm run deploy
+```
+
 
 Webpack config was written from zero, so it still misses a lot of things.
