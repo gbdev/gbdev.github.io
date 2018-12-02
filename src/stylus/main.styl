@@ -1,13 +1,23 @@
 body
   padding: 30px
   
-footer
+.footer
   font: 14px Fantasque Sans Mono;
   line-height: 12px;
+  padding: 1rem 1rem 1rem;
 
-@media only screen and (min-width: 768px)
+@media only screen and (min-width: 768px) and (max-height: 665px)
   .column1
-    padding: 110px 10 0 0;
+    padding: 10% 40px 0 0;
+  .column1b
+    width: 0px !important;
+
+@media only screen and (min-width: 768px) and (min-height: 666px)
+  .column1
+    padding: 10% 40px 0 0;
+    position: fixed;
+  .column1b
+    padding: 10% 40px 0 0;
 
 .title
   font: 100px/0.7 Chakra Petch, arial, sans-serif;
@@ -18,25 +28,28 @@ footer
 
 .introtext
   font: 20px/1.1 Fantasque Sans Mono, arial, sans-serif;
-
-.introtextcol
-  text-align: right;
+  text-align: justify;
+  text-justify: inter-word
 
 @media only screen and (max-width: 420px)
   .title
     font: 65px/0.7 Chakra Petch, arial, sans-serif;
   body
     padding: 10px
+  .projects
+    text-align: left;
+  .introtext
+    text-align: left;
 
 @media only screen and (max-width: 768px)
-  .introtextcol
+  .introtext
     text-align: left;
   .title
     text-align: center;
   #container
     float: left;
   body
-    padding: 25px
+    padding: 25px;
 
 .subtitle
   font: 26px/1 Chakra Petch, arial, sans-serif;
@@ -47,6 +60,8 @@ footer
 
 .projects
   font: 20px/1 Fantasque Sans Mono, arial, sans-serif;
+  text-align: justify;
+  text-justify: inter-word
 
 // Game Boy Animation (Compiled with Compass/CSS3)
 
