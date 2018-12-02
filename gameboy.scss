@@ -3,11 +3,6 @@ By `heero`. Originally found at https://codepen.io/heero/pen/wylhv
 */
 @import "compass/css3";
 
-@font-face{
-  font-family: "gyre";
-  src: url('http://ff.static.1001fonts.net/t/e/tex-gyre-adventor.bold-italic.otf?#iefix') format("opentype");
-}
-
 @mixin animation($name, $duration, $repeat) {
   -webkit-animation: $name $duration $repeat;
      -moz-animation: $name $duration $repeat;
@@ -890,21 +885,20 @@ By `heero`. Originally found at https://codepen.io/heero/pen/wylhv
 #gameboyText {
   position: absolute;
   left: 23px;
-  bottom: 93px;
-  height: 20px;
-  width: 40px;
-  font: 7px "gyre";
+  bottom: 103px;
+  height: 6px;
+  width: 50px;
   color: #b7b28f;
-  clip:rect(0px, 0px, 40px, 20px);
+  clip:rect(0px, 0px, 0px, 0px);
   @include animation(gameboyTextAnim, 5s, forwards);
 }
 
 @include keyframes(gameboyTextAnim) {
   0%, 55% {
-    clip:rect(0px, 0px, 20px, 0px);
+    clip:rect(0px, 0px, 7px, 0px);
   }
   60%, 100% {
-    clip:rect(0px, 40px, 20px, 0px);
+    clip:rect(0px, 50px, 6px, 0px);
   }
 }
 
