@@ -31,7 +31,7 @@ const config = {
       {
             test: /\.scss$/,
             use: [
-                MiniCssExtractPlugin.loader, // creates style nodes from JS strings
+                process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader, // creates style nodes from JS strings
                 "css-loader", // translates CSS into CommonJS
                 {
                   loader: "sass-loader",
@@ -47,7 +47,7 @@ const config = {
       {
             test: /\.sass$/,
             use: [
-                MiniCssExtractPlugin.loader, // creates style nodes from JS strings
+                process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader, // creates style nodes from JS strings
                 "css-loader", // translates CSS into CommonJS
                 "sass-loader" // compiles Sass to CSS, using Node Sass by default
             ]
@@ -55,7 +55,7 @@ const config = {
       {
         test: /\.styl$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           'stylus-loader'
         ]
