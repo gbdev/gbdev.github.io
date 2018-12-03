@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "bulma": "^0.7.2",
+    "compass-mixins": "^0.12.10",
     "copyfiles": "^2.1.0",
     "css-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
