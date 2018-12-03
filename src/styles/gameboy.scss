@@ -1,12 +1,8 @@
 /*
 By `heero`. Originally found at https://codepen.io/heero/pen/wylhv
 */
-@import "compass/css3";
 
-@font-face{
-  font-family: "gyre";
-  src: url('http://ff.static.1001fonts.net/t/e/tex-gyre-adventor.bold-italic.otf?#iefix') format("opentype");
-}
+@import "compass/css3";
 
 @mixin animation($name, $duration, $repeat) {
   -webkit-animation: $name $duration $repeat;
@@ -895,7 +891,6 @@ By `heero`. Originally found at https://codepen.io/heero/pen/wylhv
   bottom: 93px;
   height: 20px;
   width: 40px;
-  font: 7px "gyre";
   color: #b7b28f;
   clip:rect(0px, 0px, 40px, 20px);
   @include animation(gameboyTextAnim, 5s, forwards);
