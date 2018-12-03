@@ -29,9 +29,25 @@ const config = {
             }]
         },
       {
+            test: /\.scss$/,
+            use: [
+                MiniCssExtractPlugin.loader, // creates style nodes from JS strings
+                "css-loader", // translates CSS into CommonJS
+                {
+                  loader: "sass-loader",
+                  options: {
+                    includePaths: ["node_modules/compass-mixins/lib"]
+                  }
+                  
+                }
+                
+                 // compiles Sass to CSS, using Node Sass by default
+            ]
+        },
+      {
             test: /\.sass$/,
             use: [
-                "style-loader", // creates style nodes from JS strings
+                MiniCssExtractPlugin.loader, // creates style nodes from JS strings
                 "css-loader", // translates CSS into CommonJS
                 "sass-loader" // compiles Sass to CSS, using Node Sass by default
             ]
@@ -39,7 +55,7 @@ const config = {
       {
         test: /\.styl$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'stylus-loader'
         ]
