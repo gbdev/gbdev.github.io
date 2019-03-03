@@ -41,3 +41,14 @@ npm run deploy
 ```
 
 Webpack config was written from zero, so it still misses a lot of things.
+
+## awesome list render
+
+The awesome gbdev list web version is powered by VuePress. It's under the 
+
+Build and deploy:
+```
+npx vuepress build list/
+cp list/.vuepress/dist/* dist/list -R
+npx gh-pages -d dist -b master
+```
