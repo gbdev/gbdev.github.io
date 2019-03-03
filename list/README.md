@@ -1,10 +1,16 @@
-<div>
-    <h1>A
-    </h1></div>
+<div style="line-height: 36px;letter-spacing: -0.05em; font-weight: 400; font-size: 42px;">Awesome<span style="font-weight: 600;
+font-size: 42px;
+letter-spacing: -0.05em;
+margin-left: -3.8px;">
+    Game Boy Development
+</span></div>
+<br>
+<div style="letter-spacing: -0.05em; font-weight: 500; font-size: 18px;">
+A curated list of awesome Game Boy (Color) Development resources, tools, docs, related projects and open-source ROMs. Inspired by the <a href="https://github.com/sindresorhus/awesome"> awesome </a> list thing.
+</div>
 
-#### [Join us on Discord](https://discord.gg/gpBxq85) [![Discord Badge](https://img.shields.io/badge/dynamic/json.svg?label=chat&colorB=green&suffix=%20online&query=count&uri=https%3A%2F%2Fgbhh.avivace.com%2Fapi%2Fdiscord)](https://discord.gg/gpBxq85)
+[Join us on Discord](https://discord.gg/gpBxq85) [![Discord Badge](https://img.shields.io/badge/dynamic/json.svg?label=chat&colorB=green&suffix=%20online&query=count&uri=https%3A%2F%2Fgbhh.avivace.com%2Fapi%2Fdiscord)](https://discord.gg/gpBxq85)
 
-A curated list of awesome Game Boy (Color) Development resources, tools, docs, related projects and open-source ROMs. Inspired by the [awesome](https://github.com/sindresorhus/awesome) list thing.
 
 ## Introduction
 
@@ -13,16 +19,17 @@ A curated list of awesome Game Boy (Color) Development resources, tools, docs, r
 - [Emulation of Nintendo Game Boy](https://github.com/Baekalfen/PyBoy/blob/master/PyBoy.pdf) - Overview of the Game Boy hardware with the perspective of building an emulator.
 
 
-> #### Disambiguation
->
->Although this documentation is focused on the original (1989) Game Boy (DMG), the *Game Boy Color* (GBC) and *Super Game Boy* (SGB) are very similar systems, with few important distinctions, such as:
->
->- Different hardware specifications
->- Specific hardware and software features
->- Specific registers
->- Specific bugs and exploitable behaviours
->
->If you aim to develop your software for SGB or GBC, or you want to know how it runs on the other systems, you may want to take advantage and adapt to these differences, check the [Game Boy Color](#game-boy-color) category and look for specific references to GBC/CGB and SGB.
+
+::: tip DISAMBIGUATION
+Although this documentation is focused on the original (1989) Game Boy (DMG), the *Game Boy Color* (GBC) and *Super Game Boy* (SGB) are very similar systems, with few important distinctions, such as:
+
+- Different hardware specifications
+- Specific hardware and software features
+- Specific registers
+- Specific bugs and exploitable behaviours
+
+If you aim to develop your software for SGB or GBC, or you want to know how it runs on the other systems, you may want to take advantage and adapt to these differences, check the [Game Boy Color](#game-boy-color) category and look for specific references to GBC/CGB and SGB.
+:::
 
 ## Community
 
@@ -135,7 +142,6 @@ A curated list of awesome Game Boy (Color) Development resources, tools, docs, r
 - [Emulation Accuracy](https://github.com/Gekkio/mooneye-gb/blob/master/docs/accuracy.markdown)
 - [Decoding Gameboy Z80 opcodes](https://gb-archive.github.io/salvage/decoding_gbz80_opcodes/Decoding%20Gamboy%20Z80%20Opcodes.html) - How to algorithmically decode Game Boy instructions as opposed to writing one huge switch-case statement for over 500 instructions.
 - [Porting a GO Game Boy emulator to WebAssembly](https://djhworld.github.io/post/2018/09/21/i-ported-my-gameboy-color-emulator-to-webassembly/)
-- [List of open source emulators](EMULATORS.md)
 
 ### Testing
 
@@ -144,6 +150,54 @@ A curated list of awesome Game Boy (Color) Development resources, tools, docs, r
 - [SameSuite](https://github.com/LIJI32/SameSuite)
 - [GB Accuracy Tests](http://tasvideos.org/EmulatorResources/GBAccuracyTests.html)
 - [144p Test Suite](https://github.com/pinobatch/240p-test-mini/tree/master/gameboy) - Port of Artemio Urbina's 240p Test Suite to the Game Boy.
+
+### Open Source Emulators
+
+| Name | Language | Details |
+| --- | --- | --- |
+| [Binjgb](https://github.com/binji/binjgb) | C | 5kloc emulator that passes most of the tests. *Rewind* feature. Runs in the browser using WebAssembly |
+| [Wadatsumi](https://github.com/arrow-lang/wadatsumi) | Arrow | |
+| [cboy](https://github.com/jkbenaim/cboy) | C |
+| [miniBoy](https://github.com/Dhole/miniBoy) | C | |
+| [Sameboy](https://github.com/LIJI32/SameBoy) | C | |
+| [giibiiadvance](https://github.com/AntonioND/giibiiadvance) | C | A GB, GBC emulator with GB Camera support.|
+| [mGBA](https://github.com/mgba-emu/mgba) | C | A modern cross platform GBA emulator which also runs GB/GBC games. |
+| [gnuboy](https://github.com/rofl0r/gnuboy) | C | ANSI C |
+| [PlutoBoy](https://github.com/RossMeikleham/PlutoBoy) | C | Cross platform (Windows, OSX, Linux/Unix, Android, iOS, Web Browsers, and Sony PSP) emulator |
+| [SuperGameHerm](https://code.foxkit.us/emulators/supergameherm) | C 11 | Cross platform emulator |
+| [Castor](https://github.com/kosinw/Castor) | C#, Monogame |
+| [GameYob](https://github.com/Drenn1/GameYob) | C++, C# | GB, GBC emulator for Nintendo DS/3DS |
+| [jgilchrist](https://github.com/jgilchrist/emulator) | C++ |
+| [gameboycore](https://github.com/nnarain/gameboycore) | C++ 11 | C++ emulation backend. Dependency free library. |
+| [GameBoyEmulator-GBS](https://github.com/Salgat/GameBoyEmulator-GBS) | C++ 14 | with a single library dependency of SFML |
+| [oneup-gb](https://github.com/oneup40/oneup-gb) | C++ | DMG. Currently provides SDL frontend and Retroarch integration |
+| [Gearboy](https://github.com/drhelius/Gearboy) | C++ | iOS, Raspberry Pi, Mac, Windows and Linux |
+| [SmartGear](https://github.com/bitbank2/sg_free) | C++, SDL2 | Focus on optimized performance for resource-limited devices. GTK or direct framebuffer build |
+| [PatBoy](https://github.com/Jonazan2/PatBoy) | C++, SDL2 | with a fully functional visual debugger |
+| [GameLad](https://github.com/Dooskington/GameLad) | C++/SDL | Almost fully featured emulator |
+| [GBE+](https://github.com/shonumi/gbe-plus) | C++, SDL | Focused on enhancements |
+| [hhugboy](https://github.com/tzlion/hhugboy) | C++ | Windows, based on GEST v1.1.1 by TM, with added support for unlicensed mappers, Unicode filenames, screenshots and some other stuff |
+| [DDMG](https://github.com/mstojcevich/ddmg) | D |
+| [FunGBC](https://github.com/andreasjhkarlsson/fungbc) | F# | |
+| [gameboyGO](https://github.com/gonccalo/gameboyGO) | Go |
+| [gomeboycolor](https://github.com/djhworld/gomeboycolor) | Go | Cross platform [documented](http://djhworld.github.io/gomeboycolor/) emulator. [WASM](https://github.com/djhworld/gomeboycolor-wasm) port. |
+| [AndroidGameBoyEmulator](https://github.com/pedrovgs/AndroidGameBoyEmulator) | Java | |
+| [Coffee GB](https://github.com/trekawek/coffee-gb) | Java 8 |
+| [weplay](https://github.com/rauchg/weplay) | JavaScript | Collaborative Game Boy emulation |
+| [GBRE](https://github.com/ericgramgb/GBRE) | JavaScript | GB Runtime Environment for iOS (iOS Safari and Chrome) |
+| [gameboy-Online](https://github.com/taisel/gameboy-Online) | JavaScript | Uses HTML5 canvas and JavaScript audio APIs |
+| [node-gameboy](https://github.com/nakardo/node-gameboy) | Node.js |
+| [php-terminal-Game Boy-emulator](https://github.com/gabrielrcouto/php-terminal-gameboy-emulator) | PHP | |
+| [PyBoy](https://github.com/Baekalfen/PyBoy) | Python | Mac, Linux and Windows |
+| [barnacleboy](https://github.com/rep-nop/barnacleboy) | Rust | |
+| [gb-rs](https://github.com/simias/gb-rs) | Rust | |
+| [scimitar](https://github.com/tompko/scimitar) | Rust | |
+| [rustboy](https://github.com/VelocityRa/rustboy) | Rust | A basic DMG emulator written in Rust, using the Piston engine for window creation and graphics |
+| [Gambattye](https://github.com/Ben10do/Gambattye) | Swift | macOS, powered by a fork of Gambatte |
+| [wasmBoy](https://github.com/torch2424/wasmBoy) | Web Assembly (AssemblyScript) | GB/GBC *Library* written for Web Assembly using AssemblyScript. Shell/Debugger in Preact.|
+| [vaporBoy](https://github.com/torch2424/vaperBoy) | Javascript | PWA. Powered by [wasmBoy](https://github.com/torch2424/wasmBoy) |
+| [elmBoy](https://github.com/Malax/elmboy) | Elm | |
+| [goboy](https://github.com/Humpheh/goboy) | Go | |
 
 ## Software Development
 
