@@ -5,6 +5,11 @@
 @require './toc'
 @import url('https://rsms.me/inter/inter.css');
 
+$accentColor = #8bac0f
+$textColor = #0f380f
+$borderColor = #eaecef
+$codeBgColor = #282c34
+
 html, body
   padding 0
   margin 0
@@ -15,6 +20,7 @@ body
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   font-size 16px
+  letter-spacing -0.01em
   color $textColor
 
 .page
@@ -91,7 +97,7 @@ kbd
 
 blockquote
   font-size .9rem
-  color #999
+  //color #999
   border-left .5rem solid #dfe2e5
   margin 0.5rem 0
   padding .25rem 0 .25rem 1rem

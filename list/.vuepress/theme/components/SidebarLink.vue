@@ -83,21 +83,21 @@ function renderChildren (h, children, path, route, maxDepth, depth = 1) {
   font-size 0.95em
 
 a.sidebar-link
-  font-size 1em
-  font-weight 400
+  font-size 1.05em
+  font-weight 500
   display inline-block
-  color $textColor
+  color #0f380f
   border-left 0.25rem solid transparent
   padding 0.35rem 1rem 0.35rem 1.25rem
   line-height 1.4
   width: 100%
   box-sizing: border-box
   &:hover
-    color $accentColor
+    color #8bac0f
   &.active
-    font-weight 600
-    color $accentColor
-    border-left-color $accentColor
+    font-weight 500
+    color #8bac0f
+    border-left-color #8bac0f
   .sidebar-group &
     padding-left 2rem
   .sidebar-sub-headers &
