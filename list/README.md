@@ -1,15 +1,24 @@
-<div style="line-height: 36px;letter-spacing: -0.05em; font-weight: 400; font-size: 42px;">Awesome<span style="font-weight: 600;
-font-size: 42px;
-letter-spacing: -0.05em;
-margin-left: -3.8px;">
+<div style="line-height: 90%;letter-spacing: -0.05em; font-weight: 400; font-size: 2.7em;">Awesome<span style="font-weight: 600;
+letter-spacing: -0.05em;">
     Game Boy Development
 </span></div>
 <br>
 <div style="letter-spacing: -0.05em; font-weight: 500; font-size: 18px;">
-A curated list of awesome Game Boy (Color) Development resources, tools, docs, related projects and open-source ROMs. Inspired by the <a href="https://github.com/sindresorhus/awesome"> awesome </a> list thing.
+A curated list of awesome Game Boy (Color) Development resources, tools, docs, related projects and homebrews. Inspired by the <a href="https://github.com/sindresorhus/awesome"> awesome </a> list thing.<br>
+<br>
+
+<div style="letter-spacing: -0.05em; font-weight: 500; font-size: 18px;">
+This project is open source and community-lead. Come <a href="#contribute">contribute! </a></div>
+
+<!--
+<a href="https://github.com/gbdev" target="_blank"> <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" width="40" height="40"></a>
+<a href="https://instagram.com/gb_things" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/instagram.svg" width="40" height="40"></a>
+<a href="https://twitter.com/gb_things" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg" width="40" height="40"></a>
+<a href="https://discordapp.com/invite/gpBxq85" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/discord.svg" width="40" height="40"></a>
+-->
 </div>
 
-[Join us on Discord](https://discord.gg/gpBxq85) [![Discord Badge](https://img.shields.io/badge/dynamic/json.svg?label=chat&colorB=green&suffix=%20online&query=count&uri=https%3A%2F%2Fgbhh.avivace.com%2Fapi%2Fdiscord)](https://discord.gg/gpBxq85)
+[Join us on Discord!](https://discord.gg/gpBxq85)
 
 
 ## Introduction

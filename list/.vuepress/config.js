@@ -1,7 +1,7 @@
 // .vuepress/config.js
 module.exports = {
-  	title: 'Awesome Game Boy Development',
-
+  	title: 'awesome gbdev',
+ base: "/list",
   themeConfig: {
     sidebar: [
       ['/', 'Table of contents'],
