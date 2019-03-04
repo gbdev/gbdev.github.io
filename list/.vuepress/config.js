@@ -1,11 +1,11 @@
 // .vuepress/config.js
 module.exports = {
-  	title: 'awesome gbdev',
+  	title: 'gbdev',
  base: "/list",
   themeConfig: {
     sidebar: [
-      ['/', 'Table of contents'],
-    ],
-    sidebarDepth: 2,
+      ['/', 'Home'],
+      ['/list', 'Awesome list']],
+       sidebarDepth: 2,
   }
 }
