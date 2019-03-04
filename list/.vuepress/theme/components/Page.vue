@@ -5,6 +5,7 @@
     <Content/>
 
     <footer class="page-edit">
+
       <div
         class="edit-link"
         v-if="editLink"
@@ -58,6 +59,10 @@
     </div>
 
     <slot name="bottom"/>
+    <div style="font-size:13px; color:#4a4a4a" class="content has-text-centered">
+            Game Boy is a registered trademark. This project is not endorsed by Nintendo.<br>
+            © 2015-2019 <a href="https://avivace.com" target="_blank">Antonio Vivace</a> and <a href="https://github.com/gbdev/gbdev.github.io/graphs/contributors">contributors</a>. <br> <br><a href="https://digitalocean.com" target="_blank"> <img style="height: 30px" src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PoweredByDO/DO_Powered_by_Badge_black.svg"></a>
+        </div>
   </main>
 </template>
 
