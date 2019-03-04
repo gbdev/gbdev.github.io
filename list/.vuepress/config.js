@@ -7,5 +7,9 @@ module.exports = {
       ['/', 'Home'],
       ['/list', 'Awesome list']],
        sidebarDepth: 2,
+        nav: [
+      { text: 'Github', link: 'https://github.com/gbdev' },
+      { text: 'Discord chat', link: 'https://discordapp.com/invite/gpBxq85' },
+    ]
   }
 }
