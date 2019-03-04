@@ -1,7 +1,7 @@
 <div style="line-height: 90%;letter-spacing: -0.05em; font-weight: 400; font-size: 2.7em;"><span style="font-weight: 600;
 letter-spacing: -0.05em;">
-    Game Boy Development community
-</span></div>
+    Game Boy Development
+</span>community</div>
 <div style="letter-spacing: -0.055em; font-weight: 500; font-size: 20px;">
         <br>
 We are a group of passionate developers working on homebrews, emulators and documentation for the Nintendo Game Boy handheld console, the original gray brick from 1989!
