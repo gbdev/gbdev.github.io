@@ -5,7 +5,8 @@ module.exports = {
   themeConfig: {
     sidebar: [
       ['/', 'Home'],
-      ['/list', 'Awesome list']],
+      ['/list', 'Awesome list'],
+      ['/contribute', 'Contribute']],
        sidebarDepth: 2,
         nav: [
       { text: 'Github', link: 'https://github.com/gbdev' },
