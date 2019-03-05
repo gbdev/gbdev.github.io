@@ -51,7 +51,7 @@ We are a group of passionate developers working on homebrews, emulators and docu
 
 <div>
 Here's a quick showcase of what we are up to:<br><br>
-<p class="projectTitle"><a href="list.html">Awesome list</a>
+<p ><a class="projectTitle" href="list.html">Awesome list&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/awesome-gbdev" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/awesome-gbdev on GitHub">Star</a>
 <span></span></p>
 A <b>curated list</b> of Game Boy development resources such as tools, guides, technical documentation, tutorials, emulators, related projects and open-source ROMs. Everything you'll ever need to know and see about this console is here. <br>If you want to code an emulator, create your own game or simply dive into the software and hardware architecture of the Game Boy, this is the place!
 <br><br>
@@ -65,6 +65,32 @@ A community-led attempt to collect, archive and save every unofficial game, home
 <p class="projectTitle"><a target="_blank" href="https://github.com/gb-archive">The Game Boy Archive</a>&nbsp;<img style="font-family: Monospace" height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=mirrored%20projects&amp;url=https%3A%2F%2Fapi.github.com%2Forgs%2Fgb-archive&amp;query=public_repos&amp;style=flat-square"></p>
 A <b>library</b> of Game Boy related software, hardware and literature. Aimed to mirror and preserve old and fragmented contributions in the scene from the last three decades.
 </div>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<script>
+export default {
+  mounted () {
+    let githubButtonsScript = document.createElement('script')
+    githubButtonsScript.setAttribute('src', 'https://buttons.github.io/buttons.js')
+    document.head.appendChild(githubButtonsScript)
+
+    let colors = ['#5f98c6', // Teal (1998, 1999 NA) 
+        '#FCCF37', // Dandelion - yellow (1998, 1999 NA)
+        '#EB1667', // Berry - fuchsia (1998, 1999 NA)
+        '#A8F602', // Kiwi - neon green (1998, 1999 NA)
+        // '#5B3099', // Grape - purple (1998) TODO: Darken the black elements
+        // Translucent colors - TODO: Fix speakers
+        'rgba(255, 255, 255, 0.5)', // Atomic Purple - clear purple (1998)
+        'rgba(91, 48, 153, 0.5)' // Neotones Ice (LIJI32 special request <3)
+    ]
+    let color = colors[Math.floor(Math.random() * colors.length)];
+    var box = document.querySelector('#box');
+    box.style.setProperty('background-color', color);
+    console.log(color)
+  }
+}
+</script>
 
 <style>
 body{
