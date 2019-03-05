@@ -1,3 +1,9 @@
+---
+title: Awesome list
+lang: en-US
+---
+
+
 <div style="line-height: 90%;letter-spacing: -0.05em; font-weight: 400; font-size: 2.7em;">Awesome<span style="font-weight: 600;
 letter-spacing: -0.05em;">
     Game Boy Development
@@ -23,7 +29,7 @@ This project is open source and community-lead. Come <a href="#contribute">contr
 <br><center>
 <iframe id="ytplayer" type="text/html" width="640" height="360"
   src="https://www.youtube.com/embed/RZUDEaLa5Nw?autoplay=0"
-  frameborder="0"></iframe>
+  frameborder="0" allowfullscreen></iframe>
 <br></center>
 
 ## Introduction

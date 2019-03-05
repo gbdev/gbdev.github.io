@@ -1,7 +1,7 @@
 // .vuepress/config.js
 module.exports = {
   	title: 'gbdev',
- base: "/list",
+ //base: "/list",
   themeConfig: {
     sidebar: [
       ['/', 'Community'],
