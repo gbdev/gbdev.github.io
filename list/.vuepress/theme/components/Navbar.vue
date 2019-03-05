@@ -88,8 +88,14 @@ function css (el, property) {
 <style lang="stylus">
 $navbar-vertical-padding = 0.7rem
 $navbar-horizontal-padding = 1.5rem
+$accentColor = #8bac0f
+$textColor = #0f380f
+$borderColor = #eaecef
+$codeBgColor = #282c34
+$sidebarWidth = 15rem
 
 .navbar
+  color $textColor
   padding $navbar-vertical-padding $navbar-horizontal-padding
   line-height $navbarHeight - 1.4rem
   a, span, img
@@ -109,7 +115,7 @@ $navbar-horizontal-padding = 1.5rem
     box-sizing border-box
     background-color white
     white-space nowrap
-    font-size 0.9rem
+    font-size 1rem
     position absolute
     right $navbar-horizontal-padding
     top $navbar-vertical-padding
