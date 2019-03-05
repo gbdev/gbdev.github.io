@@ -10,7 +10,7 @@ $accentColor = #8bac0f
 $textColor = #0f380f
 $borderColor = #eaecef
 $codeBgColor = #282c34
-$sidebarWidth = 15rem
+
 .icon.outbound
   display none !important
 //.sidebar-link
@@ -35,21 +35,16 @@ body
   padding-left $sidebarWidth
 
 .navbar
-  background-color #FdfcFc
   position fixed
   z-index 20
   top 0
   left 0
   right 0
   height $navbarHeight
+  background-color #fff
   box-sizing border-box
-  border-bottom 0px solid $borderColor
-  
-.site-name
-  font-size: 2.2rem !important
-  font-weight: 600 !important
-  letter-spacing: 0.03em !important
-  
+  border-bottom 1px solid $borderColor
+
 .sidebar-mask
   position fixed
   z-index 9
@@ -60,16 +55,17 @@ body
   display none
 
 .sidebar
-  font-size 15px
+  font-size 16px
+  background-color #fff
   width $sidebarWidth
   position fixed
-  z-index 5
+  z-index 10
   margin 0
   top $navbarHeight
   left 0
   bottom 0
   box-sizing border-box
-  border-right 0px solid $borderColor
+  border-right 1px solid $borderColor
   overflow-y auto
 
 .content:not(.custom)
@@ -80,7 +76,7 @@ body
     text-decoration underline
   p.demo
     padding 1rem 1.5rem
-    border 0px solid #ddd
+    border 1px solid #ddd
     border-radius 4px
   img
     max-width 100%
