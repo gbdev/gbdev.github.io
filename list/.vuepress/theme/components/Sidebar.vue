@@ -31,7 +31,7 @@ export default {
   .nav-links
     display none
     border-bottom 1px solid $borderColor
-    padding 0.5rem 0 0.75rem 0
+    padding 0rem 0 0.75rem 0
     a
       font-weight 600
     .nav-item, .repo-link
@@ -42,9 +42,10 @@ export default {
   & > .sidebar-links
     padding 1.5rem 0
     & > li > a.sidebar-link
-      font-size 1.1em
+      font-size 1.3em
       line-height 1.7
-      font-weight bold
+      font-weight 600
+      letter-spacing:  -0.025em;
     & > li:not(:first-child)
       margin-top .75rem
 
