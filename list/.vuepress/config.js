@@ -11,6 +11,7 @@ module.exports = {
         nav: [
       { text: 'GitHub', link: 'https://github.com/gbdev' },
       { text: 'Discord chat', link: 'https://discordapp.com/invite/gpBxq85' },
+      { text: 'Homebrew Games', link: 'https://gbhh.avivace.com'}
     ]
   }
 }
