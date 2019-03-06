@@ -26,11 +26,14 @@ This project is open source and community-lead. Come <a href="#contribute">contr
 
 [Join us on Discord!](https://discord.gg/gpBxq85)
 
-<br><center>
-<iframe id="ytplayer" type="text/html" width="640" height="360"
+<br>
+  <div class="videoWrapper">
+
+<iframe id="ytplayer" type="text/html"
   src="https://www.youtube.com/embed/RZUDEaLa5Nw?autoplay=0"
   frameborder="0" allowfullscreen></iframe>
-<br></center>
+<br></div>
+
 
 ## Introduction
 
