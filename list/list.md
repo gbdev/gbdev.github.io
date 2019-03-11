@@ -23,25 +23,44 @@ This project is open source and community-lead. Come <a href="#contribute">contr
 <a href="https://discordapp.com/invite/gpBxq85" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/discord.svg" width="40" height="40"></a>
 -->
 </div>
-
-[Join us on Discord!](https://discord.gg/gpBxq85)
+<br>
+<div style="letter-spacing: -0.03em; font-weight: 500; font-size: 20px;">
+<a href="https://discord.gg/gpBxq85">Join us on Discord!</a></div>
 
 <br>
-  <div class="videoWrapper">
-
-<iframe id="ytplayer" type="text/html"
-  src="https://www.youtube.com/embed/RZUDEaLa5Nw?autoplay=0"
-  frameborder="0" allowfullscreen></iframe>
-<br></div>
 
 
 ## Introduction
 
-- [The Game Boy, a hardware autopsy](https://www.youtube.com/playlist?list=PLu3xpmdUP-GRDp8tknpXC_Y4RUQtMMqEu).
-- [The Ultimate Game Boy Talk](https://media.ccc.de/v/33c3-8029-the_ultimate_game_boy_talk).
-- [Emulation of Nintendo Game Boy](https://github.com/Baekalfen/PyBoy/blob/master/PyBoy.pdf) - Overview of the Game Boy hardware with the perspective of building an emulator.
+### [The Game Boy, a hardware autopsy](https://www.youtube.com/playlist?list=PLu3xpmdUP-GRDp8tknpXC_Y4RUQtMMqEu)
+<br>
+<div class="videoWrapper">
+
+<iframe id="ytplayer" type="text/html"
+  src="https://www.youtube.com/embed/videoseries?list=PLu3xpmdUP-GRDp8tknpXC_Y4RUQtMMqEu"
+  frameborder="0" allowfullscreen></iframe>
+<br></div>
+
+### [The Ultimate Game Boy Talk](https://media.ccc.de/v/33c3-8029-the_ultimate_game_boy_talk)
+
+<br>
+<div class="videoWrapper">
+
+<iframe id="ytplayer" type="text/html"
+  src="https://www.youtube.com/embed/HyzD8pNlpwI"
+  frameborder="0" allowfullscreen></iframe>
+<br></div>
 
 
+## Community
+
+- [gbdev Discord Server](https://discord.gg/gpBxq85)
+- [`#gbdev` on EFnet](http://chat.efnet.org/?channels=gbdev) - IRC channel.
+- [gbdev.gg8.se Wiki](http://gbdev.gg8.se/wiki/articles/Main_Page)
+- [devrs.com/gb](http://devrs.com/gb) - Old home of the scene: examples, sources, complete documentation, guides, tutorials and various tools.
+
+
+## Documentation
 
 ::: tip DISAMBIGUATION
 Although this documentation is focused on the original (1989) Game Boy (DMG), the *Game Boy Color* (GBC) and *Super Game Boy* (SGB) are very similar systems, with few important distinctions, such as:
@@ -53,16 +72,6 @@ Although this documentation is focused on the original (1989) Game Boy (DMG), th
 
 If you aim to develop your software for SGB or GBC, or you want to know how it runs on the other systems, you may want to take advantage and adapt to these differences, check the [Game Boy Color](#game-boy-color) category and look for specific references to GBC/CGB and SGB.
 :::
-
-## Community
-
-- [gbdev Discord Server](https://discord.gg/gpBxq85)
-- [`#gbdev` on EFnet](http://chat.efnet.org/?channels=gbdev) - IRC channel.
-- [gbdev.gg8.se Wiki](http://gbdev.gg8.se/wiki/articles/Main_Page)
-- [devrs.com/gb](http://devrs.com/gb) - Old home of the scene: examples, sources, complete documentation, guides, tutorials and various tools.
-
-
-## Documentation
 
 - **[Game Boy Programming Manual](https://archive.org/download/GameBoyProgManVer1.1/GameBoyProgManVer1.1.pdf)** - Official Game Boy programming and hardware manual by Nintendo.
 - [Pan Docs](http://gbdev.gg8.se/wiki/articles/Pan_Docs) - Historical comprehensive technical reference, wikified, corrected and updated.
@@ -152,6 +161,7 @@ If you aim to develop your software for SGB or GBC, or you want to know how it r
 
 ## Emulator Development
 
+- [Emulation of Nintendo Game Boy](https://github.com/Baekalfen/PyBoy/blob/master/PyBoy.pdf) - Overview of the Game Boy hardware with the perspective of building an emulator.
 - [Reverse Engineering fine details of Game Boy hardware](https://www.youtube.com/watch?v=GBYwjch6oEE) ([errata](https://gekkio.fi/blog/2018-02-05-errata-for-reverse-engineering-fine-details-of-game-boy-hardware.html)) - 43 minutes talk by Gekkio given at Disobey 2018.
 - [DMG-01](http://blog.ryanlevick.com/DMG-01/public/book/) - An educational Gameboy Emulator in Rust and a companion book explaining its development. *[Oh Boy! Creating a Game Boy Emulator in Rust](https://media.ccc.de/v/rustfest-rome-3-gameboy-emulator)* is a talk given at Rust Fest 18 about this.
 - [Building a Game Boy emulator in JavaScript](http://imrannazar.com/gameboy-Emulation-in-JavaScript) - Step by step tutorial.
