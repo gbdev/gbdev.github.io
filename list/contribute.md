@@ -8,6 +8,15 @@ letter-spacing: -0.05em;">
     Contribute
 </span></div>
 
+## gbdev.github.io
+
+The source of this website is hosted [here](https://github.com/gbdev/gbdev.github.io).
+
+## Homebrew Hub
+
+Homebrew Hub is just a *frontend* web application, exposing the database we are compiling in this repo.
+If you wish to improve the UI and frontend experience, refer to this [repo](https://github.com/gbdev/homebrewhub). If you want to add new entries or improve the existing ones, take a look at the [database](https://github.com/gbdev/database) repo.
+
 ## Awesome List
 
 Before sending a Pull Request or opening an Issue, ensure it adheres to the following guidelines and policies.
