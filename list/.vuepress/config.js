@@ -6,6 +6,7 @@ module.exports = {
     sidebar: [
       ['/', 'Community'],
       ['/list', 'Awesome list'],
+      ['/toc_writeup', 'To C or not to C'],
       ['/contribute', 'Contribute']],
        sidebarDepth: 2,
         nav: [
