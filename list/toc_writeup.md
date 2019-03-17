@@ -1,7 +1,17 @@
+This essay gives an overview of the Game Boy's capabilities, discussing the pros and cons of the available development tools, and providing tips to write more efficient code.
+
+Written by [ISSOtm](https://github.com/ISSOtm/) with help from [tobiasvl](https://github.com/tobiasvl).
+
+---
+
 
 In the past few years, it seems that, as retro gaming has grown in popularity, programming for older platforms has also gained traction. A popular platform is the Game Boy, both for its nostalgia and (relative) ease to program for.
 
-**Important: this document only applies to the Game Boy and Game Boy Color. Game Boy Advance programming has nothing in common with Game Boy programming.** If you want to program for the GBA, which is much more C-friendly (and C++ and Rust, for that matter) than the GB and GBC, then I advise you download devkitARM and follow the [Tonc](https://www.coranac.com/tonc/text/) tutorial. Please note that the Game Boy Advance also functions as a Game Boy Color, so if you only have a GBA, you can use it for both GB and GBC development.
+::: warning
+This document only applies to the Game Boy and Game Boy Color. Game Boy Advance programming has nothing in common with Game Boy programming.
+
+If you want to program for the GBA, which is much more C-friendly (and C++ and Rust, for that matter) than the GB and GBC, then I advise you download devkitARM and follow the [Tonc](https://www.coranac.com/tonc/text/) tutorial. Please note that the Game Boy Advance also functions as a Game Boy Color, so if you only have a GBA, you can use it for both GB and GBC development.
+:::
 
 When someone wants to make their own game, one of the first problems they will encounter is picking the *tools* they will use. There are two main options: either use GBDK (Game Boy Development Kit) and the language C, or RGBDS (Rednex Game Boy Development System) and the Game Boy's assembly language.
 
