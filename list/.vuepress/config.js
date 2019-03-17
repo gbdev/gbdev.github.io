@@ -5,8 +5,8 @@ module.exports = {
   themeConfig: {
     sidebar: [
       ['/', 'Community'],
-      ['/list', 'Awesome list'],
-      ['/toc_writeup', 'To C or not to C'],
+      ['/list', 'Resources'],
+      ['/to_c_or_not_to_c', 'To C or not to C'],
       ['/contribute', 'Contribute']],
        sidebarDepth: 2,
         nav: [
