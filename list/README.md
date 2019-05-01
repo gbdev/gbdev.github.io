@@ -47,7 +47,7 @@ letter-spacing: -0.05em;">
 We are a group of passionate developers working on homebrews, emulators and documentation for the Nintendo Game Boy handheld console, the original gray brick from 1989!
 </div>
 
-<a href="https://github.com/gbdev" target="_blank"> <img height="40" width="40" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg"></a>&nbsp;<a href="https://instagram.com/gb_things" target="_blank"><img height="40" width="40" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/instagram.svg"></a>&nbsp;<a href="https://twitter.com/gb_things" target="_blank"><img height="40" width="40" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg"></a>&nbsp;<a href="https://discordapp.com/invite/gpBxq85" target="_blank"><img height="40" width="40" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/discord.svg"></a>
+<a href="https://github.com/gbdev" target="_blank"> <img height="40" width="40" :src="$withBase('/images/github.svg')"></a>&nbsp;<a href="https://instagram.com/gb_things" target="_blank"><img height="40" width="40" :src="$withBase('/images/instagram.svg')"></a>&nbsp;<a href="https://twitter.com/gb_things" target="_blank"><img height="40" width="40" :src="$withBase('/images/twitter.svg')"></a>&nbsp;<a href="https://discordapp.com/invite/gpBxq85" target="_blank"><img height="40" width="40" :src="$withBase('/images/discord.svg')"></a>
 
 <div>
 Here's a quick showcase of what we are up to:<br><br>
