@@ -92,7 +92,7 @@ GBDK is... poorly written, to say the least. I'm going to list some of its major
 
 It's built on an ancient build of SDCC, which is known to generate poor (bloated) and often straight up wrong code. Two examples that come to mind are when compiled code moved the stack to an absurd location \[if you are interested, it ran a `add sp, $7D` with `sp` = `$DFA?`, and ended up at `$E02?`\]; the other example is if you try to multiply by a power of 2, say, `8`. The compiler will helpfully optimize that to a bitshift (because `* 2^n` is the same as `<< n`)... but shift by one too much, and in our case, multiply by `16`!
 
-A very nasty issue with GBDK is that the library it provides is not explicit at all as to what a given function does. First, this makes a lot of questions people ask us redundant, when they could simply be solved by knowing how the Game Boy works. Second, when a bug pops up, people are confused about its origin: what's wrong, their code, their usage of the library, the library itself (it happens), or the Game Boy (it has hardware bugs)?
+A very nasty issue with GBDK is that the library it provides is not explicit at all as to what a given function does. First, this makes a lot of questions people ask us redundant questions, when they could simply be solved by knowing how the Game Boy works. Second, when a bug pops up, people are confused about its origin: what's wrong, their code, their usage of the library, the library itself (it happens), or the Game Boy (it has hardware bugs)?
 
 Further, the library is fairly constraining, for example forcing the way tiles are allocated in VRAM.
 
