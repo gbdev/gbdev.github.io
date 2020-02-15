@@ -18,8 +18,8 @@ This project is open source and community-lead. Come <a href="#contribute">contr
 
 <!--
 <a href="https://github.com/gbdev" target="_blank"> <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" width="40" height="40"></a>
-<a href="https://instagram.com/gb_things" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/instagram.svg" width="40" height="40"></a>
-<a href="https://twitter.com/gb_things" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg" width="40" height="40"></a>
+<a href="https://instagram.com/gbdev0" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/instagram.svg" width="40" height="40"></a>
+<a href="https://twitter.com/gbdev0" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg" width="40" height="40"></a>
 <a href="https://discordapp.com/invite/gpBxq85" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/discord.svg" width="40" height="40"></a>
 -->
 </div>
