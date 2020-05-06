@@ -51,6 +51,11 @@ We are a group of passionate developers working on homebrews, emulators and docu
 
 <div>
 Here's a quick showcase of what we are up to:<br><br>
+
+<p> <a class="projectTitle" target="_blank" href="https://gbdev.io/pandocs/">Pan Docs&nbsp;</a><a class="github-button" target="_blank" href="https://github.com/gbdev/pandocs" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/awesome-gbdev on GitHub">Star</a>
+<span></span></p>
+The single, most comprehensive technical reference to Game Boy available to the public. 
+<br><br>
 <p ><a class="projectTitle" href="list.html">Awesome list&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/awesome-gbdev" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/awesome-gbdev on GitHub">Star</a>
 <span></span></p>
 A <b>curated list</b> of Game Boy development resources such as tools, guides, technical documentation, tutorials, emulators, related projects and open-source ROMs. Everything you'll ever need to know and see about this console is here. <br>If you want to code an emulator, create your own game or simply dive into the software and hardware architecture of the Game Boy, this is the place!
@@ -64,6 +69,7 @@ A community-led attempt to collect, archive and save every unofficial game, home
 <br><br>
 <p class="projectTitle"><a target="_blank" href="https://github.com/gb-archive">The Game Boy Archive</a>&nbsp;<img style="font-family: Monospace" height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=mirrored%20projects&amp;url=https%3A%2F%2Fapi.github.com%2Forgs%2Fgb-archive&amp;query=public_repos&amp;style=flat-square"></p>
 A <b>library</b> of Game Boy related software, hardware and literature. Aimed to mirror and preserve old and fragmented contributions in the scene from the last three decades.
+
 </div>
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>
