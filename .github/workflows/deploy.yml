@@ -23,6 +23,7 @@ jobs:
         echo "${{ secrets.SSH_KEY_SECRET }}" > ~/.ssh/id_ed25519
         chmod 0600 ~/.ssh/id_ed25519
         git config --local user.name "GitHub Action"
+        git config --global user.email "community@gbdev.io"
         npx vuepress build list
         mkdir dist
         cp list/.vuepress/dist/* dist/ -r
