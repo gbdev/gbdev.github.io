@@ -24,6 +24,7 @@ jobs:
         chmod 0600 ~/.ssh/id_ed25519
         git config --local user.name "GitHub Action"
         npx vuepress build list
+        mkdir dist
         cp list/.vuepress/dist/* dist/ -r
         cp CNAME dist/
         npx gh-pages -d dist -b master 
