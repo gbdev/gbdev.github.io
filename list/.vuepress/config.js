@@ -16,8 +16,8 @@ module.exports = {
        sidebarDepth: 2,
         nav: [
       { text: 'GitHub', link: 'https://github.com/gbdev' },
-      { text: 'Discord chat', link: 'https://discordapp.com/invite/gpBxq85' },
-      { text: 'Homebrew Games', link: 'https://gbhh.avivace.com'}
+      { text: 'Patreon', link: 'https://www.patreon.com/gbdev01' },
+      { text: 'OpenCollective', link: 'https://opencollective.com/gbdev/'}
     ]
   }
 }
