@@ -1,0 +1,28 @@
+name: Deploy updated website
+
+on:
+  push
+
+jobs:
+  build:
+    steps:
+    - name: Checkout gbdev/gbdev.github.io
+      uses: actions/checkout@v2
+      with:
+        repository: gbdev/gbdev.github.io
+        path: folder
+
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+
+    - working-directory: folder/
+      run: |
+        mkdir -m 700 ~/.ssh
+        echo "${{ secrets.SSH_KEY_SECRET }}" > ~/.ssh/id_ed25519
+        chmod 0600 ~/.ssh/id_ed25519
+        git config --local user.name "GitHub Action"
+        npx vuepress build list
+        cp list/.vuepress/dist/* dist/ -r
+        cp CNAME dist/
+        npx gh-pages -d dist -b master 
