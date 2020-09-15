@@ -60,6 +60,10 @@ The single, most comprehensive technical reference to Game Boy available to the 
 <span></span></p>
 A <b>curated list</b> of Game Boy development resources such as tools, guides, technical documentation, tutorials, emulators, related projects and open-source ROMs. Everything you'll ever need to know and see about this console is here. <br>If you want to code an emulator, create your own game or simply dive into the software and hardware architecture of the Game Boy, this is the place!
 <br><br>
+<p ><a class="projectTitle" target="_blacnk" href="https://github.com/gbdev/rgbds">RGBDS&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/rgbds" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/rgbds on GitHub">Star</a>
+<span></span></p>
+Rednex Game Boy Development System: the de-facto development toolkit for the Game Boy and Game Boy Color.
+<br><br>
 <p class="projectTitle"><a target="_blank" href="https://discord.gg/gpBxq85">Discord server</a>&nbsp;<img height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=chat&colorB=green&suffix=%20online&query=presence_count&uri=https://discordapp.com/api/guilds/303217943234215948/widget.json&style=flat-square"></p>
 Where our community thrives. Here we <b>chat</b>, discuss, help each other and show what we are working on. There's an IRC channel, too.
 <br><br>
