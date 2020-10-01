@@ -61,7 +61,7 @@ Technologies and tools: Webassembly, C
 
 SameBoy is an open source Game Boy (DMG) and Game Boy Color (CGB) emulator, written in portable C. It has a native Cocoa frontend for macOS, an SDL frontend for other operating systems, and a libretro core. It also includes a text-based debugger with an expression evaluator
 
-Technologies and tools: C, C#, Cocoa, SDL
+Technologies and tools: C, Objective-C, Cocoa, SDL
 
 [Homepage](https://sameboy.github.io/) - [Repository](https://github.com/LIJI32/SameBoy) - [Beginner issues](https://github.com/LIJI32/SameBoy/issues?q=is%3Aissue+is%3Aopen+label%3AHacktoberfest)
 
