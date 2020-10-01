@@ -55,7 +55,7 @@ A simple GB/GBC emulator. Runs in the browser using WebAssembly.
 
 Technologies and tools: Webassembly, C
 
-[Homepage](http://binji.github.io/binjgb/) - [Repository](https://github.com/binji/binjgb) - [Issues](https://github.com/binji/binjgb/issuesgovabe )
+[Homepage](http://binji.github.io/binjgb/) - [Repository](https://github.com/binji/binjgb) - [Issues](https://github.com/binji/binjgb/issues )
 
 ### SameBoy
 
@@ -71,4 +71,4 @@ mGBA is an emulator for running Game Boy Advance games. It aims to be faster and
 
 Technologies and tools: C
 
-[Homepage](https://mgba.io/) - [Repository](https://github.com/mgba-emu/mgba) - [Beginner issues](https://github.com/mgba-emu/mgba/issues)
+[Homepage](https://mgba.io/) - [Repository](https://github.com/mgba-emu/mgba) - [Issues](https://github.com/mgba-emu/mgba/issues)
