@@ -73,7 +73,7 @@ This project is open source and community-lead. Come <a href="#contribute">contr
 
 ## Community
 
-- [Discord Server](https://discord.gg/gpBxq85)
+- [Discord Server](https://discord.gg/tKGMPNr)
 - [IRC Channel](http://chat.efnet.org/?channels=gbdev) - `#gbdev` on EFNET
 - [Forum](https://gbdev.gg8.se/forums/)
 
