@@ -145,7 +145,7 @@ This project is open source and community-lead. Come <a href="#contribute">contr
 - [Cartridges PCB photos](https://imgur.com/a/D5bpC)
 - [MBC1+RAM+Battery cartridge Schematic](http://www.devrs.com/gb/files/mbc1.gif) - First schematics by Jeff Frohwein.
 - [MBC1 and MBC2 cartridges circuits](http://fms.komkon.org/GameBoy/Tech/Carts.html) and explanation on how these MBC bank switch and control RAM.
-- [GB Rom List](CartridgeList.csv) - Navigable table of every game released with details on their cartridges.
+- [GB Rom List](https://raw.githubusercontent.com/gbdev/awesome-gbdev/master/CartridgeList.csv) - Navigable table of every game released with details on their cartridges.
 - [Game Boy cartridge PCB photos](http://gekkio.fi/blog/2016-03-19-game-boy-cartridge-pcb-photos.html)
 
 
