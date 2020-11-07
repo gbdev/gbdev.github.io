@@ -30,7 +30,7 @@ Here's how you can contribute:
 - [Correct and improve existing entries](#correcting-and-improving-resources)
 - [Fix broken links and unavailable resources](#removing-unavailable-resources)
 
-If you are unsure about something or need help, we have a friendly Discord [chat](https://discord.gg/gpBxq85).
+If you are unsure about something or need help, we have a friendly Discord [chat](https://discord.gg/tKGMPNr).
 
 ### Adding a resource
 
