@@ -55,13 +55,13 @@ A simple GB/GBC emulator. Runs in the browser using WebAssembly.
 
 Technologies and tools: Webassembly, C
 
-[Homepage](http://binji.github.io/binjgb/) - [Repository](https://github.com/binji/binjgb) - [Issues](https://github.com/binji/binjgb/issuesgovabe )
+[Homepage](http://binji.github.io/binjgb/) - [Repository](https://github.com/binji/binjgb) - [Issues](https://github.com/binji/binjgb/issues )
 
 ### SameBoy
 
 SameBoy is an open source Game Boy (DMG) and Game Boy Color (CGB) emulator, written in portable C. It has a native Cocoa frontend for macOS, an SDL frontend for other operating systems, and a libretro core. It also includes a text-based debugger with an expression evaluator
 
-Technologies and tools: C, C#, Cocoa, SDL
+Technologies and tools: C, Objective-C, Cocoa, SDL
 
 [Homepage](https://sameboy.github.io/) - [Repository](https://github.com/LIJI32/SameBoy) - [Beginner issues](https://github.com/LIJI32/SameBoy/issues?q=is%3Aissue+is%3Aopen+label%3AHacktoberfest)
 
@@ -71,4 +71,4 @@ mGBA is an emulator for running Game Boy Advance games. It aims to be faster and
 
 Technologies and tools: C
 
-[Homepage](https://mgba.io/) - [Repository](https://github.com/mgba-emu/mgba) - [Beginner issues](https://github.com/mgba-emu/mgba/issues)
+[Homepage](https://mgba.io/) - [Repository](https://github.com/mgba-emu/mgba) - [Issues](https://github.com/mgba-emu/mgba/issues)
