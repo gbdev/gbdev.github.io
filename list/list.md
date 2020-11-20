@@ -186,7 +186,7 @@ This project is open source and community-lead. Come <a href="#contribute">contr
 - [Decoding Gameboy Z80 opcodes](https://gb-archive.github.io/salvage/decoding_gbz80_opcodes/Decoding%20Gamboy%20Z80%20Opcodes.html) - How to algorithmically decode Game Boy instructions (as opposed to writing one huge switch-case statement).
 - [Porting a GO Game Boy emulator to WebAssembly](https://djhworld.github.io/post/2018/09/21/i-ported-my-gameboy-color-emulator-to-webassembly/)
 - [About swotGB](https://mitxela.com/projects/swotgb/about) - Notes about the development of a Game Boy emulator in Javascript.
-- [List of open source emulators](EMULATORS.md)
+- [List of open source emulators](https://github.com/gbdev/awesome-gbdev/blob/master/EMULATORS.md)
 
 ### Testing
 
@@ -234,7 +234,7 @@ The [To C Or Not To C](https://gist.github.com/ISSOtm/4f4d335c3fd258ad0dfc7d4d61
 - [MetroBoy](https://github.com/aappleby/MetroBoy) - A playable, circuit-level simulation of an entire Game Boy.
 - [gbe-plus](https://github.com/shonumi/gbe-plus) - A recently rewritten emulator that has a large effort in preserving the functions of obscure accessories (such as IR link, Mobile Network GB, Barcode Boy, GB Printer, local and online GB Serial Link Cable, ..)
 
-[Complete list of open source emulators](EMULATORS.md)
+[Complete list of open source emulators](https://github.com/gbdev/awesome-gbdev/blob/master/EMULATORS.md)
 
 ### Tools
 
