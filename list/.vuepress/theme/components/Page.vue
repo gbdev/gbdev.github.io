@@ -9,7 +9,7 @@
 
     <slot name="bottom" ><center><div style="font-size:13px; color:#4a4a4a">
             Game Boy is a registered trademark. This project is not endorsed by Nintendo.<br>
-            © 2015-2020 <a href="https://github.com/avivace" target="_blank">Antonio Vivace</a> and <a href="https://github.com/orgs/gbdev/people">contributors</a>. <br> <br><a href="https://digitalocean.com" target="_blank"> <img style="height: 30px" src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PoweredByDO/DO_Powered_by_Badge_black.svg"></a>
+            © 2015-2020 <a href="https://github.com/orgs/gbdev/people">gbdev contributors</a>. <br> <br><a href="https://digitalocean.com" target="_blank"> <img style="height: 30px" src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PoweredByDO/DO_Powered_by_Badge_black.svg"></a>
         </div></center></slot>
   </main>
 </template>
