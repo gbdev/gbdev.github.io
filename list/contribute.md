@@ -3,84 +3,79 @@ title: Contribute
 lang: en-US
 ---
 
-<div style="line-height: 90%;letter-spacing: -0.05em; font-weight: 400; font-size: 2.7em;"><span style="font-weight: 600;
-letter-spacing: -0.05em;">
-    Contribute
-</span></div>
+# Contribute
 
-## gbdev.github.io
+Here's a curated list of some projects related to Game Boy development.
+
+Each one is developed and released following the open source philosophy, while accepting feedbacks and contributions from the community.
+
+Join us on our Discord server, where you'll find help, mentorship and support to contribute to these awesome projects.
+
+Always to remember to check the Contribution guidelines before opening Pull Requests.
+
+## Community projects
+
+### gbdev.github.io
 
 The source of this website is hosted [here](https://github.com/gbdev/gbdev.github.io).
 
-## Homebrew Hub
+### Pandocs
 
-Homebrew Hub is just a *frontend* web application, exposing the database we are compiling in this repo.
-If you wish to improve the UI and frontend experience, refer to this [repo](https://github.com/gbdev/homebrewhub). If you want to add new entries or improve the existing ones, take a look at the [database](https://github.com/gbdev/database) repo.
+The single, most comprehensive technical reference to Game Boy available to the public. Here, you can help proof reading, fixing typos, preparing updated versions of figures or port new content from old resources.
 
-## Awesome List
+Technologies and tools: Markdown, Python, Vuepress
 
-Before sending a Pull Request or opening an Issue, ensure it adheres to the following guidelines and policies.
+[Homepage](https://gbdev.io/pandocs/) - [Repository](https://github.com/gbdev/pandocs) - [Beginner issues](https://github.com/gbdev/pandocs/issues?q=is%3Aissue+is%3Aopen+label%3AHacktoberfest)
 
-Search previous suggestions and open issues before making a new one, as yours may be a duplicate.
+### RGBDS
 
-Here's how you can contribute:
+The de-facto standard assembly toolchain for the Nintendo Game Boy & Game Boy Color.
 
-- Look at [Issues](https://github.com/avivace/awesome-gbdev/issues) and provide help or feedback 
-- [Add a resource](#adding-a-resource)
-- [Correct and improve existing entries](#correcting-and-improving-resources)
-- [Fix broken links and unavailable resources](#removing-unavailable-resources)
+Technologies and tools: C, Assembly
 
-If you are unsure about something or need help, we have a friendly Discord [chat](https://discord.gg/tKGMPNr).
+[Homepage](https://rgbds.gbdev.io/) - [Repository](https://github.com/gbdev/rgbds) - [Beginner issues](https://github.com/gbdev/rgbds/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest)
 
-### Adding a resource
+### Homebrew Hub
 
-#### Is it "awesome"?
+A community-led attempt to collect, archive and save every unofficial game, homebrew, patch, hackrom for Game Boy produced by the community through decades of passionate work.
 
-For a resource to be added to the list, it must reach a minimum quality standard:
+Technologies and tools: 
 
-- It must be in a minimal working state;
-- It must have a clear purpose (implementation reference is okay, too) and/or provide something interesting;
-- It must provide a minimal documentation briefly describing what is the project and how to make use of it.
+- Frontend: Javascript, CSS, Bootstrap.
+- Backend: Node, Mongo.
 
-If the resource is still work in progress, abandoned or you don't think reaches the described standard BUT it's still related to Game Boy development/hacking add it to the MORE.md file.
+[Homepage](https://hh.gbdev.io/) - [Repository](https://github.com/gbdev/homebrewhub) - [Beginner issues](https://github.com/gbdev/homebrewhub/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest)
 
-#### Pull Request
+### Homebrew Hub Database
 
-- Make an individual pull request for each suggestion.
-- Use the following format: `[resource](link) - Description.`
-- Additions should be added to the bottom of the relevant category.
-- New categories or improvements to the existing categorization are appreciated. You're welcome to discuss discrimination and categorization criteria in Issues/PRs.
-- Keep descriptions short and simple, but descriptive, pointing out the particularities or major features of the resource.
-- Start the description with a capital and end with a full stop/period.
-- Check your spelling and grammar.
-- It's `Game Boy`, not `gameboy`, `game boy` or `GameBoy`, however, you should honor the title or name of the resource while linking it, even if it's using a wrong lettering \[[1](https://github.com/avivace/awesome-gbdev/issues/34)\].
-- Open source emulators go to the EMULATORS.md file.
+This is the database of games powering the main Homebrew Hub project. Find a game (we have a lot to add!) and add it with a Pull Request. Or - even better - write scrapers to dump entire sources and add them to our repository!
 
-If you are not confident in forking the repository, making the change and sending the PR, don't hesitate to open an Issue describing the addition (or the change you want to make/discuss).
+Technologies and tools: JSON Schema, Python, Javascript, BeautifulSoup
 
-### Correcting and improving resources
+[Homepage](https://hh.gbdev.io/) - [Repository](https://github.com/gbdev/database) - [Beginner issues](https://github.com/gbdev/database/issues?q=is%3Aissue+is%3Aopen+label%3AHacktoberfest)
 
-Most of the linked resources are hosted on Git repository. You are encouraged to report errors in the corresponding upstream repository or contact the authors. If the correction doesn't get merged, fork it and mantain an updated/correct version and open a PR replacing the link on the list with your version.
+## Emulators
 
-In any case, open an Issue mentioning the error and its magnitude. This can have two outcomes:
+### binjgb
 
-- If the resource is unique/important - while we wait for the error getting corrected in the upstream source - we add an Errata notice next near the link. OR
-- The resource gets moved in MORE, until it reaches a decent/maintanable/correct state.
+A simple GB/GBC emulator. Runs in the browser using WebAssembly.
 
-If you think something doesn't fit the list, open an Issue or a PR mentioning the reasons.
+Technologies and tools: Webassembly, C
 
-### Removing unavailable resources
+[Homepage](http://binji.github.io/binjgb/) - [Repository](https://github.com/binji/binjgb) - [Issues](https://github.com/binji/binjgb/issues )
 
-You're welcome to remove any broken link in the repository, but first try to find a reliable mirror and replace it:
+### SameBoy
 
-- Check on [Archive.org](https://archive.org/) and Google Cache;
-- We may already mirrored it in [*The Game Boy Archive*](https://github.com/gb-archive/core) project;
-- Try the GitHub search.
+SameBoy is an open source Game Boy (DMG) and Game Boy Color (CGB) emulator, written in portable C. It has a native Cocoa frontend for macOS, an SDL frontend for other operating systems, and a libretro core. It also includes a text-based debugger with an expression evaluator
 
-Then, **open an Issue** with any useful details.
+Technologies and tools: C, Objective-C, Cocoa, SDL
 
-You can then proceed to remove the broken link (or wait for someone to do it).
+[Homepage](https://sameboy.github.io/) - [Repository](https://github.com/LIJI32/SameBoy) - [Beginner issues](https://github.com/LIJI32/SameBoy/issues?q=is%3Aissue+is%3Aopen+label%3AHacktoberfest)
 
-If you have some old and unavailable resource (not necessarly listed in the missing list) archived in your hard disk that maybe in the interest (even historical!) of the Game Boy development community, please open an Issue attaching or linking the resource.
+### mGBA
 
-#### Thank you!
+mGBA is an emulator for running Game Boy Advance games. It aims to be faster and more accurate than many existing Game Boy Advance emulators, as well as adding features that other emulators lack. It also supports Game Boy and Game Boy Color games.
+
+Technologies and tools: C
+
+[Homepage](https://mgba.io/) - [Repository](https://github.com/mgba-emu/mgba) - [Issues](https://github.com/mgba-emu/mgba/issues)

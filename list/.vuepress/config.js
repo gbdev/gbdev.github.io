@@ -12,7 +12,6 @@ module.exports = {
       ['/', 'Community'],
       ['/list', 'Resources'],
       ['/to_c_or_not_to_c', 'To C or not to C'],
-      ['/hacktoberfest', 'Hacktoberfest'],
       ['/contribute', 'Contribute']],
        sidebarDepth: 2,
         nav: [
