@@ -47,7 +47,7 @@ letter-spacing: -0.05em;">
 We are a group of passionate developers working on homebrews, emulators and documentation for the Nintendo Game Boy handheld console, the original gray brick from 1989!
 </div>
 
-<a href="https://github.com/gbdev" target="_blank"> <img height="40" width="40" :src="$withBase('/images/github.svg')"></a>&nbsp;<a href="https://instagram.com/gbdev0" target="_blank"><img height="40" width="40" :src="$withBase('/images/instagram.svg')"></a>&nbsp;<a href="https://twitter.com/gbdev0" target="_blank"><img height="40" width="40" :src="$withBase('/images/twitter.svg')"></a>&nbsp;<a href="https://discordapp.com/invite/tKGMPNr" target="_blank"><img height="40" width="40" :src="$withBase('/images/discord.svg')"></a>
+<a href="https://github.com/gbdev" target="_blank"> <img height="40" width="40" :src="$withBase('/images/github.svg')"></a>&nbsp;<a href="https://instagram.com/gbdev0" target="_blank"><img height="40" width="40" :src="$withBase('/images/instagram.svg')"></a>&nbsp;<a href="https://twitter.com/gbdev0" target="_blank"><img height="40" width="40" :src="$withBase('/images/twitter.svg')"></a>&nbsp;<a href="https://gbdev.io/chat" target="_blank"><img height="40" width="40" :src="$withBase('/images/discord.svg')"></a>
 
 <div>
 Here's a quick showcase of what we are up to:<br><br>
@@ -64,7 +64,7 @@ A <b>curated list</b> of Game Boy development resources such as tools, guides, t
 <span></span></p>
 Rednex Game Boy Development System: the de-facto development toolkit for the Game Boy and Game Boy Color.
 <br><br>
-<p class="projectTitle"><a target="_blank" href="https://discord.gg/tKGMPNr">Discord server</a>&nbsp;<img height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=chat&colorB=green&suffix=%20online&query=presence_count&uri=https://discordapp.com/api/guilds/303217943234215948/widget.json&style=flat-square"></p>
+<p class="projectTitle"><a target="_blank" href="https://gbdev.io/chat">Discord server</a>&nbsp;<img height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=chat&colorB=green&suffix=%20online&query=presence_count&uri=https://discordapp.com/api/guilds/303217943234215948/widget.json&style=flat-square"></p>
 Where our community thrives. Here we <b>chat</b>, discuss, help each other and show what we are working on. There's an IRC channel, too.
 <br><br>
  <p class="projectTitle"><a target="_blank" href="https://gbhh.avivace.com">Homebrew Hub</a>&nbsp;<img height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=games&amp;suffix=%20entries&amp;colorB=blue&amp;query=games&amp;uri=https%3A%2F%2Fgbhh.avivace.com%2Fapi%2Finfo&amp;style=flat-square"></p>

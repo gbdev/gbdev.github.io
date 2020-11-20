@@ -11,8 +11,9 @@ module.exports = {
     sidebar: [
       ['/', 'Community'],
       ['/list', 'Resources'],
-      ['/to_c_or_not_to_c', 'To C or not to C'],
-      ['/contribute', 'Contribute']],
+      ['/chat', 'Chat'],
+      ['/contribute', 'Contribute'],
+      ['/to_c_or_not_to_c', 'To C or not to C']],
        sidebarDepth: 2,
         nav: [
       { text: 'GitHub', link: 'https://github.com/gbdev' },
