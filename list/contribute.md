@@ -5,6 +5,16 @@ lang: en-US
 
 # Contribute
 
+## Donations
+
+We accept economic donations through the following platforms:
+
+- [OpenCollective](https://opencollective.com/gbdev)
+- [Patreon](https://www.patreon.com/gbdev01)
+- [GitHub Sponsors](https://github.com/sponsors/avivace)
+
+## Software
+
 Here's a curated list of some projects related to Game Boy development.
 
 Each one is developed and released following the open source philosophy, while accepting feedbacks and contributions from the community.
