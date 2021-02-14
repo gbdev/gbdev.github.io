@@ -221,7 +221,7 @@ I also recommend looking up [awesome-gbdev](https://gbdev.io/list.html) for reso
 
 If you want to get help from the community, go:
 - To the historical IRC channel, #gbdev on [EFNet](http://efnet.net) \[if you don't have an IRC client, you can use the "Webchat login" box, just enter a username\].
-- To the more recent [gbdev Discord server](https://discordapp.com/invite/tKGMPNr) or [GBDK/ZGB](https://github.com/Zal0/gbdk-2020#discord-servers) specific server.
+- To the more recent [gbdev Discord server](https://gbdev.io/) or [GBDK/ZGB](https://github.com/Zal0/gbdk-2020#discord-servers) specific server.
 - And to the [GBDev forums](http://gbdev.gg8.se/forums)!
 
 
