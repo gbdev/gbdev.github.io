@@ -1,7 +1,7 @@
 Choosing tools for Game Boy development
 ---
 
-This essay gives an overview of the Game Boy's capabilities, discussing the pros and cons of the available development tools, and providing tips to write more efficient code.
+This essay gives an overview of the Game Boy's capabilities, discussing the pros and cons of the available development tools, and providing a few tips to write more efficient code.
 
 Written by [ISSOtm](https://github.com/ISSOtm/) with help from [tobiasvl](https://github.com/tobiasvl), some updates by [bbbbbr](https://github.com/bbbbbr).
 
@@ -11,9 +11,9 @@ Written by [ISSOtm](https://github.com/ISSOtm/) with help from [tobiasvl](https:
 In the past few years as retro gaming has grown in popularity, programming for older platforms has also gained traction. A popular platform is the Game Boy, both for its nostalgia and (relative) ease to program for.
 
 ::: warning
-This document only applies to the Game Boy and Game Boy Color. Game Boy Advance programming has nothing in common with Game Boy programming.
+This document only applies to the Game Boy and Game Boy Color. Game Boy Advance programming has little in common with Game Boy programming.
 
-If you want to program for the GBA, which is much more C-friendly (and C++ and Rust, for that matter) than the GB and GBC, then I advise you download devkitARM and follow the [Tonc](https://www.coranac.com/tonc/text/) tutorial. Please note that the Game Boy Advance also functions as a Game Boy Color, so if you only have a GBA, you can use it for both GB and GBC development.
+If you want to program for the GBA, which is much more C-friendly (and C++ and Rust, for that matter) than the GB and GBC, then I advise you to download devkitARM and follow the [Tonc](https://www.coranac.com/tonc/text/) tutorial. Please note that the Game Boy Advance also functions as a Game Boy Color, so if you only have a GBA, you can use it for both GB and GBC development.
 :::
 
 When someone wants to make their own game, one of the first problems they will encounter is picking the *tools* they will use. There current main options are:
@@ -53,6 +53,7 @@ Weaknesses:
 * It takes a special kind of work to write optimized ASM code.
 * It's quite verbose and sometimes tedious.
 * Will require more time and learning to get up and running when compared with C.
+* Code may not be easily shared with ports of a game on other platforms.
 
 
 ### C
@@ -71,7 +72,7 @@ Weaknesses:
 
 
 ### Non-Programming Language option
-Using a GUI instead- If you don’t want to learn a programming language in order to make Game Boy games, then GB Studio is an option. See the __GB Studio section__ for more details.
+Using a GUI instead- If you don’t want to learn a programming language in order to make Game Boy games, then GB Studio is an option. See the [GB Studio](#gb-studio) section for more details.
 
 
 # Development Platforms
@@ -83,10 +84,10 @@ RGBDS is an actively maintained suite of programs that allow building a ROM usin
 Strengths:
 * Very knowledgeable community with a lot of history.
 * Built in support for ROM banking.
+* Works quite well with BGB for debugging.
 
 Weaknesses:
-* Works quite well with BGB for debugging.
-* Provides a limited amount of built code and functionality.
+* Provides a limited amount of built-in code and functionality (does not include a large API like GBDK-2020 does).
 
 ### [WLA-DX](https://github.com/vhelin/wla-dx) with ASM
 WLA-DX is also sometimes used when writing in ASM, mostly due to its better struct support than RGBDS.
@@ -135,11 +136,11 @@ Weaknesses:
 # Emulators and debuging tools
 Accurate emulators and debugging tools are tremendously helpful for testing and tracking down problems. The following Game Boy emulators provide excellent accuracy and include a variety of different features.
 
-* [BGB](http://bgb.bircd.org) has a convenient debugger, though its minimal interface can be confusing at first. It is available for Windows only, but runs almost flawlessly with Wine.
+* [BGB](http://bgb.bircd.org) has a convenient (ASM) debugger, though its minimal interface can be confusing at first. It is available for Windows only, but runs almost flawlessly with Wine.
 
 * [Emulicious](https://emulicious.net/) includes powerful tools such as a profiler and source-level debugging for ASM and C via a [VS Code debug adapter](https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger). It runs on Linux, Windows, MacOS and any other operating systems that supports Java SE.
 
-* [Same Boy](https://sameboy.github.io/features/) is user friendly and has a wide range of powerful debugging features. It runs on Windows and MacOS.
+* [Same Boy](https://sameboy.github.io/features/) is user friendly and has a wide range of powerful (ASM) debugging features. It runs on Windows and MacOS.
 
 * [Gambatte](http://github.com/sinamas/gambatte) lacks a debugger and must be compiled from source, but is packaged both in [RetroArch](http://retroarch.com) (Linux, Windows and Mac) and [BizHawk](http://tasvideos.org/BizHawk.html) (Windows-only).
 
@@ -158,7 +159,7 @@ If your question is "*What should I use for my game project ?*", then you're in 
 ### If you don't know ASM, C or C++
 Consider starting with C and GBDK. This will introduce you to working with the hardware and is an easier starting place.
 
-If you've grasped C's concepts (most importantly pointers), give ASM a go. The language is simpler than it looks. Even if you don't manage to get working ASM code, it actually helps a lot (especially on such a constrained system) to know what's "under the hood". There is even an [online IDE](https://daid.github.io/rgbds-live/) to expiriment with.
+Once you've grasped C's concepts (most importantly pointers), give ASM a go. The language is simpler than it looks. Even if you don't manage to get working ASM code, it actually helps a lot (especially on such a constrained system) to know what's "under the hood". There is even an [online IDE](https://daid.github.io/rgbds-live/) to expiriment with.
 
 For C / GBDK users, knowing ASM will help you understand what it's API (which is mostly written in ASM) is doing behind the scenes and will make using emulator debuggers easier to understand.
 
@@ -219,9 +220,9 @@ I also recommend looking up [awesome-gbdev](https://gbdev.io/list.html) for reso
 # Community And Help
 
 If you want to get help from the community, go:
-- to the historical IRC channel, #gbdev on [EFNet](http://efnet.net) \[if you don't have an IRC client, you can use the "Webchat login" box, just enter a username\],
-- to the more recent [Discord server](https://discord.gg/gpBxq85),
-- and to the [GBDev forums](http://gbdev.gg8.se/forums)!
+- To the historical IRC channel, #gbdev on [EFNet](http://efnet.net) \[if you don't have an IRC client, you can use the "Webchat login" box, just enter a username\].
+- To the more recent [gbdev Discord server](https://discord.gg/gpBxq85) or [GBDK/ZGB](https://github.com/Zal0/gbdk-2020#discord-servers) specific server.
+- And to the [GBDev forums](http://gbdev.gg8.se/forums)!
 
 
 <hr>
