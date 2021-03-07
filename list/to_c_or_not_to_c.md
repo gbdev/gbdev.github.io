@@ -129,7 +129,8 @@ Strengths:
 
 Weaknesses:
 * It’s games will tend to be slower than both ASM and C.
-* There is a limited set of features to work with. Creative solutions may be required to do things if they don’t easily fit within the available scripting, graphics and sound tools. (Though it is possible for advanced users to do a “engine eject” and add more functionality using C and ASM.)
+* There is a limited set of commands to script with and some artificially smaller restrictions on palettes, sprites, background tiles and other hardware features (due to how GB Studio manages them).
+* Games may be more constrained or require workarounds to do things if they don’t easily fit within the available scripting, graphics and sound tools. (Though it is possible for advanced users to do a “engine eject” and add more functionality using C and ASM.)
 
 
 
@@ -159,11 +160,11 @@ If your question is "*What should I use for my game project ?*", then you're in 
 ### If you don't know ASM, C or C++
 Consider starting with C and GBDK. This will introduce you to working with the hardware and is an easier starting place.
 
-Once you've grasped C's concepts (most importantly pointers), give ASM a go. The language is simpler than it looks. Even if you don't manage to get working ASM code, it actually helps a lot (especially on such a constrained system) to know what's "under the hood". There is even an [online IDE](https://daid.github.io/rgbds-live/) to expiriment with.
+Once you've grasped C's concepts (most importantly pointers), give ASM a go. The language is simpler than it looks. Even if you don't manage to get working ASM code, it actually helps a lot (especially on such a constrained system) to know what's "under the hood". There is even an [online IDE](https://daid.github.io/rgbds-live/) to experiment with.
 
 For C / GBDK users, knowing ASM will help you understand what it's API (which is mostly written in ASM) is doing behind the scenes and will make using emulator debuggers easier to understand.
 
-If you don't wan't to learn a language at all, GB Studio is an alternative to C and ASM.
+If you don't wan't to learn a language at all, [GB Studio](#gb-studio) is an alternative to C and ASM.
 
 ### If you know C but not ASM
 Consider the goals, scope and time frame of your project. If you'd like to start building right away then C and GBDK will make that easy. You'll also have growing exposure to ASM as time goes on due to working with the hardware and tracking down problems in the debugger.
