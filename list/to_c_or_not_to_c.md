@@ -1,21 +1,28 @@
-This essay gives an overview of the Game Boy's capabilities, discussing the pros and cons of the available development tools, and providing tips to write more efficient code.
+Choosing tools for Game Boy development
+---
 
-Written by [ISSOtm](https://github.com/ISSOtm/) with help from [tobiasvl](https://github.com/tobiasvl).
+This essay gives an overview of the Game Boy's capabilities, discussing the pros and cons of the available development tools, and providing a few tips to write more efficient code.
+
+Written by [ISSOtm](https://github.com/ISSOtm/) with help from [tobiasvl](https://github.com/tobiasvl), some updates by [bbbbbr](https://github.com/bbbbbr).
 
 ---
 
 
-In the past few years, it seems that, as retro gaming has grown in popularity, programming for older platforms has also gained traction. A popular platform is the Game Boy, both for its nostalgia and (relative) ease to program for.
+In the past few years as retro gaming has grown in popularity, programming for older platforms has also gained traction. A popular platform is the Game Boy, both for its nostalgia and (relative) ease to program for.
 
 ::: warning
-This document only applies to the Game Boy and Game Boy Color. Game Boy Advance programming has nothing in common with Game Boy programming.
+This document only applies to the Game Boy and Game Boy Color. Game Boy Advance programming has little in common with Game Boy programming.
 
-If you want to program for the GBA, which is much more C-friendly (and C++ and Rust, for that matter) than the GB and GBC, then I advise you download devkitARM and follow the [Tonc](https://www.coranac.com/tonc/text/) tutorial. Please note that the Game Boy Advance also functions as a Game Boy Color, so if you only have a GBA, you can use it for both GB and GBC development.
+If you want to program for the GBA, which is much more C-friendly (and C++ and Rust, for that matter) than the GB and GBC, then I advise you to download devkitARM and follow the [Tonc](https://www.coranac.com/tonc/text/) tutorial. Please note that the Game Boy Advance also functions as a Game Boy Color, so if you only have a GBA, you can use it for both GB and GBC development.
 :::
 
-When someone wants to make their own game, one of the first problems they will encounter is picking the *tools* they will use. There are two main options: either use GBDK (Game Boy Development Kit) and the language C, or RGBDS (Rednex Game Boy Development System) and the Game Boy's assembly language.
+When someone wants to make their own game, one of the first problems they will encounter is picking the *tools* they will use. There current main options are:
+- RGBDS (Rednex Game Boy Development System) and the Game Boy's Assembly language (ASM)
+- GBDK-2020 (Game Boy Development Kit) and the C language
+- ZGB (an engine built on GBDK-2020) and the C language
+- GB Studio (a drag-and-drop game creator with scripting)
 
-The purpose of this document is to provide my insights and experience, and help you make the better choice if you're starting a new project. I will also provide some "good practice" tips, both for C and ASM, if you have already made up your mind or are already using one of these.
+The purpose of this document is to provide some insights and help you make the better choice if you're starting a new project. I will also provide some "good practice" tips, both for C and ASM, if you have already made up your mind or are already using one of these.
 
 
 
@@ -30,102 +37,145 @@ The Super Game Boy adds a few minor things, such as a customizable screen border
 The Game Boy Color *can* \[if you tell it to\] unlock additional functionality, such as more fleshed-out color, a double-speed CPU, twice the video RAM and *four times* the RAM! (With caveats, obviously.)
 
 
-# Development Tools
+# Languages
 
-* [GBDK](http://gbdk.sourceforge.net) is a development suite, built around the SDCC compiler, which allows you to write C code for the Game Boy, including functions that allow interfacing with the Game Boy without worrying too much about the details. GBDK is currently available only for Windows.
+The choice of programming language is important and can have a very large effect on a project. It determines how much work is involved, what will be possible, and how fast it will be able to run.
 
-* [RGBDS](http://github.com/rednex/rgbds) is an actively maintained quatuor of programs that allow building a ROM using ASM (assembly). It contains three programs that perform different stages of the compilation, as well as a program that converts PNG images to the Game Boy's tile format. RGBDS is available for Linux, Windows and Mac.
+### Assembly (ASM)
+Most games and programs for the Game Boy written in ASM will use RGBDS or WLA-DX.
 
-* [WLA-DX](https://github.com/vhelin/wla-dx) is also sometimes used, mostly due to its better struct support than RGBDS.
+Strengths:
+* Not too difficult to learn.
+* Extremely powerful and flexible.
+* When well written it allows for maximum speed and efficiency on the limited resources of the Game Boy hardware.
+
+Weaknesses:
+* It takes a special kind of work to write optimized ASM code.
+* It's quite verbose and sometimes tedious.
+* Will require more time and learning to get up and running when compared with C.
+* Code may not be easily shared with ports of a game on other platforms.
 
 
-To run and debug the final product, an emulator is most often used.
+### C
+C will typically be used with the SDCC compiler and GBDK-2020 or ZGB, though it can also be used on it’s own without a framework or with a different compiler/dev kit (such as [z88dk](https://github.com/z88dk/)).
 
-* [BGB](http://bgb.bircd.org) is perfect for the task thanks to its near-perfect accuracy and very convenient debugger. Its UI tends to be confusing at first, though. BGB is available for Windows only, but runs almost flawlessly with Wine.
+Strengths:
+* Allows for getting up and running faster than with ASM, especially when building on top of GBDK-2020 and ZGB.
+* The language abstractions make it relatively easy to implement ideas and algorithms.
+* C source debugging is available through Emulicious with the VSCode debug adapter, making it easier to understand problems if they arise.
+* ASM can be included in projects with C, either standalone or inline for speed critical features.
 
-* [Gambatte](http://github.com/sinamas/gambatte) has a near-perfect accuracy, on par with BGB's, although subtly different. It lacks a debugger and must be compiled from source, but is packaged both in [RetroArch](http://retroarch.com) (Linux, Windows and Mac) and [BizHawk](http://tasvideos.org/BizHawk.html) (Windows-only).
+Weaknesses:
+* The SDCC C compiler won't always generate code that runs as fast as skilled, hand-optimized assembly. It has matured a lot in the 20 years since the original GBDK, but bugs still turns up on occasion. On a platform with a slow CPU such as the Game Boy this can be a factor.
+* It’s easier to write inefficient code in C without realizing it. The Game Boy's CPU is only capable of performing 8-bit addition or subtraction, or 16-bit addition. Using `INT32`s is quite taxing on the CPU (it needs to do two consecutive 16-bit adds, and add the carry). See the tips below to avoid such blunders.
+* There is overhead due to C being a stack-oriented language, whereas the Game Boy's CPU is rather built for a register-oriented strategy. This most notably makes passing function arguments a lot slower, although SDCC has some optimizations for this.
 
-Purists prefer to also run their games on hardware, which is possible thanks to flashcarts. My personal recommendation is [krikzz's carts](http://krikzz.com/store/), particularly the [Everdrive GB X5](https://krikzz.com/store/home/47-everdrive-gb.html).
 
+### Non-Programming Language option
+Using a GUI instead- If you don’t want to learn a programming language in order to make Game Boy games, then GB Studio is an option. See the [GB Studio](#gb-studio) section for more details.
+
+
+# Development Platforms
+
+### [RGBDS](http://github.com/rednex/rgbds) with ASM
+
+RGBDS is an actively maintained suite of programs that allow building a ROM using ASM (assembly). It contains three programs that perform different stages of the compilation, as well as a program that converts PNG images to the Game Boy's tile format. RGBDS is available for Linux, Windows and MacOS.
+
+Strengths:
+* Very knowledgeable community with a lot of history.
+* Built in support for ROM banking.
+* Works quite well with BGB for debugging.
+
+Weaknesses:
+* Provides a limited amount of built-in code and functionality (does not include a large API like GBDK-2020 does).
+
+### [WLA-DX](https://github.com/vhelin/wla-dx) with ASM
+WLA-DX is also sometimes used when writing in ASM, mostly due to its better struct support than RGBDS.
+
+
+### [GBDK-2020](https://github.com/Zal0/gbdk-2020) with C
+GBDK-2020 is a development kit and toolchain built around the SDCC C compiler which allows you to write programs in C and build ROMs. It includes an API for interfacing with the Game Boy. GBDK-2020 is a modernized version of the original [GBDK](http://gbdk.sourceforge.net). It's available for Linux, Windows and MacOS.
+
+Strengths:
+* Flexible and extensible.
+* Comprehensive API that covers most hardware features.
+* Many sample projects and open source games are available that demonstrate how to use the API, hardware, and structure games.
+* C source debugging is available with Emulicious.
+
+Weaknesses:
+* Takes care of some aspects of the hardware without requiring the developer to initiate them (such as OAM DMA during VBLANK), so it's not always obvious to beginners what the hardware is doing behind the scenes, or how to fix them when something goes wrong.
+* ROM banking may require more management in code than RGBDS.
+
+
+### [ZGB](https://github.com/Zal0/ZGB/) with C & GBDK-2020
+ZGB is a small engine for the Game Boy built on top of GBDK-2020 and written in C.
+Strengths:
+* The basic graphics, sound and event structure are all pre-written, so it’s faster and easier to start writing a game.
+* Several open source games built with it are available as examples.
+
+Weaknesses:
+* The engine just has the basics and custom code may need to be needed for common game features (such as moving platforms, etc.).
+* Even more of the hardware configuration and processing is taken care of behind the scenes than with GBDK, so less experienced users may have trouble when problems arise.
+
+
+### [GB Studio](https://www.gbstudio.dev/)
+
+GB Studio is a drag-and-drop game creator for the Game Boy that does not require knowledge of programming languages. Games are built using a graphical interface to script graphics, sound and actions. It is available for Linux, Windows and MacOS.
+
+Strengths:
+* Very easy for beginners to start building games right away. Everything is built-in and requires minimal knowledge and understanding of the Game Boy hardware.
+* Has been used to create large and extensive projects.
+* Very active community for help and support.
+
+Weaknesses:
+* It’s games will tend to be slower than both ASM and C.
+* There is a limited set of commands to script with and some artificially smaller restrictions on palettes, sprites, background tiles and other hardware features (due to how GB Studio manages them).
+* Games may be more constrained or require workarounds to do things if they don’t easily fit within the available scripting, graphics and sound tools. (Though it is possible for advanced users to do a “engine eject” and add more functionality using C and ASM.)
+
+
+
+# Emulators and debuging tools
+Accurate emulators and debugging tools are tremendously helpful for testing and tracking down problems. The following Game Boy emulators provide excellent accuracy and include a variety of different features.
+
+* [BGB](http://bgb.bircd.org) has a convenient (ASM) debugger, though its minimal interface can be confusing at first. It is available for Windows only, but runs almost flawlessly with Wine.
+
+* [Emulicious](https://emulicious.net/) includes powerful tools such as a profiler and source-level debugging for ASM and C via a [VS Code debug adapter](https://marketplace.visualstudio.com/items?itemName=emulicious.emulicious-debugger). It runs on Linux, Windows, MacOS and any other operating systems that supports Java SE.
+
+* [Same Boy](https://sameboy.github.io/features/) is user friendly and has a wide range of powerful (ASM) debugging features. It runs on Windows and MacOS.
+
+* [Gambatte](http://github.com/sinamas/gambatte) lacks a debugger and must be compiled from source, but is packaged both in [RetroArch](http://retroarch.com) (Linux, Windows and Mac) and [BizHawk](http://tasvideos.org/BizHawk.html) (Windows-only).
+
+
+* Purists prefer to also run their games on hardware, which is possible thanks to flashcarts. My personal recommendation is [krikzz's carts](http://krikzz.com/store/), particularly the [Everdrive GB X5](https://krikzz.com/store/home/47-everdrive-gb.html).
 
 Side note : if you are using VBA or VBA-rr, **stop using them right now**. These emulators are extremely inaccurate, and also contain **severe security flaws**. I strongly urge you to ditch these emulators and spread the word.
 
 
-# Picking A Language
-
-The choice of platform to run the ROM on doesn't matter much, but the language is extremely important.
-
-ASM is a good choice, since it's not too difficult to learn, is extremely powerful and flexible, and RGBDS is a good tool, which further works quite well with BGB for debugging. Its two largest issues are that it takes a special kind of work to write optimized ASM code, and that it's quite verbose and sometimes tedious.
-
-C is a much more complicated matter, discussed below.
-
-
-# C's Problems
-
-C's problems can be separated into a few that are inherent to the language, and a lot more that come from GBDK.
-
-## The Language
-
-C is a compiled language, meaning the C code is translated into ASM code, which is then turned into the ROM. The problem is that due to the way C is defined, it is often substantially slower than hand-written ASM. On modern computers clocking at a few GHz with multithreading, memory caches etc., this additional overhead is negligible. On the Game Boy, it's much more apparent (the green bar represents the CPU's load) :
-
-With C :
-
-![Game in C](https://media.giphy.com/media/26hirMERbslnl0I2A/giphy.gif)
-
-With ASM :
-
-![Game in ASM](https://media.giphy.com/media/l0MYM229WAV40G7XG/giphy.gif)
-
-[Source: screenshots of Last Crown Warriors, by Imanolea, found on his blog Imanolea's Games](https://imanoleasgames.blogspot.fr/2016/09/games-aside-0-ensamblador-en-game-boy.html)
-
-The overhead is also due to C being a stack-oriented language \[if you don't know what that means, ignore this paragraph\], whereas the Game Boy's CPU is rather built for a register-oriented strategy. This most notably makes passing function arguments a lot slower.
-
-Another problem is that you lose advanced debugging; BGB allows for precise debugging, but only debugs the compiled ASM (unlike `gdb`, for example). Thus, all debugging will have to be done without this very helpful tool.
-
-
-Overall, using C on the Game Boy is significantly slower than ASM. But let's not be unjust here: Most of the overhead isn't actually the language's fault.
-
-
-## GBDK
-
-GBDK is... poorly written, to say the least. I'm going to list some of its major problems; the goal isn't to discourage anyone to use GBDK, but to make you realize its weaknesses and limits.
-
-It's built on an ancient build of SDCC, which is known to generate poor (bloated) and often straight up wrong code. Two examples that come to mind are when compiled code moved the stack to an absurd location \[if you are interested, it ran a `add sp, $7D` with `sp` = `$DFA?`, and ended up at `$E02?`\]; the other example is if you try to multiply by a power of 2, say, `8`. The compiler will helpfully optimize that to a bitshift (because `* 2^n` is the same as `<< n`)... but shift by one too much, and in our case, multiply by `16`!
-
-A very nasty issue with GBDK is that the library it provides is not explicit at all as to what a given function does. First, this makes a lot of questions people ask us redundant, when they could simply be solved by knowing how the Game Boy works. Second, when a bug pops up, people are confused about its origin: what's wrong, their code, their usage of the library, the library itself (it happens), or the Game Boy (it has hardware bugs)?
-
-Further, the library is fairly constraining, for example forcing the way tiles are allocated in VRAM.
-
-Also, it's totally possible for anyone to write awful code without even realizing it. A simple reason is that the Game Boy's CPU is only capable of performing 8-bit addition or subtraction, or 16-bit addition. I think you'll have figured out that using `INT32`s must be quite taxing on the CPU (it needs to do two consecutive 16-bit adds, and add the carry). This is the reason why I'm providing some tips below, to avoid such blunders.
-
-And finally, banking. Banking in GBDK is very unintuitive, as far as I have seen it in action. Tutorials don't seem to help a lot, either.
 
 
 # Summary
 
-If your question is "*What should I use for my game project ?*", then you're in the right section.
+If your question is "*What should I use for my game project ?*", then you're in the right section. The first question you should ask yourself is what languages you know.
 
-The first question you should ask yourself is what languages you know. If you have never worked with ASM, C or C++, you should start by learning C. This will introduce to how you interface with the hardware when you're close to it (pointers, above all)., If you grasped C's concepts (most importantly pointers), give ASM a go. Even if you don't manage to get working ASM code, it actually helps a lot (especially on such a constrained system) to know what's "under the hood". Especially with GBDK's crappy lib, it's particularly useful to use ASM-level debugging tools to figure what exactly is wrong.
+### If you don't know ASM, C or C++
+Consider starting with C and GBDK. This will introduce you to working with the hardware and is an easier starting place.
 
-Now, I'll be assuming you know at least C. If you are okay with ASM, I recommend going with that. It will cut a lot of the hassle GBDK may generate.
+Once you've grasped C's concepts (most importantly pointers), give ASM a go. The language is simpler than it looks. Even if you don't manage to get working ASM code, it actually helps a lot (especially on such a constrained system) to know what's "under the hood". There is even an [online IDE](https://daid.github.io/rgbds-live/) to experiment with.
 
-The third question to ask is the size of your project. Due to the issues with banking, I wouldn't recommend GBDK if your project is going to be large enough that banking is required, also because of the performance issue, since your project might end up being too large for the CPU, too.
+For C / GBDK users, knowing ASM will help you understand what it's API (which is mostly written in ASM) is doing behind the scenes and will make using emulator debuggers easier to understand.
 
-If you haven't decided yet, you should consider giving ASM a try; the language is simpler than it looks. Even if you just end up writing a few functions then switching to C, you will have learned something. If you don't want to learn ASM, that's okay, too.
+If you don't wan't to learn a language at all, [GB Studio](#gb-studio) is an alternative to C and ASM.
+
+### If you know C but not ASM
+Consider the goals, scope and time frame of your project. If you'd like to start building right away then C and GBDK will make that easy. You'll also have growing exposure to ASM as time goes on due to working with the hardware and tracking down problems in the debugger.
+
+On the other hand, if you'd like to expand your programming skill set and have additional time, learning to use ASM and RGBDS will provide you with a lot of knowledge about the Game Boy hardware. Once you know ASM in addition to C, you'll have a lot of flexibility in what tools you use for projects.
 
 
-Another option is to [reach out to us](#community-and-help), and discuss the matter. 
+### If you know ASM
+RGBDS with ASM is a solid option. You'll be able to get the best performance out of the hardware, and there is an experienced community available to help.
 
-
-## Alternatives To GBDK
-
-[GBDK-n](https://github.com/andreasjhkarlsson/gbdk-n) brings GBDK to newer SDCC versions, which produce much better code. This eliminates part of the performance problem, but keeps all library-related issues. It is (at the time of writing this) lacking banking support. If you intend to do a small project (in size, such as Flappy Boy or Tobu Tobu Girl), then GBDK-n is certainly a good choice.
-
-Below is the "experimental zone"; ie. projects that aren't finished yet, but that may provide significant alternatives once they will be completed.
-
-[Dovuro / DonaldHays](https://github.com/DonaldHays) has built a barebones custom toolchain and library for his game [Event Aurora](https://github.com/DonaldHays/event-aurora). A project is to flesh out this lib into a GBDK equivalent.
-
-[Bevinsky](https://github.com/Bevinsky) is attempting to make a GBz80 backend for LLVM. tl;dr: this would allow to use `clang` to make code for the Game Boy. If this succeeds, then a new library could be built around it, to remove the problems that GBDK's libs cause.<br/>EDIT: The backend is working, although only a few features of C are implemented (functions aren't :p). The project is on the right tracks!
+Another option is to [reach out to us](#community-and-help), and discuss the matter.
 
 
 # Tips For Better Code
@@ -152,16 +202,17 @@ I also recommend looking up [awesome-gbdev](https://gbdev.io/list.html) for reso
 - *Global variables*<br>
   Use as many global variables as you can; the Game Boy has a lot of RAM compared to other platforms such as the NES, but is slow at using the stack. Thus, minimizing the number of local variables, especially in heavily-called functions, will reduce the time spent manipulating the stack.
 - *Optimized code*<br>
-  SDCC doesn't seem to have optimization passes, so you should write code as efficient as possible. There will be a readability tradeoff after some point, so I recommend you get the comment machine gun out and put some everywhere.
+  Write code as efficient as possible. Sometimes there is a readability tradeoff, so I recommend you get the comment machine gun out and put some everywhere.
+- By default GBDK-2020 (after v4.0.1) will use the SDCC flag `--max-allocs-per-node 50000` for an increased optimization pass. You may also choose to use --opt-code-speed (optimize code generation towards fast code, possibly at the expense of codesize) or --opt-code-size (optimize code generation towards compact code, possibly at the expense of codespeed).
 - *Inlining*<br>
-  Avoid using functions if you can inline them, which skips passing all arguments to the stack, mostly. Macros will be your friends there.
+  When performance is important avoid using functions if you can inline them, which skips passing all arguments to the stack, mostly. Macros will be your friends there. If needed you can also use inline ASM.
 - **NEVER use recursive functions**
-- **NEVER use printf**<br>
-  `printf` clobbers a sizeable chunk of VRAM with unnecessary text tiles (unless you absolutely need hebrew in your game, I s'pose?). Instead, you should `sprintf` to a buffer in WRAM, then put that on the screen. Bonus: this lets you use a custom font!
+- **AVOID printf**<br>
+  `printf` clobbers a sizeable chunk of VRAM with unnecessary text tiles. Instead, you should `sprintf` to a buffer in WRAM, then put that on the screen using a custom font.
 - *Geometry funcs*<br>
   Avoid the functions that draw geometry on-screen (lines, rectangles, etc.). The Game Boy isn't designed for this kind of drawing method, and you will have a hard time mixing this with, say, background art. Plus, the functions are super slow.
 - `const` (very important!)<br>
-  Declaring something as `const` **severely** reduces its size in the ROM, RAM usage, and CPU usage.<br>
+  Declaring a variable that doesn't change as `const` **greatly** reduces the amount of ROM, RAM, and CPU used.<br>
   The technical reason behind that is that non-`const` values, *especially* arrays, are loaded to RAM from ROM in an *extremely* inefficient way. This takes up a LOT more ROM, and copies the value(s) to RAM when it's unneeded. (And the GB does not have enough RAM for that to be viable.)
 - *Don't use MBC1*<br>
   MBC1 is often assumed to be the simplest of all MBCs... but it has a quirk that adds some overhead every time ROM or SRAM bank switches are performed. MBC3 and MBC5 don't have this quirk, and don't add any complexity. Using MBC1 has no real use. (Let's not talk about MBC2, either.)
@@ -170,9 +221,9 @@ I also recommend looking up [awesome-gbdev](https://gbdev.io/list.html) for reso
 # Community And Help
 
 If you want to get help from the community, go:
-- to the historical IRC channel, #gbdev on [EFNet](http://efnet.net) \[if you don't have an IRC client, you can use the "Webchat login" box, just enter a username\],
-- to the more recent [Discord server](https://discord.gg/gpBxq85),
-- and to the [GBDev forums](http://gbdev.gg8.se/forums)!
+- To the historical IRC channel, #gbdev on [EFNet](http://efnet.net) \[if you don't have an IRC client, you can use the "Webchat login" box, just enter a username\].
+- To the more recent [gbdev Discord server](https://gbdev.io/chat.html) or [GBDK/ZGB](https://github.com/Zal0/gbdk-2020#discord-servers) specific server.
+- And to the [GBDev forums](http://gbdev.gg8.se/forums)!
 
 
 <hr>
@@ -182,3 +233,5 @@ Written by [ISSOtm](https://github.com/ISSOtm/) with help from [tobiasvl](https:
 I'm an active member of the GBDev community, which I joined about half a year ago. While that may seem small, my experience as a developer (check out my project, [Aevilia](https://github.com/ISSOtm/Aevilia-GB/)) and as a moderator of the Discord server, has allowed me to interact with RGBDS and GBDK users alike.
 
 Hopefully reading this was useful to you!
+
+
