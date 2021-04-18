@@ -19,7 +19,7 @@ This project is open source and community-lead. Come <a href="https://gbdev.io/c
 </div>
 <br>
 <div style="letter-spacing: -0.03em; font-weight: 500; font-size: 20px;">
-<a href="https://gbdev.io/chat">Join the community!</a></div>
+<a href="https://gbdev.io/chat">Chat with the community!</a></div>
 
 <br>
 
