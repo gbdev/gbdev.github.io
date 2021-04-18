@@ -64,7 +64,7 @@ A <b>curated list</b> of Game Boy development resources such as tools, guides, t
 <span></span></p>
 Rednex Game Boy Development System: the de-facto development toolkit for the Game Boy and Game Boy Color.
 <br><br>
-<p class="projectTitle"><a target="_blank" href="https://gbdev.io/chat">Discord server</a>&nbsp;<img height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=chat&colorB=green&suffix=%20online&query=presence_count&uri=https://discordapp.com/api/guilds/303217943234215948/widget.json&style=flat-square"></p>
+<p class="projectTitle"><a href="https://gbdev.io/chat">Discord server</a>&nbsp;<img height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=chat&colorB=green&suffix=%20online&query=presence_count&uri=https://discordapp.com/api/guilds/303217943234215948/widget.json&style=flat-square"></p>
 Where our community thrives. Here we <b>chat</b>, discuss, help each other and show what we are working on. There's an IRC channel, too.
 <br><br>
  <p class="projectTitle"><a target="_blank" href="https://gbhh.avivace.com">Homebrew Hub</a>&nbsp;<img height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=games&amp;suffix=%20entries&amp;colorB=blue&amp;query=games&amp;uri=https%3A%2F%2Fgbhh.avivace.com%2Fapi%2Finfo&amp;style=flat-square"></p>
