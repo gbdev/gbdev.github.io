@@ -26,8 +26,8 @@ module.exports = {
         collapsable: false,
         sidebarDepth: 1,
         children: [
-          ['/to_c_or_not_to_c', 'Choosing development tools'],
-          ['/guide', 'ASM Style guide']
+          ['/guides/tools', 'Choosing development tools'],
+          ['/guides/asmstyle', 'ASM Style guide']
         ]
       },],
       sidebarDepth: 2,
