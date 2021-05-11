@@ -9,13 +9,30 @@ module.exports = {
  //base: "/list",
   themeConfig: {
     sidebar: [
-      ['/', 'Community'],
+      {
+        title: 'Community',
+        path: '/',
+        collapsable: false,
+        sidebarDepth: 1,
+        children: [
+          ['/chat', 'Chat'],
+          ['/contribute', 'Contribute'],
+        ]
+      },
       ['/list', 'Resources'],
-      ['/chat', 'Chat'],
-      ['/contribute', 'Contribute'],
-      ['/to_c_or_not_to_c', 'To C or not to C']],
-       sidebarDepth: 2,
-        nav: [
+      {
+        title: 'Guides', 
+        //path: '/foo/', 
+        collapsable: false,
+        sidebarDepth: 1,
+        children: [
+          ['/guides/tools', 'Choosing development tools'],
+          ['/guides/asmstyle', 'ASM Style reccomendations'],
+          ['https://eldred.fr/gb-asm-tutorial/index.html', 'GB ASM Programming Guide']
+        ]
+      },],
+      sidebarDepth: 2,
+      nav: [
       { text: 'GitHub', link: 'https://github.com/gbdev' },
       { text: 'Patreon', link: 'https://www.patreon.com/gbdev01' },
       { text: 'OpenCollective', link: 'https://opencollective.com/gbdev/'}

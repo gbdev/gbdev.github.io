@@ -1,5 +1,5 @@
-Choosing tools for Game Boy development
----
+# Choosing tools for Game Boy development
+
 
 This essay gives an overview of the Game Boy's capabilities, discussing the pros and cons of the available development tools, and providing a few tips to write more efficient code.
 
