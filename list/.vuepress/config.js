@@ -9,13 +9,29 @@ module.exports = {
  //base: "/list",
   themeConfig: {
     sidebar: [
-      ['/', 'Community'],
+      {
+        title: 'Community',
+        path: '/',
+        collapsable: false,
+        sidebarDepth: 1,
+        children: [
+          ['/chat', 'Chat'],
+          ['/contribute', 'Contribute'],
+        ]
+      },
       ['/list', 'Resources'],
-      ['/chat', 'Chat'],
-      ['/contribute', 'Contribute'],
-      ['/to_c_or_not_to_c', 'To C or not to C']],
-       sidebarDepth: 2,
-        nav: [
+      {
+        title: 'Guides', 
+        //path: '/foo/', 
+        collapsable: false,
+        sidebarDepth: 1,
+        children: [
+          ['/to_c_or_not_to_c', 'Choosing development tools'],
+          ['/guide', 'ASM Style guide']
+        ]
+      },],
+      sidebarDepth: 2,
+      nav: [
       { text: 'GitHub', link: 'https://github.com/gbdev' },
       { text: 'Patreon', link: 'https://www.patreon.com/gbdev01' },
       { text: 'OpenCollective', link: 'https://opencollective.com/gbdev/'}
