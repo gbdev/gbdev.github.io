@@ -28,7 +28,7 @@ module.exports = {
         children: [
           ['/guides/tools', 'Choosing development tools'],
           ['/guides/asmstyle', 'ASM Style recomendations'],
-          ['https://eldred.fr/gb-asm-tutorial/index.html', 'GB ASM Programming Guide']
+          ['https://eldred.fr/gb-asm-tutorial', 'GB ASM Programming Guide']
         ]
       },],
       sidebarDepth: 2,
