@@ -64,6 +64,10 @@ A <b>curated list</b> of Game Boy development resources such as tools, guides, t
 <span></span></p>
 Rednex Game Boy Development System: the de-facto development toolkit for the Game Boy and Game Boy Color.
 <br><br>
+<p ><a class="projectTitle" target="_blank" href="https://github.com/gbdk-2020/gbdk-2020">GBDK&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdk-2020/gbdk-2020" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/rgbds on GitHub">Star</a>
+<span></span></p>
+Maintained and modernized GBDK, the Game Boy Development Kit. Now powered by an updated version of the SDCC toolchain, provides a C compiler, assembler, linker and a set of libraries.
+<br><br>
 <p class="projectTitle"><a href="https://gbdev.io/chat">Chat Channels</a>&nbsp;<img height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=chat&colorB=green&suffix=%20online&query=presence_count&uri=https://discordapp.com/api/guilds/303217943234215948/widget.json&style=flat-square"></p>
 The places our community thrives. Here we <b>chat</b>, discuss, help each other and show what we are working on. We have a Discord server, an IRC channel, and more.
 <br><br>
