@@ -19,6 +19,7 @@ module.exports = {
           ['/contribute', 'Contribute'],
         ]
       },
+      ['https://itch.io/jam/gbcompo21', 'gb compo 2021'],
       ['/list', 'Resources'],
       {
         title: 'Guides', 
