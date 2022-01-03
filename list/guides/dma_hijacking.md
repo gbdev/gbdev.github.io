@@ -1,6 +1,6 @@
 # DMA Hijacking
 
-Written by [ISSOtm](https://github.com/ISSOtm/gbz80-to-items).
+Written by [ISSOtm](https://github.com/ISSOtm).
 
 ---
 
