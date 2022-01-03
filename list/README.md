@@ -44,7 +44,7 @@ letter-spacing: -0.05em;">
 
 <div style="letter-spacing: -0.055em; font-weight: 500; font-size: 20px;">
         <br>
-We are a group of passionate developers working on homebrews, emulators and documentation for the Nintendo Game Boy handheld console, the original gray brick from 1989!
+We are a group of passionate developers working on homebrew games, emulators and documentation for the Nintendo Game Boy handheld console, the original gray brick from 1989!
 </div>
 
 <a href="https://github.com/gbdev" target="_blank"> <img height="40" width="40" :src="$withBase('/images/github.svg')"></a>&nbsp;<a href="https://instagram.com/gbdev0" target="_blank"><img height="40" width="40" :src="$withBase('/images/instagram.svg')"></a>&nbsp;<a href="https://twitter.com/gbdev0" target="_blank"><img height="40" width="40" :src="$withBase('/images/twitter.svg')"></a>&nbsp;<a href="https://gbdev.io/chat" target="_blank"><img height="40" width="40" :src="$withBase('/images/discord.svg')"></a>

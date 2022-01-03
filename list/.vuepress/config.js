@@ -29,6 +29,7 @@ module.exports = {
         children: [
           ['/guides/tools', 'Choosing development tools'],
           ['/guides/asmstyle', 'ASM Style recomendations'],
+          ['/guides/lyc_timing', 'The Timing of LYC STAT Handlers'],
           ['https://eldred.fr/gb-asm-tutorial', 'GB ASM Programming Guide']
         ]
       },],

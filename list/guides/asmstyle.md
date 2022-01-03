@@ -1,6 +1,8 @@
 # Game Boy ASM style guide
 
-Version `1.0`.
+Written by [ISSOtm](https://github.com/ISSOtm/)
+
+---
 
 This style guide aims to formalize a style that most Game Boy ASM programmers agree on, and provide a good baseline for new programmers just starting in this field. (If that's you, welcome! :D)
 
