@@ -1,5 +1,8 @@
 # DMA Hijacking
-Article by [ISSOtm](https://github.com/ISSOtm/gbz80-to-items).
+
+Written by [ISSOtm](https://github.com/ISSOtm/gbz80-to-items).
+
+---
 
 ## What is this ?
 It's a simple technique that allows you to run custom code in most GB/SGB/CGB games, provided you have an ACE exploit.
