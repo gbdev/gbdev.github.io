@@ -80,8 +80,6 @@ A <b>library</b> of Game Boy related software, hardware and literature. Aimed to
 
 </div>
 
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-
 <script>
 export default {
   mounted () {
