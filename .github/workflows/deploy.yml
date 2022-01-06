@@ -26,7 +26,8 @@ jobs:
     - working-directory: folder/
       run: |
         cd repo
-        npx vuepress build list
+        npm install
+        npm run build
         mkdir dist
         cp list/.vuepress/dist/* dist/ -r
         cp CNAME dist/
