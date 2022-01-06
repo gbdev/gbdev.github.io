@@ -1,5 +1,8 @@
 // .vuepress/config.js
 module.exports = {
+      plugins: [
+    ['@vuepress/plugin-shiki', {'langs': ['asm']}],
+  ],
   	title: 'gbdev',
     description: 'game boy development scene',
     head: [
@@ -8,35 +11,34 @@ module.exports = {
     ],
  //base: "/list",
   themeConfig: {
+    contributors: false,
     sidebar: [
       {
-        title: 'Community',
-        path: '/',
+        text: 'Community',
+        link: '/',
         collapsable: false,
         sidebarDepth: 1,
         children: [
-          ['/chat', 'Chat'],
-          ['/contribute', 'Contribute'],
+          {link: '/chat', text: 'Chat'},
+          {link: '/contribute', text: 'Contribute'},
         ]
       },
-      ['https://itch.io/jam/gbcompo21', 'gb compo 2021'],
-      ['/list', 'Resources'],
+      { link: 'https://itch.io/jam/gbcompo21', text:'gb compo 2021'},
+      { link: '/list', text: 'Resources'},
       {
-        title: 'Guides', 
-        //path: '/foo/', 
+        text: 'Guides', 
         collapsable: false,
         sidebarDepth: 1,
         children: [
-          ['/guides/tools', 'Choosing development tools'],
-          ['/guides/asmstyle', 'ASM Style recomendations'],
-          ['/guides/lyc_timing', 'The Timing of LYC STAT Handlers'],
-          ['/guides/dma_hijacking', 'DMA Hijacking'],
-          ['https://eldred.fr/gb-asm-tutorial', 'GB ASM Programming Guide']
+          { link: '/guides/tools', text:'Choosing development tools'},
+          { link: '/guides/asmstyle', text:'ASM Style recomendations'},
+          { link: '/guides/lyc_timing', text:'The Timing of LYC STAT Handlers'},
+          { link: '/guides/dma_hijacking', text:'DMA Hijacking'},
+          { link: 'https://eldred.fr/gb-asm-tutorial', text:'GB ASM Programming Guide'}
         ]
-      },],
-      sidebarDepth: 2,
-      nav: [
-      { text: 'GitHub', link: 'https://github.com/gbdev' },
+      }
+      ],
+      navbar: [
       { text: 'Patreon', link: 'https://www.patreon.com/gbdev01' },
       { text: 'OpenCollective', link: 'https://opencollective.com/gbdev/'}
     ]
