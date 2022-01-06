@@ -37,20 +37,22 @@
                         <div id='speakerFilter'></div>
     </div>
 </div>
+<br><br>
 <div style="line-height: 90%;letter-spacing: -0.05em; font-weight: 400; font-size: 2.7em;"><span style="font-weight: 600;
 letter-spacing: -0.05em;">
     Game Boy Development
 </span>community</div>
 
-<div style="letter-spacing: -0.055em; font-weight: 500; font-size: 20px;">
+<div style="letter-spacing: -0.025em; font-weight: 500; font-size: 20px;">
         <br>
 We are a group of passionate developers working on homebrew games, emulators and documentation for the Nintendo Game Boy handheld console, the original gray brick from 1989!
 </div>
 
-<a href="https://github.com/gbdev" target="_blank"> <img height="40" width="40" :src="$withBase('/images/github.svg')"></a>&nbsp;<a href="https://instagram.com/gbdev0" target="_blank"><img height="40" width="40" :src="$withBase('/images/instagram.svg')"></a>&nbsp;<a href="https://twitter.com/gbdev0" target="_blank"><img height="40" width="40" :src="$withBase('/images/twitter.svg')"></a>&nbsp;<a href="https://gbdev.io/chat" target="_blank"><img height="40" width="40" :src="$withBase('/images/discord.svg')"></a>
-
 <div>
-Here's a quick showcase of what we are up to:<br><br>
+
+# Projects
+
+Here's a quick showcase of what we are up to:<br>
 
 <p> <a class="projectTitle" target="_blank" href="https://gbdev.io/pandocs/">Pan Docs&nbsp;</a><a class="github-button" target="_blank" href="https://github.com/gbdev/pandocs" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/awesome-gbdev on GitHub">Star</a>
 <span></span></p>
@@ -62,7 +64,7 @@ A <b>curated list</b> of Game Boy development resources such as tools, guides, t
 <br><br>
 <p ><a class="projectTitle" target="_blank" href="https://github.com/gbdev/rgbds">RGBDS&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/rgbds" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/rgbds on GitHub">Star</a>
 <span></span></p>
-Rednex Game Boy Development System: the de-facto development toolkit for the Game Boy and Game Boy Color.
+Rednex Game Boy Development System: the de-facto ASM development toolkit for the Game Boy and Game Boy Color.
 <br><br>
 <p ><a class="projectTitle" target="_blank" href="https://github.com/gbdk-2020/gbdk-2020">GBDK&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdk-2020/gbdk-2020" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/rgbds on GitHub">Star</a>
 <span></span></p>
@@ -79,6 +81,9 @@ A community-led attempt to collect, archive and save every unofficial game, home
 A <b>library</b> of Game Boy related software, hardware and literature. Aimed to mirror and preserve old and fragmented contributions in the scene from the last three decades.
 
 </div>
+
+More projects can be found under our [GitHub organisation](https://github.com/gbdev).
+
 
 <script>
 export default {
@@ -126,7 +131,7 @@ By `heero`. Originally found at https://codepen.io/heero/pen/wylhv
   float: right;
   width: 130px;
   height: 220px;
-  margin: 1px 20px 50px 50px;
+  margin: 15px 20px 50px 50px;
 }
 
 #back {
