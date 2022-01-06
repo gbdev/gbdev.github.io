@@ -1,0 +1,21 @@
+{
+  "name": "gbdev.github.io",
+  "version": "1.0.0",
+  "description": "Source repository of the gbdev landing website. GitHub Pages serves the content of the `master` branch on [gbdev.github.io](https://gbdev.github.io).",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev list",
+    "build": "vuepress build list"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gbdev/gbdev.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gbdev/gbdev.github.io/issues"
+  },
+  "homepage": "https://gbdev.io",
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.32"
+  }
+}
