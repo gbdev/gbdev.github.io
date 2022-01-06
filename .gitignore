@@ -2,3 +2,5 @@ dist/
 node_modules/
 *.swp
 **/.DS_Store
+.cache/
+.temp/
