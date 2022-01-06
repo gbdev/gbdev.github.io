@@ -38,7 +38,7 @@ Note that:
 
 Now, I will have a bunch of diagrams showing the timing of various situations. Each row represents exactly one scanline, and the columns show the individual cycles. Consider zooming in to better see these cycles. First, let’s consider a simple LYC routine. It will disable sprites if called for line 128, but otherwise, it will enable them.
 
-```
+```asm
 LYC::
 	push af
 	ldh a, [rLY]
@@ -59,6 +59,7 @@ LYC::
 	pop af
 	reti
 ```
+
 Note that this may not be an especially well-written LYC routine, but the actual logic of the routine itself is outside the scope of this tutorial. If that’s what you’re looking for, check out [DeadCScroll](https://github.com/gb-archive/DeadCScroll) by Blitter Object. It uses the Hblank interrupt rather than the LYC interrupt, but it should still teach you some fundamentals. However, that tutorial does not attempt to solve the problems described below, so be wary of combining that tutorial’s STAT routine with STAT-based VRAM accesses in the main thread.
 
 Here’s how the timing of all this might look:
@@ -94,7 +95,7 @@ Here, the long blue strip represents the time spent within the interrupt routine
 Once again, the VRAM access time overlaps with the Drawing phase. The problem here is that the register write, pop and reti all take some of those guaranteed cycles when it is possible to access VRAM. So, the real solution is to fully exit before the end of Hblank. There are two ways to do this. One is to wait for the Drawing phase before waiting for Hblank. This effectively catches the very start of Hblank, leaving plenty of time to exit. Here’s how the earlier example might look using this method:
 
   
-```
+```asm
 LYC::
 	push af
 	push hl
@@ -142,7 +143,7 @@ This time, when all the processing was done, there was still plenty of time left
 
 I’m a bit of a perfectionist, so I usually like to strive for the absolute best method. In a perfect world, we would precisely know whether we have enough Hblank left to safely exit. There actually is a way to do that though! You just need to count exactly how long your routine takes, and make sure it always exits during Hblank. This comes with some caveats though. Most routines, if they haven’t been specifically designed for this method, will take a variable amount of time. The main things you need to avoid are ‘if’ statements and loops. Specifically, if statements of this form are problematic:
 
-```
+```asm
 	; test a condition here...
 
 jr nc, .skip ; skip the next part unless Carry is set
@@ -224,7 +225,8 @@ But what if you could combine both these methods? Enter the **Hybrid Cycle-Count
 ## Combining Approaches
 
 The goal of this method is to combine the maximum Hblank time that cycle-counting delivers, while still exiting early when Hblank is longer. Here is an example. If you’ve read [DeadCScroll](https://github.com/gb-archive/DeadCScroll), you’ll recognise this as that tutorial’s STAT Handler, modified to start at Mode 2 rather than Hblank, and be safe towards VRAM accesses in the main thread.
-```
+
+```asm
 push af ; 4
 push hl ; 8
 

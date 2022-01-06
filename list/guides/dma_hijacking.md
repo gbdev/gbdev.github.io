@@ -17,7 +17,8 @@ Well, most games copy the routine when starting up and run it on every frame. I 
 But if the routine is modified while the game is running - assuming you modify it fully in-between to VBlanks to prevent a crash, or you temporarily put a RET while modifying - then the game will happily run your custom routine.
 
 Here is the standard routine, given by Nintendo in the GB programming manual :
-```
+
+```asm
 ld a, OAMBuffer >> 8
 ldh [$FF46], a
 ld a, $28
@@ -31,7 +32,7 @@ It's usually placed right at `$FF80`, but this isn't true for every game.
 Now, overwriting the routine to place custom code would yield us 10 bytes to perform custom operations, at the cost of sprites.
 But we can do better.
 
-```
+```asm
 call DMAHook
 ldh [$FF00+c], a
 ld a, $28
@@ -44,7 +45,7 @@ ret
 Allows us to make the perfect compromise !
 Here is a pattern for DMAHook :
 
-```
+```asm
 DMAHook:
 [ custom code, do whatever you want, it's VBlank time ! ]
 ld c, $46
