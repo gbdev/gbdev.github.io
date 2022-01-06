@@ -1,12 +1,14 @@
-# gbdev landing page
+# gbdev website
 
-Source repository of the gbdev landing website. GitHub Pages serves the content of the `master` branch on [gbdev.github.io](https://gbdev.github.io). 
+Game Boy development website hosted at [gbdev.io](https://gbdev.io), powered by Vuepress 2.x
 
-> Development is done on the `dev` branch due to GitHub's restriction on branches for user pages.
+```bash
+# Install dependencies
+npm install
 
-Build and deploy:
-```
-npx vuepress build list/
-cp list/.vuepress/dist/* dist/list -R
-npx gh-pages -d dist -b master
+# Start a local hot-reloading development server at http://localhost:8080
+npm run dev
+
+# Build website
+npm run build
 ```
