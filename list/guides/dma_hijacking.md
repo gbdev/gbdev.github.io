@@ -1,3 +1,13 @@
+---
+head:
+  - - meta
+    - name: og:title
+      content: DMA Hijacking on Game Boy
+  - - meta
+    - name: og:description
+      content: A technique that allows you to run custom code in most GB/SGB/CGB games, provided you have an ACE exploit.
+---
+
 # DMA Hijacking
 
 Written by [ISSOtm](https://github.com/ISSOtm).
