@@ -1,0 +1,2 @@
+const e={key:"v-8daa1a0e",path:"/",title:"Projects",lang:"en-US",frontmatter:{sidebar:!1,head:[["meta",{name:"og:title",content:"gbdev.io homepage"}],["meta",{name:"og:description",content:`Home of the Game Boy and Game Boy Advance homebrew development scene. We are working on (open) development tools, documentation and digital preservation.
+`}]]},excerpt:"",headers:[],filePathRelative:"README.md"};export{e as data};
