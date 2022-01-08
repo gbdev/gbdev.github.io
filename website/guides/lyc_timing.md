@@ -16,6 +16,9 @@ Written by [Ron Nelson](https://github.com/rondnelson99/)
 
 Raster effects are probably the greatest asset that retro game consoles have.
 The fact that the PPU generates the image right as it is displayed allows many special effects to be created by modifying the drawing parameters while the image is being drawn.
+
+![Example of raster effect](/deadcscroll/gif/xysine.gif)
+
 However, unlike some consoles like the SNES, raster effects on the Game Boy have to be performed by the CPU.
 The easiest way to implement raster effects is with the rLYC register at $FF45.
 Here's how the Pan Docs explain this register's simple function:
