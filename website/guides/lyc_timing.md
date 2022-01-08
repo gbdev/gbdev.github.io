@@ -98,7 +98,7 @@ LYC::
 ```
 
 Note that this may not be an especially well-written `LYC` routine, but the actual logic of the routine itself is outside the scope of this tutorial.
-If that's what you're looking for, check out [DeadCScroll](https://github.com/gb-archive/DeadCScroll) by Blitter Object.
+If that's what you're looking for, check out [DeadCScroll](deadcscroll) by Blitter Object.
 It uses the HBlank interrupt rather than the `LYC` interrupt, but it should still teach you some fundamentals.
 However, that tutorial does not attempt to solve the problems described below, so be wary of combining that tutorial's STAT routine with STAT-based VRAM accesses in the main thread.
 
@@ -294,7 +294,7 @@ But what if you could combine both these methods? Enter the **Hybrid Cycle-Count
 
 The goal of this method is to combine the maximum HBlank time that cycle-counting delivers, while still exiting early when HBlank is longer.
 Here is an example.
-If you've read [DeadCScroll](https://github.com/gb-archive/DeadCScroll), you'll recognise this as that tutorial's `STAT` Handler, modified to start at Mode 2 rather than HBlank, and be safe towards VRAM accesses in the main thread.
+If you've read [DeadCScroll](deadcscroll), you'll recognise this as that tutorial's `STAT` Handler, modified to start at Mode 2 rather than HBlank, and be safe towards VRAM accesses in the main thread.
 
 ```asm
     push af ; 4
