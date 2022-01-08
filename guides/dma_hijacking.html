@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="VuePress 2.0.0-beta.32">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png"><meta property="og:site_name" content="gbdev.io"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@gbdev0"><meta name="og:image" content="https://gbdev.io/images/gbinternals.png"><title>DMA Hijacking | gbdev</title><meta name="description" content="game boy development scene">
-    <link rel="modulepreload" href="/assets/app.c2e35094.js"><link rel="modulepreload" href="/assets/dma_hijacking.html.a33d9b90.js"><link rel="modulepreload" href="/assets/plugin-vue_export-helper.21dcd24c.js"><link rel="modulepreload" href="/assets/dma_hijacking.html.e51cb3f4.js">
+    <meta name="og:title" content="DMA Hijacking on Game Boy"><meta name="og:description" content="A technique that allows you to run custom code in most GB/SGB/CGB games, provided you have an ACE exploit."><link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png"><meta property="og:site_name" content="gbdev.io"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@gbdev0"><meta name="og:image" content="https://gbdev.io/images/gbinternals.png"><title>DMA Hijacking | gbdev</title><meta name="description" content="game boy development scene">
+    <link rel="modulepreload" href="/assets/app.a6eabce3.js"><link rel="modulepreload" href="/assets/dma_hijacking.html.7a899080.js"><link rel="modulepreload" href="/assets/plugin-vue_export-helper.21dcd24c.js"><link rel="modulepreload" href="/assets/dma_hijacking.html.12e6e570.js">
     <link rel="stylesheet" href="/assets/style.7476d0f4.css">
   </head>
   <body>
@@ -69,6 +69,6 @@
 <span class="line"><span style="color:#D8DEE9FF;">    ld a, HIGH(OAMBuffer)</span></span>
 <span class="line"><span style="color:#D8DEE9FF;">    </span><span style="color:#81A1C1;">ret</span></span>
 <span class="line"></span></code></pre><div class="highlight-lines"><br><br><br><div class="highlight-line"> </div><div class="highlight-line"> </div><br></div><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>However, if the OAM buffer address passed to the function (in <code>a</code>) is not static, <code>push af</code> and <code>pop af</code> will have to be used instead of <code>ld a, HIGH(OAMBuffer)</code>.</p></li></ul><!--]--></div><footer class="page-meta"><!----><!----><!----></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
-    <script type="module" src="/assets/app.c2e35094.js" defer></script>
+    <script type="module" src="/assets/app.a6eabce3.js" defer></script>
   </body>
 </html>
