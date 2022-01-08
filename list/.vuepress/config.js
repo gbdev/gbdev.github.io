@@ -14,8 +14,9 @@ module.exports = {
     ],
     //base: "/list",
     themeConfig: {
+        lastUpdated: false,
         contributors: false,
-        sidebar: [{
+        navbar: [{
                 text: 'Community',
                 link: '/',
                 collapsable: false,
@@ -23,33 +24,24 @@ module.exports = {
                 children: [
                     { link: '/chat', text: 'Chat' },
                     { link: '/contribute', text: 'Contribute' },
+                    {
+                        link: '/gbcompo21',
+                        text: 'GB Competition 2021',
+                    }
                 ]
             },
             { link: '/list', text: 'Resources' },
             {
                 text: 'Guides',
-                collapsable: false,
-                sidebarDepth: 1,
                 children: [
                     { link: '/guides/tools', text: 'Choosing development tools' },
                     { link: '/guides/asmstyle', text: 'ASM Style recomendations' },
                     { link: '/guides/lyc_timing', text: 'The Timing of LYC STAT Handlers' },
-                    { link: '/guides/deadcscroll', text: 'Dead C Scroll'},
+                    { link: '/guides/deadcscroll', text: 'Dead C Scroll' },
                     { link: '/guides/dma_hijacking', text: 'DMA Hijacking' },
                     { link: 'https://eldred.fr/gb-asm-tutorial', text: 'GB ASM Programming Guide' }
                 ]
-            },
-            {
-                link: '/gbcompo21',
-                text: 'GB Competition 2021',
-                children: [
-                    { link: '/gbcompo21-results', text: 'Results' },
-                ]
             }
-        ],
-        navbar: [
-            { text: 'Patreon', link: 'https://www.patreon.com/gbdev01' },
-            { text: 'OpenCollective', link: 'https://opencollective.com/gbdev/' }
         ]
     }
 }
