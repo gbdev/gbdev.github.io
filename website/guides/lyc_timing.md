@@ -20,7 +20,7 @@ The fact that the PPU generates the image right as it is displayed allows many s
 ![Example of raster effect](/deadcscroll/gif/xysine.gif)
 
 However, unlike some consoles like the SNES, raster effects on the Game Boy have to be performed by the CPU.
-The easiest way to implement raster effects is with the rLYC register at $FF45.
+The easiest way to implement raster effects is with the LYC register at $FF45.
 Here's how the Pan Docs explain this register's simple function:
 
 > [**FF45 - LYC (LY Compare) (R/W)**](https://gbdev.io/pandocs/Scrolling.html#ff45---lyc-ly-compare-rw)
@@ -30,7 +30,7 @@ Here's how the Pan Docs explain this register's simple function:
 
 So, the basic setup for raster FX is as follows:
 
-1. Request an interrupt by setting rLYC to the appropriate scanline
+1. Request an interrupt by setting LYC to the appropriate scanline
 2. The system will start your interrupt routine when that scanline begins
 3. Perform your chosen effect by modifying PPU registers
 4. Exit with reti
@@ -44,7 +44,7 @@ You may know that LYC interrupts are requested at the start of a scanline, which
 However, because of Mode 2's short duration combined with unreliability of interrupt timing, you will not reliably have enough time to perform your write.
 Therefore, you have to wait for the next HBlank to perform your register write.
 You also need to compensate for this by requesting an interrupt on the line before the one on which you wish to perform your effect.
-For instance, if I want to enable sprites at line 16 when my upper status bar finishes drawing, I would write 15 to rLYC.
+For instance, if I want to enable sprites at line 16 when my upper status bar finishes drawing, I would write 15 to LYC.
 
 Like I mentioned above, the time at which your handler will begin execution will be delayed by an inconsistent amount, which makes it difficult to determine when the beginning of HBlank will come.
 You'll see why this is and how this can be avoided later.
@@ -119,7 +119,7 @@ The other problem is what might be happening during the main thread:
 ![](/images/main_thread.png)
 
 This is the worst-case scenario for a STAT-based VRAM access.
-Here, the main thread reads rSTAT on the very last cycle of HBlank.
+Here, the main thread reads STAT on the very last cycle of HBlank.
 After the brief processing of the value it read, the main loop may use the 16 guaranteed cycles of OAM scan to access VRAM.
 This just barely works out.
 But what happens if an interrupt is requested on that next cycle?
@@ -350,8 +350,8 @@ If you've read [DeadCScroll](https://github.com/gb-archive/DeadCScroll), you'll 
 ```
 
 Once the handler finishes its logic, the handler delays cycles until it reaches the window then HBlank might start.
-With a 5-cycle offset due to a `call`, and the longest possible HBlank, the earliest HBlank might start is cycle 54, so that's the first attempt to read rSTAT.
-It keeps checking rSTAT until even in the worst-case scenario, it knows that HBlank will start.
+With a 5-cycle offset due to a `call`, and the longest possible HBlank, the earliest HBlank might start is cycle 54, so that's the first attempt to read STAT.
+It keeps checking STAT until even in the worst-case scenario, it knows that HBlank will start.
 Then, it uses that time to write the scroll registers and exit.
 This way, it can still exit early, as long as the HBlank length permits.
 This routine takes 104 cycles in the worst-case scenario, but may take as few as 79 if HBlank comes sooner.
