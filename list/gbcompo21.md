@@ -5,7 +5,9 @@ head:
       content: GB Compo 2021
   - - meta
     - name: og:description
-      content: An OG game competition! Create original games, demos, homebrews tools and music for the original Game Boy / Game Boy Color and compete for glory (and a lot of prizes)!
+      content: >
+        An OG game competition! Create original games, demos, homebrews tools and music
+        for the original Game Boy / Game Boy Color and compete for glory (and a lot of prizes)!
 ---
 
 # Game Boy Competition 2021

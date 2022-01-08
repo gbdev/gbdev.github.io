@@ -6,8 +6,10 @@ head:
       content: gbdev.io homepage
   - - meta
     - name: og:description
-      content: Home of the Game Boy and Game Boy Advance homebrew development scene.
-We are working on (open) development tools, documentation and digital preservation.
+      content: >
+        Home of the Game Boy and Game Boy Advance homebrew development scene.
+        We are working on (open) development tools, documentation and digital
+        preservation.
 ---
 
 <div id='outer'>
