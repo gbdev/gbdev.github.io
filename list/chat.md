@@ -1,5 +1,12 @@
 ---
 sidebar: false
+head:
+  - - meta
+    - name: og:title
+      content: gbdev chat channels
+  - - meta
+    - name: og:description
+      content: Join gbdev.io community channels
 ---
 
 # Community chat channels

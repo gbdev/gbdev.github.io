@@ -1,6 +1,13 @@
 ---
-title: Awesome list
+title: Resources
 lang: en-US
+head:
+  - - meta
+    - name: og:title
+      content: Game Boy dev resources
+  - - meta
+    - name: og:description
+      content: A curated list of awesome Development resources, tools, docs, related projects and homebrews.
 ---
 
 <br>
