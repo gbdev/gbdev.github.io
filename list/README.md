@@ -1,3 +1,7 @@
+---
+sidebar: false
+---
+
 <div id='outer'>
 <!-- Game Boy animation by `heero`. Originally found at https://codepen.io/heero/pen/wylhv -->
 <div id='container'>
