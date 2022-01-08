@@ -1,3 +1,13 @@
+---
+head:
+  - - meta
+    - name: og:title
+      content: GB ASM style guide
+  - - meta
+    - name: og:description
+      content: This style guide aims to formalize a style that most Game Boy ASM programmers agree on, and provide a good baseline for new programmers just starting in this field.
+---
+
 # Game Boy ASM style guide
 
 Written by [ISSOtm](https://github.com/ISSOtm/)

@@ -1,3 +1,13 @@
+---
+head:
+  - - meta
+    - name: og:title
+      content: Dead C Scroll tutorial
+  - - meta
+    - name: og:description
+      content: An assembly tutorial for Game Boy showing how the scroll registers can be exploited to create some nice and interesting effects.
+---
+
 # Dead C Scroll
 
 An assembly tutorial for Game Boy showing how the scroll registers can be exploited to create some nice and interesting effects.

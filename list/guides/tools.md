@@ -1,3 +1,14 @@
+---
+head:
+  - - meta
+    - name: og:title
+      content: Choosing tools for Game Boy development
+  - - meta
+    - name: og:description
+      content: Overview of the available tools for Game Boy development.
+---
+
+
 # Choosing tools for Game Boy development
 
 
