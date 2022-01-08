@@ -22,7 +22,7 @@ The `SCY`/`SCX` registers have a simple purpose: specify the coordinate of the s
 
 When you don't require scrolling, and when your cart boots, `SCY`/`SCX` is typically set to 0,0. When a screen is displayed, it appears normally even though you only set the values once. This is because as the screen draws, the PPU automatically adds the value in `LY` ($FF44) to the value in `SCY` in order to know what row of pixels to draw.
 
-```
+```:no-line-numbers
 SCY value (set once)
 │
 │      screen
@@ -37,7 +37,7 @@ SCY value (set once)
       └───────┘
 ```
 If `SCY` = $20 (for example):
-```
+```:no-line-numbers
 SCY value (set once)
 │
 │      screen
@@ -55,7 +55,7 @@ SCY value (set once)
 You can take advantage of how the PPU renders the screen by setting these registers *as the screen draws*. If you do this, you can create some interesting 'raster' effects that are presented here.
 
 As an example, let's say you wanted to triple line 0 and show it for line 0, line 1, and line 2, and then continue with line 3. You would write to the `SCY` register like so:
-```
+```:no-line-numbers
 SCY value (set once per line)
 │
 │      screen
@@ -93,7 +93,7 @@ There are two key elements to make this system very stable and very fast:
 The idea of the double-buffer is that while one buffer is being used by the hardware to draw the screen, you modify (fill) values in the other. When the screen is done drawing, you switch buffers so the one you were just modifying is being used for drawing and you start modifying the other.
 
 While the Draw Buffer (A) is used to render the screen, you change values in the Fill Buffer (B).
-```
+```:no-line-numbers
 ┌───────┐   ┌───────┐
 │Draw   │   │Fill   │
 │Buffer │   │Buffer │
@@ -106,7 +106,7 @@ While the Draw Buffer (A) is used to render the screen, you change values in the
 ```
 
 When the screen is done being drawn (and you know this because the VBlank interrupt would have triggered or the value in `LY` changed to 144), you switch the buffers.
-```
+```:no-line-numbers
 ┌───────┐   ┌───────┐
 │Fill   │   │Draw   │
 │Buffer │   │Buffer │
@@ -119,7 +119,7 @@ When the screen is done being drawn (and you know this because the VBlank interr
 ```
 
 Here, "switch buffers" means to switch the *purpose* of each buffer. It doesn't mean to copy buffers. Remember, we need this to be as fast as possible so to change buffers, you simply change pointers:
-```
+```:no-line-numbers
 Draw-->┌───────┐   Fill-->┌───────┐
 Ptr    │Buffer │   Ptr    │Buffer │
        │A      │          │B      │
@@ -131,7 +131,7 @@ Ptr    │Buffer │   Ptr    │Buffer │
        └───────┘          └───────┘
 ```
 Becomes:
-```
+```:no-line-numbers
 Fill-->┌───────┐   Draw-->┌───────┐
 Ptr    │Buffer │   Ptr    │Buffer │
        │A      │          │B      │
