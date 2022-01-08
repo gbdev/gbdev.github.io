@@ -11,6 +11,11 @@ module.exports = {
     head: [
         ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicons/favicon-32x32.png" }],
         ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicons/favicon-16x16.png" }],
+        // Default meta values, frontmatter the pages will overwrite this
+        ['meta', { property: 'og:site_name', content: 'gbdev.io' }],
+        ['meta', { name: 'twitter:card', content: 'summary' }],
+        ['meta', { name: 'twitter:site', content: '@gbdev0' }],
+        ['meta', { name: 'og:image', content : 'https://gbdev.io/images/gbinternals.png'}]
     ],
     //base: "/list",
     themeConfig: {
