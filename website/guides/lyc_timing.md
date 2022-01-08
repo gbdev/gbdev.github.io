@@ -74,24 +74,24 @@ It will disable sprites if called for line 128, but otherwise, it will enable th
 
 ```asm
 LYC::
-	push af
-	ldh a, [rLY]
-	cp 128 - 1
-	jr z, .disableSprites
+    push af
+    ldh a, [rLY]
+    cp 128 - 1
+    jr z, .disableSprites
 
-	; enable sprites
-	ldh a, [rLCDC]
-	set LCDCB_OBJON, a
-	ldh [rLCDC], a
-	pop af
-	reti
+    ; enable sprites
+    ldh a, [rLCDC]
+    set LCDCB_OBJON, a
+    ldh [rLCDC], a
+    pop af
+    reti
 
 .disableSprites
-	ldh a, [rLCDC]
-	res LCDCB_OBJON, a
-	ldh [rLCDC], a
-	pop af
-	reti
+    ldh a, [rLCDC]
+    res LCDCB_OBJON, a
+    ldh [rLCDC], a
+    pop af
+    reti
 ```
 
 Note that this may not be an especially well-written LYC routine, but the actual logic of the routine itself is outside the scope of this tutorial.
@@ -145,34 +145,34 @@ Here's how the earlier example might look using this method:
 
 ```asm
 LYC::
-	push af
-	push hl
-	ldh a, [rLY]
-	cp 128 - 1
+    push af
+    push hl
+    ldh a, [rLY]
+    cp 128 - 1
 jr z, .disableSprites
 
-	; enable sprites
-	ldh a, [rLCDC]
-	set LCDCB_OBJON, a
-	jr .finish
+    ; enable sprites
+    ldh a, [rLCDC]
+    set LCDCB_OBJON, a
+    jr .finish
 
 .disableSprites
-	ldh a, [rLCDC]
-	res LCDCB_OBJON, a
+    ldh a, [rLCDC]
+    res LCDCB_OBJON, a
 
 .finish
-	ld hl, rSTAT
-	.waitNotBlank
-	bit STATB_BUSY, [hl]
-	jr z, .waitNotBlank
-	.waitBlank
-	bit STATB_BUSY, [hl]
-	jr nz, .waitBlank
+    ld hl, rSTAT
+    .waitNotBlank
+    bit STATB_BUSY, [hl]
+    jr z, .waitNotBlank
+    .waitBlank
+    bit STATB_BUSY, [hl]
+    jr nz, .waitBlank
 
-	ldh [rLCDC], a
-	pop hl
-	pop af
-	reti
+    ldh [rLCDC], a
+    pop hl
+    pop af
+    reti
 ```
 
 See how this method never interferes with VRAM accesses in the main thread, even with the worst possible timing and the shortest of HBlanks:
@@ -201,14 +201,14 @@ The main things you need to avoid are `if` statements and loops.
 Specifically, if statements of this form are problematic:
 
 ```asm
-	; test a condition here...
+    ; test a condition here...
 
 jr nc, .skip ; skip the next part unless Carry is set
 
-	; do something here, only if the previous operation set Carry
+    ; do something here, only if the previous operation set Carry
 
 .skip
-	; continue on with the program.
+    ; continue on with the program.
 ```
 
 The problem here is that the code following this pattern may be run after a variable number of cycles have passed.
