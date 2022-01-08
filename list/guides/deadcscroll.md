@@ -147,7 +147,7 @@ In summary: each buffer is 145 2-byte elements (290 bytes), and we need two of t
 
 Assume for a moment that you put the buffers physically next to each other in memory. For example, Buffer A is at `$C000` and Buffer B is at `$C122` (the buffer size is 290 bytes). We said earlier that in order to swap buffers, we just swap pointers, so the code that does that might look like this:
 
-```
+```asm
 ; assume the pointers are next to each other in memory
 wDrawBuffer: DS 2 ; buffer currently being drawn
 wFillBuffer: DS 2 ; buffer currently being modified
@@ -169,7 +169,7 @@ ld  [hl+],a
 ld  [hl],b
 ```
 To use a pointer, that code looks like this:
-```
+```asm
 ; use a pointer (8 cycles)
 ld  hl,wFillBuffer
 ld  a,[hl+]
@@ -184,7 +184,7 @@ Consider this: other than the memory locations, the buffers are identical. Since
 We can keep Buffer A at `$C000`. The buffer size is `$122` bytes, but instead of putting Buffer B at `$C122`, what if we put it at `$C200`? This would make the pointer values `$C000` and `$C200`. Literally a 1-bit difference. This, too, can be exploited! Both pointers end in `$00` so we don't need to store those, which saves 2 bytes. This leaves us with two 1-byte 'pointers': `$C0` and `$C2`.
 
 To swap the pointers, literally just one bit has to be toggled:
-```
+```asm
 ; swap the contents of each 'pointer' (11 cycles)
 ldh a,[hFillBuffer]
 ldh [hDrawBuffer],a
@@ -192,7 +192,7 @@ xor $02
 ldh [hFillBuffer],a
 ```
 And to use a pointer, we only need to do this:
-```
+```asm
 ; use a 'pointer' (6 cycles)
 ldh a,[hFillBuffer]
 ld  h,a
@@ -209,7 +209,7 @@ In this system, code in the VBlank is responsible for two things:
 
 We've already seen what swapping the pointers looks like, but how is the data set for line 0? We need to emulate an HBlank handler running for "line -1" by getting the start of the new draw buffer and setting the scroll registers with the first data pair:
 
-```
+```asm
 ldh a,[hDrawBuffer]
 ld  h,a
 ld  l,0
@@ -226,7 +226,7 @@ It's convenient that the scroll register addresses are next to each other. The d
 
 In an HBlank handler, **every cycle counts**! So don't do any work in there unless it's absolutely necessary. This is a good target for hyper-optimizations -- especially if you are changing VRAM (like palettes) -- so one should design around that optimization.
 
-```
+```asm
 HBlankHandler::
   push  af
   push  hl
@@ -272,7 +272,7 @@ The values in the table can dramatically change the effect. For example, if the 
 
 Also, you could create a 'glitch' effect during a cut-scene, perhaps in a sci-fi game to simulate a slightly dirty transmission.
 
-![X Sine](/images/gif/xsine.gif)
+![X Sine](/deadcscroll/gif//xsine.gif)
 
 ### Y (Vertical) Sine
 
@@ -280,7 +280,7 @@ This effect is structured very similar to X Sine, in that there is a table of si
 
 This is a really good way to simulate water reflections.
 
-![Y Sine](/images/gif/ysine.gif)
+![Y Sine](/deadcscroll/gif//ysine.gif)
 
 ### X and Y Sine
 
@@ -288,7 +288,7 @@ This is simply a combination of the X Sine and Y Sine effects so you can see how
 
 Instead of a full-screen image like this tutorial uses, imagine if you had a repeating image in VRAM (bigger than the screen) that looked like water ripples. This would move just like water!
 
-![XY Sine](/images/gif/xysine.gif)
+![XY Sine](/deadcscroll/gif//xysine.gif)
 
 ### Smear On
 
@@ -296,25 +296,25 @@ This is like a flood fill effect used as an appearance transition. It's quite si
 
 The specific image used in the tutorial is light along the bottom so it looks better if the screen was already light before the effect starts. You would change this to suit your image.
 
-![Smear On](/images/gif/smearon.gif)
+![Smear On](/deadcscroll/gif//smearon.gif)
 
 ### Smear Off
 
 This is a disappearance transition and the reverse of Smear On. Due to the specific image that was used (i.e. it is light along the bottom), it looks better in this tutorial to have the effect reveal a light screen instead of dark. Again, you would change this to suit your image.
 
-![Smear Off](/images/gif/smearoff.gif)
+![Smear Off](/deadcscroll/gif//smearoff.gif)
 
 ### Roll On
 
 This effect simulates an image unrolling onto the screen. This might be useful for fantasy RPGs to transition to a map screen or perhaps a message written on a scroll. The image unrolls over a dark screen because the top of the image is mostly dark so it looks better to keep it dark than the contrast of using a light screen.
 
-![Roll On](/images/gif/rollon.gif)
+![Roll On](/deadcscroll/gif//rollon.gif)
 
 ### Roll Off
 
 This effect simulates an image rolling off screen. This might be useful for fantasy RPGs to transition away from a map or scroll screen. This reveals a dark screen because the first thing you see in the roll is dark (because that's what's in VRAM below the screen). Keeping it dark made the transition more seamless.
 
-![Roll Off](/images/gif/rolloff.gif)
+![Roll Off](/deadcscroll/gif//rolloff.gif)
 
 The roll effects look complicated but the implementation is probably one of the simpler ones. The key to make this look good is the values in the table. The roll size is 32 pixels, but you can change this to whatever size you want, provided the table values support it. This [SpecBas demo](https://www.youtube.com/watch?v=j04TKI9WKfo) was used as a reference to obtain those values.
 
