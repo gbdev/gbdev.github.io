@@ -377,4 +377,4 @@ Thanks go to Baŝto for use of the [Dead Boy](https://opengameart.org/content/de
 
 ## License
 
-This was released for educational purposes and so is placed in the Public Domain. See [LICENSE](./LICENSE) for more details.
+This was released for educational purposes and so is placed in the Public Domain. See [LICENSE](https://github.com/gbdev/gbdev.github.io/blob/dev/list/.vuepress/public/deadcscroll/LICENSE) for more details.
