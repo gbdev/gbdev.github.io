@@ -14,7 +14,7 @@ Written by [Ron Nelson](https://github.com/rondnelson99/)
 
 ---
 
-Raster effects are probably the greatest asset that retro game consoles have. The fact that the PPU generates the image right as it is displayed allows many special effects to be created by modifying the drawing parameters while the image is being drawn. However, unlike some consoles like the SNES, raster effects on the Game Boy have to be performed by the CPU. The easiest way to implement raster effects is with the rLYC register at $FF45. Here’s how the Pan Docs explain this register’s simple function:
+Raster effects are probably the greatest asset that retro game consoles have. The fact that the PPU generates the image right as it is displayed allows many special effects to be created by modifying the drawing parameters while the image is being drawn. However, unlike some consoles like the SNES, raster effects on the Game Boy have to be performed by the CPU. The easiest way to implement raster effects is with the rLYC register at $FF45. Here's how the Pan Docs explain this register's simple function:
 
 > ## [FF45 - LYC (LY Compare) (R/W)](https://gbdev.io/pandocs/Scrolling.html#ff45---lyc-ly-compare-rw)
 >
@@ -29,23 +29,23 @@ So, the basic setup for raster FX is as follows:
 
 This seems simple enough, but unfortunately, this process comes with significant caveats. So, here are some things to keep in mind:
 
-All but the most complex of raster effects are registers that you change between scanlines. For that reason, you want to perform your register write while the screen is not being drawn, so during Hblank or OAM search. You may know that LYC interrupts are requested at the start of a scanline, which happens to be Mode 2 (OAM search). However, because of Mode 2’s short duration combined with unreliability of interrupt timing, you will not reliably have enough time to perform your write. Therefore, you have to wait for the next Hblank to perform your register write. You also need to compensate for this by requesting an interrupt on the line before the one on which you wish to perform your effect. For instance, if I want to enable sprites at line 16 when my upper status bar finishes drawing, I would write 15 to rLYC.
+All but the most complex of raster effects are registers that you change between scanlines. For that reason, you want to perform your register write while the screen is not being drawn, so during Hblank or OAM search. You may know that LYC interrupts are requested at the start of a scanline, which happens to be Mode 2 (OAM search). However, because of Mode 2's short duration combined with unreliability of interrupt timing, you will not reliably have enough time to perform your write. Therefore, you have to wait for the next Hblank to perform your register write. You also need to compensate for this by requesting an interrupt on the line before the one on which you wish to perform your effect. For instance, if I want to enable sprites at line 16 when my upper status bar finishes drawing, I would write 15 to rLYC.
 
-Like I mentioned above, the time at which your handler will begin execution will be delayed by an inconsistent amount, which makes it difficult to determine when the beginning of Hblank will come. You’ll see why this is and how this can be avoided later.
+Like I mentioned above, the time at which your handler will begin execution will be delayed by an inconsistent amount, which makes it difficult to determine when the beginning of Hblank will come. You'll see why this is and how this can be avoided later.
 
-The final problem is perhaps the biggest one. It’s common practice in Gameboy Development to use a STAT check to write to VRAM between scanlines. The typical way of doing this is to read STAT, and then reap up to 16 cycles of guaranteed VRAM access time. This method is great for copying small bits of data quickly, and uses little CPU time. However, if an LYC interrupt fires during one of those VRAM accesses, you can potentially take some of its VRAM-safe time and cause VRAM writes from the main thread to fail. However, this can be avoided with some careful planning.
+The final problem is perhaps the biggest one. It's common practice in Gameboy Development to use a STAT check to write to VRAM between scanlines. The typical way of doing this is to read STAT, and then reap up to 16 cycles of guaranteed VRAM access time. This method is great for copying small bits of data quickly, and uses little CPU time. However, if an LYC interrupt fires during one of those VRAM accesses, you can potentially take some of its VRAM-safe time and cause VRAM writes from the main thread to fail. However, this can be avoided with some careful planning.
 
 ## Timing, With Diagrams and Stuff
-First, let’s look at the timing of the rendering itself, courtesy of the Pan Docs:
+First, let's look at the timing of the rendering itself, courtesy of the Pan Docs:
 **![](/images/pandocs_timing.png)**
 Note that:
  - Each full scanline takes exactly 456 dots (114 cycles)
  - Mode 2 also takes a constant amount of time (20 cycles)
  - Hblank length varies wildly, and will often be nearly as long as or longer than the drawing phase
- - Hblank and OAM scan are mostly interchangeable, and long as you’re not doing OAM pokes during Hblank
- - The worst-case Hblank takes a number of dots that is not divisible by 4. However, as far as I’m aware, this still behaves like 88 dots in practice.
+ - Hblank and OAM scan are mostly interchangeable, and long as you're not doing OAM pokes during Hblank
+ - The worst-case Hblank takes a number of dots that is not divisible by 4. However, as far as I'm aware, this still behaves like 88 dots in practice.
 
-Now, I will have a bunch of diagrams showing the timing of various situations. Each row represents exactly one scanline, and the columns show the individual cycles. Consider zooming in to better see these cycles. First, let’s consider a simple LYC routine. It will disable sprites if called for line 128, but otherwise, it will enable them.
+Now, I will have a bunch of diagrams showing the timing of various situations. Each row represents exactly one scanline, and the columns show the individual cycles. Consider zooming in to better see these cycles. First, let's consider a simple LYC routine. It will disable sprites if called for line 128, but otherwise, it will enable them.
 
 ```asm
 LYC::
@@ -69,9 +69,9 @@ LYC::
 	reti
 ```
 
-Note that this may not be an especially well-written LYC routine, but the actual logic of the routine itself is outside the scope of this tutorial. If that’s what you’re looking for, check out [DeadCScroll](https://github.com/gb-archive/DeadCScroll) by Blitter Object. It uses the Hblank interrupt rather than the LYC interrupt, but it should still teach you some fundamentals. However, that tutorial does not attempt to solve the problems described below, so be wary of combining that tutorial’s STAT routine with STAT-based VRAM accesses in the main thread.
+Note that this may not be an especially well-written LYC routine, but the actual logic of the routine itself is outside the scope of this tutorial. If that's what you're looking for, check out [DeadCScroll](https://github.com/gb-archive/DeadCScroll) by Blitter Object. It uses the Hblank interrupt rather than the LYC interrupt, but it should still teach you some fundamentals. However, that tutorial does not attempt to solve the problems described below, so be wary of combining that tutorial's STAT routine with STAT-based VRAM accesses in the main thread.
 
-Here’s how the timing of all this might look:
+Here's how the timing of all this might look:
 
 ![](/images/first_example.png)
 
@@ -95,13 +95,13 @@ Oh no! The main thread is trying to access VRAM right in the middle of the drawi
 
   
 
-The solution is not too complicated, at least on paper. We just need to do all our register writes, and exit, during Hblank. This seems easy enough, since if you’ve made it this far, you already know how to utilize the blanking periods to access VRAM. So what happens if you use that method?![](/images/bad_fix.png)
+The solution is not too complicated, at least on paper. We just need to do all our register writes, and exit, during Hblank. This seems easy enough, since if you've made it this far, you already know how to utilize the blanking periods to access VRAM. So what happens if you use that method?![](/images/bad_fix.png)
 
 Here, the long blue strip represents the time spent within the interrupt routine. Remember that many STAT routines will be much more complicated than the simple example above.
 
   
 
-Once again, the VRAM access time overlaps with the Drawing phase. The problem here is that the register write, pop and reti all take some of those guaranteed cycles when it is possible to access VRAM. So, the real solution is to fully exit before the end of Hblank. There are two ways to do this. One is to wait for the Drawing phase before waiting for Hblank. This effectively catches the very start of Hblank, leaving plenty of time to exit. Here’s how the earlier example might look using this method:
+Once again, the VRAM access time overlaps with the Drawing phase. The problem here is that the register write, pop and reti all take some of those guaranteed cycles when it is possible to access VRAM. So, the real solution is to fully exit before the end of Hblank. There are two ways to do this. One is to wait for the Drawing phase before waiting for Hblank. This effectively catches the very start of Hblank, leaving plenty of time to exit. Here's how the earlier example might look using this method:
 
   
 ```asm
@@ -150,7 +150,7 @@ This time, when all the processing was done, there was still plenty of time left
 
   
 
-I’m a bit of a perfectionist, so I usually like to strive for the absolute best method. In a perfect world, we would precisely know whether we have enough Hblank left to safely exit. There actually is a way to do that though! You just need to count exactly how long your routine takes, and make sure it always exits during Hblank. This comes with some caveats though. Most routines, if they haven’t been specifically designed for this method, will take a variable amount of time. The main things you need to avoid are ‘if’ statements and loops. Specifically, if statements of this form are problematic:
+I'm a bit of a perfectionist, so I usually like to strive for the absolute best method. In a perfect world, we would precisely know whether we have enough Hblank left to safely exit. There actually is a way to do that though! You just need to count exactly how long your routine takes, and make sure it always exits during Hblank. This comes with some caveats though. Most routines, if they haven't been specifically designed for this method, will take a variable amount of time. The main things you need to avoid are `if` statements and loops. Specifically, if statements of this form are problematic:
 
 ```asm
 	; test a condition here...
@@ -165,36 +165,36 @@ jr nc, .skip ; skip the next part unless Carry is set
   
   
 
-The problem here is that the code following this pattern may be run after a variable number of cycles have passed. If you need to use an if statement, always make it an if/else statement so that you can waste cycles in the ‘else’ portion and take the same number of cycles.
+The problem here is that the code following this pattern may be run after a variable number of cycles have passed. If you need to use an if statement, always make it an if/else statement so that you can waste cycles in the `else` portion and take the same number of cycles.
 
-So now that you’re ready to count the cycles of your handler, how long do you need to make the routine? Let’s look at some more diagrams to figure this out!
+So now that you're ready to count the cycles of your handler, how long do you need to make the routine? Let's look at some more diagrams to figure this out!
 
 ![](/images/long_cycle_count.png)
 
-Wow! That’s a lot of cycles! Here, the routine takes exactly one scanline to complete, so the main thread does its writes at the same moment on the next scanline, with no idea what happened! If you count up all the cyan cycles, you’ll see that there are 105 of them, and 109 if you count the ‘reti’. This extra time makes it possible to write to two or three registers safely, rather than just one. If you don’t need all that time, you can make it shorter as well:
+Wow! That's a lot of cycles! Here, the routine takes exactly one scanline to complete, so the main thread does its writes at the same moment on the next scanline, with no idea what happened! If you count up all the cyan cycles, you'll see that there are 105 of them, and 109 if you count the `reti`. This extra time makes it possible to write to two or three registers safely, rather than just one. If you don't need all that time, you can make it shorter as well:
 
 ![](/images/short_cycle_count.png)
 
-This time, I put the ‘and’ and ‘jr’ before the interrupt, so that when it resumes, it’s all ready to start writing to VRAM. This interrupt routine is 87 cycles long, including the ‘reti’. This won’t often prove especially useful though, because you never take any time during Hblank to actually do any register writes. However, you could use this if your routine has a case where it realizes that nothing actually needs to be written, and you can exit earlier.
+This time, I put the `and` and `jr` before the interrupt, so that when it resumes, it's all ready to start writing to VRAM. This interrupt routine is 87 cycles long, including the `reti`. This won't often prove especially useful though, because you never take any time during Hblank to actually do any register writes. However, you could use this if your routine has a case where it realizes that nothing actually needs to be written, and you can exit earlier.
 
-From those two diagrams, you’ll see that the 22 cycles of worst-case Hblank is the time you can use to write to any PPU registers, pop your registers back, and then exit with reti. These 22 cycles are cycle 88 through cycle 109, inclusive.
+From those two diagrams, you'll see that the 22 cycles of worst-case Hblank is the time you can use to write to any PPU registers, pop your registers back, and then exit with reti. These 22 cycles are cycle 88 through cycle 109, inclusive.
 
 What if I told you that you could actually have your handler take only 86 cycles? Well, you can!
 
 
 ![](/images/86_cycle_count.png)
 
-This seems bad, since the first cycle of the red bar, where the main thread may try to access VRAM, is potentially during the Drawing phase! This is also fine though. All instructions that access memory, whether through an immediate address or using a register pair as a pointer, take multiple cycles to complete. That’s because the first cycle of every instruction is used to fetch the operation code itself. The memory access that the instruction performs is always in the 2nd, 3rd or 4th cycle of the instruction. In this situation, the 2nd cycle of the VRAM-accessible time is in Hblank, so this won’t actually cause any problems.
+This seems bad, since the first cycle of the red bar, where the main thread may try to access VRAM, is potentially during the Drawing phase! This is also fine though. All instructions that access memory, whether through an immediate address or using a register pair as a pointer, take multiple cycles to complete. That's because the first cycle of every instruction is used to fetch the operation code itself. The memory access that the instruction performs is always in the 2nd, 3rd or 4th cycle of the instruction. In this situation, the 2nd cycle of the VRAM-accessible time is in Hblank, so this won't actually cause any problems.
 
   
 
 ## But Wait!
 
-The interrupt latency I showed earlier doesn’t actually tell the full story. Before it even starts to service the interrupt, the system waits for the current instruction to finish. This is how that might look with the longest allowable routine:
+The interrupt latency I showed earlier doesn't actually tell the full story. Before it even starts to service the interrupt, the system waits for the current instruction to finish. This is how that might look with the longest allowable routine:
 
 ![](/images/call_offset.png)
 
-Here, the first green block shows the system waiting 5 cycles for a ‘call’ instruction to finish. ‘call’ is the longest instruction at 6 cycles, so if the interrupt is requested just after it begins, the system will wait 5 cycles for it to complete. This seems bad, since the routine exited after the end of Hblank. However, this is actually fine! Those waiting cycles were not wasted; they were still 5 cycles of work that the main thread got done. So in the end, the main thread still gets its 20 cycles of VRAM-accessible time.
+Here, the first green block shows the system waiting 5 cycles for a `call` instruction to finish. `call` is the longest instruction at 6 cycles, so if the interrupt is requested just after it begins, the system will wait 5 cycles for it to complete. This seems bad, since the routine exited after the end of Hblank. However, this is actually fine! Those waiting cycles were not wasted; they were still 5 cycles of work that the main thread got done. So in the end, the main thread still gets its 20 cycles of VRAM-accessible time.
 
   
 
@@ -233,7 +233,7 @@ But what if you could combine both these methods? Enter the **Hybrid Cycle-Count
 
 ## Combining Approaches
 
-The goal of this method is to combine the maximum Hblank time that cycle-counting delivers, while still exiting early when Hblank is longer. Here is an example. If you’ve read [DeadCScroll](https://github.com/gb-archive/DeadCScroll), you’ll recognise this as that tutorial’s STAT Handler, modified to start at Mode 2 rather than Hblank, and be safe towards VRAM accesses in the main thread.
+The goal of this method is to combine the maximum Hblank time that cycle-counting delivers, while still exiting early when Hblank is longer. Here is an example. If you've read [DeadCScroll](https://github.com/gb-archive/DeadCScroll), you'll recognise this as that tutorial's STAT Handler, modified to start at Mode 2 rather than Hblank, and be safe towards VRAM accesses in the main thread.
 
 ```asm
 push af ; 4
@@ -271,7 +271,7 @@ ldh a, [rSTAT]
 and STATF_BUSY
 jr z, .setAndExit ; 79
 
-nop ;waste 4 more cycles since there isn’t time for another check
+nop ;waste 4 more cycles since there isn't time for another check
 nop
 nop
 nop ; 83
@@ -290,7 +290,7 @@ reti ; 104
   
   
 
-Once the handler finishes its logic, the handler delays cycles until it reaches the window then Hblank might start. With a 5-cycle offset due to a ‘call’, and the longest possible Hblank, the earliest Hblank might start is cycle 54, so that’s the first attempt to read rSTAT. It keeps checking rSTAT until even in the worst-case scenario, it knows that Hblank will start. Then, it uses that time to write the scroll registers and exit. This way, it can still exit early, as long as the Hblank length permits. This routine takes 104 cycles in the worst-case scenario, but may take as few as 79 if Hblank comes sooner.
+Once the handler finishes its logic, the handler delays cycles until it reaches the window then Hblank might start. With a 5-cycle offset due to a `call`, and the longest possible Hblank, the earliest Hblank might start is cycle 54, so that's the first attempt to read rSTAT. It keeps checking rSTAT until even in the worst-case scenario, it knows that Hblank will start. Then, it uses that time to write the scroll registers and exit. This way, it can still exit early, as long as the Hblank length permits. This routine takes 104 cycles in the worst-case scenario, but may take as few as 79 if Hblank comes sooner.
 
   
 
@@ -327,5 +327,5 @@ All three of these methods can generate great-looking effects, but I think the t
 
   
 
-Congrats! You made it to the end of the tutorial! I bet you’re tired of reading it, and I’m tired of writing it too. So thanks for reading, see you next time!
+Congrats! You made it to the end of the tutorial! I bet you're tired of reading it, and I'm tired of writing it too. So thanks for reading, see you next time!
 
