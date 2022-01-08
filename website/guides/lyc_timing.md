@@ -20,7 +20,7 @@ The fact that the PPU generates the image right as it is displayed allows many s
 ![Example of raster effect](/deadcscroll/gif/xysine.gif)
 
 However, unlike some consoles like the SNES, raster effects on the Game Boy have to be performed by the CPU.
-The easiest way to implement raster effects is with the LYC register at $FF45.
+The easiest way to implement raster effects is with the `LYC` register at $FF45.
 Here's how the Pan Docs explain this register's simple function:
 
 > [**FF45 - LYC (LY Compare) (R/W)**](https://gbdev.io/pandocs/Scrolling.html#ff45---lyc-ly-compare-rw)
@@ -30,30 +30,30 @@ Here's how the Pan Docs explain this register's simple function:
 
 So, the basic setup for raster FX is as follows:
 
-1. Request an interrupt by setting LYC to the appropriate scanline
+1. Request an interrupt by setting `LYC` to the appropriate scanline
 2. The system will start your interrupt routine when that scanline begins
 3. Perform your chosen effect by modifying PPU registers
-4. Exit with reti
+4. Exit with `reti`
 
 This seems simple enough, but unfortunately, this process comes with significant caveats.
 So, here are some things to keep in mind:
 
 All but the most complex of raster effects are registers that you change between scanlines.
 For that reason, you want to perform your register write while the screen is not being drawn, so during HBlank or OAM search.
-You may know that LYC interrupts are requested at the start of a scanline, which happens to be Mode 2 (OAM search).
+You may know that `LYC` interrupts are requested at the start of a scanline, which happens to be Mode 2 (OAM search).
 However, because of Mode 2's short duration combined with unreliability of interrupt timing, you will not reliably have enough time to perform your write.
 Therefore, you have to wait for the next HBlank to perform your register write.
 You also need to compensate for this by requesting an interrupt on the line before the one on which you wish to perform your effect.
-For instance, if I want to enable sprites at line 16 when my upper status bar finishes drawing, I would write 15 to LYC.
+For instance, if I want to enable sprites at line 16 when my upper status bar finishes drawing, I would write 15 to `LYC`.
 
 Like I mentioned above, the time at which your handler will begin execution will be delayed by an inconsistent amount, which makes it difficult to determine when the beginning of HBlank will come.
 You'll see why this is and how this can be avoided later.
 
 The final problem is perhaps the biggest one.
-It's common practice in Gameboy Development to use a STAT check to write to VRAM between scanlines.
-The typical way of doing this is to read STAT, and then reap up to 16 cycles of guaranteed VRAM access time.
+It's common practice in Gameboy Development to use a `STAT` check to write to VRAM between scanlines.
+The typical way of doing this is to read `STAT`, and then reap up to 16 cycles of guaranteed VRAM access time.
 This method is great for copying small bits of data quickly, and uses little CPU time.
-However, if an LYC interrupt fires during one of those VRAM accesses, you can potentially take some of its VRAM-safe time and cause VRAM writes from the main thread to fail.
+However, if an `LYC` interrupt fires during one of those VRAM accesses, you can potentially take some of its VRAM-safe time and cause VRAM writes from the main thread to fail.
 However, this can be avoided with some careful planning.
 
 ## Timing, With Diagrams and Stuff
@@ -72,7 +72,7 @@ Note that:
 Now, I will have a bunch of diagrams showing the timing of various situations.
 Each row represents exactly one scanline, and the columns show the individual cycles.
 Consider zooming in to better see these cycles.
-First, let's consider a simple LYC routine.
+First, let's consider a simple `LYC` routine.
 It will disable sprites if called for line 128, but otherwise, it will enable them.
 
 ```asm
@@ -97,9 +97,9 @@ LYC::
     reti
 ```
 
-Note that this may not be an especially well-written LYC routine, but the actual logic of the routine itself is outside the scope of this tutorial.
+Note that this may not be an especially well-written `LYC` routine, but the actual logic of the routine itself is outside the scope of this tutorial.
 If that's what you're looking for, check out [DeadCScroll](https://github.com/gb-archive/DeadCScroll) by Blitter Object.
-It uses the HBlank interrupt rather than the LYC interrupt, but it should still teach you some fundamentals.
+It uses the HBlank interrupt rather than the `LYC` interrupt, but it should still teach you some fundamentals.
 However, that tutorial does not attempt to solve the problems described below, so be wary of combining that tutorial's STAT routine with STAT-based VRAM accesses in the main thread.
 
 Here's how the timing of all this might look:
@@ -118,8 +118,8 @@ The other problem is what might be happening during the main thread:
 
 ![](/images/main_thread.png)
 
-This is the worst-case scenario for a STAT-based VRAM access.
-Here, the main thread reads STAT on the very last cycle of HBlank.
+This is the worst-case scenario for a `STAT`-based VRAM access.
+Here, the main thread reads `STAT` on the very last cycle of HBlank.
 After the brief processing of the value it read, the main loop may use the 16 guaranteed cycles of OAM scan to access VRAM.
 This just barely works out.
 But what happens if an interrupt is requested on that next cycle?
@@ -136,10 +136,10 @@ So what happens if you use that method?
 ![](/images/bad_fix.png)
 
 Here, the long blue strip represents the time spent within the interrupt routine.
-Remember that many STAT routines will be much more complicated than the simple example above.
+Remember that many `STAT` routines will be much more complicated than the simple example above.
 
 Once again, the VRAM access time overlaps with the Drawing phase.
-The problem here is that the register write, pop and reti all take some of those guaranteed cycles when it is possible to access VRAM.
+The problem here is that the register write, `pop` and `reti` all take some of those guaranteed cycles when it is possible to access VRAM.
 So, the real solution is to fully exit before the end of HBlank.
 There are two ways to do this.
 One is to wait for the Drawing phase before waiting for HBlank.
@@ -232,7 +232,7 @@ This interrupt routine is 87 cycles long, including the `reti`.
 This won't often prove especially useful though, because you never take any time during HBlank to actually do any register writes.
 However, you could use this if your routine has a case where it realizes that nothing actually needs to be written, and you can exit earlier.
 
-From those two diagrams, you'll see that the 22 cycles of worst-case HBlank is the time you can use to write to any PPU registers, pop your registers back, and then exit with reti.
+From those two diagrams, you'll see that the 22 cycles of worst-case HBlank is the time you can use to write to any PPU registers, pop your registers back, and then exit with `reti`.
 These 22 cycles are cycle 88 through cycle 109, inclusive.
 
 What if I told you that you could actually have your handler take only 86 cycles? Well, you can!
@@ -260,7 +260,7 @@ So in the end, the main thread still gets its 20 cycles of VRAM-accessible time.
 
 ## Pros and Cons
 
-Thus far, I have presented two very different methods for making safe LYC handlers, and each have their pros and cons.
+Thus far, I have presented two very different methods for making safe `LYC` handlers, and each have their pros and cons.
 
 ## Double-Busy-Loop
 
@@ -285,7 +285,7 @@ Thus far, I have presented two very different methods for making safe LYC handle
 - requires tedious cycle-counting
 - always takes close to an entire scanline, even if HBlank starts much sooner
 
-This suggests that the double-busy-loop method is good for extremely simple LYC routines that only need to write to one register, or routines that for some reason cannot be cycle-counted.
+This suggests that the double-busy-loop method is good for extremely simple `LYC` routines that only need to write to one register, or routines that for some reason cannot be cycle-counted.
 If you need more time for calculations and more time to write to those registers, you can cycle-count your routine.
 
 But what if you could combine both these methods? Enter the **Hybrid Cycle-Counted Handler™**, a technique I came up with while writing this document.
@@ -294,7 +294,7 @@ But what if you could combine both these methods? Enter the **Hybrid Cycle-Count
 
 The goal of this method is to combine the maximum HBlank time that cycle-counting delivers, while still exiting early when HBlank is longer.
 Here is an example.
-If you've read [DeadCScroll](https://github.com/gb-archive/DeadCScroll), you'll recognise this as that tutorial's STAT Handler, modified to start at Mode 2 rather than HBlank, and be safe towards VRAM accesses in the main thread.
+If you've read [DeadCScroll](https://github.com/gb-archive/DeadCScroll), you'll recognise this as that tutorial's `STAT` Handler, modified to start at Mode 2 rather than HBlank, and be safe towards VRAM accesses in the main thread.
 
 ```asm
     push af ; 4
@@ -350,8 +350,8 @@ If you've read [DeadCScroll](https://github.com/gb-archive/DeadCScroll), you'll 
 ```
 
 Once the handler finishes its logic, the handler delays cycles until it reaches the window then HBlank might start.
-With a 5-cycle offset due to a `call`, and the longest possible HBlank, the earliest HBlank might start is cycle 54, so that's the first attempt to read STAT.
-It keeps checking STAT until even in the worst-case scenario, it knows that HBlank will start.
+With a 5-cycle offset due to a `call`, and the longest possible HBlank, the earliest HBlank might start is cycle 54, so that's the first attempt to read `STAT`.
+It keeps checking `STAT` until even in the worst-case scenario, it knows that HBlank will start.
 Then, it uses that time to write the scroll registers and exit.
 This way, it can still exit early, as long as the HBlank length permits.
 This routine takes 104 cycles in the worst-case scenario, but may take as few as 79 if HBlank comes sooner.
