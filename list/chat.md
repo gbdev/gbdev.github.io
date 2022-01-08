@@ -1,3 +1,7 @@
+---
+sidebar: false
+---
+
 # Community chat channels
 
 - Discord Server: [https://discord.io/gbdev](https://discord.io/gbdev)
