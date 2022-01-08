@@ -21,6 +21,8 @@ module.exports = {
     themeConfig: {
         lastUpdated: false,
         contributors: false,
+        editLink: true,
+        docsRepo: "https://github.com/gbdev/gbdev.github.io",
         navbar: [{
                 text: 'Community',
                 link: '/',

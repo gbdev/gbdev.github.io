@@ -10,6 +10,7 @@ head:
         Home of the Game Boy and Game Boy Advance homebrew development scene.
         We are working on (open) development tools, documentation and digital
         preservation.
+editLink: false
 ---
 
 <div id='outer'>
