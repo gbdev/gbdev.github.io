@@ -81,14 +81,14 @@ LYC::
 
     ; enable sprites
     ldh a, [rLCDC]
-    set LCDCB_OBJON, a
+    or a, LCDCF_OBJON
     ldh [rLCDC], a
     pop af
     reti
 
 .disableSprites
     ldh a, [rLCDC]
-    res LCDCB_OBJON, a
+    and a, ~LCDCF_OBJON
     ldh [rLCDC], a
     pop af
     reti
@@ -153,12 +153,12 @@ jr z, .disableSprites
 
     ; enable sprites
     ldh a, [rLCDC]
-    set LCDCB_OBJON, a
+    or a, LCDCF_OBJON
     jr .finish
 
 .disableSprites
     ldh a, [rLCDC]
-    res LCDCB_OBJON, a
+    and a, ~LCDCF_OBJON
 
 .finish
     ld hl, rSTAT
