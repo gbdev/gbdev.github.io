@@ -1,4 +1,7 @@
 // .vuepress/config.js
+
+const { path } = require("@vuepress/utils");
+
 module.exports = {
     plugins: [
         ['@vuepress/plugin-shiki', { 'langs': ['asm'] }],
@@ -22,7 +25,7 @@ module.exports = {
                     { link: '/contribute', text: 'Contribute' },
                 ]
             },
-            { link: '/list', text: 'Resources'},
+            { link: '/list', text: 'Resources' },
             {
                 text: 'Guides',
                 collapsable: false,
@@ -31,6 +34,7 @@ module.exports = {
                     { link: '/guides/tools', text: 'Choosing development tools' },
                     { link: '/guides/asmstyle', text: 'ASM Style recomendations' },
                     { link: '/guides/lyc_timing', text: 'The Timing of LYC STAT Handlers' },
+                    { link: '/guides/deadcscroll', text: 'Dead C Scroll'},
                     { link: '/guides/dma_hijacking', text: 'DMA Hijacking' },
                     { link: 'https://eldred.fr/gb-asm-tutorial', text: 'GB ASM Programming Guide' }
                 ]
