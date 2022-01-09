@@ -4,8 +4,8 @@
   "description": "Source repository of the gbdev landing website. GitHub Pages serves the content of the `master` branch on [gbdev.github.io](https://gbdev.github.io).",
   "main": "index.js",
   "scripts": {
-    "dev": "vuepress dev list",
-    "build": "vuepress build list"
+    "dev": "vuepress dev website",
+    "build": "vuepress build website"
   },
   "repository": {
     "type": "git",
