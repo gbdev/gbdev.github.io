@@ -37,7 +37,7 @@ module.exports = {
                     }
                 ]
             },
-            { link: '/list', text: 'Resources' },
+            { link: '/resources', text: 'Resources' },
             {
                 text: 'Guides',
                 children: [
