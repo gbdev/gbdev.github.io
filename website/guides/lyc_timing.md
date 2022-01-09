@@ -806,6 +806,6 @@ export default {
 .cpu-call       { background-color: #00ff0080; }
 .cpu-critical   { background-color: #ff000080; }
 .cpu-interrupt  { background-color: #ffff0080; }
-.cpu-io-3cycle  { background-image: linear-gradient(to top, #80808080, #80808080 33%, #0000ff80 34%, #0000ff80); }
+.cpu-io-3cycle  { background-image: linear-gradient(to top, #80808080, #80808080 33%, #0000ff80 33%, #0000ff80); }
 .cpu-reti       { background-color: #ff00ff80; }
 </style>
