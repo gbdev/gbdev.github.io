@@ -104,7 +104,18 @@ However, that tutorial does not attempt to solve the problems described below, s
 
 Here's how the timing of all this might look:
 
-![](/images/first_example.png)
+<Timeline :offset="0">
+    <CPUOp op="interrupt" />
+    <CPUOp op="push" />
+    <CPUOp op="ldh" immediate />
+    <CPUOp op="cp" immediate />
+    <CPUOp op="jr" />
+    <CPUOp op="ldh" immediate />
+    <CPUOp op="set" />
+    <CPUOp op="ldh" immediate class="io-3cycle" legend="Write to LCDC" />
+    <CPUOp op="pop" />
+    <CPUOp op="reti" />
+</Timeline>
 
 The 5 yellow cycles mark the time it takes for the system to prepare the interrupt.
 During this time, it has to push the program counter to the stack, disable interrupts, etc.
@@ -116,7 +127,12 @@ This is most likely undesirable, and could lead to graphical glitches like a par
 
 The other problem is what might be happening during the main thread:
 
-![](/images/main_thread.png)
+<Timeline :offset="111">
+    <CPUOp op="ldh" immediate class="io-3cycle" legend="Read from STAT" />
+    <CPUOp op="and" immediate />
+    <CPUOp op="jr" />
+    <CPUOp op="critical" />
+</Timeline>
 
 This is the worst-case scenario for a `STAT`-based VRAM access.
 Here, the main thread reads `STAT` on the very last cycle of HBlank.
@@ -124,7 +140,22 @@ After the brief processing of the value it read, the main loop may use the 16 gu
 This just barely works out.
 But what happens if an interrupt is requested on that next cycle?
 
-![](/images/problem.png)
+<Timeline :offset="111">
+    <CPUOp op="ldh" immediate class="io-3cycle" legend="Read from STAT" />
+    <CPUOp op="interrupt" />
+    <CPUOp op="push" />
+    <CPUOp op="ldh" immediate />
+    <CPUOp op="cp" immediate />
+    <CPUOp op="jr" />
+    <CPUOp op="ldh" immediate />
+    <CPUOp op="set" />
+    <CPUOp op="ldh" immediate />
+    <CPUOp op="pop" />
+    <CPUOp op="reti" />
+    <CPUOp op="and" immediate />
+    <CPUOp op="jr" />
+    <CPUOp op="critical" />
+</Timeline>
 
 Oh no! The main thread is trying to access VRAM right in the middle of the drawing phase! This could lead to all sorts of glitches.
 
@@ -133,7 +164,20 @@ We just need to do all our register writes, and exit, during HBlank.
 This seems easy enough, since if you've made it this far, you already know how to utilize the blanking periods to access VRAM.
 So what happens if you use that method?
 
-![](/images/bad_fix.png)
+<Timeline :offset="111">
+    <CPUOp op="ldh" immediate class="io-3cycle" legend="Read from STAT" />
+    <CPUOp op="interrupt" />
+    <CPUOp op="skip" :cycles="96" />
+    <CPUOp op="ldh" immediate />
+    <CPUOp op="and" immediate />
+    <CPUOp op="jr" />
+    <CPUOp op="ldh" immediate />
+    <CPUOp op="pop" />
+    <CPUOp op="reti" />
+    <CPUOp op="and" immediate />
+    <CPUOp op="jr" />
+    <CPUOp op="critical" />
+</Timeline>
 
 Here, the long blue strip represents the time spent within the interrupt routine.
 Remember that many `STAT` routines will be much more complicated than the simple example above.
@@ -180,7 +224,34 @@ LYC::
 
 See how this method never interferes with VRAM accesses in the main thread, even with the worst possible timing and the shortest of HBlanks:
 
-![](/images/double_spinloop.png)
+<Timeline :offset="111" :hblank-length="21">
+    <CPUOp op="ldh" immediate />
+    <CPUOp op="interrupt" />
+    <CPUOp op="push" />
+    <CPUOp op="push" />
+    <CPUOp op="ldh" immediate />
+    <CPUOp op="jr" />
+    <CPUOp op="ldh" immediate />
+    <CPUOp op="or" immediate />
+    <CPUOp op="jr" taken />
+    <CPUOp op="ld-imm16" />
+    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp op="jr" />
+    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp op="jr" taken />
+    <CPUOp op="skip" :cycles="48" />
+    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp op="jr" taken />
+    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp op="jr" />
+    <CPUOp op="ldh" immediate />
+    <CPUOp op="pop" />
+    <CPUOp op="pop" />
+    <CPUOp op="reti" />
+    <CPUOp op="and" immediate />
+    <CPUOp op="jr" />
+    <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
+</Timeline>
 
 Phew! This just barely works.
 There are only two cycles to spare! If there were multiple registers that needed updating, you might run into trouble.
@@ -188,7 +259,31 @@ Normally, These really short HBlanks are the worst-case scenario that you always
 However, in practice, HBlanks are normally much longer, often even longer than the drawing phase.
 Using this method, that can actually have unfortunate consequences:
 
-![](/images/wasted_scanline.png)
+<Timeline :offset="111" :hblank-length="51">
+    <CPUOp op="ldh" />
+    <CPUOp op="interrupt" />
+    <CPUOp op="push" />
+    <CPUOp op="push" />
+    <CPUOp op="skip" :cycles="46" />
+    <CPUOp op="ld-imm16" />
+    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp op="jr" taken />
+    <CPUOp op="skip" :cycles="48" />
+    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp op="jr" />
+    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp op="jr" taken />
+    <CPUOp op="skip" :cycles="46" />
+    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp op="jr" />
+    <CPUOp op="ldh" immediate />
+    <CPUOp op="pop" />
+    <CPUOp op="pop" />
+    <CPUOp op="reti" />
+    <CPUOp op="and" immediate />
+    <CPUOp op="jr" />
+    <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
+</Timeline>
 
 This time, when all the processing was done, there was still plenty of time left in the scanline to safely exit.
 However, since HBlank was so long, the routine missed the check for the drawing window and wasted an entire scanline waiting for that Drawing -> HBlank transition before it exited.
@@ -219,13 +314,29 @@ If you need to use an if statement, always make it an if/else statement so that 
 
 So now that you're ready to count the cycles of your handler, how long do you need to make the routine? Let's look at some more diagrams to figure this out!
 
-![](/images/long_cycle_count.png)
+<Timeline :offset="111">
+    <CPUOp op="ldh" immediate class="io-3cycle" legend="STAT read" />
+    <CPUOp op="interrupt" />
+    <CPUOp op="skip" :cycles="105" />
+    <CPUOp op="reti" />
+    <CPUOp op="and" immediate />
+    <CPUOp op="jr" />
+    <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
+</Timeline>
 
 Wow! That's a lot of cycles! Here, the routine takes exactly one scanline to complete, so the main thread does its writes at the same moment on the next scanline, with no idea what happened! If you count up all the cyan cycles, you'll see that there are 105 of them, and 109 if you count the `reti`.
 This extra time makes it possible to write to two or three registers safely, rather than just one.
 If you don't need all that time, you can make it shorter as well:
 
-![](/images/short_cycle_count.png)
+<Timeline :offset="107" :hblank-length="21">
+    <CPUOp op="ldh" immediate class="io-3cycle" legend="STAT read" />
+    <CPUOp op="and" immediate />
+    <CPUOp op="jr" />
+    <CPUOp op="interrupt" />
+    <CPUOp op="skip" :cycles="84" />
+    <CPUOp op="reti" />
+    <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
+</Timeline>
 
 This time, I put the `and` and `jr` before the interrupt, so that when it resumes, it's all ready to start writing to VRAM.
 This interrupt routine is 87 cycles long, including the `reti`.
@@ -237,7 +348,15 @@ These 22 cycles are cycle 88 through cycle 109, inclusive.
 
 What if I told you that you could actually have your handler take only 86 cycles? Well, you can!
 
-![](/images/86_cycle_count.png)
+<Timeline :offset="107" :hblank-length="21">
+    <CPUOp op="ldh" immediate class="io-3cycle" legend="STAT read" />
+    <CPUOp op="and" immediate />
+    <CPUOp op="jr" />
+    <CPUOp op="interrupt" />
+    <CPUOp op="skip" :cycles="83" />
+    <CPUOp op="reti" />
+    <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
+</Timeline>
 
 This seems bad, since the first cycle of the red bar, where the main thread may try to access VRAM, is potentially during the Drawing phase! This is also fine though.
 All instructions that access memory, whether through an immediate address or using a register pair as a pointer, take multiple cycles to complete.
@@ -251,7 +370,16 @@ The interrupt latency I showed earlier doesn't actually tell the full story.
 Before it even starts to service the interrupt, the system waits for the current instruction to finish.
 This is how that might look with the longest allowable routine:
 
-![](/images/call_offset.png)
+<Timeline :offset="106" :hblank-length="21">
+    <CPUOp op="ldh" immediate class="io-3cycle" legend="STAT read" />
+    <CPUOp op="and" immediate />
+    <CPUOp op="jr" />
+    <CPUOp op="call" />
+    <CPUOp op="interrupt" />
+    <CPUOp op="skip" :cycles="105" />
+    <CPUOp op="reti" />
+    <CPUOp op="skip" :cycles="10" class="critical" legend="VRAM accesses" />
+</Timeline>
 
 Here, the first green block shows the system waiting 5 cycles for a `call` instruction to finish. `call` is the longest instruction at 6 cycles, so if the interrupt is requested just after it begins, the system will wait 5 cycles for it to complete.
 This seems bad, since the routine exited after the end of HBlank.
@@ -379,3 +507,274 @@ All three of these methods can generate great-looking effects, but I think the t
 
 Congrats! You made it to the end of the tutorial! I bet you're tired of reading it, and I'm tired of writing it too.
 So thanks for reading, see you next time!
+
+<script>
+import { h } from 'vue';
+
+const SCANLINE_LEN = 114, MIN_HBL_LEN = 21, MAX_HBL_LEN = 51;
+
+const Timeline = {
+    props: {
+        offset: {
+            type: Number,
+            required: true,
+            validator(value) {
+                return value >= 0 && value <= SCANLINE_LEN;
+            },
+        },
+        hblankLength: {
+            type: Number, // If omitted, we'll use a gradient between Mode 3 and Mode 0
+            validator(value) {
+                return value >= MIN_HBL_LEN && value <= MAX_HBL_LEN;
+            },
+        },
+    },
+
+    render() {
+        let slots = this.$slots.default(); // The slots we'll be working on (shorthand)
+
+        let opsLegend = {}; // Operations with a legend will be registered in this dict
+        let cycles = []; // One entry per row in the table
+
+        let curScanlineCycle = this.$props.offset; // The position inside the current scanline
+        let curInstrCycles = 0; // How many cycles are left of the current instruction
+        for (let i = 0; i < slots.length || curInstrCycles !== 0; ) {
+            // Determine this cycle's PPU background color (depending on PPU mode)
+            let scanlineClass = scanlineCycle => {
+                if (curScanlineCycle < 20) {
+                    return 'ppu-mode2';
+                } else if (curScanlineCycle < SCANLINE_LEN - (this.$props.hblankLength || MAX_HBL_LEN)) {
+                    return 'ppu-mode3';
+                } else if (this.$props.hblankLength === undefined && curScanlineCycle < SCANLINE_LEN - MIN_HBL_LEN) {
+                    return 'TODO'; // Gradient, for unspecified HBlank len
+                } else {
+                    return 'ppu-mode0';
+                }
+            };
+            let ppuColorClass = scanlineClass(curScanlineCycle);
+
+            let children = [h('td', { class: ppuColorClass }, '' + curScanlineCycle)];
+
+            // Check if a new instruction begins on this cycle
+            // If so, push a <td> for this instruction
+            if (curInstrCycles == 0) {
+                let instrInfo = CPUOp.info(slots[i].props);
+                let className = 'cpu-' + (instrInfo.class || 'op');
+                let instrName = instrInfo.instr;
+
+                children.push(h('td', {
+                    rowspan: instrInfo.cycles,
+                    class: className,
+                    skip: slots[i].props.op === 'skip',
+                }, instrName && h('code', {}, instrName)));
+
+                // If this instruction has a legend
+                if (instrInfo.legend) {
+                    // Anything with a legend is guaranteed to have a class name
+                    opsLegend[className] = instrInfo.legend;
+                }
+
+                curInstrCycles = instrInfo.cycles; // Register the new instruction's length
+                ++i; // Go to the next instruction
+            }
+
+            cycles.push(h('tr', {}, children));
+
+            curScanlineCycle++;
+            if (curScanlineCycle == SCANLINE_LEN) curScanlineCycle = 0; // Next scanline, please!
+            curInstrCycles--;
+
+            if (children[1] && children[1].props.skip) {
+                // Special handling for the "skip" pseudo-instruction
+                let instr = children[1];
+
+                // Ensure that skips generate no more than 3 rows
+                if (instr.props.rowspan > 3) {
+                    // Push a row with a cycle count of "..."
+                    // The third row will be generated on the next loop iteration
+                    cycles.push(h('tr', {}, h('td', { class: scanlineClass(curScanlineCycle) }, '...')));
+                    // Skip the appropriate amount of cycles (all but the first and last rows')
+                    curScanlineCycle = (curScanlineCycle + instr.props.rowspan - 2) % SCANLINE_LEN;
+                    // Refresh the instruction cell's rowspan and "remaining rows to generate" counts
+                    instr.props.rowspan = 3;
+                    curInstrCycles = 1; // Only 1 row left to generate (the last one)
+                }
+            }
+        }
+
+        const headings = h('tr', {}, [
+            h('th', {}, ['Scanline', h('br'), 'cycle']), // Force a line break to narrow the column
+            h('th', {}, 'Instruction'),
+        ]);
+        return h('figure', { class: 'timeline-figure' }, [
+            h('div', { class: 'timeline-legend' }, [
+                h('h3', {}, 'Legend'),
+
+                h('table', {}, [
+                    h('tr', {}, h('th', { colspan: 2 }, 'PPU Mode')),
+                    ...[
+                        { id: 2, name: 'OAM scan' },
+                        { id: 3, name: 'Drawing' },
+                        { id: 0, name: 'HBlank' },
+                    ].map(mode => h('tr', {}, [
+                        h('td', { class: 'ppu-mode' + mode.id }, '' + mode.id),
+                        h('td', {}, mode.name),
+                    ])),
+                ]),
+
+                h('table', {}, [
+                    h('tr', {}, h('th', { colspan: 2 }, 'CPU operation')),
+                    ...Object.entries(opsLegend)
+                             .sort(([l], [r]) => l < r) // Sort the legend by class names
+                             .map(([className, legend]) => h('tr', {}, [
+                        h('td', { class: className }),
+                        h('td', {}, legend),
+                    ])),
+                ]),
+            ]),
+            h('table', {}, [
+                h('thead', {}, headings),
+                h('tfoot', {}, headings),
+                h('tbody', { class: 'timeline' }, cycles),
+            ]),
+        ]);
+    },
+};
+
+const CPUOp = {
+    props: {
+        op: {
+            type: String,
+            required: true,
+        },
+        immediate: Boolean,
+        taken: Boolean,
+        'class': String,
+        legend: String,
+        cycles: Number,
+    },
+
+    info(props) {
+        let info = (function() {
+            // Index of returned properties:
+            // class:
+            //   If truthy, the class that will be applied (prefixed with "cpu-") to "Instruction" cells (and the legend).
+            //   Avoid specifying directly, as then you should specify `legend` as well, which overrides this.
+            //   Can be overridden from the props, which then supersedes `legend`'s own override.
+            // cycles:
+            //   How many cycles this operation is long.
+            // fixed:
+            //   If truthy, the instruction cannot be tagged "immediate".
+            //   Note: some operations have an explicit `fixed: false`; this means they aren't really immediate, but can take an extra cycle for another reason (e.g. accessing `[hl]`)
+            // jump:
+            //   If truthy, the instruction can be tagged "taken", but not "immediate".
+            // instr:
+            //   If truthy, the string that will be placed raw (no Markdown) in the "Instruction" column in a <code> span.
+            // legend:
+            //   If truthy, the string that will be printed.
+            //   Additionally, if truthy (including if overridden by the props), `class` will be set to the operation's name.
+            //   Can be overridden from the props.
+            switch (props.op) {
+                case 'and':
+                    return { cycles:  1, instr: 'and' };
+                case 'bit':
+                    return { cycles:  2, instr: 'bit', fixed: false };
+                case 'call':
+                    return { cycles:  6, instr: 'call', class: 'call', fixed: true }; // An untaken "call" takes 3 cycles, not 5
+                case 'cp':
+                    return { cycles:  1, instr: 'cp' };
+                case 'critical':
+                    return { cycles: 16, legend: 'VRAM accesses', fixed: true };
+                case 'interrupt':
+                    return { cycles:  5, legend: 'Interrupt dispatch', fixed: true };
+                case 'jr':
+                    return { cycles:  2, instr: 'jr', jump: true };
+                case 'ld-imm16':
+                    return { cycles:  3, instr: 'ld', fixed: true}
+                case 'ldh':
+                    return { cycles:  2, instr: 'ldh' };
+                case 'or':
+                    return { cycles:  1, instr: 'or' };
+                case 'pop':
+                    return { cycles:  3, instr: 'pop', fixed: true };
+                case 'push':
+                    return { cycles:  4, instr: 'push', fixed: true };
+                case 'reti':
+                    return { cycles:  4, instr: 'reti', legend: 'Return from interrupt', fixed: true };
+                case 'set':
+                    return { cycles:  2, instr: 'set', fixed: false };
+
+                case 'skip':
+                    let cycles = props.cycles;
+                    if (typeof cycles !== 'number' || !isFinite(cycles)) {
+                        throw new SyntaxError('"Skip" CPU op requires a numeric cycle count');
+                    }
+                    return { cycles, class: 'skip', class: 'op' };
+
+                default:
+                    throw new SyntaxError(`Unknown instruction type "${props.op}"`);
+            };
+        })();
+
+        // Immediate instructions and taken jumps take one extra cycle
+        // FIXME: Normally Vue would correctly type these as Booleans as per `props` above, but it doesn't...
+        if (props.immediate !== undefined) {
+            if (info.fixed || info.jump) {
+                throw new SyntaxError(`CPU op ${props.op} cannot be immediate!`)
+            }
+            info.cycles++;
+        }
+        if (props.taken !== undefined) {
+            if (!info.jump) {
+                throw new SyntaxError(`CPU op ${props.op} is not a jump, it cannot be taken!`);
+            }
+            info.cycles++;
+        }
+
+        // Override the legend if explicitly provided
+        if (props.legend) {
+            info.legend = props.legend;
+        }
+        // If the operation has a legend, add its name as a class
+        if (info.legend) {
+            info.class = props.op;
+        }
+        // Override the class if explicitly provided
+        if (props.class) {
+            info.class = props.class;
+        }
+
+        return info;
+    },
+};
+
+export default {
+    components: {
+        Timeline,
+        CPUOp,
+    }
+}
+</script>
+<style>
+.timeline-figure {
+    display: flex;
+    flex-flow: row-reverse wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.timeline tr { background-color: transparent; }
+.timeline td { padding-top: 0; padding-bottom: 0; }
+
+.ppu-mode2 { background-color: #ffd96680; }
+.ppu-mode3 { background-color: #ff800080; }
+.ppu-mode0 { background-color: #97d07780; }
+
+.cpu-op         { background-color: #00ffff80; }
+.cpu-access     { background-color: #80808080; }
+.cpu-call       { background-color: #00ff0080; }
+.cpu-critical   { background-color: #ff000080; }
+.cpu-interrupt  { background-color: #ffff0080; }
+.cpu-io-3cycle { background-image: linear-gradient(to top, #80808080, #80808080 33%, #0000ff80 34%, #0000ff80); }
+.cpu-reti       { background-color: #ff00ff80; }
+</style>
