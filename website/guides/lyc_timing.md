@@ -523,7 +523,8 @@ const Timeline = {
             },
         },
         hblankLength: {
-            type: Number, // If omitted, we'll use a gradient between Mode 3 and Mode 0
+            type: Number,
+            default: MIN_HBL_LEN,
             validator(value) {
                 return value >= MIN_HBL_LEN && value <= MAX_HBL_LEN;
             },
@@ -531,6 +532,8 @@ const Timeline = {
     },
 
     render() {
+        const MODE_CHANGES = [20, SCANLINE_LEN - this.$props.hblankLength, SCANLINE_LEN];
+
         let slots = this.$slots.default(); // The slots we'll be working on (shorthand)
 
         let opsLegend = {}; // Operations with a legend will be registered in this dict
@@ -538,34 +541,32 @@ const Timeline = {
 
         let curScanlineCycle = this.$props.offset; // The position inside the current scanline
         let curInstrCycles = 0; // How many cycles are left of the current instruction
-        for (let i = 0; i < slots.length || curInstrCycles !== 0; ) {
+        for (let slotIdx = 0; slotIdx < slots.length || curInstrCycles !== 0; ) {
             // Determine this cycle's PPU background color (depending on PPU mode)
-            let scanlineClass = scanlineCycle => {
-                if (curScanlineCycle < 20) {
-                    return 'ppu-mode2';
-                } else if (curScanlineCycle < SCANLINE_LEN - (this.$props.hblankLength || MAX_HBL_LEN)) {
-                    return 'ppu-mode3';
-                } else if (this.$props.hblankLength === undefined && curScanlineCycle < SCANLINE_LEN - MIN_HBL_LEN) {
-                    return 'TODO'; // Gradient, for unspecified HBlank len
+            let modeAt = scanlineCycle => {
+                if (curScanlineCycle < MODE_CHANGES[0]) {
+                    return 2;
+                } else if (curScanlineCycle < MODE_CHANGES[1]) {
+                    return 3;
                 } else {
-                    return 'ppu-mode0';
+                    return 0;
                 }
             };
-            let ppuColorClass = scanlineClass(curScanlineCycle);
+            let ppuColorClass = 'ppu-mode' + modeAt(curScanlineCycle);
 
             let children = [h('td', { class: ppuColorClass }, '' + curScanlineCycle)];
 
             // Check if a new instruction begins on this cycle
             // If so, push a <td> for this instruction
             if (curInstrCycles == 0) {
-                let instrInfo = CPUOp.info(slots[i].props);
+                let instrInfo = CPUOp.info(slots[slotIdx].props);
                 let className = 'cpu-' + (instrInfo.class || 'op');
                 let instrName = instrInfo.instr;
 
                 children.push(h('td', {
                     rowspan: instrInfo.cycles,
                     class: className,
-                    skip: slots[i].props.op === 'skip',
+                    skip: slots[slotIdx].props.op === 'skip',
                 }, instrName && h('code', {}, instrName)));
 
                 // If this instruction has a legend
@@ -575,7 +576,7 @@ const Timeline = {
                 }
 
                 curInstrCycles = instrInfo.cycles; // Register the new instruction's length
-                ++i; // Go to the next instruction
+                ++slotIdx; // Go to the next instruction
             }
 
             cycles.push(h('tr', {}, children));
@@ -592,9 +593,35 @@ const Timeline = {
                 if (instr.props.rowspan > 3) {
                     // Push a row with a cycle count of "..."
                     // The third row will be generated on the next loop iteration
-                    cycles.push(h('tr', {}, h('td', { class: scanlineClass(curScanlineCycle) }, '...')));
-                    // Skip the appropriate amount of cycles (all but the first and last rows')
-                    curScanlineCycle = (curScanlineCycle + instr.props.rowspan - 2) % SCANLINE_LEN;
+
+                    let curColor = () => `var(--ppu-mode${modeAt(curScanlineCycle)})`;
+
+                    // That row's background will be a gradient of the different modes that it goes through.
+                    // So for that, we need to compute at which points transitions occur
+                    const skippedCycles = instr.props.rowspan - 2; // We don't skip the first nor last rows
+                    let cyclesRemaining = skippedCycles;
+                    let gradColors = []; // Begin with the current mode's color
+                    let i = MODE_CHANGES.findIndex(cycle => cycle > curScanlineCycle);
+                    // Iterate through all mode changes in the period
+                    while (MODE_CHANGES[i] - curScanlineCycle < cyclesRemaining) {
+                        // Register the color before the change
+                        const oldColor = curColor();
+
+                        cyclesRemaining -= MODE_CHANGES[i] - curScanlineCycle; // Subtract that distance
+                        curScanlineCycle = MODE_CHANGES[i] % SCANLINE_LEN; // Go to the mode change point (and wrap around)
+                        i = (i + 1) % MODE_CHANGES.length; // Check out the following mode next
+
+                        // Register the color change
+                        const percentage = 100 - parseInt(cyclesRemaining * 100 / skippedCycles);
+                        gradColors.push(`${oldColor} ${percentage}%, ${curColor()} ${percentage}%`);
+                    }
+                    curScanlineCycle = (curScanlineCycle + cyclesRemaining) % SCANLINE_LEN;
+                    const style = gradColors.length
+                        ? { 'background-image': `linear-gradient(${gradColors.join(', ')})` }
+                        : { 'background-color': curColor() };
+
+                    cycles.push(h('tr', {}, h('td', { style }, '...')));
+
                     // Refresh the instruction cell's rowspan and "remaining rows to generate" counts
                     instr.props.rowspan = 3;
                     curInstrCycles = 1; // Only 1 row left to generate (the last one)
@@ -761,20 +788,24 @@ export default {
     flex-flow: row-reverse wrap;
     align-items: center;
     justify-content: space-around;
+
+    --ppu-mode2: #ffd96680;
+    --ppu-mode3: #ff800080;
+    --ppu-mode0: #97d07780;
 }
 
 .timeline tr { background-color: transparent; }
 .timeline td { padding-top: 0; padding-bottom: 0; }
 
-.ppu-mode2 { background-color: #ffd96680; }
-.ppu-mode3 { background-color: #ff800080; }
-.ppu-mode0 { background-color: #97d07780; }
+.ppu-mode2 { background-color: var(--ppu-mode2); }
+.ppu-mode3 { background-color: var(--ppu-mode3); }
+.ppu-mode0 { background-color: var(--ppu-mode0); }
 
 .cpu-op         { background-color: #00ffff80; }
 .cpu-access     { background-color: #80808080; }
 .cpu-call       { background-color: #00ff0080; }
 .cpu-critical   { background-color: #ff000080; }
 .cpu-interrupt  { background-color: #ffff0080; }
-.cpu-io-3cycle { background-image: linear-gradient(to top, #80808080, #80808080 33%, #0000ff80 34%, #0000ff80); }
+.cpu-io-3cycle  { background-image: linear-gradient(to top, #80808080, #80808080 33%, #0000ff80 34%, #0000ff80); }
 .cpu-reti       { background-color: #ff00ff80; }
 </style>
