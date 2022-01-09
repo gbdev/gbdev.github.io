@@ -75,27 +75,7 @@ Consider zooming in to better see these cycles.
 First, let's consider a simple `LYC` routine.
 It will disable sprites if called for line 128, but otherwise, it will enable them.
 
-```asm
-LYC::
-    push af
-    ldh a, [rLY]
-    cp 128 - 1
-    jr z, .disableSprites
-
-    ; enable sprites
-    ldh a, [rLCDC]
-    or a, LCDCF_OBJON
-    ldh [rLCDC], a
-    pop af
-    reti
-
-.disableSprites
-    ldh a, [rLCDC]
-    and a, ~LCDCF_OBJON
-    ldh [rLCDC], a
-    pop af
-    reti
-```
+@[code asm](lyc_timing/simple_handler.asm)
 
 Note that this may not be an especially well-written `LYC` routine, but the actual logic of the routine itself is outside the scope of this tutorial.
 If that's what you're looking for, check out [DeadCScroll](deadcscroll) by Blitter Object.
@@ -190,37 +170,7 @@ One is to wait for the Drawing phase before waiting for HBlank.
 This effectively catches the very start of HBlank, leaving plenty of time to exit.
 Here's how the earlier example might look using this method:
 
-```asm
-LYC::
-    push af
-    push hl
-    ldh a, [rLY]
-    cp 128 - 1
-    jr z, .disableSprites
-
-    ; enable sprites
-    ldh a, [rLCDC]
-    or a, LCDCF_OBJON
-    jr .finish
-
-.disableSprites
-    ldh a, [rLCDC]
-    and a, ~LCDCF_OBJON
-
-.finish
-    ld hl, rSTAT
-.waitNotBlank
-    bit STATB_BUSY, [hl]
-    jr z, .waitNotBlank
-.waitBlank
-    bit STATB_BUSY, [hl]
-    jr nz, .waitBlank
-
-    ldh [rLCDC], a
-    pop hl
-    pop af
-    reti
-```
+@[code asm](lyc_timing/ret_hblank_handler.asm)
 
 See how this method never interferes with VRAM accesses in the main thread, even with the worst possible timing and the shortest of HBlanks:
 
@@ -424,58 +374,7 @@ The goal of this method is to combine the maximum HBlank time that cycle-countin
 Here is an example.
 If you've read [DeadCScroll](deadcscroll), you'll recognise this as that tutorial's `STAT` Handler, modified to start at Mode 2 rather than HBlank, and be safe towards VRAM accesses in the main thread.
 
-```asm
-    push af ; 4
-    push hl ; 8
-
-    ; obtain the pointer to the data pair
-    ldh a, [rLY] ; 11
-    inc a ; 12
-    add a, a ; 13 ; double the offset since each line uses 2 bytes
-    ld l, a ; 14
-    ldh a, [hDrawBuffer] ; 17
-    adc 0 ; 19
-    ld h, a ; 20 ; hl now points to somewhere in the draw buffer
-
-    call UnconditionalRet ; just waste 31 cycles while we wait for HBlank to maybe start
-    call UnconditionalRet
-    call UnconditionalRet
-    nop ; 51
-
-    ; now start trying to look for HBlank to exit early
-
-    ldh a, [rSTAT]
-    and STATF_BUSY
-    jr z, .setAndExit ; 58
-
-    ldh a, [rSTAT]
-    and STATF_BUSY
-    jr z, .setAndExit ; 65
-
-    ldh a, [rSTAT]
-    and STATF_BUSY
-    jr z, .setAndExit ; 72
-
-    ldh a, [rSTAT]
-    and STATF_BUSY
-    jr z, .setAndExit ; 79
-
-    nop ; waste 4 more cycles since there isn't time for another check
-    nop
-    nop
-    nop ; 83
-
-.setAndExit
-    ; set the scroll registers
-    ld a,[hl+] ; 85
-    ldh [rSCY],a ; 88
-    ld a,[hl+] ; 90
-    ldh [rSCX],a ; 93
-
-    pop hl ; 97
-    pop af ; 100
-    reti ; 104
-```
+@[code asm](lyc_timing/hybrid_handler.asm)
 
 Once the handler finishes its logic, the handler delays cycles until it reaches the window then HBlank might start.
 With a 5-cycle offset due to a `call`, and the longest possible HBlank, the earliest HBlank might start is cycle 54, so that's the first attempt to read `STAT`.
