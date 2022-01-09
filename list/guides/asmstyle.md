@@ -74,8 +74,6 @@ The difference between these and the "best practices" above is that these are mo
 
 - Historically, RGBDS has required label definitions to begin at "column 1" (i.e. no whitespace before them on their line). However, later versions (with full support added in 0.5.0) allow [indenting labels](https://github.com/pinobatch/libbet/blob/cabe48bc4042338b9975cb32c2dbd0ee6640f31e/src/main.z80#L206-L231), for example to make loops stand out like in higher-level languages. However, [a lot of people don't do this](https://github.com/BlitterObjectBob/DeadCScroll/blob/9834372eb0d56e8b9a8cdcaae4b8aecb6d402266/DeadCScroll.asm#L410-L422), so it's up to you.
 
-- Please use the `.asm` (or `.s`) file extensions, not `.z80`. The GB CPU isn't a Z80, so syntax highlighters get it *mostly* right, but not quite. And it helps spreading the false idea that the GB CPU is a Z80. :,(
-
 - Compressing data is useful for several reasons; however, it's not necessary in a lot of cases nowadays, so you may want to only look at it after more high-priority aspects.
 
 - Avoid abusing macros. Macros tend to make code opaque and hard to read for people trying to help you, in addition to having side effects and sometimes leading to very inefficient code.
