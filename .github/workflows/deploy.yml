@@ -29,7 +29,7 @@ jobs:
         npm install
         npm run build
         mkdir dist
-        cp list/.vuepress/dist/* dist/ -r
+        cp website/.vuepress/dist/* dist/ -r
         cp CNAME dist/
         cd ..
         cp -a repo/dist/. build/
