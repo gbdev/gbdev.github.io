@@ -1,0 +1,1 @@
+const e={key:"v-5c4d59a8",path:"/chat.html",title:"Community chat channels",lang:"en-US",frontmatter:{sidebar:!1,head:[["meta",{name:"og:title",content:"gbdev chat channels"}],["meta",{name:"og:description",content:"Join gbdev.io community channels"}]]},excerpt:"",headers:[],filePathRelative:"chat.md"};export{e as data};
