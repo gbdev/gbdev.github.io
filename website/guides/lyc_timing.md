@@ -84,17 +84,17 @@ However, that tutorial does not attempt to solve the problems described below, s
 
 Here's how the timing of all this might look:
 
-<Timeline :offset="0">
+<Timeline :offset="0" asmFile="lyc_timing/simple_handler.asm">
     <CPUOp op="interrupt" />
-    <CPUOp op="push" />
-    <CPUOp op="ldh" immediate />
-    <CPUOp op="cp" immediate />
-    <CPUOp op="jr" />
-    <CPUOp op="ldh" immediate />
-    <CPUOp op="set" />
-    <CPUOp op="ldh" immediate class="io-3cycle" legend="Write to LCDC" />
-    <CPUOp op="pop" />
-    <CPUOp op="reti" />
+    <CPUOp :line="2" />
+    <CPUOp :line="3" immediate />
+    <CPUOp :line="4" immediate />
+    <CPUOp :line="5" />
+    <CPUOp :line="8" immediate />
+    <CPUOp :line="9" immediate />
+    <CPUOp :line="10" immediate class="io-3cycle" legend="Write to LCDC" />
+    <CPUOp :line="11" />
+    <CPUOp :line="12" />
 </Timeline>
 
 The 5 yellow cycles mark the time it takes for the system to prepare the interrupt.
@@ -108,9 +108,9 @@ This is most likely undesirable, and could lead to graphical glitches like a par
 The other problem is what might be happening during the main thread:
 
 <Timeline :offset="111">
-    <CPUOp op="ldh" immediate class="io-3cycle" legend="Read from STAT" />
-    <CPUOp op="and" immediate />
-    <CPUOp op="jr" />
+    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="Read from STAT" />
+    <CPUOp instr="and STATF_BUSY" immediate />
+    <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="critical" />
 </Timeline>
 
@@ -120,20 +120,20 @@ After the brief processing of the value it read, the main loop may use the 16 gu
 This just barely works out.
 But what happens if an interrupt is requested on that next cycle?
 
-<Timeline :offset="111">
-    <CPUOp op="ldh" immediate class="io-3cycle" legend="Read from STAT" />
+<Timeline :offset="111" asmFile="lyc_timing/simple_handler.asm">
+    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="Read from STAT" />
     <CPUOp op="interrupt" />
-    <CPUOp op="push" />
-    <CPUOp op="ldh" immediate />
-    <CPUOp op="cp" immediate />
-    <CPUOp op="jr" />
-    <CPUOp op="ldh" immediate />
-    <CPUOp op="set" />
-    <CPUOp op="ldh" immediate />
-    <CPUOp op="pop" />
-    <CPUOp op="reti" />
-    <CPUOp op="and" immediate />
-    <CPUOp op="jr" />
+    <CPUOp :line="2" />
+    <CPUOp :line="3" immediate />
+    <CPUOp :line="4" immediate />
+    <CPUOp :line="5" />
+    <CPUOp :line="8" immediate />
+    <CPUOp :line="9" immediate />
+    <CPUOp :line="10" immediate />
+    <CPUOp :line="11" />
+    <CPUOp :line="12" />
+    <CPUOp instr="and STATF_BUSY" immediate />
+    <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="critical" />
 </Timeline>
 
@@ -144,18 +144,17 @@ We just need to do all our register writes, and exit, during HBlank.
 This seems easy enough, since if you've made it this far, you already know how to utilize the blanking periods to access VRAM.
 So what happens if you use that method?
 
-<Timeline :offset="111">
-    <CPUOp op="ldh" immediate class="io-3cycle" legend="Read from STAT" />
+<Timeline :offset="111" asmFile="lyc_timing/simple_handler.asm">
+    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="Read from STAT" />
     <CPUOp op="interrupt" />
-    <CPUOp op="skip" :cycles="96" />
-    <CPUOp op="ldh" immediate />
-    <CPUOp op="and" immediate />
-    <CPUOp op="jr" />
-    <CPUOp op="ldh" immediate />
-    <CPUOp op="pop" />
-    <CPUOp op="reti" />
-    <CPUOp op="and" immediate />
-    <CPUOp op="jr" />
+    <CPUOp op="skip" :cycles="98" />
+    <CPUOp instr="bit STATB_BUSY, [hl]" immediate />
+    <CPUOp instr="jr nz, .waitVRAM" />
+    <CPUOp :line="10" immediate />
+    <CPUOp :line="11" />
+    <CPUOp :line="12" />
+    <CPUOp instr="and STATF_BUSY" immediate />
+    <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="critical" />
 </Timeline>
 
@@ -174,32 +173,35 @@ Here's how the earlier example might look using this method:
 
 See how this method never interferes with VRAM accesses in the main thread, even with the worst possible timing and the shortest of HBlanks:
 
-<Timeline :offset="111" :hblank-length="21">
-    <CPUOp op="ldh" immediate />
+<Timeline :offset="111" :hblank-length="21" asmFile="lyc_timing/ret_hblank_handler.asm">
+    <CPUOp instr="ldh a, [rSTAT]" immediate />
     <CPUOp op="interrupt" />
-    <CPUOp op="push" />
-    <CPUOp op="push" />
-    <CPUOp op="ldh" immediate />
-    <CPUOp op="jr" />
-    <CPUOp op="ldh" immediate />
-    <CPUOp op="or" immediate />
-    <CPUOp op="jr" taken />
-    <CPUOp op="ld-imm16" />
-    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
-    <CPUOp op="jr" />
-    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
-    <CPUOp op="jr" taken />
-    <CPUOp op="skip" :cycles="48" />
-    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
-    <CPUOp op="jr" taken />
-    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
-    <CPUOp op="jr" />
-    <CPUOp op="ldh" immediate />
-    <CPUOp op="pop" />
-    <CPUOp op="pop" />
-    <CPUOp op="reti" />
-    <CPUOp op="and" immediate />
-    <CPUOp op="jr" />
+    <CPUOp :line="2" />
+    <CPUOp :line="3" />
+    <CPUOp :line="4" immediate />
+    <CPUOp :line="5" immediate />
+    <CPUOp :line="6" />
+    <CPUOp :line="9" immediate />
+    <CPUOp :line="10" immediate />
+    <CPUOp :line="11" taken />
+    <CPUOp :line="18" op="ld-imm16" />
+    <CPUOp :line="20" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="21" />
+    <CPUOp :line="23" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="24" taken />
+    <CPUOp op="skip" :cycles="42" />
+    <CPUOp :line="23" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="24" taken />
+    <CPUOp :line="23" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="24" taken />
+    <CPUOp :line="23" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="24" />
+    <CPUOp :line="26" immediate />
+    <CPUOp :line="27" />
+    <CPUOp :line="28" />
+    <CPUOp :line="29" />
+    <CPUOp instr="and STATF_BUSY" immediate />
+    <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
 </Timeline>
 
@@ -209,29 +211,29 @@ Normally, These really short HBlanks are the worst-case scenario that you always
 However, in practice, HBlanks are normally much longer, often even longer than the drawing phase.
 Using this method, that can actually have unfortunate consequences:
 
-<Timeline :offset="111" :hblank-length="51">
-    <CPUOp op="ldh" />
+<Timeline :offset="111" :hblank-length="51" asmFile="lyc_timing/ret_hblank_handler.asm">
+    <CPUOp instr="ldh a, [rSTAT]" immediate />
     <CPUOp op="interrupt" />
-    <CPUOp op="push" />
-    <CPUOp op="push" />
+    <CPUOp :line="2" />
+    <CPUOp :line="3" />
     <CPUOp op="skip" :cycles="46" />
-    <CPUOp op="ld-imm16" />
-    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
-    <CPUOp op="jr" taken />
+    <CPUOp :line="18" op="ld-imm16" />
+    <CPUOp :line="20" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="21" taken />
     <CPUOp op="skip" :cycles="48" />
-    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
-    <CPUOp op="jr" />
-    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
-    <CPUOp op="jr" taken />
-    <CPUOp op="skip" :cycles="46" />
-    <CPUOp op="bit" immediate class="io-3cycle" legend="STAT is tested" />
-    <CPUOp op="jr" />
-    <CPUOp op="ldh" immediate />
-    <CPUOp op="pop" />
-    <CPUOp op="pop" />
-    <CPUOp op="reti" />
-    <CPUOp op="and" immediate />
-    <CPUOp op="jr" />
+    <CPUOp :line="20" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="21" />
+    <CPUOp :line="23" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="24" taken />
+    <CPUOp op="skip" :cycles="48" />
+    <CPUOp :line="23" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="24" />
+    <CPUOp :line="26" immediate />
+    <CPUOp :line="27" />
+    <CPUOp :line="28" />
+    <CPUOp :line="29" />
+    <CPUOp instr="and STATF_BUSY" immediate />
+    <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
 </Timeline>
 
@@ -265,12 +267,12 @@ If you need to use an if statement, always make it an if/else statement so that 
 So now that you're ready to count the cycles of your handler, how long do you need to make the routine? Let's look at some more diagrams to figure this out!
 
 <Timeline :offset="111">
-    <CPUOp op="ldh" immediate class="io-3cycle" legend="STAT read" />
+    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="STAT read" />
     <CPUOp op="interrupt" />
     <CPUOp op="skip" :cycles="105" />
-    <CPUOp op="reti" />
-    <CPUOp op="and" immediate />
-    <CPUOp op="jr" />
+    <CPUOp instr="reti" />
+    <CPUOp instr="and STATF_BUSY" immediate />
+    <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
 </Timeline>
 
@@ -279,12 +281,12 @@ This extra time makes it possible to write to two or three registers safely, rat
 If you don't need all that time, you can make it shorter as well:
 
 <Timeline :offset="107" :hblank-length="21">
-    <CPUOp op="ldh" immediate class="io-3cycle" legend="STAT read" />
-    <CPUOp op="and" immediate />
-    <CPUOp op="jr" />
+    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="STAT read" />
+    <CPUOp instr="and STATF_BUSY" immediate />
+    <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="interrupt" />
     <CPUOp op="skip" :cycles="84" />
-    <CPUOp op="reti" />
+    <CPUOp instr="reti" />
     <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
 </Timeline>
 
@@ -299,12 +301,12 @@ These 22 cycles are cycle 88 through cycle 109, inclusive.
 What if I told you that you could actually have your handler take only 86 cycles? Well, you can!
 
 <Timeline :offset="107" :hblank-length="21">
-    <CPUOp op="ldh" immediate class="io-3cycle" legend="STAT read" />
-    <CPUOp op="and" immediate />
-    <CPUOp op="jr" />
+    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="STAT read" />
+    <CPUOp instr="and STATF_BUSY" immediate />
+    <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="interrupt" />
     <CPUOp op="skip" :cycles="83" />
-    <CPUOp op="reti" />
+    <CPUOp instr="reti" />
     <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
 </Timeline>
 
@@ -320,14 +322,14 @@ The interrupt latency I showed earlier doesn't actually tell the full story.
 Before it even starts to service the interrupt, the system waits for the current instruction to finish.
 This is how that might look with the longest allowable routine:
 
-<Timeline :offset="106" :hblank-length="21">
-    <CPUOp op="ldh" immediate class="io-3cycle" legend="STAT read" />
-    <CPUOp op="and" immediate />
-    <CPUOp op="jr" />
-    <CPUOp op="call" />
+<Timeline :offset="106" :hblank-length="51">
+    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="STAT read" />
+    <CPUOp instr="and STATF_BUSY" immediate />
+    <CPUOp instr="jr nz, .waitVRAM" />
+    <CPUOp instr="call SomeFunc" />
     <CPUOp op="interrupt" />
     <CPUOp op="skip" :cycles="105" />
-    <CPUOp op="reti" />
+    <CPUOp instr="reti" />
     <CPUOp op="skip" :cycles="10" class="critical" legend="VRAM accesses" />
 </Timeline>
 
@@ -410,6 +412,17 @@ So thanks for reading, see you next time!
 <script>
 import { h } from 'vue';
 
+// HACK: we import all of the ASM files here because imports must be static and at top-level
+import simple_handler     from '../../../../guides/lyc_timing/simple_handler.asm';
+import ret_hblank_handler from '../../../../guides/lyc_timing/ret_hblank_handler.asm';
+import hybrid_handler     from '../../../../guides/lyc_timing/hybrid_handler.asm';
+const instrs = string => string.split(/\r?\n/).map(line => line.substring(line.indexOf(';')).trim());
+const ASM_FILES = {
+    'lyc_timing/simple_handler.asm':     instrs(simple_handler),
+    'lyc_timing/ret_hblank_handler.asm': instrs(ret_hblank_handler),
+    'lyc_timing/hybrid_handler.asm':     instrs(hybrid_handler),
+};
+
 const SCANLINE_LEN = 114, MIN_HBL_LEN = 21, MAX_HBL_LEN = 51;
 
 const Timeline = {
@@ -428,11 +441,13 @@ const Timeline = {
                 return value >= MIN_HBL_LEN && value <= MAX_HBL_LEN;
             },
         },
+        asmFile: String,
     },
 
     render() {
         const MODE_CHANGES = [20, SCANLINE_LEN - this.$props.hblankLength, SCANLINE_LEN];
 
+        let asmFile = this.$props.asmFile && ASM_FILES[this.$props.asmFile];
         let slots = this.$slots.default(); // The slots we'll be working on (shorthand)
 
         let opsLegend = {}; // Operations with a legend will be registered in this dict
@@ -458,7 +473,7 @@ const Timeline = {
             // Check if a new instruction begins on this cycle
             // If so, push a <td> for this instruction
             if (curInstrCycles == 0) {
-                let instrInfo = CPUOp.info(slots[slotIdx].props);
+                let instrInfo = CPUOp.info(slots[slotIdx].props, asmFile);
                 let className = 'cpu-' + (instrInfo.class || 'op');
                 let instrName = instrInfo.instr;
 
@@ -569,10 +584,15 @@ const Timeline = {
 
 const CPUOp = {
     props: {
-        op: {
-            type: String,
-            required: true,
+        // Either of these is required, and the latter requires the Timeline to pass an `asmFile`
+        op: String,
+        line: {
+            type: Number,
+            validator(value) {
+                return value > 0; // We count from 1
+            },
         },
+
         immediate: Boolean,
         taken: Boolean,
         'class': String,
@@ -580,7 +600,19 @@ const CPUOp = {
         cycles: Number,
     },
 
-    info(props) {
+    info(props, asmFile) {
+        // If requesting a line from an ASM file, force the instruction from it
+        if (props.line !== undefined) {
+            if (asmFile === undefined) {
+                throw new SyntaxError("ASM line requested, but no ASM file was provided!");
+            }
+            props.instr = asmFile[props.line - 1];
+        }
+        // If a specific instr has been given but `op` has not, deduce it
+        if (props.instr !== undefined && props.op === undefined) {
+            props.op = props.instr.split(/\s/)[0];
+        }
+
         let info = (function() {
             // Index of returned properties:
             // class:
@@ -596,10 +628,18 @@ const CPUOp = {
             //   If truthy, the instruction can be tagged "taken", but not "immediate".
             // instr:
             //   If truthy, the string that will be placed raw (no Markdown) in the "Instruction" column in a <code> span.
+            //   Can be overridden from the props.
             // legend:
             //   If truthy, the string that will be printed.
             //   Additionally, if truthy (including if overridden by the props), `class` will be set to the operation's name.
             //   Can be overridden from the props.
+            // line:
+            //   If set, and an ASM file was specified in the `Timeline`, `instr` will be set to the corresponding line.
+            //   Line numbers count from 1 for consistency with code blocks.
+            // op:
+            //   The operation's name, which determines its intrinsic properties.
+            //   Can be overridden from the props.
+            //   If not specified, will be deduced from the `instr` prop if that was specified or deduced.
             switch (props.op) {
                 case 'and':
                     return { cycles:  1, instr: 'and' };
@@ -641,6 +681,11 @@ const CPUOp = {
                     throw new SyntaxError(`Unknown instruction type "${props.op}"`);
             };
         })();
+
+        // If a line was requested, override the instruction with it
+        if (props.instr) {
+            info.instr = props.instr;
+        }
 
         // Immediate instructions and taken jumps take one extra cycle
         // FIXME: Normally Vue would correctly type these as Booleans as per `props` above, but it doesn't...

@@ -17,6 +17,7 @@
   "homepage": "https://gbdev.io",
   "devDependencies": {
     "@vuepress/plugin-shiki": "^2.0.0-beta.32",
+    "vite-raw-plugin": "^1.0.1",
     "vuepress": "^2.0.0-beta.32"
   }
 }

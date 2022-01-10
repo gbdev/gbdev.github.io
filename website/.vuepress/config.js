@@ -1,6 +1,7 @@
 // .vuepress/config.js
 
 const { path } = require("@vuepress/utils");
+const markdownRawPlugin = require('vite-raw-plugin');
 
 module.exports = {
     plugins: [
@@ -52,5 +53,14 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+
+    bundler: '@vuepress/bundler-vite',
+    bundlerConfig: {
+        viteOptions: {
+            plugins: [
+                markdownRawPlugin({ fileRegex: /\.asm$/ }),
+            ],
+        },
+    },
 }
