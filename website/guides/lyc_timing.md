@@ -58,9 +58,9 @@ However, this can be avoided with some careful planning.
 
 ## Timing, With Diagrams and Stuff
 
-First, let's look at the timing of the rendering itself, courtesy of the Pan Docs:
+First, let's look at the timing of the rendering itself, [courtesy of the Pan Docs](https://gbdev.io/pandocs/pixel_fifo):
 
-**![](/images/pandocs_timing.png)**
+<inline-svg src="/images/ppu_modes_timing.svg" viewBox="0 0 700 307" style="--fg: var(--c-text);" />
 
 Note that:
 - Each full scanline takes exactly 456 dots (114 cycles)
@@ -719,11 +719,15 @@ const CPUOp = {
     },
 };
 
+import InlineSvg from 'vue-inline-svg';
+
 export default {
     components: {
         Timeline,
         CPUOp,
-    }
+
+        InlineSvg,
+    },
 }
 </script>
 <style>

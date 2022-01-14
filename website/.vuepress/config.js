@@ -61,6 +61,11 @@ module.exports = {
             plugins: [
                 markdownRawPlugin({ fileRegex: /\.asm$/ }),
             ],
+            resolve: {
+                alias: {
+                    '@': __dirname, // Alias to the `.vuepress` folder
+                },
+            },
         },
     },
 }
