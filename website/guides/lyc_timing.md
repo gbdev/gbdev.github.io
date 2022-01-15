@@ -413,9 +413,9 @@ So thanks for reading, see you next time!
 import { h } from 'vue';
 
 // HACK: we import all of the ASM files here because imports must be static and at top-level
-import simple_handler     from '../../../../guides/lyc_timing/simple_handler.asm';
-import ret_hblank_handler from '../../../../guides/lyc_timing/ret_hblank_handler.asm';
-import hybrid_handler     from '../../../../guides/lyc_timing/hybrid_handler.asm';
+import simple_handler     from '@/../guides/lyc_timing/simple_handler.asm';
+import ret_hblank_handler from '@/../guides/lyc_timing/ret_hblank_handler.asm';
+import hybrid_handler     from '@/../guides/lyc_timing/hybrid_handler.asm';
 const instrs = string => string.split(/\r?\n/).map(line => line.substring(line.indexOf(';')).trim());
 const ASM_FILES = {
     'lyc_timing/simple_handler.asm':     instrs(simple_handler),
