@@ -9,10 +9,13 @@ head:
       content: Join gbdev.io community channels
 ---
 
-# Community chat channels
+# Community channels
 
-- Discord Server: [https://discord.io/gbdev](https://discord.io/gbdev)
-- IRC: `#gbdev` on EFNet (separate channel, not bridged), `#gbdev2` on EFNet (bridged to Discord)
-- Matrix: `#gbdev:matrix.org` (e.g. [https://app.element.io/#/room/#gbdev:matrix.org](https://app.element.io/#/room/#gbdev:matrix.org), bridged to Discord)
+Join our community on the following channels. Before posting, read the rules and the FAQ (usually in the welcome threads or in the signup).
+
+- Discord Server: [https://discord.io/gbdev](https://discord.io/gbdev). Also available on:
+   - IRC: `#gbdev2` on EFNet.
+   - Matrix: `#gbdev:matrix.org` (e.g. [https://app.element.io/#/room/#gbdev:matrix.org](https://app.element.io/#/room/#gbdev:matrix.org).
+- IRC: `#gbdev` on EFNet
 - Forum: [https://gbdev.gg8.se/forums](https://gbdev.gg8.se/forums/)
 - Wiki: [https://gbdev.gg8.se/wiki](https://gbdev.gg8.se/wiki/)
