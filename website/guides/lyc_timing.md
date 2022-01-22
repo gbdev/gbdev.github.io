@@ -754,6 +754,7 @@ export default {
     align-items: center;
     justify-content: space-around;
 
+    /* These are also used for the "condensed" rows' gradients */
     --ppu-mode2: #ffd96680;
     --ppu-mode3: #ff800080;
     --ppu-mode0: #97d07780;
