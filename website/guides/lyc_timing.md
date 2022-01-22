@@ -481,7 +481,16 @@ const Timeline = {
             // If so, push a <td> for this instruction
             if (curInstrCycles == 0) {
                 const slotProps = slots[slotIdx].props;
-                const instrInfo = CPUOp.info(slotProps, asmFile);
+                const instrInfo = (function () {
+                    try {
+                        return CPUOp.info(slotProps, asmFile);
+                    } catch (e) {
+                        if (e instanceof SyntaxError && asmFileName && slotProps.line !== undefined) {
+                            e.message += ` (at ${asmFileName}:${slotProps.line})`;
+                        }
+                        throw e;
+                    }
+                })();
                 const instrName = instrInfo.instr;
 
                 let className = 'cpu-' + (instrInfo.class || 'op');
