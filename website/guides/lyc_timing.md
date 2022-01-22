@@ -447,7 +447,14 @@ const Timeline = {
     render() {
         const MODE_CHANGES = [20, SCANLINE_LEN - this.$props.hblankLength, SCANLINE_LEN];
 
-        let asmFile = this.$props.asmFile && ASM_FILES[this.$props.asmFile];
+        const asmFileName = this.$props.asmFile;
+        let asmFile;
+        if (asmFileName) {
+            asmFile = ASM_FILES[asmFileName];
+            if (asmFile === undefined) {
+                throw new SyntaxError(`Unknown ASM file "${asmFileName}" (did you forget to register it in \`ASM_FILES\`?)`)
+            }
+        }
         let slots = this.$slots.default(); // The slots we'll be working on (shorthand)
 
         let opsLegend = {}; // Operations with a legend will be registered in this dict
