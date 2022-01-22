@@ -510,7 +510,10 @@ const Timeline = {
                 // If this instruction has a legend, register it
                 if (instrInfo.legend) {
                     // Anything with a legend is guaranteed to have a class name
-                    opsLegend[className] = instrInfo.legend;
+                    opsLegend[className] = {
+                        order: Object.keys(opsLegend).length,
+                        legend: instrInfo.legend,
+                    };
                 }
 
                 curInstrCycles = instrInfo.cycles; // Register the new instruction's length
@@ -590,8 +593,8 @@ const Timeline = {
                 h('table', {}, [
                     h('tr', {}, h('th', { colspan: 2 }, 'CPU operation')),
                     ...Object.entries(opsLegend)
-                             .sort(([l], [r]) => l < r) // Sort the legend by class names
-                             .map(([className, legend]) => h('tr', {}, [
+                             .sort(([_lc, l], [_rc, r]) => l.order - r.order) // Sort the legend by class names
+                             .map(([className, {legend}]) => h('tr', {}, [
                         h('td', { class: className }),
                         h('td', {}, legend),
                     ])),
