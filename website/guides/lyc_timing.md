@@ -475,20 +475,23 @@ const Timeline = {
             if (curInstrCycles == 0) {
                 const slotProps = slots[slotIdx].props;
                 const instrInfo = CPUOp.info(slotProps, asmFile);
-                let className = 'cpu-' + (instrInfo.class || 'op');
                 const instrName = instrInfo.instr;
 
+                let className = 'cpu-' + (instrInfo.class || 'op');
                 if (slotProps.io !== undefined) {
                     className += ' cpu-io';
                 }
 
-                children.push(h('td', {
+                let props = {
                     rowspan: instrInfo.cycles,
                     class: className,
                     skip: slotProps.op === 'skip',
-                }, instrName && h('code', {}, instrName)));
+                };
+                let contents = props.skip ? h('b', {}, '(...)') : instrName && h('code', {}, instrName);
 
-                // If this instruction has a legend
+                children.push(h('td', props, contents));
+
+                // If this instruction has a legend, register it
                 if (instrInfo.legend) {
                     // Anything with a legend is guaranteed to have a class name
                     opsLegend[className] = instrInfo.legend;
@@ -539,7 +542,7 @@ const Timeline = {
                         ? { 'background-image': `linear-gradient(${gradColors.join(', ')})` }
                         : { 'background-color': curColor() };
 
-                    cycles.push(h('tr', {}, h('td', { style }, '...')));
+                    cycles.push(h('tr', {}, h('td', { style }, h('b', {}, '...'))));
 
                     // Refresh the instruction cell's rowspan and "remaining rows to generate" counts
                     instr.props.rowspan = 3;
