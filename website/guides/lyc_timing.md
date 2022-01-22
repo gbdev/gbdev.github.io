@@ -147,7 +147,7 @@ So what happens if you use that method?
 <Timeline :offset="111" asmFile="lyc_timing/simple_handler.asm">
     <CPUOp instr="ldh a, [rSTAT]" immediate io legend="Read from STAT" />
     <CPUOp op="interrupt" />
-    <CPUOp op="skip" :cycles="98" />
+    <CPUOp op="condensed" :cycles="98" />
     <CPUOp instr="bit STATB_BUSY, [hl]" immediate />
     <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp :line="10" immediate />
@@ -189,7 +189,7 @@ See how this method never interferes with VRAM accesses in the main thread, even
     <CPUOp :line="21" />
     <CPUOp :line="23" immediate io legend="STAT is tested" />
     <CPUOp :line="24" taken />
-    <CPUOp op="skip" :cycles="42" />
+    <CPUOp op="condensed" :cycles="42" />
     <CPUOp :line="23" immediate io legend="STAT is tested" />
     <CPUOp :line="24" taken />
     <CPUOp :line="23" immediate io legend="STAT is tested" />
@@ -202,7 +202,7 @@ See how this method never interferes with VRAM accesses in the main thread, even
     <CPUOp :line="29" />
     <CPUOp instr="and STATF_BUSY" immediate />
     <CPUOp instr="jr nz, .waitVRAM" />
-    <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
+    <CPUOp op="condensed" :cycles="16" class="critical" legend="VRAM accesses" />
 </Timeline>
 
 Phew! This just barely works.
@@ -216,16 +216,16 @@ Using this method, that can actually have unfortunate consequences:
     <CPUOp op="interrupt" />
     <CPUOp :line="2" />
     <CPUOp :line="3" />
-    <CPUOp op="skip" :cycles="46" />
+    <CPUOp op="condensed" :cycles="46" />
     <CPUOp :line="18" op="ld-imm16" />
     <CPUOp :line="20" immediate io legend="STAT is tested" />
     <CPUOp :line="21" taken />
-    <CPUOp op="skip" :cycles="48" />
+    <CPUOp op="condensed" :cycles="48" />
     <CPUOp :line="20" immediate io legend="STAT is tested" />
     <CPUOp :line="21" />
     <CPUOp :line="23" immediate io legend="STAT is tested" />
     <CPUOp :line="24" taken />
-    <CPUOp op="skip" :cycles="48" />
+    <CPUOp op="condensed" :cycles="48" />
     <CPUOp :line="23" immediate io legend="STAT is tested" />
     <CPUOp :line="24" />
     <CPUOp :line="26" immediate />
@@ -234,7 +234,7 @@ Using this method, that can actually have unfortunate consequences:
     <CPUOp :line="29" />
     <CPUOp instr="and STATF_BUSY" immediate />
     <CPUOp instr="jr nz, .waitVRAM" />
-    <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
+    <CPUOp op="condensed" :cycles="16" class="critical" legend="VRAM accesses" />
 </Timeline>
 
 This time, when all the processing was done, there was still plenty of time left in the scanline to safely exit.
@@ -269,11 +269,11 @@ So now that you're ready to count the cycles of your handler, how long do you ne
 <Timeline :offset="111">
     <CPUOp instr="ldh a, [rSTAT]" immediate io legend="STAT read" />
     <CPUOp op="interrupt" />
-    <CPUOp op="skip" :cycles="105" />
+    <CPUOp op="condensed" :cycles="105" />
     <CPUOp instr="reti" />
     <CPUOp instr="and STATF_BUSY" immediate />
     <CPUOp instr="jr nz, .waitVRAM" />
-    <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
+    <CPUOp op="condensed" :cycles="16" class="critical" legend="VRAM accesses" />
 </Timeline>
 
 Wow! That's a lot of cycles! Here, the routine takes exactly one scanline to complete, so the main thread does its writes at the same moment on the next scanline, with no idea what happened! If you count up all the cyan cycles, you'll see that there are 105 of them, and 109 if you count the `reti`.
@@ -285,9 +285,9 @@ If you don't need all that time, you can make it shorter as well:
     <CPUOp instr="and STATF_BUSY" immediate />
     <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="interrupt" />
-    <CPUOp op="skip" :cycles="84" />
+    <CPUOp op="condensed" :cycles="84" />
     <CPUOp instr="reti" />
-    <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
+    <CPUOp op="condensed" :cycles="16" class="critical" legend="VRAM accesses" />
 </Timeline>
 
 This time, I put the `and` and `jr` before the interrupt, so that when it resumes, it's all ready to start writing to VRAM.
@@ -305,9 +305,9 @@ What if I told you that you could actually have your handler take only 86 cycles
     <CPUOp instr="and STATF_BUSY" immediate />
     <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="interrupt" />
-    <CPUOp op="skip" :cycles="83" />
+    <CPUOp op="condensed" :cycles="83" />
     <CPUOp instr="reti" />
-    <CPUOp op="skip" :cycles="16" class="critical" legend="VRAM accesses" />
+    <CPUOp op="condensed" :cycles="16" class="critical" legend="VRAM accesses" />
 </Timeline>
 
 This seems bad, since the first cycle of the red bar, where the main thread may try to access VRAM, is potentially during the Drawing phase! This is also fine though.
@@ -328,9 +328,9 @@ This is how that might look with the longest allowable routine:
     <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp instr="call SomeFunc" />
     <CPUOp op="interrupt" />
-    <CPUOp op="skip" :cycles="105" />
+    <CPUOp op="condensed" :cycles="105" />
     <CPUOp instr="reti" />
-    <CPUOp op="skip" :cycles="10" class="critical" legend="VRAM accesses" />
+    <CPUOp op="condensed" :cycles="10" class="critical" legend="VRAM accesses" />
 </Timeline>
 
 Here, the first green block shows the system waiting 5 cycles for a `call` instruction to finish. `call` is the longest instruction at 6 cycles, so if the interrupt is requested just after it begins, the system will wait 5 cycles for it to complete.
@@ -485,9 +485,9 @@ const Timeline = {
                 let props = {
                     rowspan: instrInfo.cycles,
                     class: className,
-                    skip: slotProps.op === 'skip',
+                    condensed: slotProps.op === 'condensed',
                 };
-                let contents = props.skip ? h('b', {}, '(...)') : instrName && h('code', {}, instrName);
+                let contents = props.condensed ? h('b', {}, '(...)') : instrName && h('code', {}, instrName);
 
                 children.push(h('td', props, contents));
 
@@ -507,8 +507,8 @@ const Timeline = {
             if (curScanlineCycle == SCANLINE_LEN) curScanlineCycle = 0; // Next scanline, please!
             curInstrCycles--;
 
-            if (children[1] && children[1].props.skip) {
-                // Special handling for the "skip" pseudo-instruction
+            if (children[1] && children[1].props.condensed) {
+                // Special handling for the "condensed" pseudo-instruction
                 let instr = children[1];
 
                 // Ensure that skips generate no more than 3 rows
@@ -520,7 +520,7 @@ const Timeline = {
 
                     // That row's background will be a gradient of the different modes that it goes through.
                     // So for that, we need to compute at which points transitions occur
-                    const skippedCycles = instr.props.rowspan - 2; // We don't skip the first nor last rows
+                    const skippedCycles = instr.props.rowspan - 2; // We don't condense the first nor last rows
                     let cyclesRemaining = skippedCycles;
                     let gradColors = []; // Begin with the current mode's color
                     let i = MODE_CHANGES.findIndex(cycle => cycle > curScanlineCycle);
@@ -687,12 +687,12 @@ const CPUOp = {
                 case 'set':
                     return { cycles:  2, instr: 'set', fixed: false };
 
-                case 'skip':
+                case 'condensed':
                     let cycles = props.cycles;
                     if (typeof cycles !== 'number' || !isFinite(cycles)) {
                         throw new SyntaxError('"Skip" CPU op requires a numeric cycle count');
                     }
-                    return { cycles, class: 'skip', class: 'op' };
+                    return { cycles, class: 'condensed', class: 'op' };
 
                 default:
                     throw new SyntaxError(`Unknown instruction type "${props.op}"`);
