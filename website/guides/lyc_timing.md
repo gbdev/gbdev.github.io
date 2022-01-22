@@ -92,7 +92,7 @@ Here's how the timing of all this might look:
     <CPUOp :line="5" />
     <CPUOp :line="8" immediate />
     <CPUOp :line="9" immediate />
-    <CPUOp :line="10" immediate class="io-3cycle" legend="Write to LCDC" />
+    <CPUOp :line="10" immediate io legend="Write to LCDC" />
     <CPUOp :line="11" />
     <CPUOp :line="12" />
 </Timeline>
@@ -108,7 +108,7 @@ This is most likely undesirable, and could lead to graphical glitches like a par
 The other problem is what might be happening during the main thread:
 
 <Timeline :offset="111">
-    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="Read from STAT" />
+    <CPUOp instr="ldh a, [rSTAT]" immediate io legend="Read from STAT" />
     <CPUOp instr="and STATF_BUSY" immediate />
     <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="critical" />
@@ -121,7 +121,7 @@ This just barely works out.
 But what happens if an interrupt is requested on that next cycle?
 
 <Timeline :offset="111" asmFile="lyc_timing/simple_handler.asm">
-    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="Read from STAT" />
+    <CPUOp instr="ldh a, [rSTAT]" immediate io legend="Read from STAT" />
     <CPUOp op="interrupt" />
     <CPUOp :line="2" />
     <CPUOp :line="3" immediate />
@@ -145,7 +145,7 @@ This seems easy enough, since if you've made it this far, you already know how t
 So what happens if you use that method?
 
 <Timeline :offset="111" asmFile="lyc_timing/simple_handler.asm">
-    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="Read from STAT" />
+    <CPUOp instr="ldh a, [rSTAT]" immediate io legend="Read from STAT" />
     <CPUOp op="interrupt" />
     <CPUOp op="skip" :cycles="98" />
     <CPUOp instr="bit STATB_BUSY, [hl]" immediate />
@@ -185,16 +185,16 @@ See how this method never interferes with VRAM accesses in the main thread, even
     <CPUOp :line="10" immediate />
     <CPUOp :line="11" taken />
     <CPUOp :line="18" op="ld-imm16" />
-    <CPUOp :line="20" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="20" immediate io legend="STAT is tested" />
     <CPUOp :line="21" />
-    <CPUOp :line="23" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="23" immediate io legend="STAT is tested" />
     <CPUOp :line="24" taken />
     <CPUOp op="skip" :cycles="42" />
-    <CPUOp :line="23" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="23" immediate io legend="STAT is tested" />
     <CPUOp :line="24" taken />
-    <CPUOp :line="23" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="23" immediate io legend="STAT is tested" />
     <CPUOp :line="24" taken />
-    <CPUOp :line="23" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="23" immediate io legend="STAT is tested" />
     <CPUOp :line="24" />
     <CPUOp :line="26" immediate />
     <CPUOp :line="27" />
@@ -218,15 +218,15 @@ Using this method, that can actually have unfortunate consequences:
     <CPUOp :line="3" />
     <CPUOp op="skip" :cycles="46" />
     <CPUOp :line="18" op="ld-imm16" />
-    <CPUOp :line="20" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="20" immediate io legend="STAT is tested" />
     <CPUOp :line="21" taken />
     <CPUOp op="skip" :cycles="48" />
-    <CPUOp :line="20" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="20" immediate io legend="STAT is tested" />
     <CPUOp :line="21" />
-    <CPUOp :line="23" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="23" immediate io legend="STAT is tested" />
     <CPUOp :line="24" taken />
     <CPUOp op="skip" :cycles="48" />
-    <CPUOp :line="23" immediate class="io-3cycle" legend="STAT is tested" />
+    <CPUOp :line="23" immediate io legend="STAT is tested" />
     <CPUOp :line="24" />
     <CPUOp :line="26" immediate />
     <CPUOp :line="27" />
@@ -267,7 +267,7 @@ If you need to use an if statement, always make it an if/else statement so that 
 So now that you're ready to count the cycles of your handler, how long do you need to make the routine? Let's look at some more diagrams to figure this out!
 
 <Timeline :offset="111">
-    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="STAT read" />
+    <CPUOp instr="ldh a, [rSTAT]" immediate io legend="STAT read" />
     <CPUOp op="interrupt" />
     <CPUOp op="skip" :cycles="105" />
     <CPUOp instr="reti" />
@@ -281,7 +281,7 @@ This extra time makes it possible to write to two or three registers safely, rat
 If you don't need all that time, you can make it shorter as well:
 
 <Timeline :offset="107" :hblank-length="21">
-    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="STAT read" />
+    <CPUOp instr="ldh a, [rSTAT]" immediate io legend="STAT read" />
     <CPUOp instr="and STATF_BUSY" immediate />
     <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="interrupt" />
@@ -301,7 +301,7 @@ These 22 cycles are cycle 88 through cycle 109, inclusive.
 What if I told you that you could actually have your handler take only 86 cycles? Well, you can!
 
 <Timeline :offset="107" :hblank-length="21">
-    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="STAT read" />
+    <CPUOp instr="ldh a, [rSTAT]" immediate io legend="STAT read" />
     <CPUOp instr="and STATF_BUSY" immediate />
     <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="interrupt" />
@@ -323,7 +323,7 @@ Before it even starts to service the interrupt, the system waits for the current
 This is how that might look with the longest allowable routine:
 
 <Timeline :offset="106" :hblank-length="51">
-    <CPUOp instr="ldh a, [rSTAT]" immediate class="io-3cycle" legend="STAT read" />
+    <CPUOp instr="ldh a, [rSTAT]" immediate io legend="STAT read" />
     <CPUOp instr="and STATF_BUSY" immediate />
     <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp instr="call SomeFunc" />
@@ -466,21 +466,26 @@ const Timeline = {
                     return 0;
                 }
             };
-            let ppuColorClass = 'ppu-mode' + modeAt(curScanlineCycle);
+            const ppuColorClass = 'ppu-mode' + modeAt(curScanlineCycle);
 
             let children = [h('td', { class: ppuColorClass }, '' + curScanlineCycle)];
 
             // Check if a new instruction begins on this cycle
             // If so, push a <td> for this instruction
             if (curInstrCycles == 0) {
-                let instrInfo = CPUOp.info(slots[slotIdx].props, asmFile);
+                const slotProps = slots[slotIdx].props;
+                const instrInfo = CPUOp.info(slotProps, asmFile);
                 let className = 'cpu-' + (instrInfo.class || 'op');
-                let instrName = instrInfo.instr;
+                const instrName = instrInfo.instr;
+
+                if (slotProps.io !== undefined) {
+                    className += ' cpu-io';
+                }
 
                 children.push(h('td', {
                     rowspan: instrInfo.cycles,
                     class: className,
-                    skip: slots[slotIdx].props.op === 'skip',
+                    skip: slotProps.op === 'skip',
                 }, instrName && h('code', {}, instrName)));
 
                 // If this instruction has a legend
@@ -594,6 +599,7 @@ const CPUOp = {
         },
 
         immediate: Boolean,
+        io: Boolean,
         taken: Boolean,
         'class': String,
         legend: String,
@@ -614,28 +620,36 @@ const CPUOp = {
         }
 
         let info = (function() {
-            // Index of returned properties:
+            // Here is an index of returned properties; be advised that some override others!
+            //
             // class:
             //   If truthy, the class that will be applied (prefixed with "cpu-") to "Instruction" cells (and the legend).
             //   Avoid specifying directly, as then you should specify `legend` as well, which overrides this.
             //   Can be overridden from the props, which then supersedes `legend`'s own override.
+            //
             // cycles:
             //   How many cycles this operation is long.
+            //
             // fixed:
             //   If truthy, the instruction cannot be tagged "immediate".
             //   Note: some operations have an explicit `fixed: false`; this means they aren't really immediate, but can take an extra cycle for another reason (e.g. accessing `[hl]`)
+            //
             // jump:
             //   If truthy, the instruction can be tagged "taken", but not "immediate".
+            //
             // instr:
             //   If truthy, the string that will be placed raw (no Markdown) in the "Instruction" column in a <code> span.
             //   Can be overridden from the props.
+            //
             // legend:
             //   If truthy, the string that will be printed.
-            //   Additionally, if truthy (including if overridden by the props), `class` will be set to the operation's name.
+            //   Additionally, if truthy (including if overridden by the props), `class` will be set to the operation's name, except if the operation does IO.
             //   Can be overridden from the props.
+            //
             // line:
             //   If set, and an ASM file was specified in the `Timeline`, `instr` will be set to the corresponding line.
             //   Line numbers count from 1 for consistency with code blocks.
+            //
             // op:
             //   The operation's name, which determines its intrinsic properties.
             //   Can be overridden from the props.
@@ -656,7 +670,7 @@ const CPUOp = {
                 case 'jr':
                     return { cycles:  2, instr: 'jr', jump: true };
                 case 'ld-imm16':
-                    return { cycles:  3, instr: 'ld', fixed: true}
+                    return { cycles:  3, instr: 'ld', fixed: true };
                 case 'ldh':
                     return { cycles:  2, instr: 'ldh' };
                 case 'or':
@@ -706,8 +720,8 @@ const CPUOp = {
         if (props.legend) {
             info.legend = props.legend;
         }
-        // If the operation has a legend, add its name as a class
-        if (info.legend) {
+        // If the operation has a legend, add its name as a class; unless the operation merely does IO
+        if (info.legend && props.io === undefined) {
             info.class = props.op;
         }
         // Override the class if explicitly provided
@@ -749,11 +763,12 @@ export default {
 .ppu-mode3 { background-color: var(--ppu-mode3); }
 .ppu-mode0 { background-color: var(--ppu-mode0); }
 
-.cpu-op         { background-color: #00ffff80; }
-.cpu-access     { background-color: #80808080; }
+.cpu-op         { background-color: #56b4e980; }
 .cpu-call       { background-color: #00ff0080; }
-.cpu-critical   { background-color: #ff000080; }
-.cpu-interrupt  { background-color: #ffff0080; }
-.cpu-io-3cycle  { background-image: linear-gradient(to top, #80808080, #80808080 33%, #0000ff80 33%, #0000ff80); }
-.cpu-reti       { background-color: #ff00ff80; }
+.cpu-critical   { background-color: #cc79a780; }
+.cpu-interrupt  { background-color: #009e7380; }
+.cpu-reti       { background-color: #0072b280; }
+.cpu-io               { background-image: linear-gradient(to top, #f0e442, #f0e442); }
+.cpu-io[rowspan="2"]  { background-image: linear-gradient(to top, #f0e442 50%, #00000000 50%); }
+.cpu-io[rowspan="3"]  { background-image: linear-gradient(to top, #f0e442 33%, #00000000 33%); }
 </style>
