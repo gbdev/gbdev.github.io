@@ -68,7 +68,7 @@ Weaknesses:
 
 
 ### C
-C will typically be used with the SDCC compiler and GBDK-2020 or ZGB, though it can also be used on it’s own without a framework or with a different compiler/dev kit (such as [z88dk](https://github.com/z88dk/)).
+C will typically be used with the SDCC compiler and GBDK-2020 or ZGB, though it can also be used on its own without a framework or with a different compiler/dev kit (such as [z88dk](https://github.com/z88dk/)).
 
 Strengths:
 * Allows for getting up and running faster than with ASM, especially when building on top of GBDK-2020 and ZGB.
