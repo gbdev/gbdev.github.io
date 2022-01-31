@@ -23,6 +23,8 @@ module.exports = {
         contributors: false,
         editLink: true,
         docsRepo: "https://github.com/gbdev/gbdev.github.io",
+        docsBranch: "dev",
+        docsDir: "website",
         navbar: [{
                 text: 'Community',
                 link: '/',
