@@ -25,7 +25,9 @@ module.exports = {
         docsRepo: "https://github.com/gbdev/gbdev.github.io",
         docsBranch: "dev",
         docsDir: "website",
-        navbar: [{
+        navbar: [
+            { link: 'https://www.getrevue.co/profile/gbdev', text: 'Newsletter' },
+            {
                 text: 'Community',
                 link: '/',
                 collapsable: false,
