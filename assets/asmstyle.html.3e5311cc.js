@@ -1,1 +1,0 @@
-const e={key:"v-81096038",path:"/guides/asmstyle.html",title:"Game Boy ASM style guide",lang:"en-US",frontmatter:{},excerpt:"",headers:[{level:2,title:"Naming",slug:"naming",children:[]},{level:2,title:"Best practices",slug:"best-practices",children:[]},{level:2,title:"Recommendations",slug:"recommendations",children:[]}],filePathRelative:"guides/asmstyle.md"};export{e as data};

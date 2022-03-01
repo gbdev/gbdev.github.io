@@ -1,1 +1,0 @@
-const t={key:"v-5c4d59a8",path:"/chat.html",title:"Community chat channels",lang:"en-US",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1641645856e3},filePathRelative:"chat.md"};export{t as data};
