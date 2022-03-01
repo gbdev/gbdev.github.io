@@ -1,43 +1,69 @@
-name: Deploy updated website
+name: CI
 
 on:
-  push
+  push:
+    branches: [ dev ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout gbdev/gbdev.github.io
+    - name: Checkout virens
       uses: actions/checkout@v2
       with:
-        repository: gbdev/gbdev.github.io
-        path: folder/repo
-    - name: Checkout gbdev/gbdev.github.io master
+        path: gbdevio
+
+    - name: Install NodeJS
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+
+    - name: Install npm requirements
+      run: npm install
+      working-directory: gbdevio/
+
+    - name: Run Vue build
+      run: npm run build
+      working-directory: gbdevio/
+
+    - name: Store final build
+      uses: actions/upload-artifact@v2
+      with:
+        name: Build output
+        path: gbdevio/website/.vuepress/dist
+        if-no-files-found: error
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Checkout virens/gh-pages
       uses: actions/checkout@v2
       with:
-        repository: gbdev/gbdev.github.io
+        path: gbdevio
         ref: master
-        path: folder/build
 
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '12'
-
-    - working-directory: folder/
+    - name: Delete all current files
       run: |
-        cd repo
-        npm install
-        npm run build
-        mkdir dist
-        cp website/.vuepress/dist/* dist/ -r
-        cp CNAME dist/
-        cd ..
-        cp -a repo/dist/. build/
-        cd build
-        mkdir -m 700 ~/.ssh
-        echo "${{ secrets.SSH_KEY_SECRET }}" > ~/.ssh/id_ed25519
-        chmod 0600 ~/.ssh/id_ed25519
+        rm -vrf gbdevio/*
+
+    - name: Unpack build
+      uses: actions/download-artifact@v2
+      with:
+        name: Build output
+        path: gbdevio/
+
+    - name: Create CNAME file
+      run: |
+        echo "gbdev.io" > gbdevio/CNAME
+
+    - name: Deploy to gbdev.io
+      working-directory: gbdevio/
+      run: |
         git config --local user.name "GitHub Action"
         git config --global user.email "community@gbdev.io"
-        git add .
-        git commit -m "Update build" && git push || :
+        git remote -v
+        git branch -v
+        git add -A
+        git commit -am 'Update build'
+        git push -v
