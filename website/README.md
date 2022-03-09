@@ -73,7 +73,7 @@ Here's a quick showcase of what we are up to:<br>
 <span></span></p>
 The single, most comprehensive technical reference to Game Boy available to the public. 
 <br><br>
-<p ><a class="projectTitle" href="list.html">Awesome list&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/awesome-gbdev" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/awesome-gbdev on GitHub">Star</a>
+<p ><a class="projectTitle" href="resources.html">Awesome list&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/awesome-gbdev" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/awesome-gbdev on GitHub">Star</a>
 <span></span></p>
 A <b>curated list</b> of Game Boy development resources such as tools, guides, technical documentation, tutorials, emulators, related projects and open-source ROMs. Everything you'll ever need to know and see about this console is here. <br>If you want to code an emulator, create your own game or simply dive into the software and hardware architecture of the Game Boy, this is the place!
 <br><br>
