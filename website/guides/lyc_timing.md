@@ -10,79 +10,125 @@ head:
 
 # The Timing of LYC STAT Handlers
 
-Written by [Ron Nelson](https://github.com/rondnelson99/)
+Written by [Ron Nelson](https://github.com/rondnelson99/) and [ISSOtm](https://eldred.fr)
 
 ---
 
-Raster effects are probably the greatest asset that retro game consoles have.
-The fact that the PPU generates the image right as it is displayed allows many special effects to be created by modifying the drawing parameters while the image is being drawn.
+Raster effects are probably the greatest assets that retro game consoles have.
+The fact that the PPU generates the image right as it is displayed allows many special effects to be created by modifying the rendering parameters while the image is being drawn.
+Here is an example:
+
+<figure>
 
 ![Example of raster effect](/deadcscroll/gif/xysine.gif)
 
-However, unlike some consoles like the SNES, raster effects on the Game Boy have to be performed by the CPU.
-The easiest way to implement raster effects is with the `LYC` register at $FF45.
-Here's how the Pan Docs explain this register's simple function:
+</figure>
 
-> [**FF45 - LYC (LY Compare) (R/W)**](https://gbdev.io/pandocs/Scrolling.html#ff45---lyc-ly-compare-rw)
+However, unlike some consoles like the SNES, the Game Boy contains no hardware dedicated to raster effects, so the task falls squarely on the CPU.
+This causes raster FX code to interact with the rest of the program in complex ways, particularly when it comes to [accessing VRAM](https://gbdev.io/pandocs/Accessing_VRAM_and_OAM).
+
+In this article, we will explore different techniques for handling raster effects, and discuss their pros and cons with the help of some diagrams.
+
+::: warning PRIOR KNOWLEDGE ASSUMED
+
+This article is not a friendly introduction to programming raster effects, and assumes you are already comfortable with Game Boy programming.
+To learn more about how to achieve neat raster effects like the above, check out [DeadCScroll](deadcscroll.md) first, which the above GIF is actually from!
+
+Additionally, since the operations discussed here are *extremely* timing-sensitive, discussions will revolve around assembly instructions.
+You can learn how to program for the Game Boy in assembly in [GB ASM Tutorial](https://eldred.fr/gb-asm-tutorial).
+
+:::
+
+::: tip TERMINOLOGY
+
+We'll reference a few terms throughout this tutorial; here are brief explanations of them:
+
+- **SoC**: [System-on-a-Chip](https://en.wikipedia.org/wiki/System_on_a_chip), a single chip that includes most (or all!) components of a system. The Game Boy's functionality is almost entirely contained within a single chip, confusingly labelled "DMG-CPU" or similar. (Contrast this with, for example, the SNES, where there is one chip for the CPU, two for the PPU, and many more.)
+- **CPU**: Central Processing Unit, the part of the SoC that executes code and configures everything else.
+- **PPU**: Pixel Processing Unit, the part of the SoC that is responsible for sending pixels to the LCD and generating them.
+- **Rasterization**: the process of turning... something (for example, a collection of textured polygons; or, on the GB, tiles and tilemaps) into an array of pixels. "Raster" is sort of a contraction of that term.
+- **Scanline**: a row of pixels; it's called a "scan"-line because the lines get drawn one by one, pixel by pixel, as if the PPU was "scanning" along the screen.
+- **Register**: in general, a small piece of memory, usually linked to some hardware component.
+- **PPU mode**: The PPU can be in one of four modes at a given time, depending on what it's doing. [Please refer to Pan Docs](https://gbdev.io/pandocs/STAT) to learn what each mode corresponds to  and how they are scheduled—they interact very tightly with raster effects.
+- **Interrupt**: an event that gets generated. Typically, this causes a "handler" to be `call`ed, which is a special routine dedicated to reacting to a given interrupt.
+- **"Main thread"**: any code that is executed outside of interrupt handlers.
+
+:::
+
+## Introduction
+
+The easiest way to implement raster effects is to use the `LYC` register with the STAT interrupt.
+
+Here is what the Pan Docs have to say about this register's simple function:
+
+> [**FF45 - LYC (LY Compare) (R/W)**](https://gbdev.io/pandocs/Scrolling#ff45---lyc-ly-compare-rw)
 >
 > The Game Boy permanently compares the value of the LYC and LY registers.
 > When both values are identical, the “LYC=LY” flag in the STAT register is set, and (if enabled) a STAT interrupt is requested.
 
-So, the basic setup for raster FX is as follows:
+So then, the outline for setting up a raster effect is as follows:
 
-1. Request an interrupt by setting `LYC` to the appropriate scanline
-2. The system will start your interrupt routine when that scanline begins
+1. Register an interrupt by setting `LYC` to the desired scanline
+2. When that scanline begins, the STAT interrupt handler will automatically be called
 3. Perform your chosen effect by modifying PPU registers
-4. Exit with `reti`
+4. Exit the handler with `reti`
 
-This seems simple enough, but unfortunately, this process comes with significant caveats.
-So, here are some things to keep in mind:
+::: tip ALTERNATIVES
 
-All but the most complex of raster effects are registers that you change between scanlines.
-For that reason, you want to perform your register write while the screen is not being drawn, so during HBlank or OAM search.
-You may know that `LYC` interrupts are requested at the start of a scanline, which happens to be Mode 2 (OAM search).
-However, because of Mode 2's short duration combined with unreliability of interrupt timing, you will not reliably have enough time to perform your write.
-Therefore, you have to wait for the next HBlank to perform your register write.
-You also need to compensate for this by requesting an interrupt on the line before the one on which you wish to perform your effect.
-For instance, if I want to enable sprites at line 16 when my upper status bar finishes drawing, I would write 15 to `LYC`.
+There are other ways to perform raster FX, such as busy-waiting in the "main thread", but as this article's title suggests, we won't discuss them here.
 
-Like I mentioned above, the time at which your handler will begin execution will be delayed by an inconsistent amount, which makes it difficult to determine when the beginning of HBlank will come.
-You'll see why this is and how this can be avoided later.
+A major pro of `LYC`-interrupt-based raster effects is that they can be made self-contained, and thus largely independent of whatever the "main thread" is doing.
+This, in turn, simplifies the mental complexity of the code (decoupling), copes better with lag frames, and more.
 
-The final problem is perhaps the biggest one.
-It's common practice in Gameboy Development to use a `STAT` check to write to VRAM between scanlines.
-The typical way of doing this is to read `STAT`, and then reap up to 16 cycles of guaranteed VRAM access time.
-This method is great for copying small bits of data quickly, and uses little CPU time.
-However, if an `LYC` interrupt fires during one of those VRAM accesses, you can potentially take some of its VRAM-safe time and cause VRAM writes from the main thread to fail.
-However, this can be avoided with some careful planning.
+Many of the points brought forth later, particularly regarding cycle counting, are still relevant with these alternatives, so this is still worth reading!
 
-## Timing, With Diagrams and Stuff
+:::
+
+These four steps sound simple enough on their own, but there are numerous caveats we will discuss.
+Strap in!
+
+- Most raster effects are implemented by modifying registers *between* scanlines.
+  Thus, you will want to write the register either during Mode 2 (of the same scanline), or Mode 0 (of the previous one)—anything but Mode 3, really.  
+  Unfortunately, `LY=LYC` interrupts are requested at the beginning of a scanline, so during the very short Mode 2, leaving too little time to perform but the most basic of effects.
+- Writing to the register during HBlank instead implies triggering the interrupt on the scanline *above* the effect, as well as idling for most of the scanline. So, if I wanted to enable sprites on scanline 16, I'd write 15 to `LYC`.
+- Mode 3's length is variable, so syncing to HBlank is difficult and time-consuming.
+- The interrupt handler's execution may be delayed by a few cycles, which makes it difficult to reliably sync to the PPU.
+- If the "main thread" is itself trying to sync with the PPU (typically by polling `STAT` in a loop), our interrupt may throw off its timing.
+
+Sounds good?
+Then let's get started!
+
+## Timing
 
 First, let's look at the timing of the rendering itself, [courtesy of the Pan Docs](https://gbdev.io/pandocs/pixel_fifo):
 
 <inline-svg src="/images/ppu_modes_timing.svg" viewBox="0 0 700 307" style="--fg: var(--c-text);" />
 
-Note that:
-- Each full scanline takes exactly 456 dots (114 cycles)
+Here are some key points:
+- A "dot" is one period of the PPU's 4 MiHz clock, i.e. 0.25 µs.
+- A "cycle" is the main unit of time in the CPU, which is equal to 1 µs, or 4 dots. (The Game Boy Color CPU can enter a "double-speed" mode which halves the length of cycles, but not of dots. For the sake of simplicity, we won't consider the differences it involves here.)
+- Each scanline takes exactly 456 dots, or 114 cycles.
 - Mode 2 also takes a constant amount of time (20 cycles)
-- HBlank length varies wildly, and will often be nearly as long as or longer than the drawing phase
-- HBlank and OAM scan are mostly interchangeable, and long as you're not doing OAM pokes during HBlank
-- The worst-case HBlank takes a number of dots that is not divisible by 4. However, as far as I'm aware, this still behaves like 88 dots in practice.
+- HBlank's length varies wildly, and will often be nearly as long as or longer than the drawing phase.
+- HBlank and OAM scan are mostly interchangeable, and long as you're not writing to OAM.
+- The worst-case HBlank's length is not a multiple of 4 dots, so we will round down to 21 cycles.
 
-Now, I will have a bunch of diagrams showing the timing of various situations.
-Each row represents exactly one scanline, and the columns show the individual cycles.
-Consider zooming in to better see these cycles.
-First, let's consider a simple `LYC` routine.
-It will disable sprites if called for line 128, but otherwise, it will enable them.
+Let's consider a simple STAT handler, which disables OBJs if called at line 128, and enables them otherwise:
 
 @[code asm](lyc_timing/simple_handler.asm)
 
-Note that this may not be an especially well-written `LYC` routine, but the actual logic of the routine itself is outside the scope of this tutorial.
-If that's what you're looking for, check out [DeadCScroll](deadcscroll) by Blitter Object.
-It uses the HBlank interrupt rather than the `LYC` interrupt, but it should still teach you some fundamentals.
-However, that tutorial does not attempt to solve the problems described below, so be wary of combining that tutorial's STAT routine with STAT-based VRAM accesses in the main thread.
+::: tip
 
-Here's how the timing of all this might look:
+This is not an especially well-written `STAT` handler, but the actual is outside the scope of this tutorial.
+If that's what you're looking for, check out [DeadCScroll](deadcscroll) by Blitter Object.
+It triggers the STAT interrupt on HBlanks rather than `LYC`, but the fundamentals are the same.
+
+Note that, for simplicity's sake, DeadCScroll does not consider the problems described further below, so be wary of combining that tutorial's STAT handler unmodified with `STAT`-based VRAM accesses in the main thread.
+
+:::
+
+Let's assume that the interrupt fires at, say, scanline 42.
+Equipped with [the GB instruction table](https://gbdev.io/gb-opcodes/optables) (see its legend at the bottom), we can plot how many cycles each operation takes, in relation with the PPU's mode:
 
 <Timeline :offset="0" asmFile="lyc_timing/simple_handler.asm">
     <CPUOp op="interrupt" />
@@ -97,28 +143,41 @@ Here's how the timing of all this might look:
     <CPUOp :line="12" />
 </Timeline>
 
-The 5 yellow cycles mark the time it takes for the system to prepare the interrupt.
-During this time, it has to push the program counter to the stack, disable interrupts, etc.
-Then, the actual interrupt routine can start.
+The first 5 cycles do not have an instruction: indeed, calling an interrupt handler is not instantaneous, and the CPU is temporarily busy pushing the program counter (`PC`) to the stack, disabling interrupts, etc.
+Then, the actual interrupt handler begins execution.
 
-Right now, there are a few problems here.
-The first is that the actual register write that the routine performs happens during the drawing phase.
-This is most likely undesirable, and could lead to graphical glitches like a partial sprite being displayed before it is cut off when sprites are disabled.
+We can immediately spot a problem: the cycle during which `LCDC` is written to falls in the middle of rendering!
+(With only a handful of exceptions, instructions that access memory do so on their very last cycle.)
+This is usually undesirable, and could lead to graphical glitches like an OBJ being partially cut off until we write to `LCDC`.
 
-The other problem is what might be happening during the main thread:
+Another problem, less obvious but oh so painful, is how the interrupt handler might interact with the "main thread"'s operation.
 
-<Timeline :offset="111">
-    <CPUOp instr="ldh a, [rSTAT]" immediate io legend="Read from STAT" />
-    <CPUOp instr="and STATF_BUSY" immediate />
-    <CPUOp instr="jr nz, .waitVRAM" />
+### The VRAM access [race condition](https://en.wikipedia.org/wiki/Race_condition)
+
+Accessing VRAM [is not possible during Mode 3](https://gbdev.io/pandocs/Accessing_VRAM_and_OAM).
+Thus, when we want to access VRAM, precautions must be taken; the most common is to use the following loop:
+
+@[code asm](lyc_timing/stat_loop.asm)
+
+This loop checks whether `[STAT] & 2` is zero, and exits when it does.
+Looking at [documentation for `STAT`](https://gbdev.io/pandocs/STAT#ff41---stat-lcd-status-rw), we can see that the lowest 2 bits report the PPU's mode, and that `[STAT] & 2` is zero for Mode 0 and Mode 1, but not Mode 2 or Mode 3.
+So, essentially, this loop waits for Mode 0 or Mode 1, which are both safe to write to VRAM—but it can't be that simple.
+
+<Timeline :offset="111" asmFile="lyc_timing/stat_loop.asm">
+    <CPUOp :line="2" immediate io legend="Read from STAT" />
+    <CPUOp :line="3" immediate />
+    <CPUOp :line="4" />
     <CPUOp op="critical" />
+    <CPUOp op="condensed" :cycles="2" />
 </Timeline>
 
-This is the worst-case scenario for a `STAT`-based VRAM access.
-Here, the main thread reads `STAT` on the very last cycle of HBlank.
-After the brief processing of the value it read, the main loop may use the 16 guaranteed cycles of OAM scan to access VRAM.
-This just barely works out.
-But what happens if an interrupt is requested on that next cycle?
+Pictured above is the "worst case" for this loop.
+As you can see, on the cycle that `STAT` is read, the PPU is still in Mode 0; however, checking for it takes a few cycles, during which we enter Mode 2!
+
+Now, thankfully, Mode 2 is *also* safe for accessing VRAM—but only 16 cycles of it remain.
+This is why this loop is said to guarantee 16 "VRAM-safe" cycles: any access performed 17 cycles or more after it would break in this worst case.
+
+Now, what would happen if our interrupt was requested in the middle of this?
 
 <Timeline :offset="111" asmFile="lyc_timing/simple_handler.asm">
     <CPUOp instr="ldh a, [rSTAT]" immediate io legend="Read from STAT" />
@@ -137,32 +196,86 @@ But what happens if an interrupt is requested on that next cycle?
     <CPUOp op="critical" />
 </Timeline>
 
-Oh no! The main thread is trying to access VRAM right in the middle of the drawing phase! This could lead to all sorts of glitches.
+Oh no!
+The main thread is now trying to access VRAM right in the middle of Mode 3!
+This could lead to all sorts of visual bugs.
+
+### A solution?
 
 The solution is not too complicated, at least on paper.
-We just need to do all our register writes, and exit, during HBlank.
-This seems easy enough, since if you've made it this far, you already know how to utilize the blanking periods to access VRAM.
-So what happens if you use that method?
+We should be able to use the same `STAT`-checking loop (or at least, a variation of it) inside of the handler.
+It works in the main thread, so it should work here as well, right?
 
-<Timeline :offset="111" asmFile="lyc_timing/simple_handler.asm">
+Remember that many `STAT` handlers will be much more complicated than the simple example above, so let's draw a diagram with an imaginary handler that would take significantly more time:
+
+<Timeline :offset="111">
     <CPUOp instr="ldh a, [rSTAT]" immediate io legend="Read from STAT" />
     <CPUOp op="interrupt" />
-    <CPUOp op="condensed" :cycles="98" />
-    <CPUOp instr="bit STATB_BUSY, [hl]" immediate />
-    <CPUOp instr="jr nz, .waitVRAM" />
-    <CPUOp :line="10" immediate />
-    <CPUOp :line="11" />
-    <CPUOp :line="12" />
+    <CPUOp op="condensed" :cycles="92" />
+    <CPUOp instr="ldh a, [rSTAT]" immediate />
+    <CPUOp instr="and STATF_BUSY" immediate />
+    <CPUOp instr="jr nz, .handlerWait" />
+    <CPUOp instr="(Write to LCDC)" op="ldhl" immediate />
+    <CPUOp instr="pop hl" />
+    <CPUOp instr="pop af" />
+    <CPUOp instr="reti" />
     <CPUOp instr="and STATF_BUSY" immediate />
     <CPUOp instr="jr nz, .waitVRAM" />
     <CPUOp op="critical" />
 </Timeline>
 
-Here, the long blue strip represents the time spent within the interrupt routine.
-Remember that many `STAT` routines will be much more complicated than the simple example above.
+::: tip
 
-Once again, the VRAM access time overlaps with the Drawing phase.
-The problem here is that the register write, `pop` and `reti` all take some of those guaranteed cycles when it is possible to access VRAM.
+All the instructions between the "Interrupt dispatch" and "Return from interrupt" blocks are the interrupt handler, the rest is in the "main thread".
+
+:::
+
+The `STAT` loop does fix the register being written to during Mode 3; however, once again, the 16 cycles that "main thread" expects to be VRAM-safe overlap with Mode 3.
+The problem here is that the write, `pop` and `reti` all take some of those cycles, and the "main thread" is using the value it read from `STAT` during the previous scanline—but that value is now stale.
+
+### Possible fixes
+
+Using what we have learned so far, we can boil down the problem to three factors:
+
+1. Our handler can trigger in the middle of this sequence of events
+2. Our handler preserves the stale value read from `STAT` earlier
+3. Our handler returns during a time where accessing VRAM is unsafe
+
+It would be enough to get rid of *any* of these, so let's enumerate our options.
+
+#### Dealing with it
+
+It's entirely possible to accept the loss of some of those cycles.
+This amounts to assuming less than the usual 16 cycles after such loops.
+For example, putting a `STAT`-polling loop just before the last `pop af` and `reti` would have these two eat up 7 cycles, so we are down to 9.
+
+This will quickly become impractical, requiring syncing to the LCD much more often in the main thread.
+
+#### Handler timing
+
+A simple way to prevent those pesky handlers from throwing off our timing is to disable them, with the `di` instruction.
+Unfortunately, it can't quite be so simple, as using `di` for this brings its own share of problems.
+
+The most important one is that disabling the handlers like this *delays* their execution!
+`STAT` handlers designed to write to hardware regs during HBlank may start doing so during rendering instead; timer interrupts won't trigger as regularly now; and so on.
+
+Using `di` is valid in some cases, but typically not when `STAT` interrupts are involved, due to their fairly strict timing requirements.
+
+An oddly common alternative is to perform all VRAM updates in VBlank handler.
+(The reason why it's common especially in early GB games is likely being a carry-over from the NES, where the lack of HBlanks essentially mandates such a setup anyway.)
+While this can work, such as for *Metroid II*, it requires significant complexity from having to keep deferring graphical updates.
+
+#### Stale `STAT` read
+
+There is not much that can be done about this one.
+The interrupt handler *must* preserve registers, and ...
+
+TOCTTOU
+
+#### Return timing
+
+This is the solution that the rest of this article will explore, as we will see that it makes the least painful compromises out of most use cases.
+
 So, the real solution is to fully exit before the end of HBlank.
 There are two ways to do this.
 One is to wait for the Drawing phase before waiting for HBlank.
@@ -413,11 +526,13 @@ So thanks for reading, see you next time!
 import { h } from 'vue';
 
 // HACK: we import all of the ASM files here because imports must be static and at top-level
+import stat_loop          from '@/../guides/lyc_timing/stat_loop.asm';
 import simple_handler     from '@/../guides/lyc_timing/simple_handler.asm';
 import ret_hblank_handler from '@/../guides/lyc_timing/ret_hblank_handler.asm';
 import hybrid_handler     from '@/../guides/lyc_timing/hybrid_handler.asm';
 const instrs = string => string.split(/\r?\n/).map(line => line.split(';')[0].trim());
 const ASM_FILES = {
+    'lyc_timing/stat_loop.asm':          instrs(stat_loop),
     'lyc_timing/simple_handler.asm':     instrs(simple_handler),
     'lyc_timing/ret_hblank_handler.asm': instrs(ret_hblank_handler),
     'lyc_timing/hybrid_handler.asm':     instrs(hybrid_handler),
@@ -695,6 +810,8 @@ const CPUOp = {
                     return { cycles:  3, instr: 'ld', fixed: true };
                 case 'ldh':
                     return { cycles:  2, instr: 'ldh' };
+                case 'ldhl':
+                    return { cycles:  2 };
                 case 'or':
                     return { cycles:  1, instr: 'or' };
                 case 'pop':
