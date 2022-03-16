@@ -50,7 +50,7 @@ Winning entry for the **Music** category: Zilogized
 Winning entry for the **Tools** category: Brainfox
 
 ## Entries
-The complete set of entries is available to browse on [Itch.io](https://itch.io/jam/gbcompo21/entries) or can be downloaded as a zip file from [github](https://github.com/gbdev/gbcompo21/releases/tag/gbcompo21_entries).
+The complete set of entries is available to browse on [Itch.io](https://itch.io/jam/gbcompo21/entries) or can be downloaded as a zip file from [GitHub](https://github.com/gbdev/gbcompo21/releases/tag/gbcompo21_entries).
 
 
 ## Sponsors
