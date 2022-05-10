@@ -27,6 +27,8 @@ module.exports = {
         docsBranch: "dev",
         docsDir: "website",
         navbar: [
+            { link: 'https://hh.gbdev.io', text: 'Games' },
+            { link: 'https://gbdev.io/pandocs', text: 'Pan Docs' },
             { link: 'https://www.getrevue.co/profile/gbdev', text: 'Newsletter' },
             {
                 text: 'Community',
