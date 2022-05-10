@@ -81,7 +81,7 @@ This project is open source and community-lead. Come <a href="https://gbdev.io/c
 #### Opcodes
 
 - [gb-opcodes](https://gbdev.github.io/gb-opcodes/optables/) - Opcodes table
-- [RGBDS opcodes reference](https://rednex.github.io/rgbds/gbz80.7.html) - A reference of all instructions, including short descriptions, cycle and byte counts, and explanations of flag modifications.
+- [RGBDS opcodes reference](https://rgbds.gbdev.io/docs/gbz80.7) - A reference of all instructions, including short descriptions, cycle and byte counts, and explanations of flag modifications.
 
 ### Game Boy Color
 
