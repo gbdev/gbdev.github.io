@@ -173,7 +173,7 @@ Consider starting with C and GBDK. This will introduce you to working with the h
 
 Once you've grasped C's concepts (most importantly pointers), give ASM a go. The language is simpler than it looks. Even if you don't manage to get working ASM code, it actually helps a lot (especially on such a constrained system) to know what's "under the hood". There is even an [online IDE](https://daid.github.io/rgbds-live/) to experiment with.
 
-For C / GBDK users, knowing ASM will help you understand what it's API (which is mostly written in ASM) is doing behind the scenes and will make using emulator debuggers easier to understand.
+For C / GBDK users, knowing ASM will help you understand what its API (which is mostly written in ASM) is doing behind the scenes and will make using emulator debuggers easier to understand.
 
 If you don't wan't to learn a language at all, [GB Studio](#gb-studio) is an alternative to C and ASM.
 
