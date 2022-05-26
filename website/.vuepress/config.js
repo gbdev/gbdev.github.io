@@ -52,6 +52,7 @@ module.exports = {
                     { link: '/guides/asmstyle', text: 'ASM Style recomendations' },
                     { link: '/guides/lyc_timing', text: 'The Timing of LYC STAT Handlers' },
                     { link: '/guides/deadcscroll', text: 'Dead C Scroll' },
+                    { link: 'https://eldred.fr/blog/2022/05/22/prehistorik', text: 'The wonders of Prehistorik Man' },
                     { link: '/guides/dma_hijacking', text: 'DMA Hijacking' },
                     { link: 'https://eldred.fr/gb-asm-tutorial', text: 'GB ASM Programming Guide' }
                 ]
