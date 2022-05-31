@@ -193,7 +193,7 @@ Another option is to [reach out to us](#community-and-help), and discuss the mat
 
 The *very first thing* to do **in all cases** is to [read the docs](https://gbdev.io/pandocs/), to grasp how the Game Boy works. In ASM, this is essential; in C, this will let you understand what a given library function does. It will also let you understand what is possible on the Game Boy, and what isn't. (You can always ask, if you have doubts.)
 
-I also recommend looking up [awesome-gbdev](https://gbdev.io/list.html) for resources and tutorials. There are a lot of helpful articles there, as well as helper tools.
+I also recommend looking up [awesome-gbdev](https://gbdev.io/resources.html) for resources and tutorials. There are a lot of helpful articles there, as well as helper tools.
 
 
 ## ASM Help
