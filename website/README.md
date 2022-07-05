@@ -88,7 +88,7 @@ Maintained and modernized GBDK, the Game Boy Development Kit. Now powered by an 
 <p class="projectTitle"><a href="https://gbdev.io/chat">Chat Channels</a>&nbsp;<img height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=chat&colorB=green&suffix=%20online&query=presence_count&uri=https://discordapp.com/api/guilds/303217943234215948/widget.json&style=flat-square"></p>
 The places our community thrives. Here we <b>chat</b>, discuss, help each other and show what we are working on. We have a Discord server, an IRC channel, and more.
 <br><br>
- <p class="projectTitle"><a target="_blank" href="https://gbhh.avivace.com">Homebrew Hub</a>&nbsp;<img height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=games&amp;suffix=%20entries&amp;colorB=blue&amp;query=games&amp;uri=https%3A%2F%2Fgbhh.avivace.com%2Fapi%2Finfo&amp;style=flat-square"></p>
+ <p class="projectTitle"><a target="_blank" href="https://hh.gbdev.io">Homebrew Hub</a>&nbsp;<img height="22" src="https://img.shields.io/badge/dynamic/json?label=games&query=results&url=https%3A%2F%2Fhh3.gbdev.io%2Fapi%2Fall&style=flat-square"></p>
 Play Game Boy games online from an archive of hundreds of entries! <br>
 A community-led attempt to collect, archive and save every unofficial game, homebrew, demo, patch, hackrom for Game Boy produced by the community through the last 3 decades of passionate work.
 <br><br>
