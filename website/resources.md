@@ -255,6 +255,7 @@ The [Choosing tools for Game Boy development](https://gbdev.io/guides/tools.html
 - [Game Boy Text Tools](https://github.com/raphaklaus/gameboy-text-tools) - Set of tools for text manipulation and translation of Game Boy ROMs written in Node.js.
 - [evscript](https://github.com/eievui5/evscript) - A scripting language for the Game Boy, useful for enemy AI, dialogue, animations, and coroutines.
 - [evunit](https://github.com/eievui5/evunit) - A unit testing program for assembly code.
+- [Game Boy Doctor](https://github.com/robert/gameboy-doctor) - A command line tool for comparing logs from your emulator to those from a known-correct one. Useful for line-by-line debugging of Blargg's test ROMs.
 
 #### Graphics utilities
 
