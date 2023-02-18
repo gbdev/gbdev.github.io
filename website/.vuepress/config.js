@@ -1,11 +1,15 @@
 // .vuepress/config.js
 
-const { path } = require("@vuepress/utils");
-const markdownRawPlugin = require('vite-raw-plugin');
+//const { path } = require("@vuepress/utils");
+
+import  markdownRawPlugin  from 'vite-raw-plugin';
+import { defaultTheme } from 'vuepress'
+import { viteBundler } from 'vuepress'
+import shiki from 'vuepress-plugin-shiki'
 
 module.exports = {
     plugins: [
-        ['@vuepress/plugin-shiki', { 'langs': ['asm'] }],
+        shiki({ 'langs': ['asm'] }),
     ],
     title: 'gbdev',
     description: 'game boy development scene',
@@ -19,13 +23,14 @@ module.exports = {
         ['meta', { name: 'og:image', content : 'https://gbdev.io/images/gbinternals.png'}]
     ],
     //base: "/list",
-    themeConfig: {
+    theme: defaultTheme({
         lastUpdated: false,
         contributors: false,
         editLink: true,
         docsRepo: "https://github.com/gbdev/gbdev.github.io",
         docsBranch: "dev",
         docsDir: "website",
+        footer: 'test',
         navbar: [
             { link: 'https://hh.gbdev.io', text: 'Games' },
             { link: 'https://gbdev.io/pandocs', text: 'Pan Docs' },
@@ -58,10 +63,9 @@ module.exports = {
                 ]
             }
         ]
-    },
+    }),
 
-    bundler: '@vuepress/bundler-vite',
-    bundlerConfig: {
+    bundler: viteBundler({
         viteOptions: {
             plugins: [
                 markdownRawPlugin({ fileRegex: /\.asm$/ }),
@@ -72,5 +76,5 @@ module.exports = {
                 },
             },
         },
-    },
+    }),
 }
