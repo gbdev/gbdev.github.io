@@ -1806,7 +1806,7 @@ By `heero`. Originally found at https://codepen.io/heero/pen/wylhv
     visibility: hidden;
   }
   74%, 100% {
-    bisibility: visible;
+    visibility: visible;
   }
 }
 @-moz-keyframes buttonsABTextAnim {
@@ -1814,7 +1814,7 @@ By `heero`. Originally found at https://codepen.io/heero/pen/wylhv
     visibility: hidden;
   }
   74%, 100% {
-    bisibility: visible;
+    visibility: visible;
   }
 }
 @-ms-keyframes buttonsABTextAnim {
@@ -1822,7 +1822,7 @@ By `heero`. Originally found at https://codepen.io/heero/pen/wylhv
     visibility: hidden;
   }
   74%, 100% {
-    bisibility: visible;
+    visibility: visible;
   }
 }
 @keyframes buttonsABTextAnim {
@@ -1830,7 +1830,7 @@ By `heero`. Originally found at https://codepen.io/heero/pen/wylhv
     visibility: hidden;
   }
   74%, 100% {
-    bisibility: visible;
+    visibility: visible;
   }
 }
 #buttonsSSText {
@@ -1863,7 +1863,7 @@ By `heero`. Originally found at https://codepen.io/heero/pen/wylhv
     visibility: hidden;
   }
   76%, 100% {
-    bisibility: visible;
+    visibility: visible;
   }
 }
 @-moz-keyframes buttonsSSTextAnim {
@@ -1871,7 +1871,7 @@ By `heero`. Originally found at https://codepen.io/heero/pen/wylhv
     visibility: hidden;
   }
   76%, 100% {
-    bisibility: visible;
+    visibility: visible;
   }
 }
 @-ms-keyframes buttonsSSTextAnim {
@@ -1879,7 +1879,7 @@ By `heero`. Originally found at https://codepen.io/heero/pen/wylhv
     visibility: hidden;
   }
   76%, 100% {
-    bisibility: visible;
+    visibility: visible;
   }
 }
 @keyframes buttonsSSTextAnim {
@@ -1887,7 +1887,7 @@ By `heero`. Originally found at https://codepen.io/heero/pen/wylhv
     visibility: hidden;
   }
   76%, 100% {
-    bisibility: visible;
+    visibility: visible;
   }
 }
 #buttonsSSBack {
