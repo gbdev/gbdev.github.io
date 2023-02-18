@@ -16,14 +16,14 @@ jobs:
     - name: Install NodeJS
       uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
+        node-version: '14.x'
 
     - name: Install npm requirements
-      run: npm install
+      run: yarn install
       working-directory: gbdevio/
 
     - name: Run Vue build
-      run: npm run build
+      run: yarn build
       working-directory: gbdevio/
 
     - name: Store final build
