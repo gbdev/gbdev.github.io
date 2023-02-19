@@ -60,7 +60,7 @@ letter-spacing: -0.05em;">
 
 <div style="letter-spacing: -0.025em; font-weight: 500; font-size: 20px;">
         <br>
-We are a group of passionate developers working on homebrew games, emulators and documentation for the Nintendo Game Boy handheld console, the original gray brick from 1989!
+We are a non for profit collective of passionate developers and hackers working on development tools, homebrew games, emulators, preservation and documentation for the Nintendo Game Boy handheld console, the original gray brick from 1989. <br><br> Join us on <a target="_blank" href="https://github.com/gbdev">GitHub</a>, <a target="_blank" href="https://mastodon.social/@gbdev">Mastodon</a>, <a target="_blank" href="https://twitter.com/gbdev0">Twitter</a> and <a target="_blank" href="https://discord.io/gbdev">Discord</a>!
 </div>
 
 <div>
@@ -75,13 +75,16 @@ The single, most comprehensive technical reference to Game Boy available to the 
 <br><br>
 <p ><a class="projectTitle" href="resources.html">Awesome list&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/awesome-gbdev" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/awesome-gbdev on GitHub">Star</a>
 <span></span></p>
-A <b>curated list</b> of Game Boy development resources such as tools, guides, technical documentation, tutorials, emulators, related projects and open-source ROMs. Everything you'll ever need to know and see about this console is here. <br>If you want to code an emulator, create your own game or simply dive into the software and hardware architecture of the Game Boy, this is the place!
+Curated list of Game Boy development resources such as tools, guides, technical documentation, tutorials, emulators, related projects and open-source ROMs. Everything you'll ever need to know and see about this console is here. <br>If you want to code an emulator, create your own game or simply dive into the software and hardware architecture of the Game Boy, this is the place!
 <br><br>
-<p ><a class="projectTitle" target="_blank" href="https://github.com/gbdev/rgbds">RGBDS&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/rgbds" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/rgbds on GitHub">Star</a>
+<p ><a class="projectTitle" target="_blank" href="https://rgbds.gbdev.io/">RGBDS&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/rgbds" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/rgbds on GitHub">Star</a>
 <span></span></p>
 Rednex Game Boy Development System: the de-facto ASM development toolkit for the Game Boy and Game Boy Color.
 <br><br>
-<p ><a class="projectTitle" target="_blank" href="https://github.com/gbdk-2020/gbdk-2020">GBDK&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdk-2020/gbdk-2020" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/rgbds on GitHub">Star</a>
+<p ><a class="projectTitle" target="_blank" href="https://gbdev.io/gb-asm-tutorial/">ASM Tutorial&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/gb-asm-tutorial" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/gb-asm-tutorial on GitHub">Star</a>
+<span></span></p>
+A (work in progress) tutorial on how to code in Assembly for the Game Boy, guiding readers from a basic Hello World, to making an Arkanoid clone, and ending with a Shoot-'Em-Up, touching upon everything you they to know to make a complete game. <br><br>
+<p ><a class="projectTitle" target="_blank" href="https://github.com/gbdk-2020/gbdk-2020">GBDK 2020&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdk-2020/gbdk-2020" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/rgbds on GitHub">Star</a>
 <span></span></p>
 Maintained and modernized GBDK, the Game Boy Development Kit. Now powered by an updated version of the SDCC toolchain, provides a C compiler, assembler, linker and a set of libraries.
 <br><br>
@@ -93,12 +96,9 @@ Play Game Boy games online from an archive of hundreds of entries! <br>
 A community-led attempt to collect, archive and save every unofficial game, homebrew, demo, patch, hackrom for Game Boy produced by the community through the last 3 decades of passionate work.
 <br><br>
 <p class="projectTitle"><a target="_blank" href="https://github.com/gb-archive">The Game Boy Archive</a>&nbsp;<img style="font-family: Monospace" height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=mirrored%20projects&amp;url=https%3A%2F%2Fapi.github.com%2Forgs%2Fgb-archive&amp;query=public_repos&amp;style=flat-square"></p>
-A <b>library</b> of Game Boy related software, hardware and literature. Aimed to mirror and preserve old and fragmented contributions in the scene from the last three decades.
+Digital library of Game Boy related software, hardware and literature. Aimed to mirror and preserve old and fragmented contributions in the scene from the last three decades.
 
 </div>
-
-More projects can be found under our [GitHub organisation](https://github.com/gbdev).
-
 
 <script>
 export default {
