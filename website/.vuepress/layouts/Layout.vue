@@ -9,7 +9,7 @@ import ParentLayout from '@vuepress/theme-default/layouts/Layout.vue'
         <hr>
         <a href="/contribute.html">Sponsors </a><br>
         <a href="https://www.digitalocean.com/" target="_blank"><img class="sponsor_logo" src="../public/images/DO_Powered_by_Badge_blue.svg"/></a>
-        <a href="https://incube8games.com/" target="_blank"><img class="sponsor_logo incube8" src="../public/images/Incube8-Games-Logo.png"/></a>
+        <a href="https://incube8games.com/" target="_blank" alt="Incube8 Games - Physical Retro Gaming Publisher"><img alt="Incube8 Games - Physical Retro Gaming Publisher" class="sponsor_logo incube8" src="../public/images/Incube8-Games-Logo.png"/></a>
       </div>
     </template>
   </ParentLayout>
