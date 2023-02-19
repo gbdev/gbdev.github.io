@@ -10,8 +10,13 @@ lang: en-US
 We accept economic donations through the following platforms:
 
 - [OpenCollective](https://opencollective.com/gbdev)
-- [Patreon](https://www.patreon.com/gbdev01)
-- [GitHub Sponsors](https://github.com/sponsors/avivace)
+- [GitHub Sponsors](https://github.com/sponsors/gbdev)
+
+The OpenCollective page also transparently tracks shows every expense and contribution.
+
+### Sponsors
+
+If you'd like to showcase your company and support our efforts, check the "Sponsor" tiers in OpenCollective and get in touch via email: `sponsors (at) this domain`.
 
 ## Software
 
@@ -19,11 +24,19 @@ Here's a curated list of some projects related to Game Boy development.
 
 Each one is developed and released following the open source philosophy, while accepting feedbacks and contributions from the community.
 
-Join us on our Discord server, where you'll find help, mentorship and support to contribute to these awesome projects.
+Join us on our [Discord server](https://discord.io/gbdev), where you'll find help, mentorship and support to contribute to these awesome projects.
 
 Always to remember to check the Contribution guidelines before opening Pull Requests.
 
 ## Community projects
+
+### GB ASM Tutorial
+
+If you're confident in writing assembly, we need contributors in helping us write, proofread and suggest improvements for new lessons in the tutorial.
+
+Technologies and tools: Assembly, RGBDS, Rust, mdBook.
+
+[Homepage](https://gbdev.io/gb-asm-tutorial) - [Repository](https://github.com/gbdev/gb-asm-tutorial)
 
 ### gbdev.github.io
 
@@ -33,7 +46,7 @@ The source of this website is hosted [here](https://github.com/gbdev/gbdev.githu
 
 The single, most comprehensive technical reference to Game Boy available to the public. Here, you can help proof reading, fixing typos, preparing updated versions of figures or port new content from old resources.
 
-Technologies and tools: Markdown, Python, Vuepress
+Technologies and tools: Markdown, Rust, Python, mdBook.
 
 [Homepage](https://gbdev.io/pandocs/) - [Repository](https://github.com/gbdev/pandocs) - [Beginner issues](https://github.com/gbdev/pandocs/issues?q=is%3Aissue+is%3Aopen+label%3AHacktoberfest)
 
@@ -41,7 +54,7 @@ Technologies and tools: Markdown, Python, Vuepress
 
 The de-facto standard assembly toolchain for the Nintendo Game Boy & Game Boy Color.
 
-Technologies and tools: C, Assembly
+Technologies and tools: C, Assembly, Rust
 
 [Homepage](https://rgbds.gbdev.io/) - [Repository](https://github.com/gbdev/rgbds) - [Beginner issues](https://github.com/gbdev/rgbds/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest)
 
@@ -49,12 +62,12 @@ Technologies and tools: C, Assembly
 
 A community-led attempt to collect, archive and save every unofficial game, homebrew, patch, hackrom for Game Boy produced by the community through decades of passionate work.
 
-Technologies and tools: 
+Technologies and tools:
 
-- Frontend: Javascript, CSS, Bootstrap.
-- Backend: Node, Mongo.
+- Frontend: Vue JS 3, Nuxt 3
+- Backend: Django REST
 
-[Homepage](https://hh.gbdev.io/) - [Repository](https://github.com/gbdev/homebrewhub) - [Beginner issues](https://github.com/gbdev/homebrewhub/issues?q=is%3Aissue+is%3Aopen+label%3Ahacktoberfest)
+[Homepage](https://hh.gbdev.io/) - [Repository (backend)](https://github.com/gbdev/homebrewhub) - [Repository (frontend)](https://github.com/gbdev/virens)
 
 ### Homebrew Hub Database
 
@@ -72,7 +85,7 @@ A simple GB/GBC emulator. Runs in the browser using WebAssembly.
 
 Technologies and tools: Webassembly, C
 
-[Homepage](http://binji.github.io/binjgb/) - [Repository](https://github.com/binji/binjgb) - [Issues](https://github.com/binji/binjgb/issues )
+[Homepage](http://binji.github.io/binjgb/) - [Repository](https://github.com/binji/binjgb) - [Issues](https://github.com/binji/binjgb/issues)
 
 ### SameBoy
 
