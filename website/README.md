@@ -83,7 +83,7 @@ Rednex Game Boy Development System: the de-facto ASM development toolkit for the
 <br><br>
 <p ><a class="projectTitle" target="_blank" href="https://gbdev.io/gb-asm-tutorial/">ASM Tutorial&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/gb-asm-tutorial" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/gb-asm-tutorial on GitHub">Star</a>
 <span></span></p>
-A (work in progress) tutorial on how to code in Assembly for the Game Boy, guiding readers from a basic Hello World, to making an Arkanoid clone, and ending with a Shoot-'Em-Up, touching upon everything you they to know to make a complete game. <br><br>
+A (work in progress) tutorial on how to program for the Game Boy in assembly, touching on every aspect required to make Game Boy games, via a Hello World, constructing an Arkanoid clone, and capping off by making a playable Shoot-'Em-Up.<br><br>
 <p ><a class="projectTitle" target="_blank" href="https://github.com/gbdk-2020/gbdk-2020">GBDK 2020&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdk-2020/gbdk-2020" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/rgbds on GitHub">Star</a>
 <span></span></p>
 Maintained and modernized GBDK, the Game Boy Development Kit. Now powered by an updated version of the SDCC toolchain, provides a C compiler, assembler, linker and a set of libraries.
