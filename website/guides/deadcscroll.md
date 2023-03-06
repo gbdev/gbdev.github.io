@@ -16,7 +16,7 @@ Written by Bob.
 
 An assembly tutorial for Game Boy showing how the scroll registers can be exploited to create some nice and interesting effects.
 
-Files related to this tutorial can be found [here](https://github.com/gbdev/gbdev.github.io/tree/dev/list/.vuepress/public/deadcscroll).
+Files related to this tutorial can be found [here](https://github.com/gbdev/gbdev.github.io/tree/dev/website/.vuepress/public/deadcscroll).
 
 ## Introducing the registers
 
