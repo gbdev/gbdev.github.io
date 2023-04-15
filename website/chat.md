@@ -13,9 +13,8 @@ head:
 
 Join our community on the following channels. Before posting, read the rules and the FAQ (usually in the welcome threads or in the signup).
 
-- Discord Server: [https://discord.io/gbdev](https://discord.io/gbdev). Also available on:
-   - IRC: `#gbdev2` on EFNet.
-   - Matrix: `#gbdev:matrix.org` (e.g. [https://app.element.io/#/room/#gbdev:matrix.org](https://app.element.io/#/room/#gbdev:matrix.org).
-- IRC: `#gbdev` on EFNet
+- Discord Server: [https://discord.io/gbdev](https://discord.io/gbdev).
+- IRC: [`#gbdev` on Libera.chat](https://web.libera.chat/#gbdev). 
+  - `#gbdev-ot`, `#gbdev-hw`,`#gbdev-meta`, `#gbdev-asm`,`#gbdev-gfx`, `#gbdev-emudev` and `#gbdev-research` are also available.
 - Forum: [https://gbdev.gg8.se/forums](https://gbdev.gg8.se/forums/)
 - Wiki: [https://gbdev.gg8.se/wiki](https://gbdev.gg8.se/wiki/)
