@@ -49,6 +49,7 @@ module.exports = {
     docsDir: "website",
     footer: "test",
     navbar: [
+      { link: "/gbcompo23", text: "GB Compo 2023" },
       { link: "https://hh.gbdev.io", text: "Games" },
       { link: "https://gbdev.io/pandocs", text: "Pan Docs" },
       {
