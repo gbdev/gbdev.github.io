@@ -95,9 +95,9 @@ Interested in sponsoring? Shoot us a [DM](https://twitter.com/gbdev0).
 ### Hardware Criteria
 
 8. Final entry "deliverable" must consist of a GB or GBC ROM file. You can also attach descriptive documents in TXT, Markdown, PDF or HTML file format (e.g. game manual).
-9. The ROM file will be tested on real hardware (usually a DMG or a GBC) and on the BGB emulator. In case of different results, the hardware test will be the trusted one.
-10. GBC features are allowed.
-11. SGB features are allowed. The entries will be evaluated mainly on Game Boy (Color). You can use SGB features, but don't rely on them as main features for your entry.
+9. The ROM file will be tested on real hardware (primarily a GBC) and on the BGB emulator. In case of different results, the hardware test will be the trusted one.
+10. GBC features are allowed, and entries may be GBC exclusive (but that should be indicated in the game or on it's page).
+11. SGB features are allowed. The entries will be evaluated mainly on Game Boy Color. You can use SGB features, but don't rely on them as main features for your entry.
 12. Only some official MBC chips (MBC1, MBC2, MBC3 and MBC5, as well as no MBC at all) are allowed. The only exceptions are:
     1. While Nintendo only manufactured very specific MBC+ROM combinations, we will allow any power-of-two ROM size between 32 KiB and the maximum for the chosen chip. (This is simply a convenience feature, as any ROM image can be extended to fit a larger ROM chip by appending copies of itself.)
     2. The ROM+RAM combination (i.e., without an MBC, up to 32 KiB ROM and 8 KiB SRAM), with or without battery, will be accepted for compatibility, as many people have simple flash carts that do have SRAM but don't have an MBC. (This can be trivially emulated by any MBC1, MBC3 or MBC5 configuration.)
@@ -120,7 +120,7 @@ Interested in sponsoring? Shoot us a [DM](https://twitter.com/gbdev0).
     - A remake of your (or someone else's) game for a different platform, but with new code and assets.
     - A brand new game you barely started (e.g. you only made a title screen or a mockup of the gameplay).
     - Using templates, tutorial code as starting point (when they're license allow to do so, e.g. [gb-boilerplate](https://github.com/ISSOtm/gb-boilerplate))
-    - Asset packs for art and music are ok if the licensing permits. Be sure to make note of what is being reused and under what terms. Use of pre-made assets (vs original ones) may be factored in when judges assess points for relevant criteria (e.g. graphics, audio).
+    - Asset packs for art and music and covers of other music are allowed if the licensing permits. Be sure to make note of what is being reused or re-interpreted and under what terms. Use of pre-made assets and content (vs wholly original) may be factored in when judges assess points for relevant criteria (e.g. graphics, audio).
 
     Examples of things that are **not allowed:**
 
