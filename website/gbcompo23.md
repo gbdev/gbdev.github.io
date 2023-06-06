@@ -96,7 +96,7 @@ Interested in sponsoring? Shoot us a [DM](https://twitter.com/gbdev0).
 
 8. Final entry "deliverable" must consist of a GB or GBC ROM file. You can also attach descriptive documents in TXT, Markdown, PDF or HTML file format (e.g. game manual).
 9. The ROM file will be tested on real hardware (primarily a GBC) and on the BGB emulator. In case of different results, the hardware test will be the trusted one.
-10. GBC features are allowed, and entries may be GBC exclusive (but that should be indicated in the game or on it's page).
+10. GBC features are allowed, and entries may be GBC only (GBC only should be indicated in game for non-GBC hardware or on the entry's page).
 11. SGB features are allowed. The entries will be evaluated mainly on Game Boy Color. You can use SGB features, but don't rely on them as main features for your entry.
 12. Only some official MBC chips (MBC1, MBC2, MBC3 and MBC5, as well as no MBC at all) are allowed. The only exceptions are:
     1. While Nintendo only manufactured very specific MBC+ROM combinations, we will allow any power-of-two ROM size between 32 KiB and the maximum for the chosen chip. (This is simply a convenience feature, as any ROM image can be extended to fit a larger ROM chip by appending copies of itself.)
