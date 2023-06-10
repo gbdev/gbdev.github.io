@@ -70,6 +70,9 @@ Here is a curated list tools and documentation to get you started.
 - [GBStudio](https://www.gbstudio.dev/) (no coding required)
   - [Resources to get started](https://gbstudiocentral.com/resources/)
   - [Dedicated Discord](https://discord.gg/knRryZWGcm)
+- [GBSDK](https://github.com/daid/gbsdk) (C + RGBDS ASM, without a standard library)
+  - [Documentation](https://daid.github.io/gbsdk/)
+  - [Source for a game](https://github.com/QuinnPainter/CrossConnect) and [another game](https://github.com/QuinnPainter/Wyrmhole) built with GBSDK
 
 ## Sponsors
 
