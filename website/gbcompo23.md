@@ -135,7 +135,9 @@ Interested in sponsoring? Shoot us a [DM](https://twitter.com/gbdev0).
 
 ## Judging
 
-Every judge will be asked to compile an unranked shortlist of their favourite entries. Once the shortlists are ready from all the judges, the top 15 more selected entries will be evaluated by the judges on the following criteria:
+A team of (~10) judges has been selected before the start of the competition.
+
+Every judge will be asked to compile an unranked shortlist of their favourite entries. Once the shortlists are ready from all the judges, the top 15 most selected entries will be evaluated by the judges on the following criteria:
 
 1. **Gameplay** - How entertaining are the gameplay mechanics? How fun is the game?
 2. **Technical** - How innovative is it from a technical perspective? Does it push the hardware to the limit?
