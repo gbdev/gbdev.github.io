@@ -90,10 +90,10 @@ Interested in sponsoring? Shoot us a [DM](https://twitter.com/gbdev0).
 1. The submitted entry must implement / interpret the jam theme (applies to Game category only).
 2. Multiple submissions are allowed from the same person or team. They will be rated separately, but each person or team may only accept prizes on behalf of a single entry (e.g., you can't win both the 1st and 2nd place prize).
 3. Judges can submit entries, but the entries won't be eligible for prizes. Judges won't score the entries they submitted.
-4. Source code is optional, but very much appreciated. Entries submitted with source code (public repositories on GitHub/GitLab/... are accepted) and with an open source license (See rule 5) are eligible for **additional** prizes. Make sure to fill the "Open Source repository" field with a valid and public repository when submitting on itch.io. See [this issue](https://github.com/gbdev/gbcompo21/issues/3) for further details.
+4. Source code is optional, but very much appreciated. Entries submitted with source code (public repositories on GitHub/GitLab/... are accepted) and with an open source license (See rule 5) are eligible for **additional** prizes. Make sure to fill the "Open Source repository" field with a valid and public repository when submitting on itch.io. It is NOT necessary for the source to be available *during* the competition period. Repositories/sources just need to be public from the time the event ends. See [this issue](https://github.com/gbdev/gbcompo21/issues/3) for further details. 
 5. To be eligible for the OSS bonus, the code must be licensed under an "Open Source" license (any of the "Free" license listed [here](https://www.gnu.org/licenses/license-list.en.html) is accepted). Assets can be licensed under any of the CC licenses. Obfuscated code, non-reproducible builds, intentionally making the source code hard to read/re-use will exclude the entry form the OSS leaderboards. This is at discretion of the hosts and judges. We must be able to read the code and compile it into a working ROM, running a script or following instructions.
-6. If your submission contains text that isn't available in English, some judges might not be able to read that, and they will judge accordingly.
-7. Shipment of physical prizes may not be available to all countries, they are subject to shipping ability of the prize donors.
+7. If your submission contains text that isn't available in English, some judges might not be able to read that, and they will judge accordingly.
+8. Shipment of physical prizes may not be available to all countries, they are subject to shipping ability of the prize donors.
 
 ### Hardware Criteria
 
