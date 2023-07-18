@@ -82,6 +82,7 @@ module.exports = {
             text: "The wonders of Prehistorik Man",
           },
           { link: "/guides/dma_hijacking", text: "DMA Hijacking" },
+          { link: "/guides/border", text: "Adding SGB Borders" },
         ],
       },
     ],
