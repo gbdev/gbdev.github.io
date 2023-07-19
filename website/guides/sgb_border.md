@@ -1,22 +1,23 @@
-# adding an SGB border to Your non-SGB game
-
+# Adding an SGB border
 
 Table of contents:
-1. [enabling SGB features](#enabling-SGB)
+
+1. [Enabling SGB features](#enabling-SGB)
 2. [SGB packets](#packets)
 3. [TRN packets](#TRN)
-4. [detecting SGB](#detection)
-5. [border limitations](#limitations)
-6. [converting a border](#conversion)
-7. [uploading the border](#uploading)
-8. [notes](#notes)
-9. [credits](#credits)
+4. [Detecting SGB](#detection)
+5. [Border limitations](#limitations)
+6. [Converting a border](#conversion)
+7. [Uploading the border](#uploading)
+8. [Notes](#notes)
+9. [Credits](#credits)
 
-## enabling SGB
+## Enabling SGB features
 
-Before We can do anything, We must first specify in the header that this game is an SGB game.
+Before we can do anything, we must first specify in the header that this game is an SGB game.
 
 To enable SGB features:
+
 - SGB flag (`$0146`) must be set to `$03`
 - Old licensee code (`$014b`) must be set to `$33`
 
@@ -24,18 +25,17 @@ To enable SGB features:
 
 To send data to the SGB, You must bitbang packets through the `P1` register
 
-an SGB packet consists of:
+An SGB packet consists of:
+
 - a "reset pulse" (`P1`=`%xx00xxxx`)
 - 128 data pulses (`P1`=`%xx01xxxx` for "1", `P1`=`%xx10xxxx` for "0")
 - a "0" pulse (`P1`=`%xx10xxxx`)
 
-You must set `P1` to `%xx11xxxx` between each pulse
+You must set `P1` to `%xx11xxxx` between each pulse.
 
-this adds up to 16 Bytes (LSB first). if a packet doesnt read all 16 bytes, the unused bytes are ignored
+This adds up to 16 Bytes (LSB first). Ff a packet doesnt read all 16 bytes, the unused bytes are ignored.
 
-You can use [existing code](https://github.com/zlago/violence-gbc/blob/11cfdb6ee8a35e042fa9712484d814e0961cea7c/src/sub.sm83#L413-L463) or write Your own code for that
-
-[documentation](https://gbdev.io/pandocs/SGB_Command_Packet.html) if Youre doing the latter
+You can use [existing code](https://github.com/zlago/violence-gbc/blob/11cfdb6ee8a35e042fa9712484d814e0961cea7c/src/sub.sm83#L413-L463) or write your own code for that ([documentation](https://gbdev.io/pandocs/SGB_Command_Packet.html)).
 
 **You should wait 4 frames between each packet**
 
@@ -43,9 +43,10 @@ You can use [existing code](https://github.com/zlago/violence-gbc/blob/11cfdb6ee
 
 ## TRN
 
-some packets will tell the SGB to copy the contents of the screen somewhere, including the packets needed for SGB borders
+Some packets will tell the SGB to copy the contents of the screen somewhere, including the packets needed for SGB borders.
 
-for that to function properly, You must:
+For that to function properly, you must:
+
 1. set `BGP` to `$e4` and `LCDC` to `$91` (screen enabled, BG uses tiles `$8000`-`$8fff` and tilemap `$9800`, WIN and OBJ disabled, BG enabled)
 2. set `SCX` and `SCY` to `$00`
 3. the tilemap consists of `$00`, `$01`..`$13`, 12 bytes padding (offscreen), `$14`..`$27`, padding, repeat untill `$ff` (inclusive)
@@ -57,9 +58,10 @@ You can do 1, 2 and 3 via [this snippet](https://github.com/zlago/snek-gbc/blob/
 
 ## detection
 
-We will look at how this [snippet](https://github.com/zlago/snek-gbc/blob/baef0369f57d2b0d58316cb1c28c6cc22475a6c9/code/init.sm83#L167-L196) does it, just change `.init` to wherever code should jump to if its *not* on SGB, and the code following the snippet is what will run on SGBs
+We will look at how this [snippet](https://github.com/zlago/snek-gbc/blob/baef0369f57d2b0d58316cb1c28c6cc22475a6c9/code/init.sm83#L167-L196) does it, just change `.init` to wherever code should jump to if its _not_ on SGB, and the code following the snippet is what will run on SGBs.
 
-lets go over what the snippet does (`/**/` comments)
+Let's go over what the snippet does (`/**/` comments)
+
 ```sm83asm
 ; test for SGB
 xor a /* first it enables STAT interrupt, since snek-gbc happens to just have a `reti` as the handler */
@@ -96,17 +98,18 @@ ei
 		jr z, :- ; /* try again if detection fails */
 ```
 
-Your snippet doesnt have to use this exact way, as long as You:
+Your snippet doesnt have to use this exact way, as long as you:
+
 - wait 12 or more frames after the console boots
 - send a `MLT_REQ` (`$89`), selecting 2 or 4 players (`$89, $01` or `$89, $03`) and wait at least 1 frame
 - attempt to advance the read player (reset and set `P1.5`)
 - set `P1.4`-`P1.5` to `%11` (or just %xx11xxxx)
 - read `P1.0`-`P1.3`, and check if it either
-	* changed
-	* isnt %1111
+  - changed
+  - isnt %1111
 - quit if the test fails enough times
 
-if all these criteria are met, then Your SGB detection should work!
+Ff all these criteria are met, then Your SGB detection should work!
 
 **Please note that if You wish to only use 1 controller for the game, You have to send a second `MLT_REQ` to disable multiplayer** (`$89, $00`)
 
@@ -114,44 +117,48 @@ You can change the waitloop to not use interrupts, or to use di+halt (please dis
 
 ## limitations
 
-an SGB border has:
+An SGB border has:
+
 - 255 tiles + 1 transparent tile (preferably tile #0)
 - 3 palettes of 15 (+ 1 transparent) colors, (up to 45 solid colors total)
 - a 256x224px tilemap (theres a bit more to this, see [notes](#notes))
 
 ## conversion
 
-hopefully You have [superfamiconv](https://github.com/Optiroc/SuperFamiconv), and hopefully Your version supports `-P` (anything after v0.9.2 (sorry, You may have to build from source!))
+Hopefully You have [superfamiconv](https://github.com/Optiroc/SuperFamiconv), and hopefully Your version supports `-P` (anything after v0.9.2 (sorry, You may have to build from source!))
+
 ```
 superfamiconv -v -i input.png -p output.pal -t output.4bpp -P 4 -m output.pct -M snes --color-zero 0000ff -B 4
 ```
-- `--color-zero` should be the color *You* used for transparency, in my case it was blue.
-	* it can also be set to `00000000` to use the actual transparent color, however, this may cause some issues..
+
+- `--color-zero` should be the color _You_ used for transparency, in my case it was blue.
+  - it can also be set to `00000000` to use the actual transparent color, however, this may cause some issues..
 - `-v` is optional
 - You can add a row of the transparent color at the top of the image to force superfamiconv to make it tile #0, then `incbin "output.pct", 64` to leave out that row.
 - `-P 4` sets the base palette to the 4th one, and **SGB borders use SNES palettes 4, 5, and 6.** as of writing this, this option only works if You built superfamiconv from source.
 
-## uploading
+## Uploading
 
-as stated before, the SGB border consists of tile data, picture data, and palette data. these are split across 2-3 packets:
+As stated before, the SGB border consists of tile data, picture data, and palette data. these are split across 2-3 packets:
 
 - `CHR_TRN` (`$99`) is used to send 4KiB of tile data.
-	* since the border can use up to 8KiB of tiles, bit 0 of the second byte specifies which "half" Youre sending
-		- `$99, $00` if the screen is loaded with the first 4KiB of tile data
-		- `$99, $01` if the screen is loaded with the second 4KiB of tile data
+
+  - since the border can use up to 8KiB of tiles, bit 0 of the second byte specifies which "half" Youre sending
+    - `$99, $00` if the screen is loaded with the first 4KiB of tile data
+    - `$99, $01` if the screen is loaded with the second 4KiB of tile data
 
 - `PCT_TRN` (`$a1`) is used to send the picture and palette data. it also swaps the border, generally a good idea to send it after the tile data[^1]
-	* assuming tiles `0`-`255` use VRAM from `$8000` to `$8fff`:
-		- the picture data must be at `$8000`-`$873f` (last 64 bytes are *usually* offscreen, see [notes](#notes))
-		- palette data must be at `$8800`-`$885f`
-		- everything else is ignored
-			* how You skip putting data at `$8740`-`$87ff` is up to You, I prefer doing separate copies, valen prefers copying tilemap and palette data in one go, with the area between them padded with `$ff`.
+  - assuming tiles `0`-`255` use VRAM from `$8000` to `$8fff`:
+    - the picture data must be at `$8000`-`$873f` (last 64 bytes are _usually_ offscreen, see [notes](#notes))
+    - palette data must be at `$8800`-`$885f`
+    - everything else is ignored
+      - how You skip putting data at `$8740`-`$87ff` is up to You, I prefer doing separate copies, valen prefers copying tilemap and palette data in one go, with the area between them padded with `$ff`.
 
-if this makes no sense You could also read [pandocs](https://gbdev.io/pandocs/SGB_Command_Border.html)
+If this makes no sense You could also read [pandocs](https://gbdev.io/pandocs/SGB_Command_Border.html)
 
 [^1]: You can send a `CHR_TRN` up to \~60 frames after the `PCT_TRN` for it to apply to the current border, but not all emulators will emulate this. its fine to just pretend `CHR_TRN`s must go before `PCT_TRN`
 
-## notes
+## Notes
 
 1. You can set the first row of tiles to Your transparent color to force superfamiconv to put the transparent tile as the 1st tile, however You must then exclude 64 bytes of the tilemap (`incbin "border.pct"` -> `incbin "border.pct", 64`)
 
@@ -161,7 +168,7 @@ if this makes no sense You could also read [pandocs](https://gbdev.io/pandocs/SG
 
 4. if this doesnt work for You, or something here is unclear, then please contact me, preferably via discord (`@zlago`) or mastodon (`@zlago@mastodon.gamedev.place`) as I tend to check those reasonably often
 
-## credits
+## Credits
 
 written by [sylvie (zlago)](https://zlago.github.io/me/)
 
