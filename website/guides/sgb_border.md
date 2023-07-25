@@ -20,7 +20,7 @@ To enable SGB features:
 
 ## Packets
 
-Communicating with the SGB is done by bitbanging "packets" through the `P1` register
+The SGB BIOS can be "talked to" via *command packets*, sent bit by bit via the `P1`/`JOYP` register.
 
 An SGB packet consists of:
 
