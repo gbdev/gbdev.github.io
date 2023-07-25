@@ -15,8 +15,8 @@ Otherwise, the SGB BIOS (the program that runs on the SNES) will ignore any pack
 
 To enable SGB features:
 
-- SGB flag (`$0146`) must be set to `$03`
-- Old licensee code (`$014b`) must be set to `$33`
+- The SGB flag (`$0146`) must be set to `$03`
+- The old licensee code (`$014b`) must be set to `$33`
 
 ## Packets
 
