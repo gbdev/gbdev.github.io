@@ -10,7 +10,8 @@ Written by [sylvie (zlago)](https://zlago.github.io/me/), idea (and minor help) 
 
 ## Enabling SGB features
 
-Before we can do anything, we must first specify in the header that this game is an SGB game.
+Before we can do anything else, we must first specify in the header that this game is an SGB game.
+Otherwise, the SGB BIOS (the program that runs on the SNES) will ignore any packets we send, and we won't even detect that we are on a SGB!
 
 To enable SGB features:
 
