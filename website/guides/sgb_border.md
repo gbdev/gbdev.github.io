@@ -18,6 +18,7 @@ To enable SGB features:
 - The SGB flag (`$0146`) must be set to `$03`
 - The old licensee code (`$014b`) must be set to `$33`
 
+This can be achieved by passing the `--sgb-compatible` and `--old-licensee 0x33` flags to [`rgbfix`](https://rgbds.gbdev.io/docs/rgbgfx.1).
 ## Packets
 
 The SGB BIOS can be "talked to" via *command packets*, sent bit by bit via the `P1`/`JOYP` register.
