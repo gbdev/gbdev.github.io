@@ -2,13 +2,17 @@
 
 This document was written to aid developers of DMG compatibile homebrew with adding Super Game Boy borders
 
-I cannot guarantee skipping certain parts won't leave you confused, so if you wish to add SGB borders to already SGB capable software (that lacks borders), try not to skip anything
+<small>
+
+Written by [sylvie (zlago)](https://zlago.github.io/me/), idea (and minor help) by [valentina (coffee bat)](https://coffeebat.neocities.org/), reviews and improvements by [ISSOtm](https://eldred.fr) and [avivace](https://github.com/avivace).
+
+</small>
 
 ## Enabling SGB features
 
 Before we can do anything, we must first specify in the header that this game is an SGB game.
 
-To enable SGB features: <!-- i think this is worded a little awkwardly, but i cant exactly think of how to fix it >< -->
+To enable SGB features:
 
 - SGB flag (`$0146`) must be set to `$03`
 - Old licensee code (`$014b`) must be set to `$33`
@@ -27,11 +31,11 @@ You must set `P1` to `%xx11xxxx` between each pulse.
 
 This adds up to 16 Bytes of data (LSB first), If a packet doesn't read all 16 bytes, the unused bytes are ignored.
 
-You can use [existing code](https://github.com/zlago/violence-gbc/blob/11cfdb6ee8a35e042fa9712484d814e0961cea7c/src/sub.sm83#L413-L463) or write your own code for that ([documentation](https://gbdev.io/pandocs/SGB_Command_Packet.html)).
+You can use [existing code](https://github.com/zlago/violence-gbc/blob/11cfdb6ee8a35e042fa9712484d814e0961cea7c/src/sub.sm83#L413-L463) or write your own (see [SGB Command Packet on Pandocs](https://gbdev.io/pandocs/SGB_Command_Packet.html)).
 
-**You should wait 4 frames between each packet**
+**You should wait 4 frames between each packet.**
 
-(this guide glosses over a minor detail, as certain packets can be more than 16 bytes. however, its uncommon to use long packets)
+This guide glosses over a minor detail, as certain packets can be (albeit unccomon) more than 16 bytes.
 
 ## TRN
 
@@ -165,11 +169,3 @@ If this makes no sense to you, you could also read the [pandocs](https://gbdev.i
 3. when the SNES lags, scanline 225 of the SGB border will be visible! You can set the topmost row of the 29th row of tiles to black to hide this
 
 4. if this doesn't work for You, or something here is unclear, you can DM me on discord (`@zlago`) or mastodon (`@zlago@mastodon.gamedev.place`), alternatively you can ask for help [here](https://gbdev.io/chat.html)
-
-## Credits
-
-written by [sylvie (zlago)](https://zlago.github.io/me/)
-
-using pandocs and my own repos as a reference
-
-idea (and minor help) by [valentina (coffee bat)](https://coffeebat.neocities.org/)
