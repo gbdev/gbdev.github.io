@@ -1,8 +1,8 @@
 # Adding a custom SGB border
 
-This document was written to aid developers of DMG compatibile homebrew with adding Super Game Boy borders.
+This document was written to aid developers of DMG compatible homebrew with adding Super Game Boy borders.
 
-We wil see how:
+We will see how to:
 
 - Detect whether we are running on a SGB
 - Transfer the border's tiles
