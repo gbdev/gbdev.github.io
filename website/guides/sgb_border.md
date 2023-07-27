@@ -16,8 +16,8 @@ Written by [sylvie (zlago)](https://zlago.github.io/me/), idea (and minor help) 
 
 ## Enabling SGB features
 
-Before we can do anything else, we must first specify in the header that this game is an SGB game.
-Otherwise, the SGB BIOS will ignore any packets we send, and we won't even be able to detect when we are running form a SGB.
+Before we can do anything else, we must first specify in the header that this game is aware of SGB features.
+Otherwise, the SGB BIOS will ignore any packets we send, and we won't even be able to detect when the program is running on SGB.
 
 To enable SGB features:
 
