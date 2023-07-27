@@ -48,7 +48,7 @@ This guide glosses over a minor detail, as certain packets can be (albeit unccom
 
 ## TRN
 
-Some packets will tell the SGB to copy the contents of the screen somewhere, including the packets needed for SGB borders. <!-- this could be reworded? -->
+Bulk transfer (TRN) packets tell the SGB to copy the contents of the screen to buffers in Super NES work RAM. The `CHR_TRN` and `PCT_TRN` packets are used to send data for SGB borders.
 
 For that to function properly, you must:
 
