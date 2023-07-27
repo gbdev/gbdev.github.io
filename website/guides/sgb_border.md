@@ -139,9 +139,9 @@ With a recent version of [superfamiconv](https://github.com/Optiroc/SuperFamicon
 superfamiconv -v -i input.png -p output.pal -t output.4bpp -P 4 -m output.pct -M snes --color-zero 0000ff -B 4
 ```
 
-- `--color-zero` should be the color _you_ used for transparency, in my case it was blue.
-	* it can also be set to `00000000` to use the actual transparent color, however, this may cause some issues..
-- `-v` is optional
+- `--color-zero` should be the color that your image for transparency, in my case it was blue.
+	* If your image has an alpha channel, it can be set can also be set to `00000000` to use the actual transparent color; however, this may cause some issues.
+- `-v` is optional, for showing details of the conversion process
 - You can add a row of the transparent color at the top of the image to force superfamiconv to make it tile #0, then `incbin "output.pct", 64` to leave out that row.
 - `-P 4` sets the base palette to the 4th one, and **SGB borders use SNES palettes 4, 5, and 6.** as of writing this, this option only works if you built superfamiconv from source.
 
