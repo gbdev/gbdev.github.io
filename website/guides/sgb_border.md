@@ -171,7 +171,7 @@ See also the related Pan Docs entry: [SGB Command Border](https://gbdev.io/pando
 
 1. You can set the first row of tiles to your transparent color to force superfamiconv to put the transparent tile as the 1st tile, however you must then exclude 64 bytes of the tilemap (`incbin "border.pct"` -> `incbin "border.pct", 64`)
 
-2. You can use palettes 0-3 and 7, if You really know what Youre doing (animated borders yay), but You will probably have to edit the border in YY-CHR, as there aren't really any other tools for that
+2. You can use palettes 0-3 and 7, if you really know what you're doing (animated borders yay). You will probably have to edit the border in YY-CHR, as there aren't really any other tools for that.
 
 3. when the SNES lags, scanline 225 of the SGB border will be visible! You can set the topmost row of the 29th row of tiles to black to hide this
 
