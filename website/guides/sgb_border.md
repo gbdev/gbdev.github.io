@@ -68,12 +68,12 @@ Here's how a SGB detection routine should look like:
 
 - wait 12 or more frames after the console boots
 - send a `MLT_REQ`, selecting 2 or 4 players (`$89, $01` or `$89, $03`), and wait at least 1 frame
-- attempt to advance the read player (reset then set `P1.5`)
+- attempt to advance the read player (set `P1.5` to 0 then 1)
 - set `P1.4`-`P1.5` to `%11` (`%xx11xxxx`)
 - read `P1.0`-`P1.3`, and check if it either
 	* has changed
 	* isn't `%1111`
-- repeat a few times and branch somewhere if the test keeps failing
+- advance and reread a few times and branch somewhere if the test keeps failing
 
 Let's go over an example snippet ([source](https://github.com/zlago/snek-gbc/blob/baef0369f57d2b0d58316cb1c28c6cc22475a6c9/code/init.sm83#L167-L196)):
 
