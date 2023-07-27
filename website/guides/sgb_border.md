@@ -59,8 +59,8 @@ For that to function properly, you must:
 
 You can do 1, 2 and 3 via [this snippet](https://github.com/zlago/snek-gbc/blob/baef0369f57d2b0d58316cb1c28c6cc22475a6c9/code/init.sm83#L208-L230)
 
-- **You must load the data into VRAM before sending the TRN packet**
-- **You must wait ~8 frames after each TRN** (doesn't "stack" with the 4 frame packet delay)
+- **You must load the data into VRAM and enable the screen before sending the TRN packet**
+- **You must wait ~8 frames after each TRN** instead of just 4
 
 ## Detecting SGB
 
