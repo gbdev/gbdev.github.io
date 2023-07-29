@@ -60,7 +60,7 @@ letter-spacing: -0.05em;">
 
 <div style="letter-spacing: -0.025em; font-weight: 500; font-size: 20px;">
         <br>
-We are a non for profit collective of passionate developers and hackers working on development tools, homebrew games, emulators, preservation and documentation for the Nintendo Game Boy handheld console, the original gray brick from 1989. <br><br> Join us on <a target="_blank" href="https://github.com/gbdev">GitHub</a>, <a target="_blank" rel="me" href="https://mastodon.social/@gbdev">Mastodon</a>, <a target="_blank" href="https://twitter.com/gbdev0">Twitter</a> and <a target="_blank" href="https://discord.io/gbdev">Discord</a>!
+We are a non for profit collective of passionate developers and hackers working on development tools, homebrew games, emulators, preservation and documentation for the Nintendo Game Boy handheld console, the original gray brick from 1989. <br><br> Join us on <a target="_blank" href="https://github.com/gbdev">GitHub</a>, <a target="_blank" rel="me" href="https://mastodon.social/@gbdev">Mastodon</a>, <a target="_blank" href="https://twitter.com/gbdev0">Twitter</a> and <a target="_blank" href="https://discord.io/gbdev">Discord</a>.
 </div>
 
 <div>
@@ -68,21 +68,29 @@ We are a non for profit collective of passionate developers and hackers working 
 
 # Projects
 
-Here's a quick showcase of what we are up to:<br>
+Here's what we are up to:<br>
 
 <p> <a class="projectTitle" target="_blank" href="https://gbdev.io/pandocs/">Pan Docs&nbsp;</a><a class="github-button" target="_blank" href="https://github.com/gbdev/pandocs" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/awesome-gbdev on GitHub">Star</a>
 <span></span></p>
 The single, most comprehensive technical reference to Game Boy available to the public. 
-<br><br>
-<p ><a class="projectTitle" href="resources.html">Awesome list&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/awesome-gbdev" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/awesome-gbdev on GitHub">Star</a>
+<br>
+
+#### [Game Boy CPU Opcode tables](https://gbdev.io/gb-opcodes/optables)
+
+<br>
+<p ><a class="projectTitle" href="resources.html">awesome-gbdev&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/awesome-gbdev" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/awesome-gbdev on GitHub">Star</a>
 <span></span></p>
 Curated list of Game Boy development resources such as tools, guides, technical documentation, tutorials, emulators, related projects and open-source ROMs. Everything you'll ever need to know and see about this console is here. <br>If you want to code an emulator, create your own game or simply dive into the software and hardware architecture of the Game Boy, this is the place!
 <br><br>
 <p ><a class="projectTitle" target="_blank" href="https://rgbds.gbdev.io/">RGBDS&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/rgbds" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/rgbds on GitHub">Star</a>
 <span></span></p>
 Rednex Game Boy Development System: the de-facto ASM development toolkit for the Game Boy and Game Boy Color.
-<br><br>
-<p ><a class="projectTitle" target="_blank" href="https://gbdev.io/gb-asm-tutorial/">ASM Tutorial&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/gb-asm-tutorial" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/gb-asm-tutorial on GitHub">Star</a>
+<br>
+
+[hardware.inc](https://github.com/gbdev/hardware.inc) - Standard include file containing Game Boy hardware definitions for use in RGBDS projects.
+
+<br>
+<p ><a class="projectTitle" target="_blank" href="https://gbdev.io/gb-asm-tutorial/">GB ASM Tutorial&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/gb-asm-tutorial" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/gb-asm-tutorial on GitHub">Star</a>
 <span></span></p>
 A (work in progress) tutorial on how to program for the Game Boy in assembly, touching on every aspect required to make Game Boy games, via a Hello World, constructing an Arkanoid clone, and capping off by making a playable Shoot-'Em-Up.<br><br>
 <p ><a class="projectTitle" target="_blank" href="https://github.com/gbdk-2020/gbdk-2020">GBDK 2020&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdk-2020/gbdk-2020" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/rgbds on GitHub">Star</a>
@@ -98,8 +106,21 @@ A community-led attempt to collect, archive and save every unofficial game, home
 <br><br>
 <p class="projectTitle"><a target="_blank" href="https://github.com/gb-archive">The Game Boy Archive</a>&nbsp;<img style="font-family: Monospace" height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=mirrored%20projects&amp;url=https%3A%2F%2Fapi.github.com%2Forgs%2Fgb-archive&amp;query=public_repos&amp;style=flat-square"></p>
 Digital library of Game Boy related software, hardware and literature. Aimed to mirror and preserve old and fragmented contributions in the scene from the last three decades.
+<br><br>
+<p class="projectTitle" style="font-weight: 500">Events</p>
+
+We host coding competitions in which anyone can partecipate by creating original games, demos, homebrews tools and music for the Game Boy and compete for glory and prizes.
+
+[GB Competition '21](gbcompo21.html) - [GB Competition '23](gbcompo23.html)
 
 </div>
+
+<br>
+<smalL>
+
+For Game Boy _Advance_ development, check [gbadev.net](https://gbadev.net).
+
+</small>
 
 <script>
 export default {
