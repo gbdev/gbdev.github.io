@@ -1,14 +1,16 @@
 # gbdev website
 
-Game Boy development website hosted at [gbdev.io](https://gbdev.io), powered by Vuepress 2.x
+This is the source repository of the Game Boy development website hosted at [gbdev.io](https://gbdev.io), powered by Vuepress 2.x
+
+You need Node (> 14.x) and yarn.
 
 ```bash
 # Install dependencies
-npm install
+yarn
 
 # Start a local hot-reloading development server at http://localhost:8080
-npm run dev
+yarn dev
 
 # Build website
-npm run build
+yarn build
 ```
