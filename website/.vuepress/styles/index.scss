@@ -12,3 +12,24 @@
   width: 100%;
   height: 100%;
 }
+
+:root {
+  // brand colors
+  --c-brand: #459e48;
+
+  // background colors
+  --c-bg: #ffffff;
+
+  --c-text: #1c1e21;
+
+}
+
+
+html.dark {
+  // brand colors
+  --c-brand: #03C988;
+
+  // background colors
+  --c-bg: #1b1b1d;
+
+}
