@@ -98,7 +98,7 @@ A (work in progress) tutorial on how to program for the Game Boy in assembly, to
 Maintained and modernized GBDK, the Game Boy Development Kit. Now powered by an updated version of the SDCC toolchain, provides a C compiler, assembler, linker and a set of libraries.
 <br><br>
 <p class="projectTitle"><a href="https://gbdev.io/chat">Chat Channels</a>&nbsp;<img height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=chat&colorB=green&suffix=%20online&query=presence_count&uri=https://discordapp.com/api/guilds/303217943234215948/widget.json&style=flat-square"></p>
-The places our community thrives. Here we <b>chat</b>, discuss, help each other and show what we are working on. We have a Discord server, an IRC channel, and more.
+The places where our community thrives. Here we <b>chat</b>, discuss, help each other and show what we are working on. We have a Discord server, an IRC channel, and more.
 <br><br>
  <p class="projectTitle"><a target="_blank" href="https://hh.gbdev.io">Homebrew Hub</a>&nbsp;<img height="22" src="https://img.shields.io/badge/dynamic/json?label=games&query=results&url=https%3A%2F%2Fhh3.gbdev.io%2Fapi%2Fall&style=flat-square"></p>
 Play Game Boy games online from an archive of hundreds of entries! <br>
@@ -108,7 +108,6 @@ A community-led attempt to collect, archive and save every unofficial game, home
 Digital library of Game Boy related software, hardware and literature. Aimed to mirror and preserve old and fragmented contributions in the scene from the last three decades.
 <br><br>
 <p class="projectTitle" style="font-weight: 500">Events</p>
-
 We host coding competitions in which anyone can partecipate by creating original games, demos, homebrews tools and music for the Game Boy and compete for glory and prizes.
 
 [GB Competition '21](gbcompo21.html) - [GB Competition '23](gbcompo23.html)
