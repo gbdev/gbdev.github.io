@@ -17,7 +17,7 @@ head:
 
 The jam is hosted on [Itch.io](https://itch.io/jam/gbcompo23). It will run from **June 15th** to **September 15**, 2023.
 
-Theme: will be announced June 15th.
+Theme: _You are the monster_.
 
 ## Prizes and Categories
 
