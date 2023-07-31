@@ -1,4 +1,4 @@
-import{_ as H,M as A,p as q,q as I,R as n,t as s,N as e,V as h,j as l,a1 as v}from"./framework-204010b2.js";const E=`.waitVRAM
+import{_ as H,r as A,o as q,c as I,a as n,b as s,d as e,w as h,h as l,e as v}from"./app-cbd7a9da.js";const E=`.waitVRAM
 	ldh a, [rSTAT]
 	and STATF_BUSY ; 2
 	jr nz, .waitVRAM
