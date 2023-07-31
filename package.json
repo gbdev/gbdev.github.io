@@ -15,11 +15,10 @@
     "url": "https://github.com/gbdev/gbdev.github.io/issues"
   },
   "homepage": "https://gbdev.io",
-  "dependencies": {
-    "vite-raw-plugin": "^1.0.2",
-    "vue-inline-svg": "^2.1.3",
+  "devDependencies": {
     "vuepress": "^2.0.0-beta.66",
-    "vuepress-vite": "^2.0.0-beta.66",
-    "vuepress-plugin-shiki": "^0.14.1"
+    "vuepress-plugin-shiki": "^0.14.1",
+    "vite-raw-plugin": "^1.0.2",
+    "vue-inline-svg": "^2.1.3"
   }
 }
