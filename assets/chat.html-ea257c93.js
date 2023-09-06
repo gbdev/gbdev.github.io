@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-5c4d59a8","path":"/chat.html","title":"Community channels","lang":"en-US","frontmatter":{"sidebar":false,"head":[["meta",{"name":"og:title","content":"gbdev chat channels"}],["meta",{"name":"og:description","content":"Join gbdev.io community channels"}]]},"headers":[],"git":{},"filePathRelative":"chat.md"}');export{e as data};
