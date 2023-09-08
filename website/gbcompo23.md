@@ -41,7 +41,7 @@ The rankings are decided according to the [judging](#judging) criteria.
 
 ## Community
 
-Come join us <a href="https://discord.io/gbdev" target="_blank">on Discord</a> for help getting started (or find a team), and head over to <a href="https://gbdev.io" target="_blank">gbdev.io</a> for a curated list of links and development resources!
+Come join us <a href="/chat.html" target="_blank">on Discord</a> for help getting started (or find a team), and head over to <a href="https://gbdev.io" target="_blank">gbdev.io</a> for a curated list of links and development resources!
 
 We'd love to hear from participants, share your progress using the `#gbcompo23` hashtag and join the conversation on the Discord `#gbcompo23` channel!
 
