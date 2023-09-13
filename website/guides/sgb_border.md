@@ -176,6 +176,6 @@ See also the related Pan Docs entry: [SGB Command Border](https://gbdev.io/pando
 
 2. You can use palettes 0-3 and 7, if you really know what you're doing (animated borders yay). You will probably have to edit the border in YY-CHR, as there aren't really any other tools for that.
 
-3. when the SNES lags, scanline 225 of the SGB border will be visible! You can set the topmost row of the 29th row of tiles to black to hide this
+3. When the SNES lags, scanline 225 of the SGB border will be visible! You can set the topmost row of the 29th row of tiles to black to hide this.
 
 4. If this doesn't work for you, you can ask for help on the [gbdev](https://gbdev.io/chat.html) channels.
