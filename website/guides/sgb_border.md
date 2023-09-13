@@ -35,7 +35,7 @@ The SGB BIOS can be "talked to" via *command packets*, sent bit by bit via the `
 
 An SGB packet consists of:
 
-- a "reset pulse" (`P1`=`%xx00xxxx`)
+- a "start" pulse (`P1`=`%xx00xxxx`)
 - 128 data pulses (`P1`=`%xx01xxxx` for "1", `P1`=`%xx10xxxx` for "0")
 - a "0" pulse (`P1`=`%xx10xxxx`)
 
