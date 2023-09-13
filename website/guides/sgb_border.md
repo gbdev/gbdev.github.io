@@ -178,4 +178,4 @@ See also the related Pan Docs entry: [SGB Command Border](https://gbdev.io/pando
 
 3. when the SNES lags, scanline 225 of the SGB border will be visible! You can set the topmost row of the 29th row of tiles to black to hide this
 
-4. if this doesn't work for you, ask for help on the [gbdev](https://gbdev.io/chat.html) channels
+4. If this doesn't work for you, you can ask for help on the [gbdev](https://gbdev.io/chat.html) channels.
