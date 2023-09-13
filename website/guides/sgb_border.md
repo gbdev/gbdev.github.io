@@ -27,7 +27,7 @@ To enable SGB features:
 [SGB flag]: https://gbdev.io/pandocs/The_Cartridge_Header#0146--sgb-flag
 [old licensee code]: https://gbdev.io/pandocs/The_Cartridge_Header#014b--old-licensee-code
 
-This can be achieved by passing the `--sgb-compatible` and `--old-licensee 0x33` flags to [`rgbfix`](https://rgbds.gbdev.io/docs/rgbgfx.1).
+This can be achieved by passing the `--sgb-compatible` and `--old-licensee 0x33` flags to [`rgbfix`](https://rgbds.gbdev.io/docs/rgbfix.1).
 
 ## Packets
 
