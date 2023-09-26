@@ -168,7 +168,7 @@ As stated before, the SGB border consists of tile data, picture data, and palett
 
 See also the related Pan Docs entry: [SGB Command Border](https://gbdev.io/pandocs/SGB_Command_Border.html).
 
-[^1]: You can send a `CHR_TRN` up to \~60 frames after the `PCT_TRN` for it to apply to the current border, but not all emulators will emulate this. its fine to just pretend `CHR_TRN`s must go before `PCT_TRN`
+[^1]: You can send a `CHR_TRN` [up to \~60 frames](https://github.com/pinobatch/little-things-gb/blob/b11b554d73c48a0f54fee0df31e59eb83806fcb4/sgbears/docs/long_story.md) after the `PCT_TRN` for it to apply to the current border, but not all emulators will emulate this. It's fine to just pretend `CHR_TRN`s must go before `PCT_TRN`.
 
 ## Notes
 
