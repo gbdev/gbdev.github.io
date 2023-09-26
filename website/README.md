@@ -89,6 +89,9 @@ Rednex Game Boy Development System: the de-facto ASM development toolkit for the
 
 [hardware.inc](https://github.com/gbdev/hardware.inc) - Standard include file containing Game Boy hardware definitions for use in RGBDS projects.
 
+[rgbds-live](https://gbdev.io/rgbds-live/) - A live Game Boy programming environment in the browser, allowing for realtime assembly programming with RGBDS.
+
+
 <br>
 <p ><a class="projectTitle" target="_blank" href="https://gbdev.io/gb-asm-tutorial/">GB ASM Tutorial&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/gb-asm-tutorial" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/gb-asm-tutorial on GitHub">Star</a>
 <span></span></p>
