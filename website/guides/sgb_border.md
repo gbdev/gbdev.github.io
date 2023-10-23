@@ -178,7 +178,7 @@ As stated before, the SGB border consists of tile data, picture data, and palett
 		- the picture data must be at `$8000`-`$873f` (last 64 bytes are _usually_ offscreen, see [notes](#notes))
 		- palette data must be at `$8800`-`$885f`
 		- everything else is ignored
-			* how you skip putting data at `$8740`-`$87ff` is up to you, I prefer doing separate copies, valen prefers copying tilemap and palette data in one go, with the area between them pa
+			* how you skip putting data at `$8740`-`$87ff` is up to you, I prefer doing separate copies, others prefer copying tilemap and palette data in one go, with the area between them padded.
 
 See also the related Pan Docs entry: [SGB Command Border](https://gbdev.io/pandocs/SGB_Command_Border.html).
 
