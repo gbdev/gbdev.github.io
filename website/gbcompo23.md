@@ -9,6 +9,9 @@ head:
         Join us for an epic game development event celebrating the classics! Show off your creativity and skills by crafting original games for the iconic Game Boy!
 ---
 
+# Game Boy Competition 2023
+
+
 <p align="center">
 <img alt="Game Boy Competition 2023" src="/images/kSruwo_alt.png" style="width: 65%">
 </p>

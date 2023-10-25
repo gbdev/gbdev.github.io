@@ -49,24 +49,57 @@ module.exports = {
     docsDir: "website",
     footer: "test",
     navbar: [
-      { link: "/gbcompo23", text: "GB Compo 2023" },
-      { link: "https://hh.gbdev.io", text: "Games" },
-      { link: "https://gbdev.io/pandocs", text: "Pan Docs" },
+      { link: "/resources", text: "Resources" },
       {
-        text: "Community",
+        text: "Newsletter",
         link: "/",
         collapsable: false,
         sidebarDepth: 1,
         children: [
-          { link: "/chat", text: "Chat" },
-          { link: "/contribute", text: "Contribute" },
+          {
+            link: "/newsletter/1",
+            text: "Issue #1 - 2021",
+          },
+        ],
+      },
+      {
+        text: "Events",
+        link: "/",
+        collapsable: false,
+        sidebarDepth: 1,
+        children: [
+          {
+            link: "/gbcompo23",
+            text: "GB Competition 2023",
+          },
           {
             link: "/gbcompo21",
             text: "GB Competition 2021",
           },
         ],
       },
-      { link: "/resources", text: "Resources" },
+      {
+        text: "Projects",
+        link: "/",
+        collapsable: false,
+        sidebarDepth: 1,
+        children: [
+          { link: "https://hh.gbdev.io", text: "Homebrew Hub" },
+          { link: "https://gbdev.io/pandocs", text: "Pan Docs" },
+          { link: "https://gbdev.io/gb-asm-tutorial", text: "GB ASM Tutorial" },
+          { link: "https://rgbds.gbdev.io/", text: "RGBDS" },
+        ],
+      },
+      {
+        text: "Community",
+        link: "/",
+        collapsable: false,
+        sidebarDepth: 1,
+        children: [
+          { link: "/chat", text: "Chat channels" },
+          { link: "/contribute", text: "Contribute" },
+        ],
+      },
       {
         text: "Guides",
         children: [
@@ -85,6 +118,7 @@ module.exports = {
           { link: "/guides/sgb_border", text: "Adding a custom SGB border" },
         ],
       },
+      { link: "https://opencollective.com/gbdev", text: "Donate" },
     ],
   }),
 
