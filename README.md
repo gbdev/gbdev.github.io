@@ -1,6 +1,6 @@
 # gbdev website
 
-This is the source repository of the Game Boy development website hosted at [gbdev.io](https://gbdev.io), powered by Vuepress 2.x
+This is the source repository of main website of the Game Boy development iniative, hosted at [gbdev.io](https://gbdev.io). Powered by Vuepress 2.x
 
 You need Node (> 14.x) and yarn.
 
