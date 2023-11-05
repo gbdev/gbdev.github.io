@@ -98,6 +98,7 @@ module.exports = {
         children: [
           { link: "/chat", text: "Chat channels" },
           { link: "/contribute", text: "Contribute" },
+          { link: "/meetings", text: "Meetings minutes" },
         ],
       },
       {
