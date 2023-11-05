@@ -1,4 +1,4 @@
-import{_ as H,r as A,o as q,c as I,a as n,b as s,d as e,w as h,h as l,e as v}from"./app-78a06ae9.js";const E=`.waitVRAM
+import{_ as H,r as A,o as q,c as I,a as n,b as s,d as e,w as h,h as l,e as v}from"./app-e942f67a.js";const E=`.waitVRAM
 	ldh a, [rSTAT]
 	and STATF_BUSY ; 2
 	jr nz, .waitVRAM
