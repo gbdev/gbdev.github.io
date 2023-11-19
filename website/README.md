@@ -60,7 +60,7 @@ letter-spacing: -0.05em;">
 
 <div style="letter-spacing: -0.025em; font-weight: 500; font-size: 20px;">
         <br>
-We are a non for profit collective of passionate developers and hackers working on development tools, homebrew games, emulators, preservation and documentation for the Nintendo Game Boy handheld console, the original gray brick from 1989. <br><br> Join us on <a target="_blank" href="https://github.com/gbdev">GitHub</a>, <a target="_blank" rel="me" href="https://fedi.gbdev.io/@gbdev">Mastodon</a>, <a target="_blank" href="https://twitter.com/gbdev0">Twitter</a> and <a target="_blank" href="https://discord.io/gbdev">Discord</a>.
+We are a non for profit collective of passionate developers and hackers working on development tools, homebrew games, emulators, preservation and documentation for the Nintendo Game Boy handheld console, the original gray brick from 1989. <br><br> Join us on <a target="_blank" href="https://github.com/gbdev">GitHub</a>, <a target="_blank" rel="me" href="https://fedi.gbdev.io/@gbdev">Mastodon</a>, <a target="_blank" href="https://twitter.com/gbdev0">Twitter</a> and <a href="chat.html">Discord</a>.
 </div>
 
 <div>
