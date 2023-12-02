@@ -51,18 +51,6 @@ module.exports = {
     navbar: [
       { link: "/resources", text: "Resources" },
       {
-        text: "Newsletter",
-        link: "/",
-        collapsable: false,
-        sidebarDepth: 1,
-        children: [
-          {
-            link: "/newsletter/1",
-            text: "Issue #1 - 2021",
-          },
-        ],
-      },
-      {
         text: "Events",
         link: "/",
         collapsable: false,
@@ -97,8 +85,10 @@ module.exports = {
         sidebarDepth: 1,
         children: [
           { link: "/chat", text: "Chat channels" },
-          { link: "/contribute", text: "Contribute" },
           { link: "/meetings", text: "Meetings minutes" },
+          { link: "/donate", text: "Donations and Bounties" },
+          { link: "/contributing", text: "Contribution Guidelines" },
+          { link: "/newsletter", text: "Newsletter" },
         ],
       },
       {
