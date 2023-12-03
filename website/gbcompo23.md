@@ -172,3 +172,13 @@ Special thanks to everyone who helped organising and running this event:
 ## Past editions
 
 - [GB Competition 2021](https://itch.io/jam/gbcompo21)
+
+
+# Results
+
+## Games
+
+Unordered final shortlist:
+
+Ghost of the Arcade, Enceladus, Feed IT Souls, Hidden Gems, Slayer the Hawk, EXTERMINATOR, Imperium Strike Force, Abducted, Chantey (Prologue), Lightseeker, The Host, Slime Trials, Kaiju Kai Kai, NUNYA, Hermano
+
