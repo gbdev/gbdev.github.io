@@ -5,7 +5,7 @@ editLink: false
 
 # Privacy Policy
 
-We use a self hosted instance of [Matomo](https://en.wikipedia.org/wiki/Matomo_(software)), a free and open source web analytics application to track online visits to our websites (`*.gbdev.io`), in order to better understand which audience we serve and what content is consulted.
+We use a self hosted instance of [Matomo](https://en.wikipedia.org/wiki/Matomo_(software)), a free and open source web analytics application to track online visits to our websites (`*.gbdev.io`, `*.gbadev.net`), in order to better understand which audience we serve and what content is consulted.
 
 ### How
 

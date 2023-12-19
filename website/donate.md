@@ -6,7 +6,7 @@ You can donate on our [Open Collective](https://opencollective.com/gbdev) or on 
 
 ::: tip WHY OPENCOLLECTIVE
 
-The [gbdev](https://github.com/gbdev) organisation is an _informal_ collective of individuals. As such, we are not able to hold any fund in our accounts. Instead, the US based non-profit [Open Source Collective](https://www.oscollective.org/) is our [fiscal host](https://thesocialchangeagency.org/blog/what-is-fiscal-hosting/), providing us the financial and legal infrastructure to receive donations and spend moneyf.
+The [gbdev](https://github.com/gbdev) organisation is an _informal_ collective of individuals. As such, we are not able to hold any fund in our accounts. Instead, the US based non-profit [Open Source Collective](https://www.oscollective.org/) is our [fiscal host](https://thesocialchangeagency.org/blog/what-is-fiscal-hosting/), providing us the financial and legal infrastructure to receive donations and spend money.
 
 :::
 
@@ -40,13 +40,13 @@ Sometimes, we may assign a bounty to an Issue. Labels such as `bounty-25$`, `bou
 
 If you send a Pull Request fixing that issue and this work gets merged, you will be able to claim this issue.
 
-Payments are done via OpenCollective. You will receive an invitation to the GitHub email account shortly after the PR has been merged. If you wish to receive the invitation to another email address, please contact us.
+Bounties are paid from our OpenCollective: submit an expense mentioning the Issue you worked on and make sure to use your GitHub email (or the one you authored the git commit with) when creating an account on OpenCollective. Wire transfers and PayPal are supported\*\*.
 
-You will be able to fill your details and how to receive the money (wire transfers and PayPal are supported\*\*). Details are generally verified in 24-48 hours. Payments are then processed by our Open Collective host a couple of times per week.
+Details are generally verified in 24-48 hours. Payments are then processed by our Open Collective host a couple of times per week.
 
 ::: warning TAX CONSIDERATIONS
 
-Make sure to check the tax rules of your country and properly declare the bounties received. We're not tax consultants and we cannot help with that.
+Make sure to check the tax regulations of your country and properly declare the bounties received. We're not tax consultants and we cannot help with that.
 
 :::
 
