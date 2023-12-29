@@ -47,7 +47,7 @@ For non-disruptive PRs:
 
 ## References
 
-[1](https://twitter.com/matteocollina/status/1359087694375174145)
+[1](https://nitter.net/matteocollina/status/1359087694375174145)
 
 ## Where can I help?
 
