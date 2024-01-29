@@ -176,6 +176,13 @@ Special thanks to everyone who helped organising and running this event:
 
 # Results
 
+## Music
+
+1. 8bit Sunset (GameBoy Music) -Kabcorp
+2. Gb Compo 23 - Music Cart - Tune In!- beatscribe
+3. Monkeys on Mars - Chavez.funktion
+4. The Infernodome - Original GB SongROM! - EmperorJub , No time for art sorry (Music Cart) -incognitio, Re: Cycle - sloopygoop
+
 ## Games
 
 Unordered final shortlist:
