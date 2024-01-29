@@ -183,6 +183,18 @@ Special thanks to everyone who helped organising and running this event:
 3. Monkeys on Mars - Chavez.funktion
 4. The Infernodome - Original GB SongROM! - EmperorJub , No time for art sorry (Music Cart) -incognitio, Re: Cycle - sloopygoop
 
+## Demoscene
+
+1. Did Somebody Say Demo? - VL2MSTUDIO
+2. DDDDDEEMO(N) - Lillie_chippie
+
+## Tools
+
+1. Monster Orc-arina - Pearacidic
+2. Dungeon Master - joaobapt
+3. WeekPlanner- CreativaGS
+4. Iron Cor - Stainless - Elvies, Nyan note - Arky750, witch sound tracker - Arky750, SGB SOU_TRN demo -cloudscomputing
+
 ## Games
 
 Unordered final shortlist:
