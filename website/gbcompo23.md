@@ -174,30 +174,171 @@ Special thanks to everyone who helped organising and running this event:
 - [GB Competition 2021](https://itch.io/jam/gbcompo21)
 
 
-# Results
+## Results
 
-## Music
+### Music
 
 1. 8bit Sunset (GameBoy Music) -Kabcorp
 2. Gb Compo 23 - Music Cart - Tune In!- beatscribe
 3. Monkeys on Mars - Chavez.funktion
 4. The Infernodome - Original GB SongROM! - EmperorJub , No time for art sorry (Music Cart) -incognitio, Re: Cycle - sloopygoop
 
-## Demoscene
+### Demoscene
 
 1. Did Somebody Say Demo? - VL2MSTUDIO
 2. DDDDDEEMO(N) - Lillie_chippie
 
-## Tools
+### Tools
 
 1. Monster Orc-arina - Pearacidic
 2. Dungeon Master - joaobapt
 3. WeekPlanner- CreativaGS
 4. Iron Cor - Stainless - Elvies, Nyan note - Arky750, witch sound tracker - Arky750, SGB SOU_TRN demo -cloudscomputing
 
-## Games
+### Games
 
-Unordered final shortlist:
+#### Overall
 
-Ghost of the Arcade, Enceladus, Feed IT Souls, Hidden Gems, Slayer the Hawk, EXTERMINATOR, Imperium Strike Force, Abducted, Chantey (Prologue), Lightseeker, The Host, Slime Trials, Kaiju Kai Kai, NUNYA, Hermano
+|#  |Name                  |Overall|Gameplay|Technical|Originality|Graphics|Audio|Theme|
+|---|----------------------|-------|--------|---------|-----------|--------|-----|-----|
+|1  |Hermano † §           |4.0    |4.17    |4.0      |3.5        |4.33    |3.83 |4.17 |
+|2  |Feed IT Souls †       |3.92   |4.17    |3.5      |3.83       |3.83    |3.67 |4.5  |
+|3  |Enceladus †           |3.75   |3.5     |3.0      |3.83       |3.67    |3.67 |4.83 |
+|4  |The Host †            |3.58   |3.33    |3.0      |3.33       |3.17    |4.0  |4.67 |
+|5  |NUNYA †               |3.58   |3.33    |3.0      |3.17       |4.33    |3.67 |4.0  |
+|6  |Ghost of the Arcade   |3.42   |3.33    |3.5      |3.33       |3.67    |3.33 |3.33 |
+|7  |Kaiju Kai Kai         |3.33   |3.0     |2.67     |3.5        |3.5     |2.83 |4.5  |
+|8  |Chantey (Prologue)    |3.25   |2.83    |3.0      |3.67       |3.83    |4.5  |1.67 |
+|9  |Slime Trials §        |3.06   |3.83    |3.17     |3.67       |2.33    |2.83 |2.5  |
+|10 |Hidden Gems           |3.06   |4.0     |3.0      |4.5        |2.67    |3.0  |1.17 |
+|11 |Abducted §            |2.94   |2.83    |3.17     |3.83       |3.83    |1.17 |2.83 |
+|12 |Slayer the Hawk       |2.86   |2.67    |3.5      |4.17       |2.67    |1.5  |2.67 |
+|13 |EXTERMINATOR          |2.83   |2.67    |2.67     |3.17       |3.0     |2.83 |2.67 |
+|14 |Imperium Strike Force |2.69   |3.17    |2.83     |2.33       |3.17    |2.67 |2.0  |
+|15 |Lightseeker           |2.67   |2.17    |2.17     |3.0        |4.0     |3.17 |1.5  |
+
+Tiebreaks (4-5, 9-10) were explicitly resolved by judges for this leaderboard.
+
+Entries marked with † are awarded the "Best Games" prizes and ones with § get the "Best Open Source Games".
+
+#### Gameplay
+
+|#                     |Name |Score|
+|----------------------|-----|-----|
+|1                     | Feed IT Souls | 4.17|
+|2                     | Hermano | 4.17|
+|3                     | Hidden Gems | 4.0 |
+|4                     | Slime Trials | 3.83|
+|5                     | Enceladus | 3.5 |
+|6                     | Ghost of the Arcade | 3.33|
+|7                     | NUNYA | 3.33|
+|8                     | The Host | 3.33|
+|9                     | Imperium Strike Force | 3.17|
+|10                    | Kaiju Kai Kai | 3.0 |
+|11                    | Abducted | 2.83|
+|12                    | Chantey (Prologue) | 2.83|
+|13                    | EXTERMINATOR | 2.67|
+|14                    | Slayer the Hawk | 2.67|
+|15                    | Lightseeker | 2.17|
+
+#### Technical
+
+|#                     |Name |Score|
+|----------------------|-----|-----|
+|1                     | Hermano | 4.0 |
+|2                     | Feed IT Souls | 3.5 |
+|3                     | Ghost of the Arcade | 3.5 |
+|4                     | Slayer the Hawk | 3.5 |
+|5                     | Slime Trials | 3.17|
+|6                     | Abducted | 3.17|
+|7                     | Enceladus | 3.0 |
+|8                     | NUNYA | 3.0 |
+|9                     | The Host | 3.0 |
+|10                    | Hidden Gems | 3.0 |
+|11                    | Chantey (Prologue) | 3.0 |
+|12                    | Imperium Strike Force | 2.83|
+|13                    | Kaiju Kai Kai | 2.67|
+|14                    | EXTERMINATOR | 2.67|
+|15                    | Lightseeker | 2.17|
+
+#### Originality
+
+|#                     |Name |Score|
+|----------------------|-----|-----|
+|1                     | Hidden Gems | 4.5 |
+|2                     | Slayer the Hawk | 4.17|
+|3                     | Enceladus | 3.83|
+|4                     | Feed IT Souls | 3.83|
+|5                     | Abducted | 3.83|
+|6                     | Slime Trials | 3.67|
+|7                     | Chantey (Prologue) | 3.67|
+|8                     | Hermano | 3.5 |
+|9                     | Kaiju Kai Kai | 3.5 |
+|10                    | Ghost of the Arcade | 3.33|
+|11                    | The Host | 3.33|
+|12                    | NUNYA | 3.17|
+|13                    | EXTERMINATOR | 3.17|
+|14                    | Lightseeker | 3.0 |
+|15                    | Imperium Strike Force | 2.33|
+
+
+#### Graphics
+
+|#                     |Name |Score|
+|----------------------|-----|-----|
+|1                     | Hermano | 4.33|
+|2                     | NUNYA | 4.33|
+|3                     | Lightseeker | 4.0 |
+|4                     | Feed IT Souls | 3.83|
+|5                     | Abducted | 3.83|
+|6                     | Chantey (Prologue) | 3.83|
+|7                     | Enceladus | 3.67|
+|8                     | Ghost of the Arcade | 3.67|
+|9                     | Kaiju Kai Kai | 3.5 |
+|10                    | The Host | 3.17|
+|11                    | Imperium Strike Force | 3.17|
+|12                    | EXTERMINATOR | 3.0 |
+|13                    | Hidden Gems | 2.67|
+|14                    | Slayer the Hawk | 2.67|
+|15                    | Slime Trials | 2.33|
+
+#### Audio Ranking
+
+|#                     |Name |Score|
+|----------------------|-----|-----|
+|1                     | Chantey (Prologue) | 4.5 |
+|2                     | The Host | 4.0 |
+|3                     | Hermano | 3.83|
+|4                     | Enceladus | 3.67|
+|5                     | Feed IT Souls | 3.67|
+|6                     | NUNYA | 3.67|
+|7                     | Ghost of the Arcade | 3.33|
+|8                     | Lightseeker | 3.17|
+|9                     | Hidden Gems | 3.0 |
+|10                    | Slime Trials | 2.83|
+|11                    | Kaiju Kai Kai | 2.83|
+|12                    | EXTERMINATOR | 2.83|
+|13                    | Imperium Strike Force | 2.67|
+|14                    | Slayer the Hawk | 1.5 |
+|15                    | Abducted | 1.17|
+
+#### Theme
+|#                     |Name |Score|
+|----------------------|-----|-----|
+|1                     | Enceladus | 4.83|
+|2                     | The Host | 4.67|
+|3                     | Feed IT Souls | 4.5 |
+|4                     | Kaiju Kai Kai | 4.5 |
+|5                     | Hermano | 4.17|
+|6                     | NUNYA | 4.0 |
+|7                     | Ghost of the Arcade | 3.33|
+|8                     | Abducted | 2.83|
+|9                     | EXTERMINATOR | 2.67|
+|10                    | Slayer the Hawk | 2.67|
+|11                    | Slime Trials | 2.5 |
+|12                    | Imperium Strike Force | 2.0 |
+|13                    | Chantey (Prologue) | 1.67|
+|14                    | Lightseeker | 1.5 |
+|15                    | Hidden Gems | 1.17|
+
 
