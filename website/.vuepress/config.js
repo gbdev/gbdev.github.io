@@ -113,6 +113,10 @@ module.exports = {
             link: "/guides/lyc_timing",
             text: "The Timing of LYC STAT Handlers",
           },
+          {
+            link: "https://evie.gbdev.io/resources/interrupts.html",
+            text: "Interrupts tutorial"
+          },
           { link: "/guides/deadcscroll", text: "Dead C Scroll" },
           {
             link: "https://eldred.fr/blog/2022/05/22/prehistorik",
