@@ -117,6 +117,10 @@ module.exports = {
             link: "https://evie.gbdev.io/blog/interrupts.html",
             text: "Interrupts tutorial"
           },
+          {
+            link: "https://evie.gbdev.io/blog/understanding-structures.html",
+            text: "Understanding Structures"
+          },
           { link: "/guides/deadcscroll", text: "Dead C Scroll" },
           {
             link: "https://eldred.fr/blog/2022/05/22/prehistorik",
