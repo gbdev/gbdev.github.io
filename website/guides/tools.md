@@ -24,7 +24,7 @@ In the past few years as retro gaming has grown in popularity, programming for o
 ::: warning
 This document only applies to the Game Boy and Game Boy Color. Game Boy Advance programming has little in common with Game Boy programming.
 
-If you want to program for the GBA, which is much more C-friendly (and C++ and Rust, for that matter) than the GB and GBC, then I advise you to download devkitARM and follow the [Tonc](https://www.coranac.com/tonc/text/) tutorial. Please note that the Game Boy Advance also functions as a Game Boy Color, so if you only have a GBA, you can use it for both GB and GBC development.
+If you want to program for the GBA, which is much more C-friendly (and C++ and Rust, for that matter) than the GB and GBC, then I advise you to download devkitARM and follow the [Tonc](https://gbadev.net/tonc/) tutorial. Please note that the Game Boy Advance also functions as a Game Boy Color, so if you only have a GBA, you can use it for both GB and GBC development.
 :::
 
 When someone wants to make their own game, one of the first problems they will encounter is picking the *tools* they will use. There current main options are:
