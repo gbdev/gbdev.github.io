@@ -13,5 +13,8 @@ head:
 
 This guide has been moved to
 "[Choosing tools for Game Boy development](guides/tools.html)".
+
 Please update your bookmarks and ask other website operators
 to update inbound links.
+
+In 10 seconds, you'll be redirected.
