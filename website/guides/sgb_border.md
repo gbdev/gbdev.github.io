@@ -10,7 +10,7 @@ We will see how to:
 
 <small>
 
-Written by [sylvie (zlago)](https://zlago.github.io/me/), idea (and minor help) by [valentina (coffee bat)](https://coffeebat.neocities.org/), reviews and improvements by [ISSOtm](https://eldred.fr), [avivace](https://github.com/avivace), and [PinoBatch](https://github.com/pinobatch).
+Written by **sylvie (zlago)**, idea (and minor help) by [valentina (coffee bat)](https://coffeebat.neocities.org/), reviews and improvements by [ISSOtm](https://eldred.fr), [avivace](https://github.com/avivace), and [PinoBatch](https://github.com/pinobatch).
 
 </small>
 
@@ -45,7 +45,7 @@ This adds up to 16 bytes of data (LSB first). If a packet doesn't read all 16 by
 
 **You should wait 4 frames between each packet and the next.** This gives the SGB BIOS a chance to receive a packet even if it is doing something else time-consuming.
 
-For an example of such routine, see this [code](https://github.com/zlago/violence-gbc/blob/11cfdb6ee8a35e042fa9712484d814e0961cea7c/src/sub.sm83#L413-L463) and the related Pan Docs entry: [SGB Command Packet on Pandocs](https://gbdev.io/pandocs/SGB_Command_Packet.html).
+For an example of such routine, see the related Pan Docs entry: [SGB Command Packet on Pandocs](https://gbdev.io/pandocs/SGB_Command_Packet.html).
 
 This guide glosses over a minor detail, as certain packets can be (albeit unccomon) more than 16 bytes.
 
@@ -60,7 +60,7 @@ For a transfer to function properly, you must prepare VRAM and the LCD registers
 3. the tilemap consists of `$00`, `$01`..`$13`, 12 bytes padding (offscreen), `$14`..`$27`, padding, repeat until `$ff` (inclusive)
 4. the data you want to send must be loaded at `$8000`-`$8fff`
 
-You can do 1, 2 and 3 via [this snippet](https://github.com/zlago/snek-gbc/blob/baef0369f57d2b0d58316cb1c28c6cc22475a6c9/code/init.sm83#L208-L230)
+You can do 1, 2 and 3 via [this snippet](https://github.com/gb-archive/snek-gbc/blob/main/code/init.sm83#L208-L230)
 
 - **You must load the data into VRAM and enable the screen before sending the TRN packet.** The SGB reads TRN payloads from the screen. If rendering is off, there is nothing on the screen to read.
 - **You must wait ~8 frames after each TRN** instead of just 4. The SGB BIOS has to finish what it's doing, receive the packet, and then read the screen.
@@ -78,7 +78,7 @@ Here's how a SGB detection routine should look like:
 
 If a non-`%1111` value was found in step 4 either time, the program is running on SGB.
 
-A routine like this may be used to detect SGB (modified from [source](https://github.com/zlago/snek-gbc/blob/baef0369f57d2b0d58316cb1c28c6cc22475a6c9/code/init.sm83#L167-L196)):
+A routine like this may be used to detect SGB (modified from [source](https://github.com/gb-archive/snek-gbc/blob/main/code/init.sm83#L167-L196)):
 
 ```sm83asm
 SGB_Detect:
