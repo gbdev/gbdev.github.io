@@ -110,6 +110,10 @@ A community-led attempt to collect, archive and save every unofficial game, home
 <p class="projectTitle"><a target="_blank" href="https://github.com/gb-archive">The Game Boy Archive</a>&nbsp;<img style="font-family: Monospace" height="22" src="https://img.shields.io/badge/dynamic/json.svg?label=mirrored%20projects&amp;url=https%3A%2F%2Fapi.github.com%2Forgs%2Fgb-archive&amp;query=public_repos&amp;style=flat-square"></p>
 Digital library of Game Boy related software, hardware and literature. Aimed to mirror and preserve old and fragmented contributions in the scene from the last three decades.
 <br><br>
+<p class="projectTitle"><a target="_blank" href="https://cameraclub.gbdev.io">Game Boy Camera Club</a></p>
+Released in 1988 as a Nintendo accessory for the original handheld console, the Game Boy Camera became an instant hit with kids.
+Despite technological advances, its capturing sub-megapixel charm endures, capturing the imagination of photographers who embrace its unique, low-fi aesthetic.
+<br><br>
 <p class="projectTitle" style="font-weight: 500">Events</p>
 We host coding competitions in which anyone can partecipate by creating original games, demos, homebrews tools and music for the Game Boy and compete for glory and prizes.
 
