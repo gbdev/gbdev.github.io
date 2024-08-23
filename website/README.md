@@ -111,7 +111,7 @@ A community-led attempt to collect, archive and save every unofficial game, home
 Digital library of Game Boy related software, hardware and literature. Aimed to mirror and preserve old and fragmented contributions in the scene from the last three decades.
 <br><br>
 <p class="projectTitle"><a target="_blank" href="https://cameraclub.gbdev.io">Game Boy Camera Club</a></p>
-Released in 1988 as a Nintendo accessory for the original handheld console, the Game Boy Camera became an instant hit with kids.
+Released in 1998 as a Nintendo accessory for the original handheld console, the Game Boy Camera became an instant hit with kids.
 Despite technological advances, its capturing sub-megapixel charm endures, capturing the imagination of photographers who embrace its unique, low-fi aesthetic.
 <br><br>
 <p class="projectTitle" style="font-weight: 500">Events</p>
