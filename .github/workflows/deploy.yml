@@ -9,14 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout virens
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         path: gbdevio
 
     - name: Install NodeJS
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v4
       with:
         node-version: '16.x'
+        cache: yarn
 
     - name: Install npm requirements
       run: yarn install
@@ -27,7 +28,7 @@ jobs:
       working-directory: gbdevio/
 
     - name: Store final build
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: Build output
         path: gbdevio/website/.vuepress/dist
@@ -38,7 +39,7 @@ jobs:
     needs: build
     steps:
     - name: Checkout virens/gh-pages
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         path: gbdevio
         ref: master
@@ -48,7 +49,7 @@ jobs:
         rm -vrf gbdevio/*
 
     - name: Unpack build
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
         name: Build output
         path: gbdevio/
