@@ -171,7 +171,7 @@ If your question is "*What should I use for my game project ?*", then you're in 
 ### If you don't know ASM, C or C++
 Consider starting with C and GBDK. This will introduce you to working with the hardware and is an easier starting place.
 
-Once you've grasped C's concepts (most importantly pointers), give ASM a go. The language is simpler than it looks. Even if you don't manage to get working ASM code, it actually helps a lot (especially on such a constrained system) to know what's "under the hood". There is even an [online IDE](https://daid.github.io/rgbds-live/) to experiment with.
+Once you've grasped C's concepts (most importantly pointers), give ASM a go. The language is simpler than it looks. Even if you don't manage to get working ASM code, it actually helps a lot (especially on such a constrained system) to know what's "under the hood". There is even an [online IDE](https://gbdev.io/rgbds-live/) to experiment with.
 
 For C / GBDK users, knowing ASM will help you understand what its API (which is mostly written in ASM) is doing behind the scenes and will make using emulator debuggers easier to understand.
 
