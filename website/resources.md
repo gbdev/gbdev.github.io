@@ -202,6 +202,7 @@ The [Choosing tools for Game Boy development](https://gbdev.io/guides/tools.html
 - [RGBDS](https://github.com/gbdev/rgbds) - Assembler and linker package. [Documentation](https://rgbds.gbdev.io/docs/).
 - [ASMotor](https://github.com/csoren/asmotor) - Assembler engine and development system targeting Game Boy, among other CPUs. Written by the original RGBDS author. [Documentation](https://github.com/asmotor/asmotor/tree/develop#further-reading).
 - [wla-dx](https://github.com/vhelin/wla-dx) - Yet Another GB-Z80/Z80/... Multi Platform Cross Assembler Package. [Documentation](http://www.villehelin.com/wla.txt).
+- [Asm83](https://github.com/inufuto/asm8) - Assembler, linker and librarian for retro CPUs.
 
 ### Compilers
 
@@ -210,6 +211,7 @@ The [Choosing tools for Game Boy development](https://gbdev.io/guides/tools.html
   - [Examples](https://github.com/mrombout/gbdk_playground)
   - [Documentation, links and tools](https://gbdk-2020.github.io/gbdk-2020/docs/api/docs_links_and_tools.html)
 - [Turbo Rascal Syntax Error](https://lemonspawn.com/turbo-rascal-syntax-error-expected-but-begin/) - Complete suite (IDE, compiler, programming language, resource editor) intended for developing games/demos for 8 / 16-bit line of computers, including the Game Boy and Game Boy Color.
+- [Cate83](https://github.com/inufuto/Cate) - A C-like programming language compiler for retro CPUs.
 
 #### Experimental/Proof of Concepts
 
