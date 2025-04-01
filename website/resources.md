@@ -52,23 +52,25 @@ This project is open source and community-lead. Come <a href="https://gbdev.io/c
   frameborder="0" allowfullscreen></iframe>
 <br></div>
 
-> ### Disambiguation
->
-> #### Game Boy Advance
->
-> Game Boy Advance development is covered by another project, the [awesome-GBAdev](https://github.com/gbdev/awesome-gbadev) list.
-> GBA, however, can run GB/GBC games. It does so in a slightly different way compared to native hardware. This is covered in the Emulator Development section of this list.
->
-> #### Game Boy Color and Super Game Boy
->
-> This list is focused on the original (1989) Game Boy (DMG), the _Game Boy Color_ (GBC) and _Super Game Boy_ (SGB) are very similar systems, with a few important distinctions, such as:
->
-> - Different hardware specifications
-> - Specific hardware and software features
-> - Specific registers
-> - Specific bugs, quirks and exploitable behaviours
->
-> If you aim to develop your software for SGB or GBC, or you want to know how it runs on the other systems, you may want to take advantage and adapt to these differences, check the [Game Boy Color](#game-boy-color) category and look for specific references to GBC/CGB and SGB.
+::: note Disambiguation: GBA vs GB/GBC
+
+###### Game Boy Advance
+
+Game Boy Advance development is covered by another project, the [awesome-GBAdev](https://github.com/gbdev/awesome-gbadev) list.
+GBA, however, can run GB/GBC games. It does so in a slightly different way compared to native hardware. This is covered in the Emulator Development section of this list.
+
+###### Game Boy Color and Super Game Boy
+
+This list is focused on the original (1989) Game Boy (DMG). _Game Boy Color_ (GBC) and _Super Game Boy_ (SGB) are very similar systems, with a few important distinctions, such as:
+
+- Different hardware specifications
+- Specific hardware and software features
+- Specific registers
+- Specific bugs, quirks and exploitable behaviours
+
+If you aim to develop your software for SGB or GBC, or you want to know how it runs on the other systems, you may want to take advantage and adapt to these differences, check the [Game Boy Color](#game-boy-color) category and look for specific references to GBC/CGB and SGB.
+
+:::
 
 ## Documentation
 
