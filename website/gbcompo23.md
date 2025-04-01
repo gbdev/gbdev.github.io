@@ -16,9 +16,12 @@ head:
 <img alt="Game Boy Competition 2023" src="/images/kSruwo_alt.png" style="width: 65%">
 </p>
 
+> *gbcompo23* was a game jam run from **June 15th** to **September 15**, 2023 and it was hosted on [itch.io/jam/gbcompo21](https://itch.io/jam/gbcompo23).
+
+
 #### Join us for an epic game development event celebrating the classics! Show off your creativity and skills by crafting original games, demos, homebrew tools or music specifically designed for the legendary Game Boy. Get ready to battle it out for fame, honor, and an incredible array of prizes that await the best entries.
 
-The jam is hosted on [Itch.io](https://itch.io/jam/gbcompo23). It will run from **June 15th** to **September 15**, 2023.
+
 
 Theme: _You are the monster_.
 
