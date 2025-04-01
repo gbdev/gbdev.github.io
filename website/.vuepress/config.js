@@ -71,6 +71,10 @@ module.exports = {
         sidebarDepth: 1,
         children: [
           {
+            link: "/gbcompo25",
+            text: "GB Competition 2025",
+          },
+          {
             link: "/gbcompo23",
             text: "GB Competition 2023",
           },
