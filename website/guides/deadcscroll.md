@@ -288,7 +288,7 @@ The values in the table can dramatically change the effect. For example, if the 
 
 Also, you could create a 'glitch' effect during a cut-scene, perhaps in a sci-fi game to simulate a slightly dirty transmission.
 
-![X Sine](/deadcscroll/gif//xsine.gif)
+![X Sine](/deadcscroll/gif/xsine.gif)
 
 ### Y (Vertical) Sine
 
@@ -296,7 +296,7 @@ This effect is structured very similar to X Sine, in that there is a table of si
 
 This is a really good way to simulate water reflections.
 
-![Y Sine](/deadcscroll/gif//ysine.gif)
+![Y Sine](/deadcscroll/gif/ysine.gif)
 
 ### X and Y Sine
 
@@ -304,7 +304,7 @@ This is simply a combination of the X Sine and Y Sine effects so you can see how
 
 Instead of a full-screen image like this tutorial uses, imagine if you had a repeating image in VRAM (bigger than the screen) that looked like water ripples. This would move just like water!
 
-![XY Sine](/deadcscroll/gif//xysine.gif)
+![XY Sine](/deadcscroll/gif/xysine.gif)
 
 ### Smear On
 
@@ -312,25 +312,25 @@ This is like a flood fill effect used as an appearance transition. It's quite si
 
 The specific image used in the tutorial is light along the bottom so it looks better if the screen was already light before the effect starts. You would change this to suit your image.
 
-![Smear On](/deadcscroll/gif//smearon.gif)
+![Smear On](/deadcscroll/gif/smearon.gif)
 
 ### Smear Off
 
 This is a disappearance transition and the reverse of Smear On. Due to the specific image that was used (i.e. it is light along the bottom), it looks better in this tutorial to have the effect reveal a light screen instead of dark. Again, you would change this to suit your image.
 
-![Smear Off](/deadcscroll/gif//smearoff.gif)
+![Smear Off](/deadcscroll/gif/smearoff.gif)
 
 ### Roll On
 
 This effect simulates an image unrolling onto the screen. This might be useful for fantasy RPGs to transition to a map screen or perhaps a message written on a scroll. The image unrolls over a dark screen because the top of the image is mostly dark so it looks better to keep it dark than the contrast of using a light screen.
 
-![Roll On](/deadcscroll/gif//rollon.gif)
+![Roll On](/deadcscroll/gif/rollon.gif)
 
 ### Roll Off
 
 This effect simulates an image rolling off screen. This might be useful for fantasy RPGs to transition away from a map or scroll screen. This reveals a dark screen because the first thing you see in the roll is dark (because that's what's in VRAM below the screen). Keeping it dark made the transition more seamless.
 
-![Roll Off](/deadcscroll/gif//rolloff.gif)
+![Roll Off](/deadcscroll/gif/rolloff.gif)
 
 The roll effects look complicated but the implementation is probably one of the simpler ones. The key to make this look good is the values in the table. The roll size is 32 pixels, but you can change this to whatever size you want, provided the table values support it. This [SpecBas demo](https://www.youtube.com/watch?v=j04TKI9WKfo) was used as a reference to obtain those values.
 
