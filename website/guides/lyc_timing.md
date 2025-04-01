@@ -5,7 +5,7 @@ head:
       content: Timing of LYC STAT Handlers
   - - meta
     - name: og:description
-      content: Guide on how to implement raster effects is with the rLYC register.
+      content: Guide on how to implement raster effects with the rLYC register.
 ---
 
 # The Timing of LYC STAT Handlers
