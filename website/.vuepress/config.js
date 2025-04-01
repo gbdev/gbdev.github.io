@@ -1,18 +1,18 @@
 // .vuepress/config.js
 
-//const { path } = require("@vuepress/utils");
-
-import markdownRawPlugin from "vite-raw-plugin";
-import { defaultTheme } from "vuepress";
-import { viteBundler } from "vuepress";
-import shiki from "vuepress-plugin-shiki";
+import { defaultTheme } from "@vuepress/theme-default";
+import { viteBundler } from "@vuepress/bundler-vite";
+import { shikiPlugin } from "@vuepress/plugin-shiki";
 
 module.exports = {
-  plugins: [shiki({ langs: ["asm"] })],
+  plugins: [shikiPlugin({ langs: ["asm"] })],
   title: "gbdev.io",
   description: "game boy development scene",
   head: [
-    ['script', {}, `
+    [
+      "script",
+      {},
+      `
         var _paq = window._paq = window._paq || [];
         /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
         _paq.push(['trackPageView']);
@@ -24,7 +24,8 @@ module.exports = {
           var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
           g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
         })();
-    `],
+    `,
+    ],
     [
       "link",
       {
@@ -115,11 +116,11 @@ module.exports = {
           },
           {
             link: "https://evie.gbdev.io/blog/interrupts.html",
-            text: "Interrupts tutorial"
+            text: "Interrupts tutorial",
           },
           {
             link: "https://evie.gbdev.io/blog/understanding-structures.html",
-            text: "Understanding Structures"
+            text: "Understanding Structures",
           },
           { link: "/guides/deadcscroll", text: "Dead C Scroll" },
           {
@@ -136,7 +137,17 @@ module.exports = {
 
   bundler: viteBundler({
     viteOptions: {
-      plugins: [markdownRawPlugin({ fileRegex: /\.asm$/ })],
+      plugins: [
+        {
+          name: "raw-asm-loader",
+          enforce: "pre",
+          transform(code, id) {
+            if (id.endsWith(".asm")) {
+              return `export default ${JSON.stringify(code)};`;
+            }
+          },
+        },
+      ],
       resolve: {
         alias: {
           "@": __dirname, // Alias to the `.vuepress` folder
