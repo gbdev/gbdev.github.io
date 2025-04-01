@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-6c436918","path":"/privacypolicy.html","title":"Privacy Policy","lang":"en-US","frontmatter":{"sidebar":false,"editLink":false},"headers":[{"level":3,"title":"How","slug":"how","link":"#how","children":[]}],"git":{},"filePathRelative":"privacypolicy.md"}');export{e as data};

@@ -1,26 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="generator" content="VuePress 2.0.0-beta.66">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.20" />
     <style>
       :root {
-        --c-bg: #fff;
+        --vp-c-bg: #fff;
       }
-      html.dark {
-        --c-bg: #22272e;
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
       }
-      html, body {
-        background-color: var(--c-bg);
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
       }
     </style>
     <script>
-      const userMode = localStorage.getItem('vuepress-color-scheme');
-			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
-				document.documentElement.classList.toggle('dark', true);
-			}
+      const useChoice = localStorage.getItem('vuepress-color-scheme')
+      const systemStatus =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (useChoice === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (useChoice === 'dark' || systemStatus) {
+        document.documentElement.dataset.theme = 'dark'
+      }
     </script>
     <script>
         var _paq = window._paq = window._paq || [];
@@ -35,11 +44,12 @@
           g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
         })();
     </script><link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png"><meta property="og:site_name" content="gbdev.io"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@gbdev0"><meta name="og:image" content="https://gbdev.io/images/gbinternals.png"><title>gbdev.io</title><meta name="description" content="game boy development scene">
-    <link rel="preload" href="/assets/style-d912344a.css" as="style"><link rel="stylesheet" href="/assets/style-d912344a.css">
-    <link rel="modulepreload" href="/assets/app-185a2e5f.js"><link rel="modulepreload" href="/assets/404.html-bb9b8989.js"><link rel="modulepreload" href="/assets/404.html-60b35caa.js"><link rel="prefetch" href="/assets/index.html-73be7817.js" as="script"><link rel="prefetch" href="/assets/chat.html-ea257c93.js" as="script"><link rel="prefetch" href="/assets/contributing.html-9be653e8.js" as="script"><link rel="prefetch" href="/assets/donate.html-b400e680.js" as="script"><link rel="prefetch" href="/assets/gbcompo21.html-99aaee71.js" as="script"><link rel="prefetch" href="/assets/gbcompo23.html-a81692eb.js" as="script"><link rel="prefetch" href="/assets/meetings.html-51bd8c78.js" as="script"><link rel="prefetch" href="/assets/newsletter.html-265eba04.js" as="script"><link rel="prefetch" href="/assets/privacypolicy.html-c130ba76.js" as="script"><link rel="prefetch" href="/assets/resources.html-6f26efe6.js" as="script"><link rel="prefetch" href="/assets/to_c_or_not_to_c.html-d40a4393.js" as="script"><link rel="prefetch" href="/assets/asmstyle.html-f84bdcf1.js" as="script"><link rel="prefetch" href="/assets/deadcscroll.html-cf90a12f.js" as="script"><link rel="prefetch" href="/assets/dma_hijacking.html-3c0726e8.js" as="script"><link rel="prefetch" href="/assets/lyc_timing.html-7f10ac5d.js" as="script"><link rel="prefetch" href="/assets/sgb_border.html-bc8bc6ba.js" as="script"><link rel="prefetch" href="/assets/tools.html-e21b5d86.js" as="script"><link rel="prefetch" href="/assets/2023-11-04-sc.html-73e957ae.js" as="script"><link rel="prefetch" href="/assets/2024-03-10-sc2.html-2f212aef.js" as="script"><link rel="prefetch" href="/assets/1.html-19f9b6b9.js" as="script"><link rel="prefetch" href="/assets/index.html-36327f2b.js" as="script"><link rel="prefetch" href="/assets/chat.html-1310c283.js" as="script"><link rel="prefetch" href="/assets/contributing.html-2077fe3f.js" as="script"><link rel="prefetch" href="/assets/donate.html-75083125.js" as="script"><link rel="prefetch" href="/assets/gbcompo21.html-64744b4b.js" as="script"><link rel="prefetch" href="/assets/gbcompo23.html-70af34e8.js" as="script"><link rel="prefetch" href="/assets/meetings.html-c4a24195.js" as="script"><link rel="prefetch" href="/assets/newsletter.html-5ae288d2.js" as="script"><link rel="prefetch" href="/assets/privacypolicy.html-5f312642.js" as="script"><link rel="prefetch" href="/assets/resources.html-52a95adf.js" as="script"><link rel="prefetch" href="/assets/to_c_or_not_to_c.html-b2084805.js" as="script"><link rel="prefetch" href="/assets/asmstyle.html-0c392d5a.js" as="script"><link rel="prefetch" href="/assets/deadcscroll.html-cb376b71.js" as="script"><link rel="prefetch" href="/assets/dma_hijacking.html-7cbb9a8d.js" as="script"><link rel="prefetch" href="/assets/lyc_timing.html-75032af4.js" as="script"><link rel="prefetch" href="/assets/sgb_border.html-fe91755d.js" as="script"><link rel="prefetch" href="/assets/tools.html-d624b9ba.js" as="script"><link rel="prefetch" href="/assets/2023-11-04-sc.html-7374a7db.js" as="script"><link rel="prefetch" href="/assets/2024-03-10-sc2.html-16c9fe74.js" as="script"><link rel="prefetch" href="/assets/1.html-75b6eea5.js" as="script">
+    <link rel="preload" href="/assets/style-zR1T1xg1.css" as="style"><link rel="stylesheet" href="/assets/style-zR1T1xg1.css">
+    <link rel="modulepreload" href="/assets/app-CRgipzFT.js"><link rel="modulepreload" href="/assets/404.html-DzB_5Wib.js">
+    <link rel="prefetch" href="/assets/index.html-CqAdIui1.js" as="script"><link rel="prefetch" href="/assets/chat.html-DLI1LoCe.js" as="script"><link rel="prefetch" href="/assets/contributing.html-DOjDXSiX.js" as="script"><link rel="prefetch" href="/assets/donate.html-DxZzcdtM.js" as="script"><link rel="prefetch" href="/assets/gbcompo21.html-BJhcVJVS.js" as="script"><link rel="prefetch" href="/assets/gbcompo23.html-BiUJNGnR.js" as="script"><link rel="prefetch" href="/assets/gbcompo25.html-DbNJncg3.js" as="script"><link rel="prefetch" href="/assets/meetings.html-B6TwC8Sg.js" as="script"><link rel="prefetch" href="/assets/newsletter.html-CuEnoaOz.js" as="script"><link rel="prefetch" href="/assets/privacypolicy.html-fL1OVYO_.js" as="script"><link rel="prefetch" href="/assets/resources.html-D2lZVsoe.js" as="script"><link rel="prefetch" href="/assets/to_c_or_not_to_c.html-CUtTBfDM.js" as="script"><link rel="prefetch" href="/assets/asmstyle.html-DWjrgvKj.js" as="script"><link rel="prefetch" href="/assets/deadcscroll.html-Ph8V2IlG.js" as="script"><link rel="prefetch" href="/assets/dma_hijacking.html-BhMYiiKC.js" as="script"><link rel="prefetch" href="/assets/lyc_timing.html-CtZz9Y_F.js" as="script"><link rel="prefetch" href="/assets/sgb_border.html-CrDkfM0j.js" as="script"><link rel="prefetch" href="/assets/tools.html-4hW0delL.js" as="script"><link rel="prefetch" href="/assets/2023-11-04-sc.html-Chr0JbMc.js" as="script"><link rel="prefetch" href="/assets/2024-03-10-sc2.html-DYU5Ze--.js" as="script"><link rel="prefetch" href="/assets/1.html-BeoWuDRV.js" as="script">
   </head>
   <body>
-    <div id="app"><!--[--><div class="theme-container"><main class="page"><div class="theme-default-content"><h1>404</h1><blockquote>Looks like we&#39;ve got some broken links.</blockquote><a href="/" class="">Take me home</a></div></main></div><!----><!--]--></div>
-    <script type="module" src="/assets/app-185a2e5f.js" defer></script>
+    <div id="app"><!--[--><div class="vp-theme-container" vp-container data-v-ec9917b8><main class="page" data-v-ec9917b8><div vp-content data-v-ec9917b8><h1 data-v-ec9917b8>404</h1><blockquote data-v-ec9917b8>There&#39;s nothing here.</blockquote><a class="route-link" href="/" data-v-ec9917b8>Take me home</a></div></main></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-CRgipzFT.js" defer></script>
   </body>
 </html>
