@@ -76,7 +76,9 @@ Here is a curated list tools and documentation to get you started.
 
 ## Sponsors
 
-TODO
+<p><a target="_blank" href="https://modretro.com/"><img height="85" title="ModRetro" alt="ModRetro" src="https://img.itch.zone/aW1nLzIwNTU0MTc5LnBuZw==/original/f5Szgn.png"></a><br></p>
+<p><a href="https://incube8games.com/" target="_blank"><img src="https://img.itch.zone/aW1nLzExNjYxNzIxLnBuZw==/original/HbNO2K.png" height="60"></a><br></p>
+<p><a target="_blank" href="https://shop.insidegadgets.com/"><br><img height="45" src="https://img.itch.zone/aW1nLzExNjYxNjgyLnBuZw==/original/uvcSPE.png"></a></p>
 
 ## Rules
 
@@ -90,6 +92,7 @@ TODO
 4. To be eligible for the OSS bonus, the code must be licensed under an "Open Source" license (any of the "Free" license listed [here](https://www.gnu.org/licenses/license-list.en.html) is accepted). Assets can be licensed under any of the CC licenses. Obfuscated code, non-reproducible builds, intentionally making the source code hard to read/re-use will exclude the entry form the OSS leaderboards. This is at discretion of the hosts and judges. We must be able to read the code and compile it into a working ROM, running a script or following instructions.
 5. If your submission contains text that isn't available in English, some judges might not be able to read that, and they will judge accordingly.
 6. Shipment of physical prizes may not be available to all countries, they are subject to shipping ability of the prize donors.
+7. The submitted entry must implement / interpret the jam theme (applies to Game category only).
 
 ### Hardware Criteria
 
