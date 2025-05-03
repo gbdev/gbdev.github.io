@@ -45,7 +45,7 @@ Come join us <a href="/chat.html" target="_blank">on Discord</a> for help gettin
 
 We'd love to hear from participants, share your progress using the `#gbcompo25` hashtag and join the conversation on the Discord `#gbcompo25` channel!
 
-We're also on [BlueSky](https://bsky.app/profile/gbdev.bsky.social) and [Mastodon](https://mastodon.social/@gbdev).
+We're also on [BlueSky](https://bsky.app/profile/gbdev.io) and [Mastodon](https://mastodon.social/@gbdev).
 
 ## Resources
 
