@@ -21,21 +21,21 @@ The jam is hosted on [Itch.io](https://itch.io/jam/gbcompo25). It will run from 
 
 ## Prizes and Categories
 
-The total prize pool of TODO will be split according to TODO document. Anybody can contribute by [donating](https://opencollective.com/gbdev/projects/gbcompo25).
+The total prize pool of <img alt="prize pool preview" src="https://img.shields.io/endpoint?style=flat-square&color=red&url=https%3A%2F%2Fcellshield.info%2Fgs%3FspreadSheetId%3D13LfVFg9UPjfUd65egc3WEmCNOHsPHNap3vAA-eLnpiQ%26cellRange%3DQuotas!L26"> will be split according to [this document](https://docs.google.com/spreadsheets/d/e/2PACX-1vRTOM0XElTJJGF97GyxzL393SBuPAjW3woxYZo5Fs_X_tC8Yxq_hojVNw74XGeOFYHu0_5bwS3NyQLZ/pubhtml"). Anybody can contribute by [donating](https://opencollective.com/gbdev/projects/gbcompo25).
 
 An entry can compete in one and only one of the following leaderboards:
 
 - Games (80% of the prize pool)
   - The best **5** games will get a prize.
   - The best **3** OSS games will get an **additional** prize (can overlap)
-  - Examples: [Dango Dash](https://hh.gbdev.io/game/dango-dash), [Core Machina](https://hh.gbdev.io/game/core-machina), [Unearthed](https://hh.gbdev.io/game/unearthed)
+  - Examples: [Hermano](https://hh.gbdev.io/game/patmorita__hermano-game-boy), [Feed IT Souls](https://hh.gbdev.io/game/gumpyfunction__feed-it-souls), [Enceladus](https://hh.gbdev.io/game/mrpapshmir__enceladus)
 - Music cartridges (**1 prize**)
-  - Examples: [Zilogized](https://hh.gbdev.io/game/zilogized), [Freebie-gbs-2018](https://hh.gbdev.io/game/freebie-gbs-2018)
+  - Examples: [8bit Sunset](https://hh.gbdev.io/game/kabcorp__8bit-sunset), [Tune In!](https://hh.gbdev.io/game/beatscribe__gb-compo-23-music-cart-tune-in)
 - Demoscene style (**1 prize**)
   - This category is for audio-visual demonstrations that run without viewer interaction, in such a way as to demonstrate skill in manipulation of the Game Boy hardware through code, special effects, art, music, and direction. More on [Wikipedia](https://en.wikipedia.org/wiki/Demoscene).
   - Examples: [Back to Color](https://hh.gbdev.io/game/back-to-color), [Is that a demo in your pocket?](https://hh.gbdev.io/game/is-that-a-demo-in-your-pocket), [Cute Demo CGB](https://hh.gbdev.io/game/cute-demo-cgb).
 - Tool (**1 prize**)
-  - Examples: [Bannerprinter](https://hh.gbdev.io/game/bannerprinter), [On-Board GB Tile Creator](https://hh.gbdev.io/game/obgbtc), [StopWatch](https://hh.gbdev.io/game/stopwatch-version-1).
+  - Examples: [Monster Orcarina](https://hh.gbdev.io/game/pearacidic__monster-orc-arina-a-game-boy-tool), [On-Board GB Tile Creator](https://hh.gbdev.io/game/obgbtc), [Witch Sound Tracker](https://hh.gbdev.io/game/djarky__witch-sound-tracker).
 
 The rankings are decided according to the [judging](#judging) criteria.
 
