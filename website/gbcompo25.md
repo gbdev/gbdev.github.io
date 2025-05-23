@@ -21,7 +21,7 @@ The jam is hosted on [Itch.io](https://itch.io/jam/gbcompo25). It will run from 
 
 ## Prizes and Categories
 
-The total prize pool of <img alt="prize pool preview" src="https://img.shields.io/endpoint?style=flat-square&color=red&url=https%3A%2F%2Fcellshield.info%2Fgs%3FspreadSheetId%3D13LfVFg9UPjfUd65egc3WEmCNOHsPHNap3vAA-eLnpiQ%26cellRange%3DQuotas!L26"> will be split according to [this document](https://docs.google.com/spreadsheets/d/e/2PACX-1vRTOM0XElTJJGF97GyxzL393SBuPAjW3woxYZo5Fs_X_tC8Yxq_hojVNw74XGeOFYHu0_5bwS3NyQLZ/pubhtml"). Anybody can contribute by [donating](https://opencollective.com/gbdev/projects/gbcompo25).
+The total prize pool of <img alt="prize pool preview" src="https://img.shields.io/endpoint?style=flat-square&color=red&url=https%3A%2F%2Fcellshield.info%2Fgs%3FspreadSheetId%3D13LfVFg9UPjfUd65egc3WEmCNOHsPHNap3vAA-eLnpiQ%26cellRange%3DQuotas!L26"> will be split according to [this document](https://docs.google.com/spreadsheets/d/e/2PACX-1vRTOM0XElTJJGF97GyxzL393SBuPAjW3woxYZo5Fs_X_tC8Yxq_hojVNw74XGeOFYHu0_5bwS3NyQLZ/pubhtml). Anybody can contribute by [donating](https://opencollective.com/gbdev/projects/gbcompo25).
 
 An entry can compete in one and only one of the following leaderboards:
 
