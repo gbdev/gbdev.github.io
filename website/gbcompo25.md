@@ -82,7 +82,7 @@ Here is a curated list tools and documentation to get you started.
 
 ## Rules
 
-### JAM THEME: TO BE ANNOUNCED
+### JAM THEME: None (do whatever you want!)
 
 ### Prizes and Judging
 
