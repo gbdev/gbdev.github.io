@@ -121,7 +121,8 @@ Despite technological advances, its capturing sub-megapixel charm endures, captu
 <p class="projectTitle" style="font-weight: 500">Events</p>
 We host coding competitions in which anyone can partecipate by creating original games, demos, homebrews tools and music for the Game Boy and compete for glory and prizes.
 
-<img src="https://img.itch.zone/aW1nLzIxMDMwNjY4LnBuZw==/original/pzkjjR.png" height="150"></a>&nbsp;&nbsp;<a target="_blank" href="https://itch.io/jam/gbcompo23"><img height="150" src="https://img.itch.zone/aW1nLzIxMDMwODM5LnBuZw==/original/8CIDs3.png"></a><a target="_blank" href="https://itch.io/jam/gbcompo25"><img height="150" src="https://img.itch.zone/aW1hZ2UyL2phbS80MDQ0OTcvMjEwNjkxMzQucG5n/original/mYohtT.png"></a>
+<a target="_blank" href="https://itch.io/jam/gbcompo21"><img src="https://img.itch.zone/aW1nLzIxMDMwNjY4LnBuZw==/original/pzkjjR.png" height="150"></a>&nbsp;&nbsp;<a target="_blank" href="https://itch.io/jam/gbcompo23"><img height="150" src="https://img.itch.zone/aW1nLzIxMDMwODM5LnBuZw==/original/8CIDs3.png"></a>&nbsp;&nbsp;<a target="_blank" href="https://itch.io/jam/gbcompo25"><img height="150" src="https://img.itch.zone/aW1hZ2UyL2phbS80MDQ0OTcvMjEwNjkxMzQucG5n/original/mYohtT.png"></a>
+
 </div>
 
 <br>
