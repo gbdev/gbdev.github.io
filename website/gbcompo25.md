@@ -132,7 +132,7 @@ Here is a curated list tools and documentation to get you started.
 20. The submission must be available for free for the public (and not only the judges). Submission will be published and kept online for free on the competition website, while you are free to keep working on it (and eventually charge for it/make commercial usage).
 21. It is allowed to submit an entry to multiple events.
 22. It is permitted to use the 'gbcompo25 logo' graphics to identify the entry as a submission to this competition (e.g. as an intro splash screen). Minor modifications and alterations (color palette, size, smaller resolution) to fit the medium are permitted.
-23. Before submitting, make sure you're read the rules. Our resources are limited - low effort, non compliant or spammy submissions may lead to exclusion from this event and next ones.
+23. Before submitting, make sure you've read the rules. Our resources are limited - low effort, non-compliant or spammy submissions may lead to exclusion from this event and future ones.
 
 ## Judging
 
