@@ -66,10 +66,6 @@ We are a non for profit collective of passionate developers and hackers working 
 <div>
 <br>
 
-::: important GB Compo 2025
-The biggest Game Boy coding jam is back! Create Game Boy games and compete for the glory (and great prizes). [Join the Game Boy Competition 2025 now](https://itch.io/jam/gbcompo25).
-:::
-
 # Projects
 
 Here's what we are up to:<br>
