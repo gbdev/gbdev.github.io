@@ -152,6 +152,7 @@ The final leaderboard is computed by averaging the "Overall" score.
 
 ::: warning
 Judges are volunteers. Those details can change without prior notice, as the judging process is long and involves hundreds of entries. Detailed criteria leaderboards will be provided only for entries in the final shortlist.
+
 :::
 
 ## Acknowledgements
@@ -166,3 +167,31 @@ Special thanks to everyone who helped organising and running this event:
 
 - [GB Competition 2021](https://itch.io/jam/gbcompo21)
 - [GB Competition 2023](https://itch.io/jam/gbcompo23)
+
+
+## Results
+
+### Games shortlist
+
+No particular order.
+
+- Yap and the Enchanted Bubbles
+- FUN VIDEO STORE
+- OrmBlok
+- The Sweeping Wizard (demo)
+- Sheep Split - GBCompo2025
+- Abyss - GBCompo2025
+- CLEAVING CALIBER EX [GBC]
+- Mount Crymore
+- Fortune & Glory
+- Game of Life Kuzushi
+- PocketWare
+- DropBlox!
+- Cosmo Command - GB Compo 2025
+- Zoryad
+- Potion Panic (Demo)
+- God Destroyer 2
+- PuzzleBoy: Logic Quest
+- Peasant Republic
+- Ningami 2
+
