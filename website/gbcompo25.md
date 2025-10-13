@@ -175,7 +175,6 @@ Special thanks to everyone who helped organising and running this event:
 
 No particular order.
 
-- Yap and the Enchanted Bubbles
 - FUN VIDEO STORE
 - OrmBlok
 - The Sweeping Wizard (demo)
