@@ -38,11 +38,11 @@ Sponsorships are evaluated on a case-to-case basis and only be accepted if we fe
 
 Sometimes, we may assign a bounty to an Issue. Labels such as `bounty-25$`, `bounty-50$`, `bounty-100$` are used to specify the amount. If you wish to work on a issue with a bounty attached, it's a good measure to comment on the issue asking for it to be assigned to you\*.
 
-If you send a Pull Request fixing that issue and this work gets merged, you will be able to claim this issue.
+If you send a Pull Request fixing that issue and this work gets merged, you will be able to claim the corresponding bounty.
 
-Bounties are paid from our OpenCollective: submit an expense mentioning the Issue you worked on and make sure to use your GitHub email (or the one you authored the git commit with) when creating an account on OpenCollective. Wire transfers and PayPal are supported\*\*.
+Bounties are paid out from our Open Collective: submit an expense mentioning the Issue you worked on and make sure to use your GitHub email (or the one you authored the git commit with) when creating an account on OpenCollective. Wire transfers and PayPal are supported\*\*.
 
-Details are generally verified in 24-48 hours. Payments are then processed by our Open Collective host a couple of times per week.
+Details are generally verified in the following 24-48 hours. Payments are then processed by our Open Collective host a couple of times per week.
 
 ::: warning TAX CONSIDERATIONS
 
