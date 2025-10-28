@@ -189,7 +189,6 @@ No particular order.
 - Cosmo Command - GB Compo 2025
 - Zoryad
 - Potion Panic (Demo)
-- God Destroyer 2
 - PuzzleBoy: Logic Quest
 - Peasant Republic
 - Ningami 2
