@@ -15,9 +15,9 @@ head:
 <img alt="Game Boy Competition 2023" src="/images/gbcompo25-logo.gif" style="width: 75%">
 </p>
 
-#### Join us for an epic game development event celebrating the classics! Show off your creativity and skills by crafting original games, demos, homebrew tools or music specifically designed for the legendary Game Boy. Get ready to battle it out for fame, honor, and an incredible array of prizes that await the best entries.
+> *gbcompo25* was a game jam run from **June 1st** to **September 1st**, 2025 and it was hosted on [itch.io/jam/gbcompo25](https://itch.io/jam/gbcompo25).
 
-The jam is hosted on [Itch.io](https://itch.io/jam/gbcompo25). It will run from June 1st 2025 to September 1st 2025.
+#### Join us for an epic game development event celebrating the classics! Show off your creativity and skills by crafting original games, demos, homebrew tools or music specifically designed for the legendary Game Boy. Get ready to battle it out for fame, honor, and an incredible array of prizes that await the best entries.
 
 ## Prizes and Categories
 
