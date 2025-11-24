@@ -163,33 +163,34 @@ Special thanks to everyone who helped organising and running this event:
 
 **Organisers**: avivace, bbbbbr
 
+
+## Results
+
+### Games
+
+|   # | Name                       |   Overall |   Gameplay |   Technical |   Originality |   Graphics |   Audio |
+|----:|:---------------------------|----------:|-----------:|------------:|--------------:|-----------:|--------:|
+|   1 | **OrmBlok** †              |      3.84 |       4.00 |        3.67 |          4.22 |       3.22 |    4.11 |
+|   2 | **Fortune & Glory** † §    |      3.82 |       4.22 |        3.22 |          3.22 |       4.78 |    3.67 |
+|   3 | **Potion Panic** † §       |      3.49 |       3.33 |        3.89 |          3.33 |       3.78 |    3.11 |
+|   4 | **DropBlox!** †            |      3.47 |       3.89 |        3.67 |          4.11 |       2.67 |    3.00 |
+|   5 | **Game of Life Kuzushi** † |      3.42 |       3.67 |        3.78 |          4.11 |       2.44 |    3.11 |
+|   6 | Sheep Split                |      3.40 |       3.67 |        2.56 |          3.78 |       3.56 |    3.44 |
+|   7 | PocketWare                 |      3.36 |       3.44 |        3.33 |          2.78 |       3.67 |    3.56 |
+|   8 | Cosmo Command              |      3.33 |       3.00 |        2.67 |          3.11 |       4.22 |    3.67 |
+|   9 | CLEAVING CALIBER EX        |      3.22 |       3.33 |        3.11 |          3.56 |       4.11 |    2.00 |
+|  10 | FUN VIDEO STORE            |      3.16 |       2.44 |        2.44 |          3.56 |       4.00 |    3.33 |
+|  10 | The Sweeping Wizard        |      3.16 |       3.56 |        3.11 |          3.56 |       2.56 |    3.00 |
+|  10 | Abyss                      |      3.16 |       3.00 |        2.22 |          3.44 |       4.11 |    3.00 |
+|  13 | Zoryad                     |      3.13 |       3.78 |        2.89 |          2.89 |       3.44 |    2.67 |
+|  14 | Ningami 2                  |      3.11 |       3.78 |        3.00 |          3.22 |       2.67 |    2.89 |
+|  15 | Mount Crymore              |      3.00 |       3.89 |        2.67 |          2.22 |       2.89 |    3.33 |
+|  16 | Peasant Republic           |      2.98 |       2.89 |        2.67 |          2.89 |       3.22 |    3.22 |
+|  17 | PuzzleBoy: Logic Quest     |      2.13 |       3.00 |        3.00 |          1.44 |       2.00 |    1.22 |
+
+Entries marked with **†** are awarded the "Best Games" prizes and ones with **§** get the "Best Open Source Games".
+
 ## Past editions
 
 - [GB Competition 2021](https://itch.io/jam/gbcompo21)
 - [GB Competition 2023](https://itch.io/jam/gbcompo23)
-
-
-## Results
-
-### Games shortlist
-
-No particular order.
-
-- FUN VIDEO STORE
-- OrmBlok
-- The Sweeping Wizard (demo)
-- Sheep Split - GBCompo2025
-- Abyss - GBCompo2025
-- CLEAVING CALIBER EX [GBC]
-- Mount Crymore
-- Fortune & Glory
-- Game of Life Kuzushi
-- PocketWare
-- DropBlox!
-- Cosmo Command - GB Compo 2025
-- Zoryad
-- Potion Panic (Demo)
-- PuzzleBoy: Logic Quest
-- Peasant Republic
-- Ningami 2
-
