@@ -16,7 +16,7 @@ head:
 <img alt="Game Boy Competition 2023" src="/images/kSruwo_alt.png" style="width: 65%">
 </p>
 
-> *gbcompo23* was a game jam run from **June 15th** to **September 15**, 2023 and it was hosted on [itch.io/jam/gbcompo21](https://itch.io/jam/gbcompo23).
+> *gbcompo23* was a game jam run from **June 15th** to **September 15**, 2023 and it was hosted on [itch.io/jam/gbcompo23](https://itch.io/jam/gbcompo23).
 
 
 #### Join us for an epic game development event celebrating the classics! Show off your creativity and skills by crafting original games, demos, homebrew tools or music specifically designed for the legendary Game Boy. Get ready to battle it out for fame, honor, and an incredible array of prizes that await the best entries.
@@ -152,7 +152,7 @@ Every judge will be asked to compile an unranked shortlist of their favourite en
 5. **Audio** - How good are the music and sound effects?
 6. **Theme** - How was the theme implemented in the gameplay, the mechanics and/or the story?
 
-Applicability may vary depending on the category of the entry (e.g. a "Music" ROM may be evaluated only on 5)-
+Applicability may vary depending on the category of the entry (e.g. a "Music" ROM may be evaluated only on 5).
 
 The final leaderboard is computed by averaging the "Overall" score.
 
@@ -164,13 +164,13 @@ Judges are volunteers. Those details can change without prior notice, as the jud
 
 Special thanks to everyone who helped organising and running this event:
 
-**Donators**: Anonymous Donator
+**Donators:** Anonymous Donor
 
-**Partners**: gbdev.io, LaroldsJubilantJunkyard, RetroBreak, GB Studio Central
+**Partners:** gbdev.io, LaroldsJubilantJunkyard, RetroBreak, GB Studio Central
 
-**Organisers**: avivace, Tronimal, duodreamer, bbbbbr, ISSOtm, RetroBreak, LaroldsJubilantJunkyard, ProximitySound, Hacktix
+**Organisers:** avivace, Tronimal, duodreamer, bbbbbr, ISSOtm, RetroBreak, LaroldsJubilantJunkyard, ProximitySound, Hacktix
 
-**Judges**: avivace, ISSOtm, Duo, Tronimal, Ferrante Crafts, NickWestwood, Veund, Toxa
+**Judges:** avivace, ISSOtm, Duo, Tronimal, Ferrante Crafts, NickWestwood, Veund, Toxa
 
 ## Past editions
 
@@ -179,46 +179,55 @@ Special thanks to everyone who helped organising and running this event:
 
 ## Results
 
+You can find [all submissions in Homebrew Hub](https://hh.gbdev.io/search?tags=event:gbcompo23) and in [this GitHub repository](https://github.com/gbdev/gbcompo23/).
+
 ### Music
 
-1. 8bit Sunset (GameBoy Music) -Kabcorp
-2. Gb Compo 23 - Music Cart - Tune In!- beatscribe
-3. Monkeys on Mars - Chavez.funktion
-4. The Infernodome - Original GB SongROM! - EmperorJub , No time for art sorry (Music Cart) -incognitio, Re: Cycle - sloopygoop
+1. [8bit Sunset (GameBoy Music)](https://hh.gbdev.io/game/kabcorp__8bit-sunset) - Kabcorp
+2. [Gb Compo 23 – Music Cart – Tune In!](https://hh.gbdev.io/game/beatscribe__gb-compo-23-music-cart-tune-in) - beatscribe
+3. [Monkeys on Mars](https://hh.gbdev.io/game/chavezfunktion__monkeys-on-mars) - Chavez.funktion
+4. shared by
+   * [The Infernodome – Original GB SongROM!](https://hh.gbdev.io/game/emperorjub__infernodome-song-rom) - EmperorJub
+   * [No time for art sorry (Music Cart)](https://hh.gbdev.io/game/incognitiouwu__no-time-for-art-sorry-music-cart) - incognitio
+   * [Re: Cycle](https://hh.gbdev.io/game/sloopygoop__re-cycle) - sloopygoop
 
 ### Demoscene
 
-1. Did Somebody Say Demo? - VL2MSTUDIO
-2. DDDDDEEMO(N) - Lillie_chippie
+1. [Did Somebody Say Demo?](https://hh.gbdev.io/game/vl2m-studio__dssd) - VL2MSTUDIO
+2. [DDDDDEEMO(N)](https://hh.gbdev.io/game/lillie-chippie__dddddeemon) - Lillie_chippie
 
 ### Tools
 
-1. Monster Orc-arina - Pearacidic
-2. Dungeon Master - joaobapt
-3. WeekPlanner- CreativaGS
-4. Iron Cor - Stainless - Elvies, Nyan note - Arky750, witch sound tracker - Arky750, SGB SOU_TRN demo -cloudscomputing
+1. [Monster Orc-arina](https://hh.gbdev.io/game/pearacidic__monster-orc-arina-a-game-boy-tool) - Pearacidic
+2. [Dungeon Master](https://hh.gbdev.io/game/joaobapt__dungeon-master) - joaobapt
+3. [WeekPlanner](https://hh.gbdev.io/game/creativags__weekplanner) - CreativaGS
+4. shared by
+   * [Iron Cor – Stainless](https://hh.gbdev.io/game/elvies__iron-cor-stainless) - Elvies
+   * [Nyan note](https://hh.gbdev.io/game/djarky__nyan-note) - Arky750
+   * [witch sound tracker](https://hh.gbdev.io/game/djarky__witch-sound-tracker) - Arky750
+   * [SGB SOU_TRN demo](https://hh.gbdev.io/game/cloudscomputing__sgb-sou-trn-demo) - cloudscomputing
 
 ### Games
 
 #### Overall
 
-|#  |Name                  |Overall|Gameplay|Technical|Originality|Graphics|Audio|Theme|
-|---|----------------------|-------|--------|---------|-----------|--------|-----|-----|
-|1  |Hermano † §           |4.0    |4.17    |4.0      |3.5        |4.33    |3.83 |4.17 |
-|2  |Feed IT Souls †       |3.92   |4.17    |3.5      |3.83       |3.83    |3.67 |4.5  |
-|3  |Enceladus †           |3.75   |3.5     |3.0      |3.83       |3.67    |3.67 |4.83 |
-|4  |The Host †            |3.58   |3.33    |3.0      |3.33       |3.17    |4.0  |4.67 |
-|5  |NUNYA †               |3.58   |3.33    |3.0      |3.17       |4.33    |3.67 |4.0  |
-|6  |Ghost of the Arcade   |3.42   |3.33    |3.5      |3.33       |3.67    |3.33 |3.33 |
-|7  |Kaiju Kai Kai         |3.33   |3.0     |2.67     |3.5        |3.5     |2.83 |4.5  |
-|8  |Chantey (Prologue)    |3.25   |2.83    |3.0      |3.67       |3.83    |4.5  |1.67 |
-|9  |Slime Trials §        |3.06   |3.83    |3.17     |3.67       |2.33    |2.83 |2.5  |
-|10 |Hidden Gems           |3.06   |4.0     |3.0      |4.5        |2.67    |3.0  |1.17 |
-|11 |Abducted §            |2.94   |2.83    |3.17     |3.83       |3.83    |1.17 |2.83 |
-|12 |Slayer the Hawk       |2.86   |2.67    |3.5      |4.17       |2.67    |1.5  |2.67 |
-|13 |EXTERMINATOR          |2.83   |2.67    |2.67     |3.17       |3.0     |2.83 |2.67 |
-|14 |Imperium Strike Force |2.69   |3.17    |2.83     |2.33       |3.17    |2.67 |2.0  |
-|15 |Lightseeker           |2.67   |2.17    |2.17     |3.0        |4.0     |3.17 |1.5  |
+|#  |Name                                                                               |Overall|Gameplay|Technical|Originality|Graphics|Audio|Theme|
+|--:|-----------------------------------------------------------------------------------|-------|--------|---------|-----------|--------|-----|-----|
+|1  |[Hermano](https://hh.gbdev.io/game/patmorita__hermano-game-boy) † §                |4.0    |4.17    |4.0      |3.5        |4.33    |3.83 |4.17 |
+|2  |[Feed IT Souls](https://hh.gbdev.io/game/gumpyfunction__feed-it-souls) †           |3.92   |4.17    |3.5      |3.83       |3.83    |3.67 |4.5  |
+|3  |[Enceladus](https://hh.gbdev.io/game/mrpapshmir__enceladus) †                      |3.75   |3.5     |3.0      |3.83       |3.67    |3.67 |4.83 |
+|4  |[The Host](https://hh.gbdev.io/game/allalonegamez__the-host) †                     |3.58   |3.33    |3.0      |3.33       |3.17    |4.0  |4.67 |
+|5  |[NUNYA](https://hh.gbdev.io/game/bard-0__nunya) †                                  |3.58   |3.33    |3.0      |3.17       |4.33    |3.67 |4.0  |
+|6  |[Ghost of the Arcade](https://hh.gbdev.io/game/playinstinct__ghost-of-the-arcade)  |3.42   |3.33    |3.5      |3.33       |3.67    |3.33 |3.33 |
+|7  |[Kaiju Kai Kai](https://hh.gbdev.io/game/sunnychowtheguy__kaijukaikai)             |3.33   |3.0     |2.67     |3.5        |3.5     |2.83 |4.5  |
+|8  |[Chantey (Prologue)](https://hh.gbdev.io/game/gortyncode__chantey-prologue)        |3.25   |2.83    |3.0      |3.67       |3.83    |4.5  |1.67 |
+|9  |[Slime Trials](https://hh.gbdev.io/game/canight__slime-trials) §                   |3.06   |3.83    |3.17     |3.67       |2.33    |2.83 |2.5  |
+|10 |[Hidden Gems](https://hh.gbdev.io/game/rebusmind__hidden-gems)                     |3.06   |4.0     |3.0      |4.5        |2.67    |3.0  |1.17 |
+|11 |[Abducted](https://hh.gbdev.io/game/grimmrobegames__abducted) §                    |2.94   |2.83    |3.17     |3.83       |3.83    |1.17 |2.83 |
+|12 |[Slayer the Hawk](https://hh.gbdev.io/game/mindbleach__slayer-the-hawk)            |2.86   |2.67    |3.5      |4.17       |2.67    |1.5  |2.67 |
+|13 |[EXTERMINATOR](https://hh.gbdev.io/game/glitchytsp__exterminator)                  |2.83   |2.67    |2.67     |3.17       |3.0     |2.83 |2.67 |
+|14 |[Imperium Strike Force](https://hh.gbdev.io/game/orlando64__imperium-strike-force) |2.69   |3.17    |2.83     |2.33       |3.17    |2.67 |2.0  |
+|15 |[Lightseeker](https://hh.gbdev.io/game/zanipixels__lightseeker)                    |2.67   |2.17    |2.17     |3.0        |4.0     |3.17 |1.5  |
 
 Tiebreaks (4-5, 9-10) were explicitly resolved by judges for this leaderboard.
 
@@ -227,7 +236,7 @@ Entries marked with † are awarded the "Best Games" prizes and ones with § get
 #### Gameplay
 
 |#                     |Name |Score|
-|----------------------|-----|-----|
+|---------------------:|-----|-----|
 |1                     | Feed IT Souls | 4.17|
 |2                     | Hermano | 4.17|
 |3                     | Hidden Gems | 4.0 |
@@ -247,7 +256,7 @@ Entries marked with † are awarded the "Best Games" prizes and ones with § get
 #### Technical
 
 |#                     |Name |Score|
-|----------------------|-----|-----|
+|---------------------:|-----|-----|
 |1                     | Hermano | 4.0 |
 |2                     | Feed IT Souls | 3.5 |
 |3                     | Ghost of the Arcade | 3.5 |
@@ -267,7 +276,7 @@ Entries marked with † are awarded the "Best Games" prizes and ones with § get
 #### Originality
 
 |#                     |Name |Score|
-|----------------------|-----|-----|
+|---------------------:|-----|-----|
 |1                     | Hidden Gems | 4.5 |
 |2                     | Slayer the Hawk | 4.17|
 |3                     | Enceladus | 3.83|
@@ -288,7 +297,7 @@ Entries marked with † are awarded the "Best Games" prizes and ones with § get
 #### Graphics
 
 |#                     |Name |Score|
-|----------------------|-----|-----|
+|---------------------:|-----|-----|
 |1                     | Hermano | 4.33|
 |2                     | NUNYA | 4.33|
 |3                     | Lightseeker | 4.0 |
@@ -308,7 +317,7 @@ Entries marked with † are awarded the "Best Games" prizes and ones with § get
 #### Audio Ranking
 
 |#                     |Name |Score|
-|----------------------|-----|-----|
+|---------------------:|-----|-----|
 |1                     | Chantey (Prologue) | 4.5 |
 |2                     | The Host | 4.0 |
 |3                     | Hermano | 3.83|
@@ -327,7 +336,7 @@ Entries marked with † are awarded the "Best Games" prizes and ones with § get
 
 #### Theme
 |#                     |Name |Score|
-|----------------------|-----|-----|
+|---------------------:|-----|-----|
 |1                     | Enceladus | 4.83|
 |2                     | The Host | 4.67|
 |3                     | Feed IT Souls | 4.5 |
