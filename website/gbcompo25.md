@@ -163,6 +163,8 @@ Special thanks to everyone who helped organising and running this event:
 
 **Organisers**: avivace, bbbbbr
 
+**Judges**: Maithonis, DUO, Fei, Veund, David Couzelis, Sanqui, j0nas, RetroBreak, Ferrante
+
 
 ## Results
 
