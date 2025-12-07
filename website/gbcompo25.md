@@ -184,7 +184,6 @@ Special thanks to everyone who helped organising and running this event:
 |  10 | FUN VIDEO STORE            |      3.16 |       2.44 |        2.44 |          3.56 |       4.00 |    3.33 |
 |  10 | The Sweeping Wizard        |      3.16 |       3.56 |        3.11 |          3.56 |       2.56 |    3.00 |
 |  10 | Abyss                      |      3.16 |       3.00 |        2.22 |          3.44 |       4.11 |    3.00 |
-|  13 | Zoryad                     |      3.13 |       3.78 |        2.89 |          2.89 |       3.44 |    2.67 |
 |  14 | Ningami 2                  |      3.11 |       3.78 |        3.00 |          3.22 |       2.67 |    2.89 |
 |  15 | Mount Crymore              |      3.00 |       3.89 |        2.67 |          2.22 |       2.89 |    3.33 |
 |  16 | Peasant Republic           |      2.98 |       2.89 |        2.67 |          2.89 |       3.22 |    3.22 |
