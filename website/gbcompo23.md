@@ -216,7 +216,6 @@ You can find [all submissions in Homebrew Hub](https://hh.gbdev.io/search?tags=e
 |1  |[Hermano](https://hh.gbdev.io/game/patmorita__hermano-game-boy) † §                |4.0    |4.17    |4.0      |3.5        |4.33    |3.83 |4.17 |
 |2  |[Feed IT Souls](https://hh.gbdev.io/game/gumpyfunction__feed-it-souls) †           |3.92   |4.17    |3.5      |3.83       |3.83    |3.67 |4.5  |
 |3  |[Enceladus](https://hh.gbdev.io/game/mrpapshmir__enceladus) †                      |3.75   |3.5     |3.0      |3.83       |3.67    |3.67 |4.83 |
-|4  |[The Host](https://hh.gbdev.io/game/allalonegamez__the-host) †                     |3.58   |3.33    |3.0      |3.33       |3.17    |4.0  |4.67 |
 |5  |[NUNYA](https://hh.gbdev.io/game/bard-0__nunya) †                                  |3.58   |3.33    |3.0      |3.17       |4.33    |3.67 |4.0  |
 |6  |[Ghost of the Arcade](https://hh.gbdev.io/game/playinstinct__ghost-of-the-arcade)  |3.42   |3.33    |3.5      |3.33       |3.67    |3.33 |3.33 |
 |7  |[Kaiju Kai Kai](https://hh.gbdev.io/game/sunnychowtheguy__kaijukaikai)             |3.33   |3.0     |2.67     |3.5        |3.5     |2.83 |4.5  |
@@ -244,7 +243,6 @@ Entries marked with † are awarded the "Best Games" prizes and ones with § get
 |5                     | Enceladus | 3.5 |
 |6                     | Ghost of the Arcade | 3.33|
 |7                     | NUNYA | 3.33|
-|8                     | The Host | 3.33|
 |9                     | Imperium Strike Force | 3.17|
 |10                    | Kaiju Kai Kai | 3.0 |
 |11                    | Abducted | 2.83|
@@ -265,7 +263,6 @@ Entries marked with † are awarded the "Best Games" prizes and ones with § get
 |6                     | Abducted | 3.17|
 |7                     | Enceladus | 3.0 |
 |8                     | NUNYA | 3.0 |
-|9                     | The Host | 3.0 |
 |10                    | Hidden Gems | 3.0 |
 |11                    | Chantey (Prologue) | 3.0 |
 |12                    | Imperium Strike Force | 2.83|
@@ -287,7 +284,6 @@ Entries marked with † are awarded the "Best Games" prizes and ones with § get
 |8                     | Hermano | 3.5 |
 |9                     | Kaiju Kai Kai | 3.5 |
 |10                    | Ghost of the Arcade | 3.33|
-|11                    | The Host | 3.33|
 |12                    | NUNYA | 3.17|
 |13                    | EXTERMINATOR | 3.17|
 |14                    | Lightseeker | 3.0 |
@@ -307,7 +303,6 @@ Entries marked with † are awarded the "Best Games" prizes and ones with § get
 |7                     | Enceladus | 3.67|
 |8                     | Ghost of the Arcade | 3.67|
 |9                     | Kaiju Kai Kai | 3.5 |
-|10                    | The Host | 3.17|
 |11                    | Imperium Strike Force | 3.17|
 |12                    | EXTERMINATOR | 3.0 |
 |13                    | Hidden Gems | 2.67|
@@ -319,7 +314,6 @@ Entries marked with † are awarded the "Best Games" prizes and ones with § get
 |#                     |Name |Score|
 |---------------------:|-----|-----|
 |1                     | Chantey (Prologue) | 4.5 |
-|2                     | The Host | 4.0 |
 |3                     | Hermano | 3.83|
 |4                     | Enceladus | 3.67|
 |5                     | Feed IT Souls | 3.67|
@@ -338,7 +332,6 @@ Entries marked with † are awarded the "Best Games" prizes and ones with § get
 |#                     |Name |Score|
 |---------------------:|-----|-----|
 |1                     | Enceladus | 4.83|
-|2                     | The Host | 4.67|
 |3                     | Feed IT Souls | 4.5 |
 |4                     | Kaiju Kai Kai | 4.5 |
 |5                     | Hermano | 4.17|
