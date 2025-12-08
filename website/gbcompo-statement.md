@@ -9,9 +9,9 @@ head:
 
 This statement follows:
 
-- https://allalonegamez.itch.io/zoryad/devlog/1135761/when-exercising-copyrights-puts-a-gamedev-under-threat-my-take-on-gbcompo-25
-- https://blog.asie.pl/2025/12/gbcompo-2023-dispute/
-- https://www.reddit.com/r/gbstudio/comments/1pg8r8q/comment/nszxqdn
+- [When Exercising Copyrights Puts a Gamedev Under Threat (My Take on GBCOMPO 25) - allalonegamez](https://allalonegamez.itch.io/zoryad/devlog/1135761/when-exercising-copyrights-puts-a-gamedev-under-threat-my-take-on-gbcompo-25)
+- [On the gbcompo23 dispute - asie](https://blog.asie.pl/2025/12/gbcompo-2023-dispute/)
+- [https://www.reddit.com/r/gbstudio/comments/1pg8r8q/comment/nszxqdn](https://www.reddit.com/r/gbstudio/comments/1pg8r8q/comment/nszxqdn)
 
 ## 0. gbdev.io, Homebrew Hub and gbcompo events
 
