@@ -18,39 +18,36 @@ head:
 
 > *gbcompo21* was a game jam run from July 1 to October 1 2021 and it was hosted on [itch.io/jam/gbcompo21](https://itch.io/jam/gbcompo21).
 
-Create original games, demos, homebrews tools and music for the original Game Boy (Color) and compete for glory (and up to ![$3000+](https://shields.io/endpoint?url=https%3A%2F%2Fcellshield.info%2Fgs%3FspreadSheetId%3D196vIZGLbSk1ewzRnZc7Dy_LJdPQpfJUg-udT4iyBVOg%26cellRange%3DI11) in prizes)!
+Create original games, demos, homebrews tools and music for the original Game Boy (Color) and compete for glory (and up to US$&thinsp;3,829 in prizes)!
 
 
 ## Results
 
-Full leaderboards are available [here](#full-results). Top rated entries are playable [here](https://hh.gbdev.io/games/gbcompo21) while the complete list can be found on [Itch.io](https://itch.io/jam/gbcompo21/entries).
+Full leaderboards are available [here](#full-results). Top rated entries are playable [here](https://hh.gbdev.io/search?tags=gbcompo21-shortlist) while the complete list can be found on [Homebrew Hub](https://hh.gbdev.io/search?tags=gbcompo21) and [Itch.io](https://itch.io/jam/gbcompo21/entries). A zip file can be downloaded from [GitHub](https://github.com/gbdev/gbcompo21/releases/tag/gbcompo21_entries).
 
 **Games**:
 
-1. Unearthed
-2. Rhythm Land
-3. Shock Lobster
-4. Dango Dash
-5. Rebound
-6. Core Machina
-7. Sushi Nights
-8. MARLA and the Elemental Rings
-9. Porklike GB
-10. GB Corp
-11. Dawn Will Come
-12. \<corrib75\>
-13. El Dueloroso
-14. Glory Hunter
-15. Renegade rush
-16. Fix My Heart
-17. GBCspelunky
+1. [Unearthed](https://hh.gbdev.io/game/unearthed) - BenJelter
+2. [Rhythm Land](https://hh.gbdev.io/game/rhythm-land) - martendo
+3. [Shock Lobster](https://hh.gbdev.io/game/shock-lobster) - tbsp
+4. [Dango Dash](https://hh.gbdev.io/game/dango-dash) - Rebusmind
+5. [Rebound](https://hh.gbdev.io/game/rebound) - DevEd
+6. [Core Machina](https://hh.gbdev.io/game/core-machina) - Pearacidic
+7. [Sushi Nights](https://hh.gbdev.io/game/sushi-nights) - Zalo
+8. [MARLA and the Elemental Rings](https://hh.gbdev.io/game/marla-and-the-elemental-rings-demo) - Geek_Joystick
+9. [Porklike GB](https://hh.gbdev.io/game/porklike-gb) - binji
+10. [GB Corp](https://hh.gbdev.io/game/gb-corp) - Dr. Ludos
+11. [Dawn Will Come](https://hh.gbdev.io/game/dawn-will-come) - eishiya
+12. [\<corrib75\>](https://hh.gbdev.io/game/corrib75) - gearfo
+13. [El Dueloroso](https://hh.gbdev.io/game/el-dueloroso) - Adrián JG
+14. [Glory Hunter](https://hh.gbdev.io/game/glory-hunters) - 2think design studio
+15. [Renegade rush](https://hh.gbdev.io/game/renegade-rush) - quinnp
+16. [Fix My Heart](https://hh.gbdev.io/game/fix-my-heart) - Filipe Bianchin
+17. [GBCspelunky](https://hh.gbdev.io/game/gbcspelunky) - sukus
 
-Winning entry for the **Music** category: Zilogized
+Winning entry for the **Music** category: [Zilogized](https://hh.gbdev.io/game/zilogized) - Kabcorp
 
-Winning entry for the **Tools** category: Brainfox
-
-## Entries
-The complete set of entries is available to browse on [Itch.io](https://itch.io/jam/gbcompo21/entries) or can be downloaded as a zip file from [GitHub](https://github.com/gbdev/gbcompo21/releases/tag/gbcompo21_entries).
+Winning entry for the **Tools** category: [Brainfox](https://hh.gbdev.io/game/brainfox) - Yprit
 
 
 ## Sponsors
@@ -59,7 +56,7 @@ The complete set of entries is available to browse on [Itch.io](https://itch.io/
 Donations to the prize pool are now __closed__, no more are being accepted.
 :::
 
-The entire prize pool is community funded. Donate or sponsor the competition through [GitHub sponsors](https://github.com/sponsors/avivace?editing=true&frequency=one-time).
+The entire prize pool is community-funded. Donate or sponsor the competition through [GitHub sponsors](https://github.com/sponsors/avivace?editing=true&frequency=one-time).
 
 <a href="https://incube8games.com/pages/developers" target="_blank"> <img src="/images/incube8_logo_white_bg.png" alt="Incube 8 Games" height="100"></a>
 
@@ -134,7 +131,7 @@ The rankings are decided according to the [JUDGING](#JUDGING) criteria.
 
 If you publish your game source code and assets on a public repository (e.g. GitHub) under [an open source license](https://choosealicense.com/) (GPL, MIT, Apache, CC0...) you get **20%** more of the prize as a bonus!
 
-*Prize tiers are still work in progress, expect changes. Money prizes are subject to fees and conversions. They may be delivered as gift cards of your choice.*
+*Money prizes are subject to fees and conversions. They may be delivered as gift cards of your choice.*
 
 ## Rules
 
