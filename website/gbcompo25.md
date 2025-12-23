@@ -201,7 +201,7 @@ Entries marked with **†** are awarded the "Best Games" prizes and the ones wit
 ### Music
 
 1. **Neon Nova** †
-2. DMG Keygen
+2. **DMG Keygen** †
 
 ## Past editions
 
