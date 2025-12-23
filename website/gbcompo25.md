@@ -189,7 +189,19 @@ Special thanks to everyone who helped organising and running this event:
 |  16 | Peasant Republic           |      2.98 |       2.89 |        2.67 |          2.89 |       3.22 |    3.22 |
 |  17 | PuzzleBoy: Logic Quest     |      2.13 |       3.00 |        3.00 |          1.44 |       2.00 |    1.22 |
 
-Entries marked with **†** are awarded the "Best Games" prizes and ones with **§** get the "Best Open Source Games".
+Entries marked with **†** are awarded the "Best Games" prizes and the ones with **§** get the "Best Open Source Games".
+
+### Tools
+
+1. **Tomato-do** †
+2. GBC Pip-Boy
+3. GB Tile Editor
+4. Still Got the Blues
+
+### Music
+
+1. **Neon Nova** †
+2. DMG Keygen
 
 ## Past editions
 
