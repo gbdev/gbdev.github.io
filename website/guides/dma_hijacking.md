@@ -18,8 +18,6 @@ Unlike most resources here, this guide is not very useful to developers or even 
 
 :::
 
----
-
 ## What is it?
 
 *OAM DMA hijacking* is a simple technique that allows you to run custom code in most GB/SGB/CGB games, provided you have an ACE exploit.
