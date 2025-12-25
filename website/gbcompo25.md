@@ -203,6 +203,10 @@ Entries marked with **†** are awarded the "Best Games" prizes and the ones wit
 1. **Neon Nova** †
 2. **DMG Keygen** †
 
+### Demoscene
+
+No prize was awarded in the demoscene category due to lack of qualifying entries.
+
 ## Past editions
 
 - [GB Competition 2021](https://itch.io/jam/gbcompo21)
