@@ -21,7 +21,7 @@ A curated list of awesome Game Boy (Color) Development resources, tools, docs, r
 <br>
 
 <div style="letter-spacing: -0.05em; font-weight: 500; font-size: 18px;">
-This project is open source and community-lead. Come <a href="https://gbdev.io/contribute">contribute! </a></div>
+This project is open source and community-lead. Come <a href="https://gbdev.io/contributing">contribute! </a></div>
 
 </div>
 <br>
