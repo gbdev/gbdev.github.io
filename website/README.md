@@ -93,6 +93,10 @@ Rednex Game Boy Development System: the de-facto ASM development toolkit for the
 
 
 <br>
+<p ><a class="projectTitle" target="_blank" href="https://gbdev.io/GBEmulatorShootout/">GB Emulator Shootout&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/GBEmulatorShootout" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/GBEmulatorShootout on GitHub">Star</a>
+<span></span></p>
+An automated test comparison project for Game Boy emulators. It runs a suite of accuracy test ROMs across a set of Game Boy emulators and publishes the pass/fail results as a comprehensive table, with screenshots for each test case.
+<br><br>
 <p ><a class="projectTitle" target="_blank" href="https://gbdev.io/gb-asm-tutorial/">GB ASM Tutorial&nbsp;</a> <a class="github-button" target="_blank" href="https://github.com/gbdev/gb-asm-tutorial" data-icon="octicon-star" data-show-count="true" aria-label="Star gbdev/gb-asm-tutorial on GitHub">Star</a>
 <span></span></p>
 A (work in progress) tutorial on how to program for the Game Boy in assembly, touching on every aspect required to make Game Boy games, via a Hello World, constructing an Arkanoid clone, and capping off by making a playable Shoot-'Em-Up.<br><br>
