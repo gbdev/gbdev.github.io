@@ -106,6 +106,7 @@ module.exports = {
           { link: "/meetings", text: "Meetings minutes" },
           { link: "/donate", text: "Donations and Bounties" },
           { link: "/contributing", text: "Contribution Guidelines" },
+          { link: "/aipolicy", text: "AI Policy" },
           { link: "/newsletter", text: "Newsletter" },
         ],
       },

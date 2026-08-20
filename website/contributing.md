@@ -2,9 +2,19 @@
 
 These base guidelines (if not specified otherwise) apply to every repository under the [**gbdev**](https://github.com/gbdev/) github organisation. The specific CONTRIBUTING rules of the repository in object also apply. In case of conflicts, those last ones have the priority.
 
-## General
+::: tip Reaching out to maintainers
 
-- If you are unsure about anything or need guidance, you can always reach out the maintainers on [Discord or IRC](https://gbdev.io/chat.html).
+If you are unsure about anything or need guidance, you can always reach out the maintainers on [Discord or IRC](https://gbdev.io/chat.html).
+
+:::
+
+## AI usage
+
+You're allowed to use AI/LLM tools to help with your contribution, but you must disclose it and meet certain expectations around reviewing and understanding the work you submit.
+
+Unattended AI-driven interactions and contributions are not allowed, unless the project has an area explicitly designated for such contributions.
+
+See the full [AI Coding Assistants policy](aipolicy.md).
 
 ## Issues
 
@@ -47,10 +57,6 @@ For non-disruptive PRs:
 - If a maintainer wants to put a veto and to make the PR wait for his/her input after the mentioned period, the "veto" label can be used
 
 \*if there are at least 2 active maintainers, otherwise 1.
-
-## References
-
-[1](https://nitter.net/matteocollina/status/1359087694375174145)
 
 ## Where can I help?
 
@@ -98,3 +104,8 @@ This is the database of games powering the main Homebrew Hub project. Find a gam
 Technologies and tools: JSON Schema, Python, Javascript, BeautifulSoup
 
 [Homepage](https://hh.gbdev.io/) - [Repository](https://github.com/gbdev/database) - [Beginner issues](https://github.com/gbdev/database/issues?q=is%3Aissue+is%3Aopen+label%3AHacktoberfest)
+
+## References
+
+[1](https://nitter.net/matteocollina/status/1359087694375174145)
+
