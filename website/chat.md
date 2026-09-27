@@ -16,5 +16,4 @@ Join our community on the following channels. Before posting, read the rules and
 - [Discord Server](https://discord.gg/RjJKA8wrD4).
 - IRC: [`#gbdev` on Libera.chat](https://web.libera.chat/#gbdev) is bridged to the Discord chat.
   - `#gbdev-ot`, `#gbdev-casual`, `#gbdev-hw`, `#gbdev-meta`, `#gbdev-asm`, `#gbdev-gfx`, `#gbdev-emudev`, `#gbdev-romhacking` and `#gbdev-research` are also available for discussion about specific topics.
-- Forum: [https://gbdev.gg8.se/forums](https://gbdev.gg8.se/forums/)
-- Wiki: [https://gbdev.gg8.se/wiki](https://gbdev.gg8.se/wiki/)
+
