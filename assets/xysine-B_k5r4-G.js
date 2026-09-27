@@ -1,0 +1,1 @@
+var e=`/deadcscroll/gif/xysine.gif`;export{e as t};
