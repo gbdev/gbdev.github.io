@@ -3,6 +3,15 @@ name: CI
 on:
   push:
     branches: [ dev ]
+  # Sent by awesome-gbdev when its README changes, to rebuild the resources page
+  repository_dispatch:
+    types: [ awesome-gbdev-updated ]
+  workflow_dispatch:
+
+# Don't let two deploys push to master at the same time
+concurrency:
+  group: deploy
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -67,5 +76,9 @@ jobs:
         git remote -v
         git branch -v
         git add -A
-        git commit -am 'Update build'
+        if git diff --cached --quiet; then
+          echo "Build output unchanged, nothing to deploy."
+          exit 0
+        fi
+        git commit -m 'Update build'
         git push -v
