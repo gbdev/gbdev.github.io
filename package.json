@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev website",
-    "build": "vuepress build website"
+    "prebuild": "node scripts/build-resources.mjs",
+    "build": "vuepress build website",
+    "build-resources": "node scripts/build-resources.mjs"
   },
   "repository": {
     "type": "git",
