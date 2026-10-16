@@ -1,4 +1,4 @@
-import{a as e,c as t,d as n,f as r,g as i,h as a,i as o,l as s,m as c,n as l,o as u,p as d,r as f,s as p,t as m,u as h}from"./app-D0ooYOjJ.js";import"./xysine-B_k5r4-G.js";var g=`.waitVRAM
+import{a as e,c as t,d as n,f as r,g as i,h as a,i as o,l as s,m as c,n as l,o as u,p as d,r as f,s as p,t as m,u as h}from"./app-oZCJRxfU.js";import"./xysine-B_k5r4-G.js";var g=`.waitVRAM
 	ldh a, [rSTAT]
 	and STATF_BUSY ; 2
 	jr nz, .waitVRAM
